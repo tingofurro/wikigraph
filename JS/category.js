@@ -9,7 +9,7 @@ var diagonal = d3.svg.diagonal.radial()
 
 var svg = d3.select("body").append("svg").attr("width", svgSize).attr("height", svgSize).append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-d3.json("catTree.json", function(error, root) {
+d3.json("json/catTree.json", function(error, root) {
   var nodes = tree.nodes(root),
       links = tree.links(nodes);
 
