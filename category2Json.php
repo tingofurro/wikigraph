@@ -2,7 +2,7 @@
 include('dbco.php');
 $r = mysql_query("SELECT cat.*, (SELECT COUNT(*) FROM wg_category AS temp WHERE temp.parent=cat.id) AS children FROM wg_category AS cat WHERE parent='0' LIMIT 1"); $re = mysql_fetch_array($r);
 $txt = writeNode($re);
-$fh = fopen('catTree.json', 'w'); fwrite($fh, $txt);
+$fh = fopen('json/catTree.json', 'w'); fwrite($fh, $txt);
 echo nl2br($txt);
 function getChildren($id) {
 	$r =  mysql_query("SELECT cat.*, (SELECT COUNT(*) FROM wg_category AS temp WHERE temp.parent=cat.id AND distance<=2) AS children FROM wg_category AS cat WHERE parent='".$id."'");
