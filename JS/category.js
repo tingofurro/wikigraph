@@ -33,6 +33,10 @@ d3.json("json/catTree.json", function(error, root) {
       .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
       .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
       .text(function(d) { return d.name; });
+  node.on("dblclick", function(d) {
+      window.location='tree.php?sourceName='+encodeURIComponent(d.name);
+      d3.event.stopPropagation();
+  });
 });
 d3.select(self.frameElement).style("height", diameter - 150 + "px");
 $( document ).ready(function() {

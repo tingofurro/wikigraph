@@ -1,191 +1,58 @@
-{"name": "Mathematics", 
-"children": [
-   {"name": "Mathematical examples"},
-   {"name": "Applied mathematics", 
-   "children": [
-         {"name": "Actuarial science"},
-      {"name": "Computational mathematics"},
-      {"name": "Computational science"},
-      {"name": "Cryptography"},
-      {"name": "Cybernetics"},
-      {"name": "Mathematical economics"},
-      {"name": "Mathematical finance"},
-      {"name": "Mathematical and theoretical biology"},
-      {"name": "Mathematical chemistry"},
-      {"name": "Mathematical physics"},
-      {"name": "Mathematical psychology"},
-      {"name": "Mathematics in medicine"},
-      {"name": "Mathematics of music"},
-      {"name": "Operations research"},
-      {"name": "Probability theory"},
-      {"name": "Signal processing"},
-      {"name": "Theoretical computer science"},
-      {"name": "Applied mathematics stubs"}
-   ]
-   },
-   {"name": "Mathematics and culture", 
-   "children": [
-         {"name": "Mathematics by culture"},
-      {"name": "Mathematics awards"},
-      {"name": "Mathematics fiction books"},
-      {"name": "Mathematics competitions"},
-      {"name": "Mathematics conferences"},
-      {"name": "Documentary television series about mathematics"},
-      {"name": "Mathematics education"},
-      {"name": "M. C. Escher"},
-      {"name": "Ethnomathematicians"},
-      {"name": "Fermat%27s Last Theorem"},
-      {"name": "Films about mathematics"},
-      {"name": "Mathematical humor"},
-      {"name": "Mathematics and art"},
-      {"name": "Mathematics and mysticism"},
-      {"name": "Mathematics of music"},
-      {"name": "Mathematics-related topics in popular culture"},
-      {"name": "Mathematics organizations"},
-      {"name": "Mathematical problems"},
-      {"name": "Recreational mathematics"},
-      {"name": "Square One Television"},
-      {"name": "Mathematics websites"}
-   ]
-   },
-   {"name": "Elementary mathematics", 
-   "children": [
-         {"name": "Elementary algebra"},
-      {"name": "Elementary arithmetic"},
-      {"name": "Elementary geometry"},
-      {"name": "Elementary number theory"}
-   ]
-   },
-   {"name": "Fields of mathematics", 
-   "children": [
-         {"name": "Algebra"},
-      {"name": "Mathematical analysis"},
-      {"name": "Applied mathematics"},
-      {"name": "Arithmetic"},
-      {"name": "Calculus"},
-      {"name": "Combinatorics"},
-      {"name": "Computational mathematics"},
-      {"name": "Discrete mathematics"},
-      {"name": "Dynamical systems"},
-      {"name": "Elementary mathematics"},
-      {"name": "Experimental mathematics"},
-      {"name": "Foundations of mathematics"},
-      {"name": "Game theory"},
-      {"name": "Geometry"},
-      {"name": "Graph theory"},
-      {"name": "Mathematical logic"},
-      {"name": "Mathematics of infinitesimals"},
-      {"name": "Number theory"},
-      {"name": "Order theory"},
-      {"name": "Probability and statistics"},
-      {"name": "Recreational mathematics"},
-      {"name": "Representation theory"},
-      {"name": "Topology"}
-   ]
-   },
-   {"name": "History of mathematics", 
-   "children": [
-         {"name": "Mathematics by culture"},
-      {"name": "Mathematics by period"},
-      {"name": "History of algebra"},
-      {"name": "History of calculus"},
-      {"name": "History of computer science"},
-      {"name": "History of geometry"},
-      {"name": "Hilbert%27s problems"},
-      {"name": "Historians of mathematics"},
-      {"name": "Historiography of mathematics"},
-      {"name": "History of mathematics journals"},
-      {"name": "History of logic"},
-      {"name": "Mathematics manuscripts"},
-      {"name": "Mathematical problems"},
-      {"name": "History of statistics"},
-      {"name": "Mathematics timelines"}
-   ]
-   },
-   {"name": "Mathematical concepts", 
-   "children": [
-         {"name": "Algorithms"},
-      {"name": "Mathematical axioms"},
-      {"name": "Majority"},
-      {"name": "Mathematical objects"},
-      {"name": "Mathematical structures"},
-      {"name": "Mathematical principles"},
-      {"name": "Mathematical relations"},
-      {"name": "Basic concepts in set theory"}
-   ]
-   },
-   {"name": "Mathematical notation", 
-   "children": [
-         {"name": "Coordinate systems"},
-      {"name": "Mathematical markup languages"},
-      {"name": "Mathematical symbols"},
-      {"name": "Numeral systems"},
-      {"name": "Mathematical typefaces"},
-      {"name": "Z notation"}
-   ]
-   },
-   {"name": "Philosophy of mathematics", 
-   "children": [
-         {"name": "Mathematical logic"},
-      {"name": "Mathematical objects"},
-      {"name": "Mathematics and mysticism"},
-      {"name": "Mathematics paradoxes"},
-      {"name": "Philosophers of mathematics"},
-      {"name": "Philosophy of computer science"},
-      {"name": "Structuralism (philosophy of mathematics)"},
-      {"name": "Theories of deduction"}
-   ]
-   },
-   {"name": "Mathematical problem solving", 
-   "children": [
-         {"name": "Algorithms"},
-      {"name": "Applied mathematics"},
-      {"name": "Mathematical principles"},
-      {"name": "Mathematical proofs"},
-      {"name": "Mathematical relations"},
-      {"name": "Mathematical tools"},
-      {"name": "Mathematical modeling"},
-      {"name": "Numerical analysis"},
-      {"name": "Probability and statistics"},
-      {"name": "Mathematical problems"},
-      {"name": "Mathematical theorems"}
-   ]
-   },
-   {"name": "Pseudomathematics"},
-   {"name": "Mathematical terminology", 
-   "children": [
-         {"name": "Dimension"},
-      {"name": "Formal methods terminology"}
-   ]
-   },
-   {"name": "Mathematical tools", 
-   "children": [
-         {"name": "Calculators"},
-      {"name": "Mathematical markup languages"},
-      {"name": "Mathematical software"},
-      {"name": "Mathematical tables"}
-   ]
-   },
-   {"name": "Mathematics stubs", 
-   "children": [
-         {"name": "Cryptography stubs"},
-      {"name": "Mathematics literature stubs"},
-      {"name": "Mathematician stubs"},
-      {"name": "Algebra stubs"},
-      {"name": "Mathematical analysis stubs"},
-      {"name": "Applied mathematics stubs"},
-      {"name": "Category theory stubs"},
-      {"name": "Combinatorics stubs"},
-      {"name": "Mathematics competition stubs"},
-      {"name": "Geometry stubs"},
-      {"name": "Mathematics journal stubs"},
-      {"name": "Mathematical logic stubs"},
-      {"name": "Number theory stubs"},
-      {"name": "Number stubs"},
-      {"name": "Probability stubs"},
-      {"name": "Statistics stubs"},
-      {"name": "Topology stubs"}
-   ]
-   }
-]
-}
+{"name": "Algebra", 
+      "children": [
+               {"name": "Algebraists"},
+         {"name": "Theorems in algebra", 
+         "children": [
+                     {"name": "Theorems in linear algebra"},
+            {"name": "Theorems in abstract algebra"}
+         ]
+         },
+         {"name": "Abstract algebra", 
+         "children": [
+                     {"name": "Morphisms"},
+            {"name": "Binary operations"},
+            {"name": "Ternary operations"},
+            {"name": "Commutative algebra"},
+            {"name": "Differential algebra"},
+            {"name": "Hypercomplex numbers"},
+            {"name": "Ring theory"},
+            {"name": "Semigroup theory"}
+         ]
+         },
+         {"name": "Algebraic graph theory", 
+         "children": [
+                     {"name": "Cayley graphs"},
+            {"name": "Regular graphs"}
+         ]
+         },
+         {"name": "Linear algebra", 
+         "children": [
+                     {"name": "Determinants"},
+            {"name": "Linear operators"},
+            {"name": "Matrix theory"},
+            {"name": "Multilinear algebra"},
+            {"name": "Singular value decomposition"},
+            {"name": "Spectral theory"},
+            {"name": "Super linear algebra"},
+            {"name": "Vector spaces"},
+            {"name": "Vectors"}
+         ]
+         },
+         {"name": "Mathematical identities"},
+         {"name": "Polynomials", 
+         "children": [
+                     {"name": "Generating functions"},
+            {"name": "Homogeneous polynomials"},
+            {"name": "Orthogonal polynomials"}
+         ]
+         },
+         {"name": "Symmetric functions"},
+         {"name": "Universal algebra"},
+         {"name": "Variables", 
+         "children": [
+                     {"name": "Hidden variables"},
+            {"name": "Variable (computer programming)"}
+         ]
+         }
+      ]
+      }

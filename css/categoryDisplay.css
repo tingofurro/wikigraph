@@ -2,3 +2,35 @@ body {
 	margin: 0px;
 	padding: 0px;
 }
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 10px sans-serif;
+  cursor: pointer;
+}
+.node:hover {
+	font-weight: bold;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+#parentDiv {
+  position: absolute;
+  top: -1px; left: -1px;
+  font-size: 30px; padding: 0px 10px;
+  line-height: 40px;
+  border: 1px solid black; background: #d0d0d0;
+  color: black; text-decoration: none;
+}
+a {
+  color: black;
+  text-decoration: none;
+  
+}

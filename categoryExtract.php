@@ -1,6 +1,7 @@
 <?php
 include_once('dbco.php');
-$maxBranches = 2;
+set_time_limit(3600);
+$maxBranches = 4;
 $r = mysql_query("SELECT * FROM wg_category WHERE travelled='0' AND killBranch='0' AND distance<".$maxBranches." ORDER BY distance");
 
 while($re = mysql_fetch_array($r)) {
