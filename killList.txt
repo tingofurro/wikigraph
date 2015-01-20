@@ -37,3 +37,8 @@ Digital signal processing
 Computer-aided design
 Coding theory
 Self-organization
+Applied probability
+Numerical software
+Image processing
+Distributed algorithms
+Mathematical notation
