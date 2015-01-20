@@ -11,7 +11,6 @@ Decision theory
 Vortices
 Waves
 Thermodynamics
-Astronomical dynamical systems
 Electrodynamics
 Operations research
 Astronomical dynamical systems
@@ -35,3 +34,6 @@ Geographic information systems
 Information, knowledge, and uncertainty
 Mathematical tools
 Digital signal processing
+Computer-aided design
+Coding theory
+Self-organization
