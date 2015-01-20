@@ -1,3 +1,4 @@
+Mathematics stubs
 History of mathematics
 Mathematics literature
 Mathematicians
@@ -32,3 +33,5 @@ Gases
 Celestial coordinate system
 Geographic information systems
 Information, knowledge, and uncertainty
+Mathematical tools
+Digital signal processing
