@@ -1,10 +1,10 @@
 <?php
-// 11252 categories ... over 6 layers => 9.574 => 4.241 => 4.012 => 2.870 => 2.201 => 1.889
+// 11252 categories ... over 6 layers => 1.753
 include_once('init.php');
 include_once('killList.php');
 $killList = getKillList();
 
-buildCategories('Mathematics', $killList);
+buildCategories('Fields_of_mathematics', $killList);
 function buildCategories($ROOT_NAME, $killList) {
 	set_time_limit(3600);
 	mysql_query("TRUNCATE wg_category");

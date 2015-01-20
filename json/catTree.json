@@ -1,1 +1,173 @@
-{"name": "Serialism"}
+{"name": "Algorithms", "class": "node", 
+      "children": [
+               {"name": "Algorithm description languages", "class": "node", 
+         "children": [
+                     {"name": "Structured English", "class": "node"}
+         ]
+         },
+         {"name": "Anti-aliasing algorithms", "class": "node"},
+         {"name": "Approximation algorithms", "class": "node"},
+         {"name": "Bioinformatics algorithms", "class": "node", 
+         "children": [
+                     {"name": "Genetic algorithms", "class": "node"},
+            {"name": "Sequence alignment algorithms", "class": "node"},
+            {"name": "Substring indices", "class": "node"}
+         ]
+         },
+         {"name": "Calendar algorithms", "class": "node"},
+         {"name": "Checksum algorithms", "class": "node", 
+         "children": [
+                     {"name": "Cyclic redundancy checks", "class": "node"},
+            {"name": "International Standard Book Number", "class": "node"}
+         ]
+         },
+         {"name": "Classification algorithms", "class": "node", 
+         "children": [
+                     {"name": "Decision trees", "class": "node"},
+            {"name": "Ensemble learning", "class": "node"}
+         ]
+         },
+         {"name": "Compression algorithms", "class": "node", 
+         "children": [
+                     {"name": "Lossless compression algorithms", "class": "node"},
+            {"name": "Lossy compression algorithms", "class": "node"}
+         ]
+         },
+         {"name": "Computer arithmetic algorithms", "class": "node", 
+         "children": [
+                     {"name": "Pi algorithms", "class": "node"}
+         ]
+         },
+         {"name": "Concurrent algorithms", "class": "node", 
+         "children": [
+                     {"name": "Concurrency control algorithms", "class": "node"}
+         ]
+         },
+         {"name": "Cryptographic algorithms", "class": "node", 
+         "children": [
+                     {"name": "Advanced Access Content System", "class": "node"},
+            {"name": "Asymmetric-key algorithms", "class": "node"},
+            {"name": "Broken cryptography algorithms", "class": "node"},
+            {"name": "Cryptanalytic algorithms", "class": "node"},
+            {"name": "Cryptographic hash functions", "class": "node"},
+            {"name": "Cryptographically secure pseudorandom number generators", "class": "node"},
+            {"name": "Information-theoretically secure algorithms", "class": "node"},
+            {"name": "Symmetric-key algorithms", "class": "node"},
+            {"name": "Type 1 encryption algorithms", "class": "node"},
+            {"name": "Type 2 encryption algorithms", "class": "node"},
+            {"name": "Type 3 encryption algorithms", "class": "node"}
+         ]
+         },
+         {"name": "Data clustering algorithms", "class": "node"},
+         {"name": "Data mining", "class": "node", 
+         "children": [
+                     {"name": "Applied data mining", "class": "node"},
+            {"name": "Artificial intelligence conferences", "class": "node"},
+            {"name": "Cluster analysis", "class": "node"},
+            {"name": "Data miners", "class": "node"},
+            {"name": "Data mining and machine learning software", "class": "node"},
+            {"name": "Dimension reduction", "class": "node"}
+         ]
+         },
+         {"name": "Database algorithms", "class": "node", 
+         "children": [
+                     {"name": "Join algorithms", "class": "node"}
+         ]
+         },
+         {"name": "Digital signal processing", "class": "badNode"},
+         {"name": "Distributed algorithms", "class": "badNode"},
+         {"name": "Error detection and correction", "class": "node", 
+         "children": [
+                     {"name": "Capacity-achieving codes", "class": "node"},
+            {"name": "Capacity-approaching codes", "class": "node"},
+            {"name": "Hash functions", "class": "node"},
+            {"name": "Message authentication codes", "class": "node"}
+         ]
+         },
+         {"name": "Evolutionary algorithms", "class": "node", 
+         "children": [
+                     {"name": "Gene expression programming", "class": "node"},
+            {"name": "Genetic programming", "class": "node"}
+         ]
+         },
+         {"name": "External memory algorithms", "class": "node"},
+         {"name": "Fair division protocols", "class": "node"},
+         {"name": "Computational group theory", "class": "node"},
+         {"name": "Heuristic algorithms", "class": "node"},
+         {"name": "Machine learning algorithms", "class": "node"},
+         {"name": "Matrix multiplication algorithms", "class": "node"},
+         {"name": "Memory management algorithms", "class": "node", 
+         "children": [
+                     {"name": "Automatic memory management", "class": "node"}
+         ]
+         },
+         {"name": "Networking algorithms", "class": "node", 
+         "children": [
+                     {"name": "Routing algorithms", "class": "node"}
+         ]
+         },
+         {"name": "Online algorithms", "class": "node"},
+         {"name": "Optimization algorithms and methods", "class": "node", 
+         "children": [
+                     {"name": "Combinatorial optimization", "class": "node"},
+            {"name": "Dynamic programming", "class": "node"},
+            {"name": "Gradient methods", "class": "node"},
+            {"name": "Stochastic optimization", "class": "node"}
+         ]
+         },
+         {"name": "Pattern matching", "class": "node", 
+         "children": [
+                     {"name": "Pattern matching programming languages", "class": "node"},
+            {"name": "Permutation patterns", "class": "node"},
+            {"name": "Phonetic algorithms", "class": "node"},
+            {"name": "Regular expressions", "class": "node"},
+            {"name": "String matching algorithms", "class": "node"}
+         ]
+         },
+         {"name": "Computational physics", "class": "node", 
+         "children": [
+                     {"name": "Computational fluid dynamics", "class": "node"},
+            {"name": "Molecular dynamics", "class": "node"},
+            {"name": "Monte Carlo particle physics software", "class": "node"}
+         ]
+         },
+         {"name": "Pseudo-polynomial time algorithms", "class": "node"},
+         {"name": "Pseudorandom number generators", "class": "node"},
+         {"name": "Quantum algorithms", "class": "node"},
+         {"name": "Randomized algorithms", "class": "node"},
+         {"name": "Root-finding algorithms", "class": "node"},
+         {"name": "Scheduling algorithms", "class": "node", 
+         "children": [
+                     {"name": "Disk scheduling algorithms", "class": "node"},
+            {"name": "Linux kernel process schedulers", "class": "node"}
+         ]
+         },
+         {"name": "Search algorithms", "class": "node", 
+         "children": [
+                     {"name": "Hashing", "class": "node"},
+            {"name": "Internet search algorithms", "class": "node"}
+         ]
+         },
+         {"name": "Selection algorithms", "class": "node"},
+         {"name": "Statistical algorithms", "class": "node"},
+         {"name": "Computational statistics", "class": "node", 
+         "children": [
+                     {"name": "Computational statistics journals", "class": "node"},
+            {"name": "Markov chain Monte Carlo", "class": "node"},
+            {"name": "Non-uniform random numbers", "class": "node"},
+            {"name": "Statistical databases", "class": "node"},
+            {"name": "Variance reduction", "class": "node"}
+         ]
+         },
+         {"name": "Stochastic algorithms", "class": "node"},
+         {"name": "Algorithms on strings", "class": "node", 
+         "children": [
+                     {"name": "Parsing algorithms", "class": "node"},
+            {"name": "Problems on strings", "class": "node"},
+            {"name": "String similarity measures", "class": "node"},
+            {"name": "String collation algorithms", "class": "node"}
+         ]
+         },
+         {"name": "Unicode algorithms", "class": "node"}
+      ]
+      }
