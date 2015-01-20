@@ -1,23 +1,14 @@
 <?php
-// 11252 categories ... over 6 layers
+// 11252 categories ... over 6 layers => 9.574 => 4.241 => 4.012 => 2.870
 include_once('init.php');
-$killList = array();
-array_push($killList, array());
-array_push($killList, array('History of mathematics', 'Mathematics literature', 'Mathematicians', 'Mathematics and culture', 'Wikipedia books on mathematics', 'Mathematics-related lists', 'Applied_mathematics'));
-array_push($killList, array());
-array_push($killList, array());
-array_push($killList, array());
-array_push($killList, array());
-array_push($killList, array());
-foreach ($killList as $dist => $list) {
-	foreach ($list as $u => $txt) {$list[$u] = strToWiki($txt);}
-	$killList[$dist] = $list;
-}
+include_once('killList.php');
+$killList = getKillList();
 
 buildCategories('Mathematics', $killList);
 function buildCategories($ROOT_NAME, $killList) {
 	set_time_limit(3600);
 	mysql_query("TRUNCATE wg_category");
+	mysql_query("TRUNCATE wg_catlink");
 	mysql_query("INSERT INTO `wg_category` (`id`, `name`, `parent`, `distance`, `killBranch`) VALUES (NULL, '".$ROOT_NAME."', '0', '0', '0');");
 	mysql_query("ALTER TABLE wg_category ADD travelled INT DEFAULT 0");
 	$maxBranches = 6;
@@ -45,7 +36,7 @@ function extractCategories($parentName, $parentDistance, $parentId, $killList) {
 					$to = $re['id']; // By design, do not update distance or parent of that node, as this is not truly a tree
 				}
 				else {
-					mysql_query("INSERT INTO `wg_category` (`id`, `name`, `parent`, `distance`, `killBranch`, `travelled`) VALUES (NULL, '$category', '".$parentId."', '".($parentDistance+1)."', '".(in_array($category, $killList[($parentDistance+1)])?1:0)."', '0');");
+					mysql_query("INSERT INTO `wg_category` (`id`, `name`, `parent`, `distance`, `killBranch`, `travelled`) VALUES (NULL, '$category', '".$parentId."', '".($parentDistance+1)."', '".(in_array($category, $killList)?1:0)."', '0');");
 					$r = mysql_query("SELECT * FROM wg_category ORDER BY id DESC LIMIT 1"); $re = mysql_fetch_array($r); $to = $re['id'];
 				}
 				mysql_query("INSERT INTO `wg_catlink` (`id`, `catfrom`, `catto`) VALUES ('', '$parentId', '$to');");

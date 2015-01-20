@@ -29,10 +29,10 @@
 <!DOCTYPE html>
 <html>
 	<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/categoryDisplay.css" />
+		<link rel="stylesheet" type="text/css" href="css/tree.css" />
 	<body>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js"></script>
-		<script src="JS/category.js"></script>
+		<script src="JS/treeCat.js"></script>
 	</body>
 </html>

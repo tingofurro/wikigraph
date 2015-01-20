@@ -22,7 +22,7 @@ d3.json("json/catTree.json", function(error, root) {
   var node = svg.selectAll(".node")
       .data(nodes)
     .enter().append("g")
-      .attr("class", "node")
+      .attr("class", function(d) {return d.class;})
       .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
 
   node.append("circle")

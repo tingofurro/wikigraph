@@ -7,7 +7,11 @@ body {
   stroke: steelblue;
   stroke-width: 1.5px;
 }
-
+.badNode circle {
+  fill: #fff;
+  stroke: #b34646;  
+  stroke-width: 1.5px;
+}
 .node {
   font: 10px sans-serif;
   cursor: pointer;
