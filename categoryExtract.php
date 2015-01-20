@@ -1,5 +1,5 @@
 <?php
-// 11252 categories ... over 6 layers => 9.574 => 4.241 => 4.012 => 2.870 => 2.201
+// 11252 categories ... over 6 layers => 9.574 => 4.241 => 4.012 => 2.870 => 2.201 => 1.889
 include_once('init.php');
 include_once('killList.php');
 $killList = getKillList();

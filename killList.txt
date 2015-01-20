@@ -5,6 +5,7 @@ Mathematicians
 Mathematics and culture
 Wikipedia books on mathematics
 Mathematics-related lists
+Philosophy of mathematics
 Applied mathematics
 Dimension
 Decision theory
@@ -16,6 +17,7 @@ Operations research
 Astronomical dynamical systems
 Statisticians
 Statistical data sets
+Statistical data types
 Buildings and structures by shape
 Dynamical systems
 Game artificial intelligence
@@ -42,3 +44,18 @@ Numerical software
 Image processing
 Distributed algorithms
 Mathematical notation
+Statistical software
+Survey methodology
+Mathematics fiction books
+Fictional dimensions
+Go openings
+Asymmetrical multiplayer video games
+Statistical awards
+Statistical data coding
+Rubik's Cube
+Bermuda Triangle
+Misuse of statistics
+Lists by area
+Rankings
+Chirality
+Balloons
