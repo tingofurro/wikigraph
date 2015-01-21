@@ -5,7 +5,7 @@ $totFields = 23;
 <html>
 <head>
 	<title>Number of categories and pages per field</title>
-	<link rel="stylesheet" type="text/css" href="css/">
+	<link rel="stylesheet" type="text/css" href="css/nbInField.css" />
 </head>
 <body>
 	<table>
