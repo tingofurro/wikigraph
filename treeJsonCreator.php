@@ -1,5 +1,5 @@
 <?php
-function generateGraph($source, $depth) {
+function generateTree($source, $depth) {
 	$r = mysql_query("SELECT cat.*, (SELECT COUNT(*) FROM wg_category AS temp WHERE temp.parent=cat.id) AS children FROM wg_category AS cat WHERE id='$source' LIMIT 1");
 	if($re = mysql_fetch_array($r)) {
 		$maxDistance = $re['distance']+$depth;

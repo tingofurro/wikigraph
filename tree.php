@@ -24,7 +24,7 @@
 			}
 		}
 	}
-	generateGraph($source, 2);
+	generateTree($source, 2);
 ?>
 <!DOCTYPE html>
 <html>
