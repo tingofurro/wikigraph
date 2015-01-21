@@ -1,0 +1,23 @@
+body {
+	margin: 0px; padding: 0px;
+	font-family: sans-serif;
+}
+table {
+	margin: auto; margin-top: 50px;
+	border-collapse: collapse;
+}
+td {
+border: 1px solid black;
+	text-align: center;
+}
+table tr:first-child {
+	font-weight: bold; background: #f0f0f0;
+}
+table tr:first-child td {
+	padding: 0px 10px;
+}
+a {
+	font-weight: bold;
+	text-decoration: none;
+	color: black;
+}

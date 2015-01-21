@@ -1,10 +1,10 @@
 <?php
-function generateGraph() {
+function generateGraph($field) {
 	$sp = str_repeat(' ', 3);
 	$txt = "{\n";
 	$txt .= $sp."\"nodes\": [\n";
 		$listNode = array();
-		$n = mysql_query("SELECT * FROM wg_category WHERE distance<=2 ORDER BY id");
+		$n = mysql_query("SELECT * FROM wg_category WHERE ".whereField($field)." ORDER BY id");
 		$nodes = array();
 		while($no = mysql_fetch_array($n)) {
 			array_push($nodes, $sp.$sp."{\"name\": \"".$no['name']."\", \"group\": ".$no['distance']." }");
@@ -13,16 +13,15 @@ function generateGraph() {
 		$txt .= implode(", \n", $nodes);
 	$txt .= "\n], \n";
 	$txt .= "\"links\": [\n";
-		$listNode = implode(", ", $listNode);
-		$e = mysql_query("SELECT * FROM wg_catlink WHERE (catto IN(".$listNode.") OR catfrom IN(".$listNode.")) ORDER BY id");
+		$listNodeTxt = implode(", ", $listNode);
+		$e = mysql_query("SELECT * FROM wg_catlink WHERE (catto IN(".$listNodeTxt.") AND catfrom IN(".$listNodeTxt.")) ORDER BY id");
 		$edges = array();
 		while($ed = mysql_fetch_array($e)) {
-			array_push($edges, $sp.$sp."{\"source\": ".($ed['catto']-1).", \"target\": ".($ed['catfrom']-1).", \"value\": 2 }");
+			array_push($edges, $sp.$sp."{\"source\": ".array_search($ed['catto'], $listNode).", \"target\": ".array_search($ed['catfrom'], $listNode).", \"value\": 2 }");
 		}
 		$txt .= implode(", \n", $edges);
 	$txt .= "\n]\n";
 	$txt .= "}";
 	$fh = fopen('json/catGraph.json', 'w'); fwrite($fh, $txt);
-	// echo nl2br($txt);
 }
 ?>
