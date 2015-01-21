@@ -17,8 +17,9 @@ function getPages($fullReset) {
 	}
 	$r = mysql_query("SELECT * FROM wg_category WHERE distance>=1 AND killBranch=0 AND id>=$startAt ORDER BY id");
 	echo "SELECT * FROM wg_category WHERE distance>=1 AND killBranch=0 AND id>=$startAt ORDER BY id";
+	echo "<br /><br />";
 	while($re = mysql_fetch_array($r)) {
-		extractPages($re['name'], $re);
+		// extractPages($re['name'], $re);
 		echo $re['name']." is done<br />";
 	}
 }
