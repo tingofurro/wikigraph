@@ -28,20 +28,18 @@ function extractPages($parent) {
 	$html = file_get_contents('http://en.wikipedia.org/wiki/Category:'.$parent['name']);
 	@$dom->loadHTML($html);
 	$dom = $dom->getElementById('mw-pages');
-	$dom = $dom->getElementsByTagName('table');
-	if($dom->length > 0) {
-		$dom = $dom->item(0);
-		if(!is_null($dom)) {
-			foreach ($dom->getElementsByTagName('a') as $link) {
-					$h = str_replace("/wiki/", "", $link->getAttribute('href')); $cleanName = wikiToName($h);
-					$p = mysql_query("SELECT * FROM wg_page WHERE name=\"$cleanName\"");
-					if($pa = mysql_fetch_array($p)) {
-						// for now do nothing...
-					}
-					else {
-						mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`) VALUES (NULL, '".$cleanName."', '".$parent['id']."', '".$parent['fields']."');");
-					}
-
+	if(!is_null($dom)) {
+		foreach ($dom->getElementsByTagName('a') as $link) {
+			$href = $link->getAttribute('href');
+			if(strpos($href, "/wiki/") !== false) { // this is an interesting link
+				$h = str_replace("/wiki/", "", $href); $cleanName = wikiToName($h);
+				$p = mysql_query("SELECT * FROM wg_page WHERE name=\"$cleanName\"");
+				if($pa = mysql_fetch_array($p)) {
+					// for now do nothing...
+				}
+				else {
+					mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`) VALUES (NULL, '".$cleanName."', '".$parent['id']."', '".$parent['fields']."');");
+				}
 			}
 		}
 	}
