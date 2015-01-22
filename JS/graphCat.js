@@ -1,6 +1,6 @@
-var width = 960,
-    height = 500;
-
+var width = $(document).width(),
+    height = $(document).height()-40;
+document.title=width+' et '+height;
 var color = d3.scale.category20();
 
 var force = d3.layout.force()

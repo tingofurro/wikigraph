@@ -1,5 +1,6 @@
 <?php
 include_once('init.php');
+topMenu();
 $totFields = 23;
 ?>
 <html>
@@ -25,7 +26,7 @@ $totFields = 23;
 		
 		$pag = mysql_query("SELECT COUNT(*) AS count FROM wg_page WHERE ".$whereField);
 		$page = mysql_fetch_array($pag);
-		echo "<tr><td><a href='graph.php?field=".$field."' target='_new'>".wikiToName($fieldName['name'])."</a></td><td>".$cat['count']."</td><td>".$page['count']."</td></tr>";
+		echo "<tr><td><a class='fieldClick' href='graph.php?field=".$field."'>".wikiToName($fieldName['name'])."</a></td><td>".$cat['count']."</td><td>".$page['count']."</td></tr>";
 	}
 	?>
 	</table>

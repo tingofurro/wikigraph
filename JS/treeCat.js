@@ -1,13 +1,11 @@
-var diameter = 1000;
-var svgSize = 1000;
 var tree = d3.layout.tree()
-    .size([320, 320])
+    .size([360, 360])
     .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
 var diagonal = d3.svg.diagonal.radial()
     .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
-var svg = d3.select("body").append("svg").attr("width", svgSize).attr("height", svgSize).append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+var svg = d3.select("body").append("svg").attr("width", $(document).width()).attr("height", 1000).append("g").attr("transform", "translate(" + (($(document).width())/2) + ","+(1000/2)+")");
 
 d3.json("json/catTree.json", function(error, root) {
   var nodes = tree.nodes(root),
@@ -38,7 +36,7 @@ d3.json("json/catTree.json", function(error, root) {
       d3.event.stopPropagation();
   });
 });
-d3.select(self.frameElement).style("height", diameter - 150 + "px");
+// d3.select(self.frameElement).style("height", diameter - 150 + "px");
 $( document ).ready(function() {
-    $('svg').css('margin-left', (($('body').width()-svgSize)/2));
+    // $('svg').css('margin-left', (($('body').width()-svgSize)/2));
 });
