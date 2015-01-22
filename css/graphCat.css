@@ -3,11 +3,11 @@ body {
 	padding: 0px;
 }
 .node {
-  stroke: #fff;
-  stroke-width: 1.5px;
+  stroke: #000;
+  stroke-width: 1.3px;
 }
 
 .link {
   fill: none;
-  stroke: #bbb;
+  stroke: #808080;
 }

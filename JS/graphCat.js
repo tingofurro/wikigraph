@@ -1,7 +1,5 @@
-var width = $(document).width(),
-    height = $(document).height()-40;
-document.title=width+' et '+height;
-var color = d3.scale.category20();
+var width = $(document).width(), height = $(document).height()-40;
+var color = ['#FF0000', '#FF3333', '#FF6666', '#FF9999', '#FFCCCC', '#FFFFFF'];
 
 var force = d3.layout.force()
     .linkDistance(10)
@@ -26,10 +24,7 @@ d3.json("json/catGraph.json", function(error, graph) {
     bilinks.push([s, i, t]);
   });
 
-  force
-      .nodes(nodes)
-      .links(links)
-      .start();
+  force.nodes(nodes).links(links).start();
 
   var link = svg.selectAll(".link")
       .data(bilinks)
@@ -41,7 +36,7 @@ d3.json("json/catGraph.json", function(error, graph) {
     .enter().append("circle")
       .attr("class", "node")
       .attr("r", 5)
-      .style("fill", function(d) { return color(d.group); })
+      .style("fill", function(d) { return color[(d.group-1)]; })
       .call(force.drag);
 
   node.append("title")
