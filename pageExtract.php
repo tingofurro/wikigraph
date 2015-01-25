@@ -31,7 +31,7 @@ function extractPages($parent) {
 			$href = $link->getAttribute('href');
 			if(strpos($href, "/wiki/") !== false) { // this is an interesting link
 				$h = str_replace("/wiki/", "", $href); $cleanName = urldecode(utf8_encode(($h)));
-
+				$pieces = explode("#", $cleanName); $cleanName = $pieces[0]; // get rid of anchor if there is one
 				$p = mysql_query("SELECT * FROM wg_page WHERE name='".mysql_real_escape_string($cleanName)."'");
 				if($pa = mysql_fetch_array($p)) {
 					// for now do nothing...
