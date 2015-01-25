@@ -1,10 +1,10 @@
 <?php
 	include_once('init.php');
-	topMenu();
 	include_once('graphJsonCreator.php');
 	$field =  5;
 	if(isset($_GET['field'])) {$field = mysql_real_escape_string($_GET['field']);}
 	generateGraph($field);
+	topMenu();
 ?>
 <!DOCTYPE html>
 <meta charset="utf-8">
