@@ -1,6 +1,6 @@
 <?php
 include_once('init.php');
-// originally 33.561 pages :)
+// originally 33.561 pages -> 30.000 :)
 getPages((isset($_GET['fullReset'])?1:0));
 function getPages($fullReset) {
 	set_time_limit(7200);
