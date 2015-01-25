@@ -288,7 +288,7 @@
       {"name": "Magic squares", "class": "node"},
       {"name": "Mathematical chess problems", "class": "node"},
       {"name": "Mathematical games", "class": "node"},
-      {"name": "Mechanical puzzles", "class": "node"},
+      {"name": "Mechanical puzzles", "class": "badNode"},
       {"name": "Recreational mathematicians", "class": "node"},
       {"name": "Tiling puzzles", "class": "node"}
    ]

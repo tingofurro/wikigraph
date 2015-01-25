@@ -30,13 +30,14 @@ function extractPages($parent) {
 		foreach ($dom->getElementsByTagName('a') as $link) {
 			$href = $link->getAttribute('href');
 			if(strpos($href, "/wiki/") !== false) { // this is an interesting link
-				$h = str_replace("/wiki/", "", $href); $cleanName = wikiToName($h);
-				$p = mysql_query("SELECT * FROM wg_page WHERE name=\"$cleanName\"");
+				$h = str_replace("/wiki/", "", $href); $cleanName = urldecode(utf8_encode(($h)));
+
+				$p = mysql_query("SELECT * FROM wg_page WHERE name='".mysql_real_escape_string($cleanName)."'");
 				if($pa = mysql_fetch_array($p)) {
 					// for now do nothing...
 				}
 				else {
-					mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`) VALUES (NULL, '".$cleanName."', '".$parent['id']."', '".$parent['fields']."');");
+					mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `html`, `visited`) VALUES (NULL, '".$cleanName."', '".$parent['id']."', '".$parent['fields']."', '', '0');");
 				}
 			}
 		}

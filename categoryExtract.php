@@ -33,8 +33,8 @@ function extractCategories($parentName, $parentDistance, $parentId, $killList, $
 
 			$thisClass = $link->getAttribute('class');
 			if(!empty($thisClass) AND strpos($thisClass, 'CategoryTreeLabel') !== false) {
-				$h = explode(":", $link->getAttribute('href')); $category = $h[1];
-				$r = mysql_query("SELECT * FROM wg_category WHERE name='$category'");
+				$h = explode(":", $link->getAttribute('href')); $category = urldecode(utf8_encode($h[1]));
+				$r = mysql_query("SELECT * FROM wg_category WHERE name='".mysql_real_escape_string($category)."'");
 				if($re = mysql_fetch_array($r)) {
 					$to = $re['id']; // By design, do not update distance or parent of that node, as this is not truly a tree
 					$nField = array(); if($re['fields'] != '') {$nField = explode("|", $re['fields']);}
