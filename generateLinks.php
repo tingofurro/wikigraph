@@ -1,6 +1,6 @@
 <?php
 include('init.php');
-set_time_limit(3600);
+set_time_limit(4*3600);
 if(isset($_GET['fullReset'])) {
 	mysql_query("TRUNCATE wg_links");
 	mysql_query("UPDATE wg_page SET visited=0");
