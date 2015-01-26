@@ -9,7 +9,8 @@ while($re = mysql_fetch_array($r)) {
 	$dom = $dom->getElementById('mw-content-text');
 	$cleanHtml = DOMinnerHTML($dom);
 	$cleanHtml = urldecode(utf8_encode($cleanHtml));
-	mysql_query("UPDATE wg_page SET html='".mysql_real_escape_string($cleanHtml)."', visited='1' WHERE id='".$re['id']."'");
+	$fh = fopen('data/'.$re['id'].'.txt', 'w'); fwrite($fh, $cleanHtml);
+	mysql_query("UPDATE wg_page SET visited='1' WHERE id='".$re['id']."'");
 }
 function DOMinnerHTML(DOMNode $element) { 
     $innerHTML = ""; $lastHeadline = ''; $skip = false;
