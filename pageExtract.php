@@ -37,7 +37,7 @@ function extractPages($parent) {
 					// for now do nothing...
 				}
 				else {
-					mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `html`, `visited`) VALUES (NULL, '".$cleanName."', '".$parent['id']."', '".$parent['fields']."', '', '0');");
+					mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `visited`) VALUES (NULL, '".$cleanName."', '".$parent['id']."', '".$parent['fields']."', '0');");
 				}
 			}
 		}

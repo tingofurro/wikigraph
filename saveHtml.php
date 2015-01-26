@@ -3,7 +3,7 @@ include('init.php');
 set_time_limit(7200);
 $r = mysql_query("SELECT * FROM wg_page WHERE visited=0 ORDER BY id");
 while($re = mysql_fetch_array($r)) {
-	$url = 'http://en.wikipedia.org/wiki/'.strToWiki($re['name']);
+	$url = 'http://en.wikipedia.org/wiki/'.urlencode(strToWiki($re['name']));
 	$html = file_get_contents($url);
 	$dom = new DOMDocument; $dom->loadHTML($html);
 	$dom = $dom->getElementById('mw-content-text');
