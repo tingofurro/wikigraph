@@ -2,8 +2,8 @@
 include('init.php');
 set_time_limit(3600);
 mysql_query("TRUNCATE wg_links");
-mysql_query("UPDATE wg_page SET visited=0");
-$r = mysql_query("SELECT * FROM wg_page WHERE visited=0 ORDER BY id LIMIT 1");
+// mysql_query("UPDATE wg_page SET visited=0");
+$r = mysql_query("SELECT * FROM wg_page WHERE visited=0 ORDER BY id LIMIT 3");
 while($re = mysql_fetch_array($r)) {
 	$html = file_get_contents('data/'.$re['id'].'.txt');
 	$dom = new DOMDocument;
