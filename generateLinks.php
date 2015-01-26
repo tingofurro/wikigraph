@@ -25,6 +25,6 @@ while($re = mysql_fetch_array($r)) {
 		mysql_query("INSERT INTO `wg_links` (`id`, `from`, `to`, `type`) VALUES (NULL, '".$re['id']."', '".$found['id']."', '0');");
 	}
 	echo 'Done with '.$re['id']."<br />";
-
+	mysql_query("UPDATE wg_page SET visited=1 WHERE id=".$re['id']);
 }
 ?>
