@@ -21,7 +21,6 @@ while($re = mysql_fetch_array($r)) {
 		}
 	}
 	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".implode(", ", $pageNames).")");
-	echo "SELECT * FROM wg_page WHERE name IN (".implode(", ", $pageNames).")";
 	while ($found = mysql_fetch_array($find)) {
 		mysql_query("INSERT INTO `wg_links` (`id`, `from`, `to`, `type`) VALUES (NULL, '".$re['id']."', '".$found['id']."', '0');");
 	}
