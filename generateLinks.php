@@ -12,7 +12,10 @@ while($re = mysql_fetch_array($r)) {
 		$href = $link->getAttribute('href');
 		if(strpos($href, "/wiki/") !== false) { // this is an interesting link
 			$h = str_replace("/wiki/", "", $href); $cleanName = urldecode(utf8_encode(($h)));
-			if(!in_array($cleanName, $pageNames)) {array_push($pageNames, "\"".$cleanName."\"");}
+			$toks = explode("#", $cleanName); $cleanName = $toks[0];
+			$try = explode(":", $cleanName);
+			if(in_array($try[0], array("Help", "Wikipedia", "Category", "Special", "Template", "Portal", "File", "Template_talk"))) {}
+			else if(!in_array($cleanName, $pageNames)) {array_push($pageNames, "\"".$cleanName."\"");}
 		}
 	}
 	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".implode(", ", $pageNames).")");
