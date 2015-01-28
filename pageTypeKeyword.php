@@ -25,9 +25,30 @@ while($re = mysql_fetch_array($r)) {
 	$keys = array_keys($words); $goTo = min(500, count($keys));
 	for($i = 0; $i < $goTo; $i ++) {if(array_key_exists($keys[$i], $scoreWords)) {$scoreWords[$keys[$i]] -= 2*$words[$keys[$i]]/$nbWords;}}
 }
-
 arsort($scoreWords);
-print_r($scoreWords);
+$scoreWords = array_slice($scoreWords, 0, 100);
+// print_r($scoreWords);
+
+$pages = array();
+$s = mysql_query("SELECT * FROM wg_page WHERE pageType=0 ORDER BY RAND() LIMIT 50");
+while($se = mysql_fetch_array($s)) {
+	$ret = getWordCounts('data/'.$se['id'].'.txt');
+	$words = $ret[0]; $nbWords = $ret[1];
+	$keys = array_keys($words);
+	$myScore = 0;
+	for($i = 0; $i < count($keys); $i ++) {
+		if(array_key_exists($keys[$i], $scoreWords)) {
+			$myScore += $scoreWords[$keys[$i]]*$words[$keys[$i]];
+		}
+	}
+	$pages[$se['name']] = $myScore;
+}
+arsort($pages);
+foreach ($pages as $name => $score) {
+	echo "<b>".$name."</b> scored: ".$score."<br />";
+}
+
+
 function getWordCounts($filename) {
 	$html = file_get_contents($filename);
 	$onlyTxt = strip_tags($html); // strip_tags($html, "<br>") for better aesthetic display
