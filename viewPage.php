@@ -1,9 +1,17 @@
 <?php
+include('init.php');
 header('Content-Type: text/html; charset=utf-8');
-include('extractHtml.php');
+$id = 2;
+if(isset($_GET['id'])) {$id = mysql_real_escape_string($_GET['id']);}
+$r = mysql_query("SELECT * FROM wg_page WHERE id='$id'");
+if(!$re = mysql_fetch_array($r)) {
+	$r = mysql_query("SELECT * FROM wg_page ORDER BY id LIMIT 1"); $re = mysql_fetch_array($r);
+}
+
 ?>
 <html lang="en" dir="ltr" class="client-nojs">
 <head>
+	<title><?php echo $re['name']; ?></title>
 	<meta charset="UTF-8" />
 		<meta name="generator" content="MediaWiki 1.25wmf14" />
 		<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/Algebra" />
@@ -32,8 +40,6 @@ include('extractHtml.php');
 	</head>
 	<body>
 		<?php
-			$id = 2;
-			if(isset($_GET['id'])) {$id = mysql_real_escape_string($_GET['id']);}
 			echo file_get_contents('data/'.$id.'.txt');
 		?>
 	</body>

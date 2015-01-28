@@ -1,6 +1,6 @@
 <?php
 include('init.php');
-set_time_limit(7200);
+set_time_limit(4*3600);
 $r = mysql_query("SELECT * FROM wg_page WHERE visited=0 ORDER BY id");
 while($re = mysql_fetch_array($r)) {
 	$url = 'http://en.wikipedia.org/wiki/'.urlencode(strToWiki($re['name']));
@@ -34,7 +34,7 @@ function shouldISkip(DOMNode $child, $skip) {
 				$thisClass = $couldHeadline->getAttribute('class');
 				if(!empty($thisClass) AND strpos($thisClass, 'mw-headline') !== false) {
 					$thisId = $couldHeadline->getAttribute('id');
-					return in_array($thisId, array('See_also', 'Notes', 'References', 'External_links'));
+					return in_array($thisId, array('See_also', 'Notes', 'References', 'External_links', 'Further_reading'));
 				}			    	
 		    }
 		}
