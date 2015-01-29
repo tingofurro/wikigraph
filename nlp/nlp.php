@@ -1,5 +1,5 @@
 <?php
-function wordScores($set) {
+function wordScores($set, $saveName) {
 	$alpha = 0.1;
 	$allScores = array(); $allWords = array();
 	$eachWordCount = array(); $eachTotWord = array();
@@ -27,7 +27,7 @@ function wordScores($set) {
 	}
 	arsort($allScores);
 	$allScores = array_slice($allScores, 0, 200);
-	return $allScores;
+	apc_store($saveName, $allScores);
 }
 function getWordCounts($html) {
 	$onlyTxt = strip_tags($html); // strip_tags($html, "<br>") for better aesthetic display

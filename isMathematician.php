@@ -1,21 +1,23 @@
 <?php
 include('init.php');
 include_once('nlp/nlp.php');
-$r = mysql_query("SELECT * FROM wg_page WHERE pageType=-1 LIMIT 70");
-$txtSet = array();
-while($re = mysql_fetch_array($r)) {
-	$ret = file_get_contents('data/'.$re['id'].'.txt');
-	array_push($txtSet, $ret);
-}
-$goodWords = wordScores($txtSet);
-$r = mysql_query("SELECT * FROM wg_page WHERE pageType=1 LIMIT 70");
-$txtSet = array();
-while($re = mysql_fetch_array($r)) {
-	$ret = file_get_contents('data/'.$re['id'].'.txt'); array_push($txtSet, $ret);
-}
-$badWords = wordScores($txtSet);
-$s = mysql_query("SELECT * FROM wg_page WHERE pageType=0 ORDER BY RAND() LIMIT 200");
+if(isset($_GET['retrain'])) {
+	$r = mysql_query("SELECT * FROM wg_page WHERE pageType=-1 LIMIT 70");
+	$txtSet = array();
+	while($re = mysql_fetch_array($r)) {$ret = file_get_contents('data/'.$re['id'].'.txt');array_push($txtSet, $ret);}
+	wordScores($txtSet, 'mathematicianScoreSet');
 
+
+	$r = mysql_query("SELECT * FROM wg_page WHERE pageType=1 LIMIT 70");
+	$txtSet = array();
+	while($re = mysql_fetch_array($r)) {$ret = file_get_contents('data/'.$re['id'].'.txt'); array_push($txtSet, $ret);}
+	wordScores($txtSet, 'mathScoreSet');
+}
+
+$goodWords = apc_fetch('mathematicianScoreSet');
+$badWords = apc_fetch('mathScoreSet');
+
+$s = mysql_query("SELECT * FROM wg_page WHERE pageType=0 ORDER BY RAND() LIMIT 200");
 $myScores = array();
 while($se = mysql_fetch_array($s)) {
 	$ret = getWordCounts(file_get_contents('data/'.$se['id'].'.txt'));
