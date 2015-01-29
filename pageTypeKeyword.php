@@ -6,8 +6,8 @@ $trainingSize = 0;
 while($re = mysql_fetch_array($r)) {
 	$ret = getWordCounts('data/'.$re['id'].'.txt');
 	$words = $ret[0]; $nbWords = $ret[1];
-	$keys = array_keys($words); $goTo = min(150, count($keys));
-	for($i = 0; $i < $goTo; $i ++) {
+	$keys = array_keys($words);
+	for($i = 0; $i < count($keys); $i ++) {
 		$myScore = $words[$keys[$i]]/$nbWords;
 		if(array_key_exists($keys[$i], $scoreWords)) {
 			$scoreWords[$keys[$i]] += $myScore;
@@ -27,7 +27,7 @@ while($re = mysql_fetch_array($r)) {
 }
 arsort($scoreWords);
 $scoreWords = array_slice($scoreWords, 0, 100);
-// print_r($scoreWords);
+print_r($scoreWords);
 
 $pages = array();
 $s = mysql_query("SELECT * FROM wg_page WHERE pageType=0 ORDER BY RAND() LIMIT 50");
@@ -45,7 +45,7 @@ while($se = mysql_fetch_array($s)) {
 }
 arsort($pages);
 foreach ($pages as $name => $score) {
-	echo "<b>".$name."</b> scored: ".$score."<br />";
+	echo "<br /><b>".$name."</b> scored: ".$score."";
 }
 
 
@@ -53,7 +53,7 @@ function getWordCounts($filename) {
 	$html = file_get_contents($filename);
 	$onlyTxt = strip_tags($html); // strip_tags($html, "<br>") for better aesthetic display
 	$onlyTxt = strtolower($onlyTxt);
-	$wordCount = str_word_count($onlyTxt, 1); $nbWords = count($wordCount);
+	$wordCount = str_word_count($onlyTxt, 1, '-'); $nbWords = count($wordCount);
 	return array(array_count_values($wordCount), $nbWords);
 }
 ?>

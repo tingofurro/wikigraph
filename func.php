@@ -15,6 +15,7 @@ function topMenu() {
 		<a href="index.php"><img src="images/logo.png" alt="WikiGraph" id="logo" /></a>
 		<a href="tree.php"><div class="menuItem">Tree Display</div></a>
 		<a href="nbInField.php"><div class="menuItem">Different Counts</div></a>
+		<a href="viewPage.php"><div class="menuItem">View Pages</div></a>
 	</div>
 <?php
 }
