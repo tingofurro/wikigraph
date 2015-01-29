@@ -25,6 +25,7 @@ function extractPages($parent) {
 	$html = file_get_contents('http://en.wikipedia.org/wiki/Category:'.$parent['name']);
 	@$dom->loadHTML($html);
 	$dom = $dom->getElementById('mw-pages');
+	$values = array();
 	if(!is_null($dom)) {
 		foreach ($dom->getElementsByTagName('a') as $link) {
 			$href = $link->getAttribute('href');
@@ -35,9 +36,12 @@ function extractPages($parent) {
 				if($pa = mysql_fetch_array($p)) { // for now do nothing...
 				}
 				else {
-					mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `visited`) VALUES (NULL, '".mysql_real_escape_string($cleanName)."', '".$parent['id']."', '".$parent['fields']."', '0');");
+					array_push($values, "VALUES (NULL, '".mysql_real_escape_string($cleanName)."', '".$parent['id']."', '".$parent['fields']."', '0')");
 				}
 			}
+		}
+		if(count($values) > 0) {
+			mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `visited`) ".implode(",", $values).";");
 		}
 	}
 }
