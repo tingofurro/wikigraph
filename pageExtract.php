@@ -14,10 +14,10 @@ function getPages($fullReset) {
 			$startAt = $re['category']; // restart where we left off
 		}
 	}
-	$r = mysql_query("SELECT * FROM wg_category WHERE distance>=1 AND killBranch=0 AND id>=$startAt ORDER BY id");
+	$r = mysql_query("SELECT * FROM wg_category WHERE distance>=1 AND killBranch=0 AND id>=$startAt ORDER BY id LIMIT 10");
 	while($re = mysql_fetch_array($r)) {
 		extractPages($re);
-		echo $re['name']." is done<br />";
+		// echo $re['name']." is done<br />";
 	}
 }
 function extractPages($parent) {
@@ -36,12 +36,13 @@ function extractPages($parent) {
 				if($pa = mysql_fetch_array($p)) { // for now do nothing...
 				}
 				else {
-					array_push($values, "VALUES (NULL, '".mysql_real_escape_string($cleanName)."', '".$parent['id']."', '".$parent['fields']."', '0')");
+					array_push($values, "(NULL, '".mysql_real_escape_string($cleanName)."', '".$parent['id']."', '".$parent['fields']."', '0', '0')");
 				}
 			}
 		}
 		if(count($values) > 0) {
-			mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `visited`) ".implode(",", $values).";");
+			mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `visited`, `pageType`) VALUES ".implode(",", $values).";");
+			echo "INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `visited`, `pageType`) ".implode(",", $values).";<br /><br />";
 		}
 	}
 }
