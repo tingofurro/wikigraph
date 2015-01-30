@@ -14,7 +14,7 @@ function getPages($fullReset) {
 			$startAt = $re['category']; // restart where we left off
 		}
 	}
-	$r = mysql_query("SELECT * FROM wg_category WHERE distance>=1 AND killBranch=0 AND id>=$startAt ORDER BY id LIMIT 10");
+	$r = mysql_query("SELECT * FROM wg_category WHERE distance>=1 AND killBranch=0 AND id>=$startAt ORDER BY id");
 	while($re = mysql_fetch_array($r)) {
 		extractPages($re);
 		// echo $re['name']." is done<br />";
@@ -42,7 +42,6 @@ function extractPages($parent) {
 		}
 		if(count($values) > 0) {
 			mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `visited`, `pageType`) VALUES ".implode(",", $values).";");
-			echo "INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `visited`, `pageType`) ".implode(",", $values).";<br /><br />";
 		}
 	}
 }
