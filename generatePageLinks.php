@@ -22,9 +22,9 @@ while($re = mysql_fetch_array($r)) {
 	}
 	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".implode(", ", $pageNames).")");
 	$values = array();
-	while ($found = mysql_fetch_array($find)) {array_push($values, "VALUES (NULL, '".$re['id']."', '".$found['id']."', '0')");}
+	while ($found = mysql_fetch_array($find)) {array_push($values, "(NULL, '".$re['id']."', '".$found['id']."', '0')");}
 	if(count($values) > 0) { // smarter to do just 1 request instead of 20 on avg
-		mysql_query("INSERT INTO `wg_links` (`id`, `from`, `to`, `type`) ".implode(",", $values).";");
+		mysql_query("INSERT INTO `wg_links` (`id`, `from`, `to`, `type`) VALUES ".implode(",", $values).";");
 	}
 	echo 'Done with '.$re['id']."<br />";
 	mysql_query("UPDATE wg_page SET visited=1 WHERE id=".$re['id']);
