@@ -7,7 +7,6 @@ if(isset($_GET['retrain']) OR !$loadSuccess) {
 	wordScores('mathematician');
 	wordScores('normal');
 }
-
 $goodWords = apc_fetch('mathematicianTrainSet');
 $badWords = apc_fetch('normalTrainSet');
 $s = mysql_query("SELECT * FROM wg_page WHERE mathematician=0");
@@ -24,9 +23,4 @@ while($se = mysql_fetch_array($s)) {
 	$myScores[$se['name']] = $goodScore-$badScore;
 	mysql_query("UPDATE wg_page SET mathematician=".floor($myScores[$se['name']])." WHERE id=".$se['id']);
 }
-
-// arsort($myScores);
-// foreach ($myScores as $name => $score) {
-// 	echo '<p style="color: '.(($score>0)?'green':'red').'">'.$name.': '.$score.'</p>';
-// }
 ?>

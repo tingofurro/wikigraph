@@ -25,7 +25,7 @@ function wordScores($token) {
 			foreach ($eachWordCount as $doc => $wordCount) {
 				$score = 0;
 				if(array_key_exists($word, $eachWordCount[$doc])) {
-					$eachWordCount[$doc][$word] = ceil($eachWordCount[$doc][$word]/5);
+					$eachWordCount[$doc][$word] = ceil($eachWordCount[$doc][$word]/10);
 					$score = $eachWordCount[$doc][$word]/$eachTotWord[$doc];
 				}
 				$allScores[$word] += log($alpha+$score);

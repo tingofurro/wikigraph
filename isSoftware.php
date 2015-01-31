@@ -9,7 +9,6 @@ if(isset($_GET['retrain']) OR !$loadSuccess) {
 }
 $goodWords = apc_fetch('softwareTrainSet');
 $badWords = apc_fetch('normalTrainSet');
-print_r($goodWords);
 $s = mysql_query("SELECT * FROM wg_page WHERE software=0");
 $myScores = array();
 while($se = mysql_fetch_array($s)) {
