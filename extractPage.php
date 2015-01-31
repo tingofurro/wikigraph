@@ -36,12 +36,12 @@ function extractPages($parent) {
 				if($pa = mysql_fetch_array($p)) { // for now do nothing...
 				}
 				else {
-					array_push($values, "(NULL, '".mysql_real_escape_string($cleanName)."', '".$parent['id']."', '".$parent['fields']."', '0', '0')");
+					array_push($values, "(NULL, '".mysql_real_escape_string($cleanName)."', '".$parent['id']."', '".$parent['fields']."', '0')");
 				}
 			}
 		}
 		if(count($values) > 0) {
-			mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `visited`, `pageType`) VALUES ".implode(",", $values).";");
+			mysql_query("INSERT INTO `wg_page` (`id`, `name`, `category`, `fields`, `pageType`) VALUES ".implode(",", $values).";");
 		}
 	}
 }

@@ -1,17 +1,17 @@
 <?php
 include('init.php');
 set_time_limit(4*3600);
-$r = mysql_query("SELECT * FROM wg_page WHERE visited=0 ORDER BY id");
+$r = mysql_query("SELECT * FROM wg_page");
 while($re = mysql_fetch_array($r)) {
-	$url = 'http://en.wikipedia.org/wiki/'.urlencode(strToWiki($re['name']));
-	$html = file_get_contents($url);
-	$dom = new DOMDocument; $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
-	$dom = $dom->getElementById('mw-content-text');
-	$cleanHtml = DOMinnerHTML($dom);
-	$fh = fopen('data/'.$re['id'].'.txt', 'w'); fwrite($fh, $cleanHtml);
-
-	mysql_query("UPDATE wg_page SET visited='1' WHERE id='".$re['id']."'");
-	echo $re['id']." done<Br />";
+	if(!file_exists('data/'.$re['id'].'.txt')) {	
+		$url = 'http://en.wikipedia.org/wiki/'.urlencode(strToWiki($re['name']));
+		$html = file_get_contents($url);
+		$dom = new DOMDocument; $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+		$dom = $dom->getElementById('mw-content-text');
+		$cleanHtml = DOMinnerHTML($dom);
+		$fh = fopen('data/'.$re['id'].'.txt', 'w'); fwrite($fh, $cleanHtml);
+		echo $re['id']." done<Br />";
+	}
 }
 function DOMinnerHTML(DOMNode $element) { 
     $innerHTML = ""; $lastHeadline = ''; $skip = false;

@@ -1,11 +1,19 @@
 <?php
 include('init.php');
 set_time_limit(4*3600);
-if(isset($_GET['fullReset'])) {
+$hasVisited = false;
+$col = mysql_query("SHOW COLUMNS FROM wg_page;");
+while($colu = mysql_fetch_array($col)) {
+	if($colu[0] == 'visited') {$hasVisited = true;}
+}
+if(isset($_GET['fullReset']) OR !$hasVisited) {
 	mysql_query("TRUNCATE wg_links");
-	mysql_query("UPDATE wg_page SET visited=0");
+	if(!$hasVisited) {mysql_query("ALTER TABLE wg_page ADD visited INT DEFAULT 0");}
+	else {mysql_query("UPDATE wg_page SET visited=0");}
 }
 $r = mysql_query("SELECT * FROM wg_page WHERE visited=0 ORDER BY id");
+$addVisited = array();
+$values = array();
 while($re = mysql_fetch_array($r)) {
 	$html = file_get_contents('data/'.$re['id'].'.txt');
 	$dom = new DOMDocument;
@@ -14,19 +22,26 @@ while($re = mysql_fetch_array($r)) {
 		$href = $link->getAttribute('href');
 		if(strpos($href, "/wiki/") !== false) { // this is an interesting link
 			$h = str_replace("/wiki/", "", $href); $cleanName = urldecode(utf8_encode(($h)));
-			$toks = explode("#", $cleanName); $cleanName = $toks[0];
+			$toks = explode("#", $cleanName); $cleanName = mysql_real_escape_string($toks[0]);
 			$try = explode(":", $cleanName);
 			if(in_array($try[0], array("Help", "Wikipedia", "Category", "Special", "Template", "Portal", "File", "Template_talk"))) {}
 			else if(!in_array($cleanName, $pageNames)) {array_push($pageNames, "\"".$cleanName."\"");}
 		}
 	}
 	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".implode(", ", $pageNames).")");
-	$values = array();
 	while ($found = mysql_fetch_array($find)) {array_push($values, "(NULL, '".$re['id']."', '".$found['id']."', '0')");}
-	if(count($values) > 0) { // smarter to do just 1 request instead of 20 on avg
+
+	if(count($values) > 200) { // smarter to do just 1 request instead of 20 on avg
 		mysql_query("INSERT INTO `wg_links` (`id`, `from`, `to`, `type`) VALUES ".implode(",", $values).";");
+		$values = array();
 	}
-	echo 'Done with '.$re['id']."<br />";
-	mysql_query("UPDATE wg_page SET visited=1 WHERE id=".$re['id']);
+	array_push($addVisited, $re['id']);
+	if(count($addVisited) > 200) {
+		mysql_query("UPDATE wg_page SET visited=1 WHERE id IN (".implode(", ", $addVisited).")");
+		$addVisited = array();
+		echo 'Done with '.$re['id']."<br />";
+	}
 }
+// if we get there, the program is done running
+mysql_query("ALTER TABLE wg_page DROP COLUMN visited");
 ?>

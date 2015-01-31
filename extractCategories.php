@@ -53,6 +53,6 @@ function extractCategories($parentName, $parentDistance, $parentId, $killList, $
 			}
 		}
 	}
-	mysql_query("UPDATE wg_category SET travelled='1' WHERE id='$parentId'");	
+	mysql_query("UPDATE wg_category SET travelled='1' WHERE id='$parentId'");
 }
 ?>
