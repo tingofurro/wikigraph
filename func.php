@@ -16,6 +16,7 @@ function topMenu() {
 		<a href="tree.php"><div class="menuItem">Tree Display</div></a>
 		<a href="nbInField.php"><div class="menuItem">Different Counts</div></a>
 		<a href="viewPage.php"><div class="menuItem">View Pages</div></a>
+		<a href="clustering.php"><div class="menuItem">Clustering</div></a>
 	</div>
 <?php
 }
