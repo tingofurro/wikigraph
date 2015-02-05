@@ -4,7 +4,7 @@
 	$field =  5;
 	if(isset($_GET['field'])) {$field = mysql_real_escape_string($_GET['field']);}
 	generateGraph($field);
-	topMenu();
+	topMenu($root);
 ?>
 <!DOCTYPE html>
 <meta charset="utf-8">

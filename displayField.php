@@ -1,19 +1,19 @@
 <?php
 include_once('init.php');
-topMenu();
+topMenu($root);
 $totFields = 23;
 ?>
 <html>
 <head>
 	<title>Number of categories and pages per field</title>
-	<link rel="stylesheet" type="text/css" href="css/nbInField.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/displayField.css" />
 </head>
 <body>
 	<table>
 	<tr>
 		<td>Name of field</td>
-		<td>Nb Wikipedia Categories</td>
-		<td>Nb Wikipedia Articles</td>
+		<td>Nb Cat.</td>
+		<td>Nb Articles</td>
 	</tr>	
 	<?php
 	for($field = 1; $field <= $totFields; $field ++) {

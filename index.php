@@ -1,6 +1,6 @@
 <?php
 	include_once('init.php');
-	topMenu();
+	topMenu($root);
 ?>
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 <div id="welcomeWikigraph">

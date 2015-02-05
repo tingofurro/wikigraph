@@ -14,12 +14,12 @@ function changeTextFilter() {
 function searchNames() {
 	var searchTags = encodeURIComponent($('#searchBox').val());
 	if(searchTags.length > 2) {
-		$.ajax({url: 'viewPage.php?lookUp='+searchTags, success: function(dat){
+		$.ajax({url: webroot+'displayExplore.php?lookUp='+searchTags, success: function(dat){
 			var splits = dat.split('[]');
 			var html = '<div id="closeSearchLabel" onclick="closeSearch();">&#10060;</div>';
 			for (var i = 0; i < splits.length; i++) {
 				me = splits[i].split('||')
-				html += '<a href="viewPage.php?id='+me[0]+'"><div id="pageClick">'+me[1]+'</div></a>';
+				html += '<a href="'+webroot+'explore/'+me[0]+'"><div id="pageClick">'+me[1]+'</div></a>';
 			}
 			$('#responseContent').html(html);
 		}

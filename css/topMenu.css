@@ -13,15 +13,17 @@ body {
 	float: left;
 }
 #topMenu .menuItem {
-	border-left: 1px solid black; border-right: 1px solid black;
+	border-right: 1px solid black;
 	font-size: 20px; line-height: 40px;
 	padding: 0px 15px;
 	float: left;
 	cursor: pointer;
-	margin-right: -1px;
 }
 #topMenu .menuItem:hover {
 	background: rgba(0,0,0,0.04);
+}
+#topMenu .firstItem {
+	border-left: 1px solid black;
 }
 #topMenu a {
 	color: black; text-decoration: none;

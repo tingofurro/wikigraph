@@ -1,11 +1,10 @@
 <?php
 function generateTree($source, $depth) {
-	$r = mysql_query("SELECT cat.*, (SELECT COUNT(*) FROM wg_category AS temp WHERE temp.parent=cat.id) AS children FROM wg_category AS cat WHERE id='$source' LIMIT 1");
+	$r = mysql_query("SELECT cat.*, (SELECT COUNT(*) FROM wg_category AS temp WHERE temp.parent=cat.id) AS children FROM wg_category AS cat WHERE cat.id=".$source." LIMIT 1");
 	if($re = mysql_fetch_array($r)) {
 		$maxDistance = $re['distance']+$depth;
 		$txt = writeNode($re, $maxDistance);
 		$fh = fopen('json/catTree.json', 'w'); fwrite($fh, $txt);
-		// echo nl2br($txt);
 	}
 	else {
 		echo 'Error occurred: DB not found';

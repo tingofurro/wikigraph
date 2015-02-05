@@ -18,7 +18,7 @@ if(isset($_GET['lookUp'])) {
 	echo implode("[]", $found);
 }
 else {
-topMenu();
+topMenu($root);
 $id = 2;
 if(isset($_GET['id'])) {$id = mysql_real_escape_string($_GET['id']);}
 $r = mysql_query("SELECT * FROM wg_page WHERE id='$id'");
@@ -37,7 +37,7 @@ while($cate = mysql_fetch_array($cat)) {
 	<title><?php echo wikiToName($re['name']); ?></title>
 	<meta charset="UTF-8" />
 		<meta name="generator" content="MediaWiki 1.25wmf14" />
-		<link rel="stylesheet" type="text/css" href="css/viewPage.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/viewPage.css">
 		<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/Algebra" />
 		<link rel="apple-touch-icon" href="//bits.wikimedia.org/apple-touch/wikipedia.png" />
 		<link rel="shortcut icon" href="//bits.wikimedia.org/favicon/wikipedia.ico" />
@@ -76,8 +76,11 @@ while($cate = mysql_fetch_array($cat)) {
 		<h1 id="firstHeading" class="firstHeading" style="padding-top: 90px;" lang="en"><span dir="auto"><?php echo wikiToName($re['name']); ?></span></h1>
 		<?php echo file_get_contents('data/'.$id.'.txt'); ?>
 	</body>
+	<script type="text/javascript">
+		var webroot = '<?php echo $root; ?>';
+	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script type="text/javascript" src="JS/viewPage.js"></script>
+	<script type="text/javascript" src="<?php echo $root; ?>JS/viewPage.js"></script>
 </html>
 <?php
 }

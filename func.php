@@ -8,15 +8,15 @@ function wikiToName($oldStr) {
 function whereField($field) {
 	return "(fields='$field' OR fields LIKE '%|".$field."|%' OR fields LIKE '".$field."|%' OR fields LIKE '%|".$field."')";
 }
-function topMenu() {
+function topMenu($root) {
 ?>
-	<link rel="stylesheet" type="text/css" href="css/topMenu.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $root;?>/css/topMenu.css">
 	<div id="topMenu">
-		<a href="index.php"><img src="images/logo.png" alt="WikiGraph" id="logo" /></a>
-		<a href="tree.php"><div class="menuItem">Tree Display</div></a>
-		<a href="nbInField.php"><div class="menuItem">Different Counts</div></a>
-		<a href="viewPage.php"><div class="menuItem">View Pages</div></a>
-		<a href="clustering.php"><div class="menuItem">Clustering</div></a>
+		<a href="<?php echo $root;?>"><img src="<?php echo $root;?>/images/logo.png" alt="WikiGraph" id="logo" /></a>
+		<a href="<?php echo $root."category";?>"><div class="menuItem firstItem">Category Tree</div></a>
+		<a href="<?php echo $root."fields";?>"><div class="menuItem">Math fields</div></a>
+		<a href="<?php echo $root."explore";?>"><div class="menuItem">Explore the Set</div></a>
+		<a href="<?php echo $root."clustering";?>"><div class="menuItem">Clustering Work</div></a>
 	</div>
 <?php
 }
@@ -26,5 +26,11 @@ function getKillList() {
 	$killList = explode("[]", $file);
 	foreach ($killList as $i => $ele) { $killList[$i] = strToWiki($ele);}
 	return $killList;
+}
+function getRoot() {
+	$link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+	if(strpos($link, "/Wikigraph")) {$pos = strpos($link, "/Wikigraph"); $root = substr($link, 0, ($pos+10))."/";}
+	if(strpos($link, "/wikigraph")) {$pos = strpos($link, "/wikigraph"); $root = substr($link, 0, ($pos+10))."/";}
+	return $root;
 }
 ?>
