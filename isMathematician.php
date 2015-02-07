@@ -3,7 +3,8 @@ set_time_limit(4*3600);
 include('init.php');
 include_once('nlp/nlp.php');
 $goodWords = apc_fetch('mathematicianTrainSet', $loadSuccess);
-if(isset($_GET['retrain']) OR !$loadSuccess) {
+$goodWords = apc_fetch('normalTrainSet', $loadSuccess2);
+if(isset($_GET['retrain']) OR !$loadSuccess OR !$loadSuccess2) {
 	wordScores('mathematician');
 	wordScores('normal');
 }

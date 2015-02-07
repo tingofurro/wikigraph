@@ -2,8 +2,43 @@ body {
 	margin: 0px; padding: 0px;
 	font-family: sans-serif;
 }
+#leftMenu {
+	position: absolute;
+	top: 40px; left: -1px;
+	width: 350px;
+}
+.oneField {
+	height: 20px;
+	padding: 5px 0px;
+	text-align: center;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	cursor: pointer;
+	background: #f0f0f0;
+}
+.oneField:hover {
+	background: #e0e0e0;
+}
+.oneField .icons {
+	float: right;
+	font-size: 12px;
+	margin-right: 30px;
+}
+.oneField .icon {
+	height: 20px;
+	vertical-align: middle;
+}
 .fieldClick {
 	font-weight: bold;
 	text-decoration: none;
 	color: black;
+	font-size: 13px;
+}
+.oneField:hover .fieldClick {
+	text-decoration: underline;
+}
+#graphIframe {
+	margin-top: 41px; margin-left: 350px;
+	border: none;
+	float: left;
 }

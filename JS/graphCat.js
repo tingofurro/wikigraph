@@ -1,4 +1,4 @@
-var width = $(document).width(), height = $(document).height()-40;
+var width = $(document).width()-20, height = $(document).height()-20;
 var color = ['#FF0000', '#FF3333', '#FF6666', '#FF9999', '#FFCCCC', '#FFFFFF'];
 
 var force = d3.layout.force()
@@ -10,7 +10,7 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json("json/catGraph.json", function(error, graph) {
+d3.json(webroot+"json/catGraph.json", function(error, graph) {
   var nodes = graph.nodes.slice(),
       links = [],
       bilinks = [];
