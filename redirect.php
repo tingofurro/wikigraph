@@ -44,4 +44,8 @@ if(count($exp) >= 2 && $exp[0] == 'clustering') {
 	}
 	include_once('displayClustering.php');
 }
+if(count($exp) >= 2 && $exp[0] == 'wiki') {
+	$_GET['name'] = mysql_real_escape_string($exp[1]);
+	include_once('displayExplore.php');
+}
 ?>

@@ -9,12 +9,6 @@ $totFields = 23;
 	<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/displayField.css" />
 </head>
 <body>
-	<table>
-	<tr>
-		<td>Name of field</td>
-		<td>Nb Cat.</td>
-		<td>Nb Articles</td>
-	</tr>	
 	<?php
 	for($field = 1; $field <= $totFields; $field ++) {
 		$whereField = whereField($field);
@@ -26,9 +20,8 @@ $totFields = 23;
 		
 		$pag = mysql_query("SELECT COUNT(*) AS count FROM wg_page WHERE ".$whereField);
 		$page = mysql_fetch_array($pag);
-		echo "<tr><td><a class='fieldClick' href='graph.php?field=".$field."'>".wikiToName($fieldName['name'])."</a></td><td>".$cat['count']."</td><td>".$page['count']."</td></tr>";
+		echo "<div><a class='fieldClick' href='graph.php?field=".$field."'>".wikiToName($fieldName['name'])."</a> ".$cat['count']." P ".$page['count']."</div>";
 	}
 	?>
-	</table>
 </body>
 </html>

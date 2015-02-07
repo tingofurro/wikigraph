@@ -2,21 +2,6 @@ body {
 	margin: 0px; padding: 0px;
 	font-family: sans-serif;
 }
-table {
-	margin-top: 40px; margin-left: -1px;
-	border-collapse: collapse;
-}
-td {
-	border: 1px solid black;
-	text-align: center;
-	height: 35px;
-}
-table tr:first-child {
-	font-weight: bold; background: #f0f0f0;
-}
-/*table tr:first-child td {
-	padding: 0px 10px;
-}*/
 .fieldClick {
 	font-weight: bold;
 	text-decoration: none;

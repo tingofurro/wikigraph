@@ -2,7 +2,7 @@
 include_once('init.php');
 if(isset($_GET['keywords'])) {
 	?>
-		<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/clustering.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/displayClustering.css">
 	<?php
 	$setName = 'mathematician';
 	if($_GET['keywords'] == 'software') {$setName = 'software';}
@@ -35,7 +35,7 @@ elseif(isset($_GET['pages'])) {
 	$page = 1; $perPage = 60;
 	if(isset($_GET['page'])) {$page = mysql_real_escape_string($_GET['page']);}
 	?>
-		<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/clustering.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/displayClustering.css">
 		<table><tr>
 	<?php
 	$set = 'mathematician';
@@ -58,10 +58,10 @@ elseif(isset($_GET['pages'])) {
 	<td colspan="3" align="center">
 	<?php
 		if($page > 1) {
-			echo '<a href="clustering/pages/'.$set.'/'.($page-1).'">&larr;</a>';
+			echo '<a href="'.$root.'clustering/pages/'.$set.'/'.($page-1).'">&larr;</a>';
 		}
 
-		echo ' Page '.$page.' <a href="clustering/pages/'.$set.'/'.($page+1).'">&rarr;</a>';
+		echo ' Page '.$page.' <a href="'.$root.'clustering/pages/'.$set.'/'.($page+1).'">&rarr;</a>';
 	?>
 	</td>
 	</tr>
@@ -73,7 +73,7 @@ else {
 topMenu($root);
 ?>	
 	<body>
-	<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/clustering.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/displayClustering.css" />
 		<iframe src="<?php echo $root; ?>clustering/keywords" id="firstIframe"></iframe>
 		<iframe src="<?php echo $root; ?>clustering/pages"></iframe>
 	</body>

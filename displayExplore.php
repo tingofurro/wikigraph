@@ -21,6 +21,7 @@ else {
 topMenu($root);
 $id = 2;
 if(isset($_GET['id'])) {$id = mysql_real_escape_string($_GET['id']);}
+if(isset($_GET['name'])) {$r = mysql_query("SELECT * FROM wg_page WHERE name='".urldecode($_GET['name'])."'"); if($re = mysql_fetch_array($r)) {$id = $re['id'];}}
 $r = mysql_query("SELECT * FROM wg_page WHERE id='$id'");
 if(!$re = mysql_fetch_array($r)) {
 	$r = mysql_query("SELECT * FROM wg_page ORDER BY id LIMIT 1"); $re = mysql_fetch_array($r);
@@ -37,7 +38,7 @@ while($cate = mysql_fetch_array($cat)) {
 	<title><?php echo wikiToName($re['name']); ?></title>
 	<meta charset="UTF-8" />
 		<meta name="generator" content="MediaWiki 1.25wmf14" />
-		<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/viewPage.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo $root; ?>css/displayExplore.css">
 		<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/Algebra" />
 		<link rel="apple-touch-icon" href="//bits.wikimedia.org/apple-touch/wikipedia.png" />
 		<link rel="shortcut icon" href="//bits.wikimedia.org/favicon/wikipedia.ico" />
@@ -73,8 +74,10 @@ while($cate = mysql_fetch_array($cat)) {
 		</div>
 		<input type="text" name="searchBox" id="searchBox" placeholder="Search for a page..." onkeyup="this.onchange();" onchange="changeTextFilter();" />
 		<div id="responseContent"></div>
-		<h1 id="firstHeading" class="firstHeading" style="padding-top: 90px;" lang="en"><span dir="auto"><?php echo wikiToName($re['name']); ?></span></h1>
-		<?php echo file_get_contents('data/'.$id.'.txt'); ?>
+		<div id="articleContent">
+			<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto"><?php echo wikiToName($re['name']); ?></span></h1><br />
+			<?php echo file_get_contents('data/'.$id.'.txt'); ?>
+		</div>
 	</body>
 	<script type="text/javascript">
 		var webroot = '<?php echo $root; ?>';

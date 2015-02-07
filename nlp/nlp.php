@@ -47,6 +47,6 @@ function getWordCounts($html) {
 	return array(array_count_values($wordCount), $nbWords);
 }
 function commonWords() {
-	return array('the', 'of', 'in', 'and', 'a', 'is', 'at', 'for', 'an', 'by', '-', 'as', 'this', 'that', 'be');
+	return array('the', 'of', 'in', 'and', 'a', 'is', 'at', 'for', 'an', 'by', '-', 'as', 'this', 'that', 'be', 'on', 'edit', 'was');
 }
 ?>

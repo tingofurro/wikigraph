@@ -34,3 +34,10 @@
 	top: -35px; right: 15px;
 	cursor: pointer; font-size: 20px;
 }
+#articleContent {
+	width: 80%;
+	margin: auto;
+}
+.firstHeading {
+	padding-top: 90px; padding-bottom: 10px;
+}
