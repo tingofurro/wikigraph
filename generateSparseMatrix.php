@@ -6,8 +6,8 @@ cooucoucou :)
 	while($re = mysql_fetch_array($r)) {
 		if(!isset($myLinks[$re['from']])) {$myLinks[$re['from']] = array();}
 		array_push($myLinks[$re['from']], $re['to']);
+		if(($re['id']%1000)==0) {echo count($myLinks)."<br />";}
 	}
-	echo "couwoudued";
 	echo 'mat = [<br />';
 	$already = false;
 	foreach ($myLinks as $from => $links) {
