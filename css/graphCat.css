@@ -1,6 +1,7 @@
 body {
 	margin: 0px;
 	padding: 0px;
+	font-family: sans-serif;
 }
 .gnode {
 	cursor: pointer;
@@ -25,4 +26,23 @@ body {
 }
 .node:hover .textAbove{
 	opacity: 1;
+}
+#choiceMenu {
+	position: absolute;
+	top: -1px; left: -1px;
+	border: 1px solid #a0a0a0;
+	background: #e0e0e0;
+	line-height: 40px; font-size: 16px;
+	border-right: 0px;
+}
+.optionItem {
+	padding: 0px 10px;
+	border-right: 1px solid #a0a0a0;
+	float: left;
+}
+.optionItem:hover {
+	background: #d7d7d7;
+}
+a {
+	color: black;
 }

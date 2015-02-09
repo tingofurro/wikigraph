@@ -21,7 +21,7 @@ $totFields = 23;
 		
 		$pag = mysql_query("SELECT COUNT(*) AS count FROM wg_page WHERE ".$whereField);
 		$page = mysql_fetch_array($pag);
-		echo "<a class='fieldClick' target='graphIframe' href='".$root."graph/".$field."'>";
+		echo "<a class='fieldClick' target='graphIframe' href='".$root."graphCat/".$field."'>";
 		echo "<div class='oneField'>".wikiToName($fieldName['name'])."";
 			echo "<div class='icons'>";
 				echo "<img src='".$root."images/icons/categories.png' class='icon' /> ".$cat['count'];
@@ -33,7 +33,7 @@ $totFields = 23;
 	}
 	?>
 	</div>
-	<iframe src="<?php echo $root; ?>graph/1" name="graphIframe" id="graphIframe"></iframe>
+	<iframe src="<?php echo $root; ?>graphCat/1" name="graphIframe" id="graphIframe"></iframe>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo $root; ?>JS/displayField.js"></script>
 </body>
