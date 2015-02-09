@@ -32,7 +32,7 @@ function generateArticleGraph($field, $threshhold) {
 		$n = mysql_query("SELECT * FROM wg_page WHERE ".whereField($field)." AND pagerank>".$threshhold." ORDER BY id");
 		$nodes = array();
 		while($no = mysql_fetch_array($n)) {
-			array_push($nodes, $sp.$sp."{\"name\": \"".$no['name']."\", \"group\": ".min(6, (floor(10*$no['pagerank'])))." }");
+			array_push($nodes, $sp.$sp."{\"name\": \"".$no['name']."\", \"group\": ".min(9, (floor(10*$no['pagerank'])))." }");
 			array_push($listNode, $no['id']);
 		}
 		$txt .= implode(", \n", $nodes);

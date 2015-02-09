@@ -1,5 +1,4 @@
 var width = $(document).width()-20, height = $(document).height()-20;
-var color = ['#FF0000', '#FF3333', '#FF6666', '#FF9999', '#FFCCCC', '#FFFFFF'];
 
 var force = d3.layout.force().linkDistance(10).linkStrength(2).size([width, height]);
 
