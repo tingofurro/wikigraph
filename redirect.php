@@ -17,6 +17,9 @@ switch ($myUrl) {
 	case 'fields':
 		include_once('displayField.php');
 	break;
+	case 'sparseMatrix':
+		include_once('generateSparseMatrix.php');
+	break;
 	case '':
 		include_once('index.php');
 	break;
