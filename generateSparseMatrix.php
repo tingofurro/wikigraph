@@ -4,10 +4,10 @@ cooucoucou :)
 	$myLinks = array();
 	$r = mysql_query("SELECT * FROM wg_links ORDER BY id");
 	while($re = mysql_fetch_array($r)) {
-		echo 'hey';
 		if(!isset($myLinks[$re['from']])) {$myLinks[$re['from']] = array();}
 		array_push($myLinks[$re['from']], $re['to']);
 	}
+	echo "couwoudued";
 	echo 'mat = [<br />';
 	$already = false;
 	foreach ($myLinks as $from => $links) {
