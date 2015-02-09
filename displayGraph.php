@@ -1,9 +1,10 @@
 <?php
 	include_once('init.php');
-	include_once('graphJsonCreator.php');
+	include_once('createJsonGraph.php');
 	$field =  5;
 	if(isset($_GET['field'])) {$field = mysql_real_escape_string($_GET['field']);}
-	generateGraph($field);
+	if($field)
+	generateCatGraph($field);
 ?>
 <!DOCTYPE html>
 <meta charset="utf-8">

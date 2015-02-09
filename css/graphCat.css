@@ -2,12 +2,27 @@ body {
 	margin: 0px;
 	padding: 0px;
 }
+.gnode {
+	cursor: pointer;
+}
 .node {
   stroke: #000;
   stroke-width: 1.3px;
+  position: relative;
 }
 
 .link {
   fill: none;
   stroke: #808080;
+}
+.textAbove {
+	font-size: 12px;
+	font-family: sans-serif; font-weight: bold;
+	width: 200px;
+	height: 20px;
+	text-anchor: middle;
+	opacity: 0;
+}
+.node:hover .textAbove{
+	opacity: 1;
 }
