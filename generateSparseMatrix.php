@@ -4,9 +4,8 @@ cooucoucou :)
 	$myLinks = array();
 	$r = mysql_query("SELECT * FROM wg_links ORDER BY id");
 	while($re = mysql_fetch_array($r)) {
-		if(!isset($myLinks[$re['from']])) {$myLinks[$re['from']] = array();}
+		if(!isset($myLinks[$re['from']])) {$myLinks[$re['from']] = array(); echo count($myLinks);}
 		array_push($myLinks[$re['from']], $re['to']);
-		if(($re['id']%1000)==0) {echo count($myLinks)."<br />";}
 	}
 	echo 'mat = [<br />';
 	$already = false;
