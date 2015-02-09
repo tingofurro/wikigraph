@@ -18,7 +18,7 @@ switch ($myUrl) {
 		include_once('displayField.php');
 	break;
 	case 'sparseMatrix':
-		include_once('generateSparseMatrix.php');
+		include_once('sparseMatrix.html');
 	break;
 	case '':
 		include_once('index.php');
