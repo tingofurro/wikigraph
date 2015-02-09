@@ -1,3 +1,4 @@
+cooucoucou :)
 <?php
 	include_once('init.php');
 	$myLinks = array();

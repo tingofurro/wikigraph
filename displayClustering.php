@@ -49,7 +49,7 @@ elseif(isset($_GET['pages'])) {
 	$r = mysql_query("SELECT * FROM wg_page ORDER BY ".$set." DESC LIMIT ".(($page-1)*$perPage).",".$perPage);
 	$i = 0;
 	while($re = mysql_fetch_array($r)) {
-		echo "<td width='33%'><a class='pageLink' href='viewPage.php?id=".$re['id']."' target='_new'>".$re['name'].":</a> ".$re[$set]."</td>";
+		echo "<td width='33%'><a class='pageLink' href='".$root."explore/".$re['id']."' target='_new'>".$re['name'].":</a> ".$re[$set]."</td>";
 		$i ++; if($i%3 == 0) {echo '</tr><tr>';}
 	}
 	?>
