@@ -19,7 +19,7 @@ $totFields = 23;
 		$ca = mysql_query("SELECT COUNT(*) AS count FROM wg_category WHERE ".$whereField);
 		$cat = mysql_fetch_array($ca);
 		
-		$pag = mysql_query("SELECT COUNT(*) AS count FROM wg_page WHERE ".$whereField);
+		$pag = mysql_query("SELECT COUNT(*) AS count, COUNT(CASE WHEN mathematician>=200 THEN 1 ELSE NULL END) AS people FROM wg_page WHERE ".$whereField);
 		$page = mysql_fetch_array($pag);
 		echo "<a class='fieldClick' target='graphIframe' href='".$root."graphCat/".$field."'>";
 		echo "<div class='oneField'>".wikiToName($fieldName['name'])."";
@@ -27,6 +27,7 @@ $totFields = 23;
 				echo "<img src='".$root."images/icons/categories.png' class='icon' /> ".$cat['count'];
 				echo "&nbsp;&nbsp;&nbsp;";
 				echo "<img src='".$root."images/icons/articles.png' class='icon' /> ".$page['count'];
+				echo "<img src='".$root."images/icons/people.png' class='icon' /> ".$page['people'];
 			echo "</div>";
 		echo "</div>";
 		echo "</a>";
