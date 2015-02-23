@@ -23,7 +23,6 @@
 	foreach ($outCount as $node => $count) {
 		if($count == 0) {$noOutCount ++;}
 	}
-	echo "<u>Time it took to run: ".(floor(100*(getTime()-$start))/100)."s:</u><br /><br />";
 	for($round = 1; $round < 20; $round ++) {
 		$NPR = array();
 		foreach ($adja as $node => $incoming) {
@@ -40,6 +39,7 @@
 	foreach ($PR as $id => $pr) {$sql .= "WHEN ".$id." THEN ".(floor(100000*$pr)/100000)." ";}
 	$sql .= "END WHERE id IN ($ids)";
 	mysql_query($sql);
+	echo "<u>Time it took to run: ".(floor(100*(getTime()-$start))/100)."s:</u><br /><br />";
 function totalSum($PR) {
 	$totScore = 0;
 	foreach ($PR as $i => $score) {

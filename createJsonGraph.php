@@ -29,7 +29,11 @@ function generateArticleGraph($field, $threshhold) {
 	$txt = "{\n";
 	$txt .= $sp."\"nodes\": [\n";
 		$listNode = array();
-		$n = mysql_query("SELECT * FROM wg_page WHERE ".whereField($field)." AND pagerank>".$threshhold." ORDER BY id");
+		// $n = mysql_query("SELECT * FROM wg_page WHERE ".whereField($field)." AND pagerank>".$threshhold." ORDER BY id");
+		// $n = mysql_query("SELECT * FROM wg_page WHERE pagerank>=0.7");
+		$thresh = 15;
+		// $n = mysql_query("SELECT id, pagerank, name FROM wg_page WHERE algebra>=".$thresh." OR analysis>=".$thresh." OR arithmetic>=".$thresh." OR calculus>=".$thresh." OR combinatorics>=".$thresh." OR game_theory>=".$thresh." OR geometry>=".$thresh." OR graph_theory>=".$thresh." OR logic>=".$thresh." OR number_theory>=".$thresh." OR order_theory>=".$thresh." OR prob_stats>=".$thresh." OR topology>=".$thresh."");
+		$n = mysql_query("SELECT id, pagerank, name FROM wg_page WHERE algebra>=".$thresh."");
 		$nodes = array();
 		while($no = mysql_fetch_array($n)) {
 			array_push($nodes, $sp.$sp."{\"name\": \"".$no['name']."\", \"group\": ".min(9, (floor(10*$no['pagerank'])))." }");

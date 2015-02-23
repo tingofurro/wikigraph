@@ -20,6 +20,9 @@ switch ($myUrl) {
 	case 'sparseMatrix':
 		include_once('sparseMatrix.html');
 	break;
+	case 'fieldSpec':
+		include_once('displayFieldSpecific.php');
+	break;
 	case '':
 		include_once('index.php');
 	break;
