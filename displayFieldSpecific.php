@@ -1,7 +1,7 @@
 <?php
 include('init.php');
 topMenu($root);
-$field = 'combinatorics';
+$field = 'geometry';
 $r = mysql_query("SELECT * FROM wg_page ORDER BY $field DESC LIMIT 200");
 echo '<br /><br />';
 

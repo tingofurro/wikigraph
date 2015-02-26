@@ -11,22 +11,18 @@ $totFields = 23;
 <body>
 	<div id="leftMenu">
 	<?php
-	for($field = 1; $field <= $totFields; $field ++) {
-		$whereField = whereField($field);
-		$fieldNa = mysql_query("SELECT * FROM wg_category WHERE ".$whereField." ORDER BY id LIMIT 1");
-		$fieldName = mysql_fetch_array($fieldNa);
+	$fieldList = cleanFieldList();
+	$fieldNames = cleanFieldListName();
+	foreach ($fieldList as $i => $field) {
 
-		$ca = mysql_query("SELECT COUNT(*) AS count FROM wg_category WHERE ".$whereField);
-		$cat = mysql_fetch_array($ca);
-		
-		$pag = mysql_query("SELECT COUNT(*) AS count, COUNT(CASE WHEN mathematician>=200 THEN 1 ELSE NULL END) AS people FROM wg_page WHERE ".$whereField);
+		$pag = mysql_query("SELECT COUNT(*) AS count, COUNT(CASE WHEN mathematician>=200 THEN 1 ELSE NULL END) AS people FROM wg_page WHERE cleanField=".($i+1));
 		$page = mysql_fetch_array($pag);
+
 		echo "<a class='fieldClick' target='graphIframe' href='".$root."graphCat/".$field."'>";
-		echo "<div class='oneField'>".wikiToName($fieldName['name'])."";
+		echo "<div class='oneField'>".$fieldNames[$i];
 			echo "<div class='icons'>";
-				echo "<img src='".$root."images/icons/categories.png' class='icon' /> ".$cat['count'];
-				echo "&nbsp;&nbsp;&nbsp;";
 				echo "<img src='".$root."images/icons/articles.png' class='icon' /> ".$page['count'];
+				echo "&nbsp;&nbsp;&nbsp;";
 				echo "<img src='".$root."images/icons/people.png' class='icon' /> ".$page['people'];
 			echo "</div>";
 		echo "</div>";

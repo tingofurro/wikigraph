@@ -54,9 +54,8 @@ if(count($exp) >= 2 && $exp[0] == 'graphCat') {
 	$_GET['graphCat'] = mysql_real_escape_string($exp[1]);
 	include_once('displayGraph.php');
 }
-if(count($exp) >= 3 && $exp[0] == 'graphArt') {
+if(count($exp) >= 2 && $exp[0] == 'graphArt') {
 	$_GET['graphArt'] = mysql_real_escape_string($exp[1]);
-	$_GET['threshhold'] = mysql_real_escape_string($exp[2]);
 	include_once('displayGraph.php');
 }
 if(count($exp) >= 2 && $exp[0] == 'wiki') {

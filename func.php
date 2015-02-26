@@ -33,4 +33,14 @@ function getRoot() {
 	if(strpos($link, "/wikigraph")) {$pos = strpos($link, "/wikigraph"); $root = substr($link, 0, ($pos+10))."/";}
 	return $root;
 }
+function cat2OldCat($cat) {
+	$cat2OldCat = array(1,        2,          4,            5,          8,               13,            14,         15,             16,      18,              19,             20,           24);
+	return $cat2OldCat[$cat];
+}
+function cleanFieldList() {
+	return array('algebra', 'analysis', 'arithmetic', 'calculus', 'discrete_math', 'game_theory', 'geometry', 'graph_theory', 'logic', 'number_theory', 'order_theory', 'prob_stats', 'topology');
+}
+function cleanFieldListName() {
+	return array('Algebra', 'Analysis', 'Arithmetic', 'Calculus', 'Discrete Mathematics', 'Game Theory', 'Geometry', 'Graph Theory', 'Logic', 'Number THeory', 'Order Theory', 'Probability & Statistics', 'Topology');
+}
 ?>

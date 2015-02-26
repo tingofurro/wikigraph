@@ -2,7 +2,7 @@ Algebra
 Analysis
 Arithmetic
 Calculus
-Combinatorics
+Discrete Mathematics
 Game Theory
 Geometry
 Graph Theory
