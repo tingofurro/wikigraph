@@ -5,7 +5,6 @@
 	$fieldList = cleanFieldList();
 	if(isset($_GET['graphCat'])) {
 		$field = mysql_real_escape_string($_GET['graphCat']);
-		echo $field;
 		if(in_array($field, $fieldList)) {
 			$field = array_search($_GET['graphCat'], $fieldList)+1;
 		}

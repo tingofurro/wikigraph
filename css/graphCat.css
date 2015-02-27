@@ -15,6 +15,7 @@ body {
 .link {
   fill: none;
   stroke: #808080;
+  stroke-width: 0.5px;
 }
 .textAbove {
 	font-size: 12px;
@@ -45,4 +46,14 @@ body {
 }
 a {
 	color: black;
+}
+.waitRectangle {
+	fill: #f0f0f0;
+	stroke: black;
+	stroke-width: 1;
+}
+.aboveRect {
+	fill: #c0c0c0;
+	stroke: black;
+	stroke-width: 1;
 }

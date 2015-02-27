@@ -30,11 +30,12 @@ function generateArticleGraph($field) {
 	$txt = "{\n";
 	$txt .= $sp."\"nodes\": [\n";
 		$listNode = array();
-		$thresh = 15;
-		// $n = mysql_query("SELECT id, pagerank, name, cleanField FROM wg_page WHERE cleanField=$field");
+		$thresh1 = 1; // if in my category, it has to be somewhat relevant
+		$thresh2 = 30; // if not in my category, it should be highly relevant
 		$cleanField = cleanFieldList();
-		$n = mysql_query("SELECT id, pagerank, name, cleanField FROM wg_page WHERE cleanField=$field OR ".($cleanField[($field-1)]).">$thresh");
-		
+		$myName = $cleanField[($field-1)];
+		// $n = mysql_query("SELECT id, pagerank, name, cleanField FROM wg_page WHERE cleanField=$field");
+		$n = mysql_query("SELECT id, pagerank, name, cleanField FROM wg_page WHERE (cleanField=$field AND ".$myName.">$thresh1) OR ".$myName.">$thresh2");
 		$nodes = array();
 		while($no = mysql_fetch_array($n)) {
 			// old class: min(9, (floor(10*$no['pagerank'])))
