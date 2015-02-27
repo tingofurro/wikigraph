@@ -4,8 +4,8 @@ var smallRadius = 4, largeRadius = 5;
 var totalN = 600; var currentTick = 0;
 var force = d3.layout.force()
     .linkStrength(2).friction(0.9)
-    .linkDistance(1).charge(-5)
-    .gravity(0.2).theta(0.8)
+    .linkDistance(1).charge(-10)
+    .gravity(0.1).theta(0.8)
     .alpha(0.1).size([width, height]);
 
 var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
@@ -34,11 +34,9 @@ d3.json(webroot+"json/catGraph.json", function(error, graph) {
 
     var gnodes = svg.selectAll('g.gnode').data(graph.nodes).enter().append('g').classed('gnode', true).on('mouseover', function(d){
          d3.select(this).select('circle').attr('r', largeRadius);
-         // d3.select(this).select("text").style({opacity:'1.0'});
          document.title=d.name;
     }).on('mouseout', function(d){
          d3.select(this).select('circle').attr('r', smallRadius);
-         // d3.select(this).select("text").style({opacity:'0'});
     });
       
     var node = gnodes.append("circle").attr("class", "node").attr("r", smallRadius).style("fill", function(d) { return color[(d.group-1)]; });
@@ -52,11 +50,21 @@ d3.json(webroot+"json/catGraph.json", function(error, graph) {
 
    });
    force.on("end", function() {
-      link.attr("d", function(d) {
-         return "M" + d[0].x + "," + d[0].y+ "S" + d[1].x + "," + d[1].y+ " " + d[2].x + "," + d[2].y;
+      var minX = 0, maxX = 0;
+      var minY = 0, maxY = 0;
+      gnodes.attr('transform', function(d) {
+        minX = Math.min(minX, d.x); maxX = Math.max(maxX, d.x);
+        minY = Math.min(minY, d.y); maxY = Math.max(maxY, d.y);
       });
+      transX = Math.abs(minX);
+      transY = Math.abs(minY);
+      svg.attr("width", Math.max(width, (maxX+transX))).attr("height", Math.max(height, (maxY+transY)));
+      console.log('Hey: '+minX+' et '+minY+' et '+maxX+' et '+maxY);
       gnodes.attr("transform", function(d) { 
-         return 'translate(' + [d.x, d.y] + ')';
+         return 'translate(' + [d.x+transX, d.y+transY] + ')';
+      });
+      link.attr("d", function(d) {
+         return "M" + (d[0].x+transX) + "," + (d[0].y+transY)+ "S" + (d[1].x+transX) + "," + (d[1].y+transY)+ " " + (d[2].x+transX) + "," + (d[2].y+transY);
       });
       loading.remove();
       aboveRect.remove();
