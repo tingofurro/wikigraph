@@ -10,7 +10,7 @@ function whereField($field) {
 }
 function topMenu($root) {
 ?>
-	<link rel="stylesheet" type="text/css" href="<?php echo $root;?>/css/topMenu.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $root;?>css/topMenu.css">
 	<div id="topMenu">
 		<a href="<?php echo $root;?>"><img src="<?php echo $root;?>/images/logo.png" alt="WikiGraph" id="logo" /></a>
 		<a href="<?php echo $root."category";?>"><div class="menuItem firstItem">Category Tree</div></a>

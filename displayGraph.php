@@ -18,7 +18,6 @@
 	else {$field = 1;}
 
 	$url = getDocumentRoot()."/json/".$graphType."-".$field.".json";
-	echo "<br /><br /><br />".$url;
 	$fileExists = file_exists($url);
 
 	if(!$fileExists) {
