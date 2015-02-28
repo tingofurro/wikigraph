@@ -33,6 +33,13 @@ function getRoot() {
 	if(strpos($link, "/wikigraph")) {$pos = strpos($link, "/wikigraph"); $root = substr($link, 0, ($pos+10))."/";}
 	return $root;
 }
+function getDocumentRoot() {
+
+	$link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+	if(strpos($link, "/Wikigraph")) {$root = $_SERVER['DOCUMENT_ROOT']."/Wikigraph";}
+	if(strpos($link, "/wikigraph")) {$root = $_SERVER['DOCUMENT_ROOT']."/wikigraph";}
+	return $root;
+}
 function cat2OldCat($cat) {
 	$cat2OldCat = array(1,        2,          4,            5,          8,               13,            14,         15,             16,      18,              19,             20,           23);
 	return $cat2OldCat[$cat];

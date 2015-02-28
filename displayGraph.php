@@ -17,7 +17,7 @@
 	}
 	else {$field = 1;}
 
-	$url = $_SERVER['DOCUMENT_ROOT']."/Wikigraph/json/".$graphType."-".$field.".json";
+	$url = getDocumentRoot()."/json/".$graphType."-".$field.".json";
 	echo "<br /><br /><br />".$url;
 	$fileExists = file_exists($url);
 
