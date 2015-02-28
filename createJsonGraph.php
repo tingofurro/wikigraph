@@ -8,7 +8,7 @@ function generateCatGraph($field) {
 		$n = mysql_query("SELECT * FROM wg_category WHERE ".whereField($field)." ORDER BY id");
 		$nodes = array();
 		while($no = mysql_fetch_array($n)) {
-			array_push($nodes, $sp.$sp."{\"name\": \"".wikiToName($no['name'])."\", \"group\": ".$no['distance']." }");
+			array_push($nodes, $sp.$sp."{\"id\": ".$no['id'].", \"name\": \"".wikiToName($no['name'])."\", \"group\": ".$no['distance']." }");
 			array_push($listNode, $no['id']);
 		}
 		$txt .= implode(", \n", $nodes);
@@ -39,7 +39,7 @@ function generateArticleGraph($field) {
 		$nodes = array();
 		while($no = mysql_fetch_array($n)) {
 			// old class: min(9, (floor(10*$no['pagerank'])))
-			array_push($nodes, $sp.$sp."{\"name\": \"".$no['name']."\", \"group\": ".$no['cleanField']." }");
+			array_push($nodes, $sp.$sp."{\"id\": ".$no['id'].", \"name\": \"".$no['name']."\", \"group\": ".$no['cleanField']." }");
 			array_push($listNode, $no['id']);
 		}
 		$txt .= implode(", \n", $nodes);

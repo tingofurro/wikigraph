@@ -6401,7 +6401,7 @@
       return force.resume();
     };
     force.resume = function() {
-      return force.alpha(.1);
+      return force.alpha();
     };
     force.stop = function() {
       return force.alpha(0);

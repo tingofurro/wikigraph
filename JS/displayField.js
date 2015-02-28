@@ -1,4 +1,4 @@
 $(document).ready(function () {
-	$('#graphIframe').width(($(document).width()-350));
-	$('#graphIframe').height(($(document).height()-40));
+	$('#graphIframe').width(($(document).width()-351));
+	$('#graphIframe').height(($(document).height()-41));
 });
