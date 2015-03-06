@@ -36,6 +36,7 @@
 	<body>
 		<script type="text/javascript">
 		var webroot = '<?php echo $realRoot; ?>';
+		var linkroot = '<?php echo $root; ?>';
 		</script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js"></script>

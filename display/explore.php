@@ -69,7 +69,7 @@ while($cate = mysql_fetch_array($cat)) {
 			<?php
 				foreach ($listNames as $i => $name) {
 					if($i > 0) {echo ' <span style="font-size: '.(30-3*$i).'px; vertical-align: middle; padding: 10px;">&#65515;</span> ';}
-					echo '<a href="tree.php?sourceName='.wikiToName($name).'"><span class="catName" style="font-size: '.(20-3*$i).'px; vertical-align: middle;">'.$name.'</span></a>';
+					echo '<a href="'.$root.'category/'.wikiToName($name).'"><span class="catName" style="font-size: '.(20-3*$i).'px; vertical-align: middle;">'.$name.'</span></a>';
 				}
 			?>
 		</div>
@@ -78,7 +78,7 @@ while($cate = mysql_fetch_array($cat)) {
 		<div id="articleContent">
 			<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto"><?php echo wikiToName($re['name']); ?></span></h1><br />
 			<?php 
-				echo file_get_contents('algo/data/'.$id.'.txt');
+				echo file_get_contents('data/'.$id.'.txt');
 			?>
 		</div>
 	</body>
