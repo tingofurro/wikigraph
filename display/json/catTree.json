@@ -1,16 +1,1 @@
-{"name": "Algebraic structures", "class": "node", 
-         "children": [
-                     {"name": "Finite groups", "class": "node", 
-            "children": [
-                           {"name": "Sporadic groups", "class": "node"}
-            ]
-            },
-            {"name": "Non-associative algebra", "class": "node"},
-            {"name": "Properties of groups", "class": "node", 
-            "children": [
-                           {"name": "Nilpotent groups", "class": "node"},
-               {"name": "Solvable groups", "class": "node"}
-            ]
-            }
-         ]
-         }
+{"name": "Poker strategy", "class": "node"}

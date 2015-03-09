@@ -20,13 +20,6 @@ function topMenu($root, $realRoot) {
 	</div>
 <?php
 }
-function getKillList() {
-	include_once('func.php');
-	$file = file_get_contents("txt/killList.txt");
-	$killList = explode("[]", $file);
-	foreach ($killList as $i => $ele) { $killList[$i] = strToWiki($ele);}
-	return $killList;
-}
 function getRoot() {
 	$link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 	if(strpos($link, "/Wikigraph")) {$pos = strpos($link, "/Wikigraph"); $root = substr($link, 0, ($pos+10))."/";}
