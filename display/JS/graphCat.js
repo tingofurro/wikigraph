@@ -36,7 +36,7 @@ d3.json(fileFrom, function(error, graph) {
          d3.select(this).select('circle').attr('r', smallRadius);
     });
       
-    var node = gnodes.append("circle").attr("class", "node").attr("r", smallRadius).style("fill", function(d) { return color[(d.group-1)]; }).attr('alt', function(d) {return d.name;});
+    var node = gnodes.append("circle").attr("class", "node").attr("r", smallRadius).style("fill", function(d) { return color[d.group]; }).attr('alt', function(d) {return d.name;});
 
     node.append("title").text(function(d) { return d.name; });
 

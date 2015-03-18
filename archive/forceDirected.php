@@ -48,7 +48,7 @@
 		$round = $maxRound+1;
 	}
 
-	$r = mysql_query("SELECT * FROM wg_links WHERE (`from`<=$elems AND `to`<=$elems) ORDER BY id");
+	$r = mysql_query("SELECT * FROM wg_link WHERE (`from`<=$elems AND `to`<=$elems) ORDER BY id");
 	while($re = mysql_fetch_array($r)) {
 		if(!isset($edges[$re['to']])) {$edges[$re['to']] = array();}
 		array_push($edges[$re['to']], $re['from']);

@@ -36,16 +36,6 @@ function getDocumentRoot() {
 	if(strpos($link, "/wikigraph")) {$root = $_SERVER['DOCUMENT_ROOT']."/wikigraph";}
 	return $root;
 }
-function cat2OldCat($cat) {
-	$cat2OldCat = array(1,        2,          4,            5,          8,               13,            14,         15,             16,      18,              19,             20,           23);
-	return $cat2OldCat[$cat];
-}
-function cleanFieldList() {
-	return array('algebra', 'analysis', 'arithmetic', 'calculus', 'discrete_math', 'game_theory', 'geometry', 'graph_theory', 'logic', 'number_theory', 'order_theory', 'prob_stats', 'topology');
-}
-function cleanFieldListName() {
-	return array('Algebra', 'Analysis', 'Arithmetic', 'Calculus', 'Discrete Mathematics', 'Game Theory', 'Geometry', 'Graph Theory', 'Logic', 'Number Theory', 'Order Theory', 'Probability & Statistics', 'Topology');
-}
 function cleanFieldColor() {
 	return array('#FF0000', '#FF0074', '#FF00E8', '#A200FF', '#2D00FF', '#0046FF', '#00BAFF', '#00FFD0', '#00FF5B', '#18FF00', '#8CFF00', '#FFFD00', '#FF8900');
 }

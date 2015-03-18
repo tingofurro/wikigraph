@@ -1,16 +1,20 @@
 <?php
-include('init.php');
+/*
+OBJECTIVE:
+From the list of page names in DB, load the pages, extract clean HTML into txt files in wikigraph/data
+*/
+include('../dbco.php');
+include('func.php');
 set_time_limit(4*3600);
 $r = mysql_query("SELECT * FROM wg_page");
 while($re = mysql_fetch_array($r)) {
-	if(!file_exists('data/'.$re['id'].'.txt')) {	
+	if(!file_exists('../data/'.$re['id'].'.txt')) {
 		$url = 'http://en.wikipedia.org/wiki/'.urlencode(strToWiki($re['name']));
 		$html = file_get_contents($url);
 		$dom = new DOMDocument; $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 		$dom = $dom->getElementById('mw-content-text');
 		$cleanHtml = DOMinnerHTML($dom);
-		$fh = fopen('data/'.$re['id'].'.txt', 'w'); fwrite($fh, $cleanHtml);
-		echo $re['id']." done<Br />";
+		$fh = fopen('../data/'.$re['id'].'.txt', 'w'); fwrite($fh, $cleanHtml);
 	}
 }
 function DOMinnerHTML(DOMNode $element) { 

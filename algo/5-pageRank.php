@@ -1,7 +1,20 @@
 <?php
+	/*
+	OBJECTIVE:
+	Measure centrality of each page using the pagerank algorithm, and save it into the database
+	*/
+
 	set_time_limit(4*3600);
 	$start = getTime();
-	include_once('init.php');
+	include_once('../dbco.php');
+	
+	$hasPR = false;
+	$col = mysql_query("SHOW COLUMNS FROM wg_page;");
+	while($colu = mysql_fetch_array($col)) {
+		if($colu[0] == 'PR') $hasPR = true;
+	}
+	if(!$hasPR) mysql_query("ALTER TABLE `wg_page` ADD `PR` DOUBLE( 25, 5 ) NOT NULL DEFAULT '0'");
+
 	$d = 0.85;
 	$PR = array(); $adja = array(); $names = array();
 	$outCount = array();
@@ -13,7 +26,7 @@
 		$names[$from['id']] = $from['name'];
 		$outCount[$from['id']] = 0;
 	}
-	$edg = mysql_query("SELECT * FROM wg_links ORDER BY id");
+	$edg = mysql_query("SELECT * FROM wg_link ORDER BY id");
 	while($edge = mysql_fetch_array($edg)) {
 		if(!isset($adja[$edge['to']])) {$adja[$edge['to']] = array();}
 		array_push($adja[$edge['to']], $edge['from']);
@@ -35,7 +48,7 @@
 	}
 	$i = 0;
 	$ids = implode(',', array_keys($PR));
-	$sql = "UPDATE wg_page SET pagerank = CASE id ";
+	$sql = "UPDATE wg_page SET PR = CASE id ";
 	foreach ($PR as $id => $pr) {$sql .= "WHEN ".$id." THEN ".(floor(100000*$pr)/100000)." ";}
 	$sql .= "END WHERE id IN ($ids)";
 	mysql_query($sql);

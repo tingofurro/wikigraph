@@ -10,19 +10,15 @@ $totFields = 23;
 <body>
 	<div id="leftMenu">
 	<?php
-	$fieldList = cleanFieldList();
-	$fieldNames = cleanFieldListName();
-	foreach ($fieldList as $i => $field) {
-
-		$pag = mysql_query("SELECT COUNT(*) AS count, COUNT(CASE WHEN mathematician>=200 THEN 1 ELSE NULL END) AS people FROM wg_page WHERE cleanField=".($i+1));
+	$f = mysql_query("SELECT * FROM wg_field ORDER BY id");
+	while($fi = mysql_fetch_array($f)) {
+		$pag = mysql_query("SELECT COUNT(*) AS count FROM wg_page WHERE field=".($fi['id']));
 		$page = mysql_fetch_array($pag);
 
-		echo "<a class='fieldClick' target='graphIframe' href='".$realRoot."graphCat/".$field."'>";
-		echo "<div class='oneField'>".$fieldNames[$i];
+		echo "<a class='fieldClick' target='graphIframe' href='".$realRoot."graphCat/".$fi['id']."'>";
+		echo "<div class='oneField'>".$fi['name'];
 			echo "<div class='icons'>";
 				echo "<img src='".$realRoot."images/icons/articles.png' class='icon' /> ".$page['count'];
-				echo "&nbsp;&nbsp;&nbsp;";
-				echo "<img src='".$realRoot."images/icons/people.png' class='icon' /> ".$page['people'];
 			echo "</div>";
 		echo "</div>";
 		echo "</a>";

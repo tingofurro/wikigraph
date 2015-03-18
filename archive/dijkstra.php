@@ -10,7 +10,7 @@ while ($no = mysql_fetch_array($n)) {
 	$edgesTo[$no['id']] = array();
 	$distance[$no['id']] = 10000;
 }
-$e = mysql_query("SELECT * FROM wg_links ORDER BY id");
+$e = mysql_query("SELECT * FROM wg_link ORDER BY id");
 while($ed = mysql_fetch_array($e)) {
 	array_push($edgesFrom[$ed['from']], $ed['to']);
 	array_push($edgesTo[$ed['to']], $ed['from']);

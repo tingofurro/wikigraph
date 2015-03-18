@@ -21,7 +21,7 @@ if(isset($_POST['cleanField']) AND isset($_POST['d']) AND isset($_POST['graphTyp
 	$txt .= "\n], \n";
 	$txt .= "\"links\": [\n";
 	if($graphType == 'art') {
-		$e = mysql_query("SELECT `to`, `from` FROM wg_links WHERE (`to` IN(".implode(", ", $idList).") AND `from` IN(".implode(", ", $idList).")) ORDER BY id");
+		$e = mysql_query("SELECT `to`, `from` FROM wg_link WHERE (`to` IN(".implode(", ", $idList).") AND `from` IN(".implode(", ", $idList).")) ORDER BY id");
 	}
 	else {
 		$e = mysql_query("SELECT catto AS `to`, catfrom AS `from` FROM wg_catlink WHERE (catto IN(".implode(", ", $idList).") AND catfrom IN(".implode(", ", $idList).")) ORDER BY id");

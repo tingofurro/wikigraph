@@ -1,7 +1,7 @@
 <?php
 	include_once('init.php');
 	$myLinks = array();
-	$r = mysql_query("SELECT * FROM wg_links ORDER BY id");
+	$r = mysql_query("SELECT * FROM wg_link ORDER BY id");
 	while($re = mysql_fetch_array($r)) {
 		if(!isset($myLinks[$re['from']])) {$myLinks[$re['from']] = array();}
 		array_push($myLinks[$re['from']], $re['to']);
