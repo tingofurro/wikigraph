@@ -20,6 +20,8 @@ mysql_query("CREATE TABLE IF NOT EXISTS `wg_page` (`id` int(11) NOT NULL AUTO_IN
 mysql_query("CREATE TABLE IF NOT EXISTS `wg_link` (`id` int(100) NOT NULL AUTO_INCREMENT, `from` int(100) NOT NULL, `to` int(100) NOT NULL, `type` int(100) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;");
 
 // wg_field : what are the main "fields" of mathematics
-mysql_query("CREATE TABLE IF NOT EXISTS `wg_field` (`id` int(11) NOT NULL AUTO_INCREMENT, `name` text NOT NULL, `sname` text NOT NULL, `page` int(11) NOT NULL, `color` text NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;");
+mysql_query("CREATE TABLE IF NOT EXISTS `wg_field` (`id` int(11) NOT NULL AUTO_INCREMENT, `name` text NOT NULL, `sname` text NOT NULL, `page` int(11) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;");
 
+// wg_subfield : we see what subfields are in each field. Eg: Algebra should have subfield: "Group Theory", "Ring Theory", "Fields" ... 
+mysql_query("CREATE TABLE IF NOT EXISTS `wg_subfield` (`id` int(11) NOT NULL AUTO_INCREMENT, `field` int(11) NOT NULL, `name` text NOT NULL, `sname` text NOT NULL, `page` int(11) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;");
 ?>

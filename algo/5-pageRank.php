@@ -4,9 +4,10 @@
 	Measure centrality of each page using the pagerank algorithm, and save it into the database
 	*/
 
+	include_once('../dbco.php');
+	include_once('func.php');
 	set_time_limit(4*3600);
 	$start = getTime();
-	include_once('../dbco.php');
 	
 	$hasPR = false;
 	$col = mysql_query("SHOW COLUMNS FROM wg_page;");
@@ -59,11 +60,5 @@ function totalSum($PR) {
 		$totScore += $score;
 	}
 	return $totScore;
-}
-function getTime() {
-	$mtime = microtime();
-	$mtime = explode(" ",$mtime);
-	$mtime = $mtime[1] + $mtime[0];
-	return $mtime;
 }
 ?>

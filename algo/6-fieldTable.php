@@ -23,6 +23,6 @@ while($ca = mysql_fetch_array($c)) {
 		if($pa = mysql_fetch_array($p)) {$pageId = $pa['id'];}
 	}
 	if($pageId != 0)
-		mysql_query("INSERT INTO `wg_field` (`id`, `name`, `sname`, `page`, `color`) VALUES (NULL, '".wikiToName($ca['name'])."', '".strtolower($ca['name'])."', '".$pageId."', '');");
+		mysql_query("INSERT INTO `wg_field` (`id`, `name`, `sname`, `page`) VALUES (NULL, '".wikiToName($ca['name'])."', '".strtolower($ca['name'])."', '".$pageId."');");
 }
 ?>
