@@ -12,3 +12,6 @@ SELECT link.*, fromTab.name AS fromName, toTab.name AS toName FROM `wg_link` AS 
 
 -- how many are visited vs. non visited
 SELECT visited, COUNT(*) AS count FROM `wg_page` GROUP BY visited
+
+-- Any double links
+SELECT *, (0.5*(`to`+`from`)*(`to`+`from`+1)+`to`) AS cantor, COUNT(*) AS count FROM `wg_link` GROUP BY (0.5*(`to`+`from`)*(`to`+`from`+1)+`to`) ORDER BY COUNT(*) DESC

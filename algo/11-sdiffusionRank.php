@@ -1,100 +1,61 @@
 <?php
-	include_once('../dbco.php');
-	include_once('func.php');
-	set_time_limit(4*3600);
+include_once('../dbco.php');
+include_once('func.php');
+set_time_limit(4*3600);
 
-	$start = getTime();
-	$source = 5325; // Partial diff eq
-	$source = 7494; // Group Theory
-	$source = 19332; // Computational_complexity_theory
-	$field = 5;
-	$thresh1 = 1; // if in my category, it has to be somewhat relevant
-	$thresh2 = 30; // if not in my category, it should be highly relevant
-	$cleanField = cleanFieldList();
-	$myName = $cleanField[($field-1)];
+$start = getTime();
+$thresh1 = 1; // if in my category, it has to be somewhat relevant
+$thresh2 = 30; // if not in my category, it should be highly relevant
 
-	$d = 0.8;
-
-	$PR = array(); $adja = array(); $names = array();
-	$outCount = array();
-	$c = mysql_query("SELECT COUNT(*) AS count FROM wg_page WHERE (cleanField=$field AND ".$myName.">$thresh1) OR ".$myName.">$thresh2");
-	$co = mysql_fetch_array($c); $totalNodes = $co['count'];
-	$n = mysql_query("SELECT id, pagerank, name, cleanField FROM wg_page WHERE (cleanField=$field AND ".$myName.">$thresh1) OR ".$myName.">$thresh2");
-	while ($from = mysql_fetch_array($n)) {
-		$PR[$from['id']] = 0;
-		$adja[$from['id']] = array();
-		$names[$from['id']] = $from['name'];
-		$outCount[$from['id']] = 0;
+$sf = mysql_query("SELECT * FROM wg_subfield ORDER BY id LIMIT 0,10");
+while($subf = mysql_fetch_array($sf)) {
+	$adja = array(); $fromAdja = array();
+	$f = mysql_query("SELECT * FROM wg_field WHERE id=".$subf['field']); $fi = mysql_fetch_array($f);
+	$n = mysql_query("SELECT * FROM wg_page WHERE (field=".$subf['field']." AND ".$fi['sname'].">$thresh1) OR ".$fi['sname'].">$thresh2");
+	while ($node = mysql_fetch_array($n)) {
+		$adja[$node['id']] = array();
+		$fromAdja[$node['id']] = array();
+		$nodeField[$node['id']] = $node['field'];
 	}
-
 	$edg = mysql_query("SELECT * FROM wg_link WHERE `to` IN (".implode(",", array_keys($adja)).") AND `from` IN (".implode(",", array_keys($adja)).") ORDER BY id");
 	while($edge = mysql_fetch_array($edg)) {
-		if(!isset($adja[$edge['to']])) {$adja[$edge['to']] = array();}
 		array_push($adja[$edge['to']], $edge['from']);
-		$outCount[$edge['from']] ++;
+		array_push($fromAdja[$edge['from']], $edge['to']);
 	}
-	$noOutCount = array();
-	foreach ($outCount as $node => $nb) {
-		if($nb == 0) array_push($noOutCount, $node);
-	}
-	$PR[$source] = $totalNodes; $totalChange = $totalNodes;
-	while($totalChange > 1) {
-		$NPR = array();
-		foreach ($adja as $node => $incoming) {
-			$NPR[$node] = (($node==$source)?((1-$d)*$totalNodes):0);
-			foreach ($incoming as $inc) {
-				$NPR[$node] += $d*$PR[$inc]/$outCount[$inc];
-			}
-		}
-		$losses = 0;
-		foreach ($noOutCount as $node) {$losses += $d*$PR[$node];}
-		$NPR[$source] += $losses;
-		$totalChange = totalChange($PR, $NPR);
-		echo "Total score: ".totalSum($NPR).". Total change: ".$totalChange."<br />";
-		$PR = $NPR;
-	}
-	foreach ($PR as $i => $p) {$PR[$i] = floor(100*$p)/100;}
-	
-	// $ids = implode(',', array_keys($PR));
-	// $sql = "UPDATE wg_page SET ".$fieldName." = CASE id ";
-	// foreach ($PR as $id => $pr) {$sql .= "WHEN ".$id." THEN ".$pr." ";}
-	// $sql .= "END WHERE id IN ($ids)";
-	// mysql_query($sql);
+	$diffusion = computeDiffusion($adja, $subf['page'], 0.7); // diffusion centered around our new math field
 
-	echo "<u>Time it took to run: ".(floor(100*(getTime()-$start))/100)."s:</u><br />";
-
-	arsort($PR);
-	// echo 'pr = ['.implode(",", array_values($PR)).'];<br /><br />';
-	// foreach ($PR as $node => $myPR) {
-	// 	echo "<u>".$names[$node].":</u> ".$myPR."<br />";
-	// }
-	echo "<u>List of ids relevant to <b>".$names[$source]."</b>:</u><br /><br />";
-	$finalNodes = array(); $thresh3 = 2;
-	foreach ($PR as $node => $thisPR) {
-		if($thisPR > $thresh3) {
-			array_push($finalNodes, $node);
+	foreach ($diffusion as $i => $p) {$diffusion[$i] = floor(100*$p)/100;}
+	arsort($diffusion);
+	$myCluster = array();
+	foreach ($diffusion as $node => $diff) {
+		if($diff > 4) array_push($myCluster, $node);
+		else break;
+	}
+	// now we have a prototype of a subfield cluster
+	// let's check that 1 connexion has less than a certain amount
+	$nodes = array_keys($adja);
+	$nodeNb = count($nodes);
+	foreach ($myCluster as $goodNode) {
+		if($i = array_search($goodNode, $nodes) !== false) {array_splice($nodes, $i, 1);}
+		foreach ($fromAdja[$goodNode] as $touched) {
+			if($i = array_search($touched, $nodes) !== false) {array_splice($nodes, $i, 1);}
 		}
 	}
-	sort($finalNodes);
-	echo implode(", ", $finalNodes);
-function totalSum($PR) {
-	$totScore = 0;
-	foreach ($PR as $i => $score) {
-		$totScore += $score;
+	$notTouchedCount = count($nodes);
+	echo "<b>".$subf['name']."</b><br />";
+	$p = mysql_query("SELECT * FROM wg_page WHERE id IN (".implode(",", $myCluster).")");
+	while($pa = mysql_fetch_array($p)) {
+		echo $pa['name'].", ";
 	}
-	return $totScore;
+	echo "<br />Not touched: ".$notTouchedCount." / ".$nodeNb."<br />";
 }
-function totalChange($PR, $NPR) {
-	$totalChange = 0;
-	foreach ($PR as $i => $score) {
-		$totalChange += abs($score-$NPR[$i]);
-	}
-	return $totalChange;
-}
-function getTime() {
-	$mtime = microtime();
-	$mtime = explode(" ",$mtime);
-	$mtime = $mtime[1] + $mtime[0];
-	return $mtime;
-}
+
+// $toModify = array();
+// $sql = "UPDATE wg_page SET ".$fieldName." = CASE id ";
+// foreach ($diffusion as $id => $diff) {$sql .= "WHEN ".$id." THEN ".$diff." "; if($nodeField[$id] == $fi['id']) {array_push($toModify, $id);}}
+// $sql .= "END WHERE id IN (".implode(",", $toModify).")";
+// mysql_query($sql);
+
+echo "<u>Time it took to run: ".(floor(100*(getTime()-$start))/100)."s</u><br />";
+
 ?>

@@ -33,7 +33,12 @@ function extractPages($parent) {
 			if(strpos($href, "/wiki/") !== false) { // this is an interesting link
 				$h = str_replace("/wiki/", "", $href);
 				$pieces = explode("#", urldecode(utf8_encode(($h))));
-				array_push($articleNames, "'".mysql_real_escape_string($pieces[0])."'"); // get rid of anchor if there is one
+				$name = mysql_real_escape_string($pieces[0]);// get rid of anchor if there is one
+				$try = explode(":", $name);
+				if(in_array($try[0], array("Help", "Wikipedia", "Category", "Special", "Template", "Portal", "File", "Template_talk"))) {} // bad page
+				else {
+					array_push($articleNames, "'".$name."'");
+				}
 			}
 		}
 		$sqlValues = array();

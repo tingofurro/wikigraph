@@ -64,4 +64,8 @@ if(count($exp) >= 2 && $exp[0] == 'wiki') {
 	$_GET['name'] = mysql_real_escape_string($exp[1]);
 	include_once('display/explore.php');
 }
+if(count($exp) >= 2 && $exp[0] == 'subfield') {
+	$_GET['sf'] = mysql_real_escape_string($exp[1]);
+	include_once('display/subfield.php');
+}
 ?>

@@ -2,6 +2,9 @@
 /*
 OBJECTIVE:
 From the HTML pages in the data folder, extract <a> links, and write working edges to the database
+
+CURRENT STATUS:
+652.047 links
 */
 include('../dbco.php');
 set_time_limit(4*3600);
