@@ -36,10 +36,10 @@ while($re = mysql_fetch_array($r)) {
 		}
 	}
 	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".implode(", ", $pageNames).")");
-	while ($found = mysql_fetch_array($find)) {array_push($values, "(NULL, '".$re['id']."', '".$found['id']."', '0')");}
+	while ($found = mysql_fetch_array($find)) {array_push($values, "(NULL, '".$re['id']."', '".$found['id']."')");}
 
 	if(count($values) > 200) {
-		mysql_query("INSERT INTO `wg_link` (`id`, `from`, `to`, `type`) VALUES ".implode(",", $values).";");
+		mysql_query("INSERT INTO `wg_link` (`id`, `from`, `to`) VALUES ".implode(",", $values).";");
 		$values = array();
 	}
 	array_push($addVisited, $re['id']);

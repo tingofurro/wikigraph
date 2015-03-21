@@ -28,26 +28,26 @@ while($subf = mysql_fetch_array($sf)) {
 	arsort($diffusion);
 	$myCluster = array();
 	foreach ($diffusion as $node => $diff) {
-		if($diff > 4) array_push($myCluster, $node);
+		if($diff > 1) array_push($myCluster, $node);
 		else break;
 	}
 	// now we have a prototype of a subfield cluster
-	// let's check that 1 connexion has less than a certain amount
-	$nodes = array_keys($adja);
-	$nodeNb = count($nodes);
-	foreach ($myCluster as $goodNode) {
-		if($i = array_search($goodNode, $nodes) !== false) {array_splice($nodes, $i, 1);}
-		foreach ($fromAdja[$goodNode] as $touched) {
-			if($i = array_search($touched, $nodes) !== false) {array_splice($nodes, $i, 1);}
-		}
-	}
-	$notTouchedCount = count($nodes);
-	echo "<b>".$subf['name']."</b><br />";
-	$p = mysql_query("SELECT * FROM wg_page WHERE id IN (".implode(",", $myCluster).")");
-	while($pa = mysql_fetch_array($p)) {
-		echo $pa['name'].", ";
-	}
-	echo "<br />Not touched: ".$notTouchedCount." / ".$nodeNb."<br />";
+	// // let's check that 1 connexion has less than a certain amount
+	// $nodes = array_keys($adja);
+	// $nodeNb = count($nodes);
+	// foreach ($myCluster as $goodNode) {
+	// 	if($i = array_search($goodNode, $nodes) !== false) {array_splice($nodes, $i, 1);}
+	// 	foreach ($fromAdja[$goodNode] as $touched) {
+	// 		if($i = array_search($touched, $nodes) !== false) {array_splice($nodes, $i, 1);}
+	// 	}
+	// }
+	// $notTouchedCount = count($nodes);
+	// echo "<b>".$subf['name']."</b><br />";
+	// $p = mysql_query("SELECT * FROM wg_page WHERE id IN (".implode(",", $myCluster).")");
+	// while($pa = mysql_fetch_array($p)) {
+	// 	echo $pa['name'].", ";
+	// }
+	// echo "<br />Not touched: ".$notTouchedCount." / ".$nodeNb."<br />";
 }
 
 // $toModify = array();
