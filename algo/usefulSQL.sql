@@ -1,5 +1,5 @@
 -- number of direct children for an element
-SELECT cat.*, (SELECT COUNT(*) FROM wg_category AS chi WHERE chi.parent=cat.id) AS count FROM `wg_category` AS cat ORDER BY count DESC
+SELECT parent, COUNT( * ) AS count FROM `wg_category` GROUP BY parent ORDER BY `count` DESC
 
 -- GROUP BY distance
 SELECT distance, COUNT(*) AS count FROM `wg_category` GROUP BY distance
@@ -15,3 +15,6 @@ SELECT visited, COUNT(*) AS count FROM `wg_page` GROUP BY visited
 
 -- Any double links
 SELECT *, (0.5*(`to`+`from`)*(`to`+`from`+1)+`to`) AS cantor, COUNT(*) AS count FROM `wg_link` GROUP BY (0.5*(`to`+`from`)*(`to`+`from`+1)+`to`) ORDER BY COUNT(*) DESC
+
+-- Links grouped by `from`
+SELECT link.*, COUNT(*) AS count, page.name FROM wg_link AS link INNER JOIN wg_page AS page ON page.id=link.`from` GROUP BY `from` ORDER BY COUNT(*)

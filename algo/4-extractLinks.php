@@ -7,6 +7,7 @@ CURRENT STATUS:
 652.047 links
 */
 include('../dbco.php');
+include('extractor.php');
 set_time_limit(4*3600);
 $hasVisited = false;
 $col = mysql_query("SHOW COLUMNS FROM wg_page;");
@@ -22,21 +23,16 @@ $r = mysql_query("SELECT * FROM wg_page WHERE visited=0 ORDER BY id");
 $addVisited = array();
 $values = array();
 while($re = mysql_fetch_array($r)) {
-	$html = file_get_contents('../data/'.$re['id'].'.txt');
-	$dom = new DOMDocument;
-	@$dom->loadHTML($html); $pageNames = array();
-	foreach ($dom->getElementsByTagName('a') as $link) {
-		$href = $link->getAttribute('href');
-		if(strpos($href, "/wiki/") !== false) { // this is an interesting link
-			$h = str_replace("/wiki/", "", $href); $cleanName = urldecode(utf8_encode(($h)));
-			$toks = explode("#", $cleanName); $cleanName = mysql_real_escape_string($toks[0]);
-			$try = explode(":", $cleanName);
-			if(in_array($try[0], array("Help", "Wikipedia", "Category", "Special", "Template", "Portal", "File", "Template_talk"))) {}
-			else if(!in_array($cleanName, $pageNames)) {array_push($pageNames, "\"".$cleanName."\"");}
-		}
+	$pageNames = extractLinkArray($re['id']);
+	// echo count($pageNames).'<br /><br />';
+
+	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $pageNames).'"'.")");
+	echo "SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $pageNames).'"'.")";
+	while ($found = mysql_fetch_array($find)) {
+		array_push($values, "(NULL, '".$re['id']."', '".$found['id']."')");
+		array_splice($pageNames, array_search($re['name'], $pageNames), 1);
 	}
-	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".implode(", ", $pageNames).")");
-	while ($found = mysql_fetch_array($find)) {array_push($values, "(NULL, '".$re['id']."', '".$found['id']."')");}
+	echo implode("<Br />", $pageNames);
 
 	if(count($values) > 200) {
 		mysql_query("INSERT INTO `wg_link` (`id`, `from`, `to`) VALUES ".implode(",", $values).";");
@@ -48,6 +44,10 @@ while($re = mysql_fetch_array($r)) {
 		$addVisited = array();
 	}
 }
+if(count($values) > 0) { // the leftovers...
+	mysql_query("INSERT INTO `wg_link` (`id`, `from`, `to`) VALUES ".implode(",", $values).";");
+	$values = array();
+}
 // if we get there, the program is done running
-mysql_query("ALTER TABLE wg_page DROP COLUMN visited");
+// mysql_query("ALTER TABLE wg_page DROP COLUMN visited");
 ?>

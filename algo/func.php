@@ -7,7 +7,7 @@ function wikiToName($oldStr) {
 }
 function getKillList() {
 	$file = file_get_contents("txt/killList.txt");
-	$killList = explode("[]", $file);
+	$killList = preg_split('/\r\n|\n|\r/', trim($file));
 	foreach ($killList as $i => $ele) { $killList[$i] = strToWiki($ele);}
 	return $killList;
 }
