@@ -24,15 +24,13 @@ $addVisited = array();
 $values = array();
 while($re = mysql_fetch_array($r)) {
 	$pageNames = extractLinkArray($re['id']);
-	// echo count($pageNames).'<br /><br />';
 
 	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $pageNames).'"'.")");
 	echo "SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $pageNames).'"'.")";
 	while ($found = mysql_fetch_array($find)) {
 		array_push($values, "(NULL, '".$re['id']."', '".$found['id']."')");
-		array_splice($pageNames, array_search($re['name'], $pageNames), 1);
+		if(($key = array_search($re['name'], $pageNames)) !== false) unset($pageNames[$key]);
 	}
-	echo implode("<Br />", $pageNames);
 
 	if(count($values) > 200) {
 		mysql_query("INSERT INTO `wg_link` (`id`, `from`, `to`) VALUES ".implode(",", $values).";");
