@@ -4,7 +4,8 @@ OBJECTIVE:
 From the HTML pages in the data folder, extract <a> links, and write working edges to the database
 
 CURRENT STATUS:
-652.047 links
+630.827 links
+
 */
 include('../dbco.php');
 include('extractor.php');
@@ -26,26 +27,28 @@ while($re = mysql_fetch_array($r)) {
 	$pageNames = extractLinkArray($re['id']);
 
 	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $pageNames).'"'.")");
-	echo "SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $pageNames).'"'.")";
 	while ($found = mysql_fetch_array($find)) {
 		array_push($values, "(NULL, '".$re['id']."', '".$found['id']."')");
-		if(($key = array_search($re['name'], $pageNames)) !== false) unset($pageNames[$key]);
+		if(($key = array_search($found['name'], $pageNames)) !== false) unset($pageNames[$key]);
 	}
 
 	if(count($values) > 200) {
 		mysql_query("INSERT INTO `wg_link` (`id`, `from`, `to`) VALUES ".implode(",", $values).";");
 		$values = array();
 	}
+
 	array_push($addVisited, $re['id']);
+
 	if(count($addVisited) > 200) {
 		mysql_query("UPDATE wg_page SET visited=1 WHERE id IN (".implode(", ", $addVisited).")");
 		$addVisited = array();
 	}
 }
+
 if(count($values) > 0) { // the leftovers...
 	mysql_query("INSERT INTO `wg_link` (`id`, `from`, `to`) VALUES ".implode(",", $values).";");
 	$values = array();
 }
 // if we get there, the program is done running
-// mysql_query("ALTER TABLE wg_page DROP COLUMN visited");
+mysql_query("ALTER TABLE wg_page DROP COLUMN visited");
 ?>
