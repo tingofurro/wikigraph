@@ -30,5 +30,5 @@
 	foreach ($PR as $id => $pr) {$sql .= "WHEN ".$id." THEN ".(floor(100000*$pr)/100000)." ";}
 	$sql .= "END WHERE id IN ($ids)";
 	mysql_query($sql);
-	echo "<u>Time it took to run: ".(floor(100*(getTime()-$start))/100)."s:</u><br /><br />";
+	echo "<u>Time it took to run: ".(floor(100*(getTime()-$start))/100)."s</u><br /><br />";
 ?>

@@ -20,7 +20,7 @@ if(isset($_GET['lookUp'])) {
 }
 else {
 topMenu($root, $realRoot);
-$id = 2;
+$id = 1;
 if(isset($_GET['id'])) {$id = mysql_real_escape_string($_GET['id']);}
 if(isset($_GET['name'])) {$r = mysql_query("SELECT * FROM wg_page WHERE name='".urldecode($_GET['name'])."'"); if($re = mysql_fetch_array($r)) {$id = $re['id'];}}
 $r = mysql_query("SELECT * FROM wg_page WHERE id='$id'");

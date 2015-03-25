@@ -78,7 +78,8 @@ function extractLinkArray($pageId) {
 	@$dom->loadHTML($html);
 	foreach ($dom->getElementsByTagName('a') as $link) {
 		$href = $link->getAttribute('href');
-		if(strpos($href, "/wiki/") !== false) { // this is an interesting link
+		// if(($s = strpos($href, "/wiki/") !== false) AND $s === 0) { // this is an interesting link
+		if(strpos($href, "/wiki/")===0) { // this is an interesting link
 			$h = str_replace("/wiki/", "", $href);
 			$toks = explode("#", $h); $cleanName = mysql_real_escape_string(urldecode(cleanEncoding(($toks[0]))));
 			$try = explode(":", $cleanName);
@@ -87,6 +88,17 @@ function extractLinkArray($pageId) {
 		}
 	}
 	return $pageNames;
+}
+function redirectName($name) {
+	$dom = new DOMDocument; @$dom->loadHTML(file_get_contents('http://en.wikipedia.org/wiki/'.$name));
+	$dom = $dom->getElementById('firstHeading');
+	if(!empty($dom)) return strToWiki(DOMinnerHTML($dom));
+	return '';
+}
+function DOMinnerHTML(DOMNode $element) { 
+    $innerHTML = "";
+    foreach ($element->childNodes as $child) $innerHTML .= $element->ownerDocument->saveHTML($child);
+    return $innerHTML; 
 }
 function cleanEncoding($txt) {
 	return mb_convert_encoding($txt, 'HTML-ENTITIES', 'UTF-8');

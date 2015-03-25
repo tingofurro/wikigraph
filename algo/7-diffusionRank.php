@@ -12,7 +12,7 @@
 	$edg = mysql_query("SELECT * FROM wg_link ORDER BY id");
 	while($edge = mysql_fetch_array($edg)) array_push($adja[$edge['to']], $edge['from']);
 
-	$f = mysql_query("SELECT * FROM wg_field WHERE id>1 ORDER BY id");
+	$f = mysql_query("SELECT * FROM wg_field ORDER BY id");
 	while($fi = mysql_fetch_array($f)) {
 		$hasVisited = false; $col = mysql_query("SHOW COLUMNS FROM wg_page;");
 		while($colu = mysql_fetch_array($col)) {if($colu[0] == $fi['sname']) {$hasVisited = true;}}
