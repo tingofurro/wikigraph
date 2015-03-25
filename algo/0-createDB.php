@@ -26,5 +26,5 @@ mysql_query("CREATE TABLE IF NOT EXISTS `wg_field` (`id` int(11) NOT NULL AUTO_I
 mysql_query("CREATE TABLE IF NOT EXISTS `wg_subfield` (`id` int(11) NOT NULL AUTO_INCREMENT, `field` int(11) NOT NULL, `name` text NOT NULL, `sname` text NOT NULL, `page` int(11) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;");
 
 // wg_redirect : some pages redirect to others, we have to account for that to keep track of all links
-mysql_query("CREATE TABLE IF NOT EXISTS `wg_redirects` (`id` int(10) NOT NULL AUTO_INCREMENT, `fromName` text NOT NULL, `toName` text NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;");
+mysql_query("CREATE TABLE IF NOT EXISTS `wg_redirect` (`id` int(10) NOT NULL AUTO_INCREMENT, `fromName` text NOT NULL, `toName` text NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;");
 ?>
