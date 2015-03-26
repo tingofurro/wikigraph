@@ -1,7 +1,7 @@
 <?php
 function extractSubcat($category) {
 	/* Given a category, will extract the subcategories from Wikipedia */
-	$html = file_get_contents('http://en.wikipedia.org/wiki/Category:'.$category);
+	$html = file_get_contents('http://en.wikipedia.org/wiki/Category:'.urlencode($category));
 	$returnCategories = array();
 	$dom = new DOMDocument;
 	@$dom->loadHTML($html);
@@ -21,7 +21,7 @@ function extractPagesFromCat($category) {
 	// Given a category, get a list of pages
 	$articleNames = array();
 	$dom = new DOMDocument;
-	$html = file_get_contents('http://en.wikipedia.org/wiki/Category:'.$category);
+	$html = file_get_contents('http://en.wikipedia.org/wiki/Category:'.urlencode($category));
 	@$dom->loadHTML($html);
 	$dom = $dom->getElementById('mw-pages');
 	if(!is_null($dom)) {
@@ -92,7 +92,7 @@ function extractLinkArray($pageId) {
 function redirectName($name) {
 	$dom = new DOMDocument; @$dom->loadHTML(file_get_contents('http://en.wikipedia.org/wiki/'.$name));
 	$dom = $dom->getElementById('firstHeading');
-	if(!empty($dom)) return strToWiki(DOMinnerHTML($dom));
+	if(!empty($dom)) return strToWiki(strip_tags(DOMinnerHTML($dom)));
 	return '';
 }
 function DOMinnerHTML(DOMNode $element) { 
@@ -102,5 +102,9 @@ function DOMinnerHTML(DOMNode $element) {
 }
 function cleanEncoding($txt) {
 	return mb_convert_encoding($txt, 'HTML-ENTITIES', 'UTF-8');
+}
+function cleanName($name) {
+	// return str_replace(array("–", "ö", "é", "ü", "á", "à", "ő", "²"), array("-", "o", "e", "u", "a", "a", "o", "2"), $name);
+	return $name;
 }
 ?>
