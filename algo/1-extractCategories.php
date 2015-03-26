@@ -36,7 +36,7 @@ function extractCategories($parentName, $parentDistance, $parentId, $killList, $
 	$catPush = array(); $catLinkPush = array();
 	
 	$subCategories = extractSubcat($parentName);
-	$leftSubs = $subCategories;
+	$toRemove = array();
 		for ($i=0; $i < count($subCategories); $i++) { 
 		$f = mysql_query("SELECT * FROM wg_category WHERE `name`='".mysql_real_escape_string($subCategories[$i])."'");
 		if($fi = mysql_fetch_array($f)) {
@@ -46,10 +46,10 @@ function extractCategories($parentName, $parentDistance, $parentId, $killList, $
 			$newFields = explode("|", $myField);
 			foreach ($newFields as $f) if(!in_array($f, $nField)) array_push($nField, $f);
 			mysql_query("UPDATE wg_category SET fields='".implode("|", $nField)."' WHERE id='".$fi['id']."'");
-			if(($key = array_search($fi['name'], $leftSubs)) !== false) unset($leftSubs[$key]);
+			array_push($toRemove, $fi['name']);
 		}		
 	}
-	$subCategories = $leftSubs;
+	$subCategories = array_diff($subCategories, $toRemove);
 	foreach ($subCategories as $subCat) {
 		if($parentDistance == 0) {$myField = $fieldCount; $fieldCount ++;} // you are a direct child of the root, you become a field
 		array_push($catPush, "(NULL, '$subCat', '$myField', '".$parentId."', '".($parentDistance+1)."', '".(in_array($subCat, $killList)?1:0)."', '0')");
