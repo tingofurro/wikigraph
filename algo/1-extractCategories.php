@@ -47,7 +47,7 @@ function extractCategories($parentName, $parentDistance, $parentId, $killList, $
 			foreach ($newFields as $f) if(!in_array($f, $nField)) array_push($nField, $f);
 			mysql_query("UPDATE wg_category SET fields='".implode("|", $nField)."' WHERE id='".$fi['id']."'");
 			array_push($toRemove, $fi['name']);
-		}		
+		}
 	}
 	$subCategories = array_diff($subCategories, $toRemove);
 	foreach ($subCategories as $subCat) {
