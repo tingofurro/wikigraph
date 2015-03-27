@@ -10,7 +10,7 @@ function extractSubcat($category) {
 		foreach ($dom->getElementsByTagName('a') as $link) {
 			$thisClass = $link->getAttribute('class');
 			if(!empty($thisClass) AND strpos($thisClass, 'CategoryTreeLabel') !== false) {
-				$h = explode(":", $link->getAttribute('href')); $category = mysql_real_escape_string(urldecode(utf8_encode($h[1])));
+				$h = explode(":", $link->getAttribute('href')); $category = urldecode($h[1]);
 				array_push($returnCategories, $category);
 			}
 		}
@@ -81,7 +81,7 @@ function extractLinkArray($pageId) {
 		// if(($s = strpos($href, "/wiki/") !== false) AND $s === 0) { // this is an interesting link
 		if(strpos($href, "/wiki/")===0) { // this is an interesting link
 			$h = str_replace("/wiki/", "", $href);
-			$toks = explode("#", $h); $cleanName = mysql_real_escape_string(urldecode(cleanEncoding(($toks[0]))));
+			$toks = explode("#", $h); $cleanName = urldecode($toks[0]);
 			$try = explode(":", $cleanName);
 			if(in_array($try[0], array("Help", "Wikipedia", "Category", "Special", "Template", "Portal", "File", "Template_talk"))) {}
 			else if(!in_array($cleanName, $pageNames)) {array_push($pageNames, $cleanName);}
@@ -90,7 +90,7 @@ function extractLinkArray($pageId) {
 	return $pageNames;
 }
 function redirectName($name) {
-	$dom = new DOMDocument; @$dom->loadHTML(file_get_contents('http://en.wikipedia.org/wiki/'.$name));
+	$dom = new DOMDocument; @$dom->loadHTML(file_get_contents('http://en.wikipedia.org/wiki/'.urlencode($name)));
 	$dom = $dom->getElementById('firstHeading');
 	if(!empty($dom)) return strToWiki(strip_tags(DOMinnerHTML($dom)));
 	return '';
