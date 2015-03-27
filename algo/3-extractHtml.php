@@ -2,7 +2,6 @@
 /*
 OBJECTIVE:
 From the list of page names in DB, load the pages, extract clean HTML into txt files in wikigraph/data
-
 */
 include_once('../dbco.php');
 include_once('func.php');

@@ -26,10 +26,6 @@ function totalChange($PR, $NPR) {
 	foreach ($PR as $i => $score) $totalChange += abs($score-$NPR[$i]);
 	return $totalChange;
 }
-function removeByvalue($arr, $val) {
-		if(($key = array_search($val, $arr)) !== false) unset($arr[$key]);
-		return $arr;
-}
 function computePR($adja) {
 	// the keys are the nodes
 	// each value is an array of incoming nodes to this key value

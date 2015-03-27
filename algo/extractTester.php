@@ -3,37 +3,21 @@ include_once('../dbco.php');
 include_once('func.php');
 include_once('extractor.php');
 
-	$articleId = 1;
+	$category = 309;
+	$cleanName = array();
+	$r = mysql_query("SELECT * FROM wg_category WHERE id=$category");
+	if($re = mysql_fetch_array($r)) {
+		$articleNames = extractPagesFromCat($re['name']);
+		echo count($articleNames);
+		$sqlValues = array();
+		$p = mysql_query("SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $articleNames).'"'.")")or die(mysql_error());
+		// echo "Checking: "."SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $articleNames).'"'.")";
+		$extra = array();
+		while($pa = mysql_fetch_array($p)) if(!in_array($pa['name'], $extra)) array_push($extra, $pa['name']);
+		$articleNames = array_diff($articleNames, $extra);
+		echo "<br />".count($articleNames);
 
-	$pageNames = extractLinkArray($articleId);
+		// echo implode("<br />", $articleNames);
 
-	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $pageNames).'"'.")");
-	while ($found = mysql_fetch_array($find)) {
-		if(($key = array_search($found['name'], $pageNames)) !== false) unset($pageNames[$key]);
 	}
-
-	$rediName = array(); $toSearch = $pageNames;
-	$r = mysql_query("SELECT * FROM wg_redirect WHERE fromName IN (".'"'.implode('", "', $pageNames).'"'.")");
-	while($re = mysql_fetch_array($r)) {
-		$rediName[$re['fromName']] = $re['toName'];	
-		$toSearch = removeByvalue($toSearch, $re['fromName']);
-	}
-
-
-	foreach ($toSearch as $i => $pageName) {
-		$r = redirectName($pageName);
-		$rediName[$pageName] = $r;
-		mysql_query("INSERT INTO `wg_redirect` (`id`, `fromName`, `toName`) VALUES (NULL, '".$pageName."', '".$r."');"); // for now, this should be clustered
-	}
-
-	$toSearch = array();
-	foreach ($rediName as $page => $rediVal) {
-		if($page != $rediVal) array_push($toSearch, $rediVal);
-	}
-
-	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $toSearch).'"'.")");
-	while($found = mysql_fetch_array($find)) {
-		echo 'Extra connection with: '.$found['name'].'<br />';
-	}
-	// echo implode("<br />", $pageNames);
 ?>
