@@ -90,7 +90,7 @@ function extractLinkArray($pageId) {
 	return $pageNames;
 }
 function redirectName($name) {
-	$dom = new DOMDocument; @$dom->loadHTML(file_get_contents('http://en.wikipedia.org/wiki/'.urlencode($name)));
+	$dom = new DOMDocument; @$dom->loadHTML(cleanEncoding(file_get_contents('http://en.wikipedia.org/wiki/'.urlencode($name))));
 	$dom = $dom->getElementById('firstHeading');
 	if(!empty($dom)) return strToWiki(strip_tags(DOMinnerHTML($dom)));
 	return '';
@@ -102,9 +102,5 @@ function DOMinnerHTML(DOMNode $element) {
 }
 function cleanEncoding($txt) {
 	return mb_convert_encoding($txt, 'HTML-ENTITIES', 'UTF-8');
-}
-function cleanName($name) {
-	// return str_replace(array("–", "ö", "é", "ü", "á", "à", "ő", "²"), array("-", "o", "e", "u", "a", "a", "o", "2"), $name);
-	return $name;
 }
 ?>
