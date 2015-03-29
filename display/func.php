@@ -6,7 +6,7 @@ function wikiToName($oldStr) {
 	return urldecode(str_replace("_", " ", $oldStr));
 }
 function whereField($field) {
-	return "(fields='$field' OR fields LIKE '%|".$field."|%' OR fields LIKE '".$field."|%' OR fields LIKE '%|".$field."')";
+	return "(`fields`='$field' OR `fields` LIKE '%|".$field."|%' OR `fields` LIKE '".$field."|%' OR `fields` LIKE '%|".$field."')";
 }
 function topMenu($root, $realRoot) {
 ?>

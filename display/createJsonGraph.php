@@ -1,6 +1,5 @@
 <?php
 function generateCatGraph($field) {
-	$field = cat2OldCat($field-1);
 	$sp = str_repeat(' ', 3);
 	$txt = "{\n";
 	$txt .= $sp."\"nodes\": [\n";

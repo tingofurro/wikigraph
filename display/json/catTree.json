@@ -1,12 +1,11 @@
-{"name": "NP-complete problems", "class": "node", 
-            "children": [
-                           {"name": "Minesweeper (video game)", "class": "node"},
-               {"name": "Nonograms", "class": "node"},
-               {"name": "Tetris", "class": "node", 
-               "children": [
-                                 {"name": "Tetris clones", "class": "node"}
-               ]
-               },
-               {"name": "Weakly NP-complete problems", "class": "node"}
-            ]
-            }
+{"name": "Polytopes", "class": "node", 
+         "children": [
+                     {"name": "Polychora", "class": "node"},
+            {"name": "5-polytopes", "class": "node"},
+            {"name": "6-polytopes", "class": "node"},
+            {"name": "7-polytopes", "class": "node"},
+            {"name": "8-polytopes", "class": "node"},
+            {"name": "9-polytopes", "class": "node"},
+            {"name": "10-polytopes", "class": "node"}
+         ]
+         }

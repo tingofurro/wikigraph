@@ -2,9 +2,7 @@
 	include_once('createJsonGraph.php');
 	$field =  1; $graphType = 'cat';
 	if(isset($_GET['graphCat'])) {
-		$fieldN = mysql_real_escape_string($_GET['graphCat']);
-		$rF = mysql_query("SELECT * FROM wg_field WHERE name='".$fieldN."' OR sname='".$fieldN."'");
-		if($reF = mysql_fetch_array($rF)) $field = $reF['id'];
+		$field = mysql_real_escape_string($_GET['graphCat']);
 	}
 	elseif(isset($_GET['graphArt'])) {
 		$graphType = 'art';
@@ -12,7 +10,12 @@
 	}
 	else {$field = 1;}
 
-	$f = mysql_query("SELECT * FROM wg_field WHERE id='$field'"); $fi = mysql_fetch_array($f);
+
+	$f = mysql_query("SELECT * FROM wg_field WHERE id='$field'");
+	if(!$fi = mysql_fetch_array($f)) {
+		$f = mysql_query("SELECT * FROM wg_field ORDER BY id LIMIT 1"); $fi = mysql_fetch_array($f);
+		$field = $fi['id'];
+	}
 
 	$url = getDocumentRoot()."/display/json/".$graphType."-".$field.".json";
 	$fileExists = file_exists($url);
