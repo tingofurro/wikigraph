@@ -1,9 +1,6 @@
 <?php
-function strToWiki($oldStr) {
-	return str_replace(" ", "_", $oldStr);
-}
-function wikiToName($oldStr) {
-	return urldecode(str_replace("_", " ", $oldStr));
+if(!function_exists('wikiToName')) {
+	include_once('../mainFunc.php');
 }
 function getKillList() {
 	$file = file_get_contents("txt/killList.txt");

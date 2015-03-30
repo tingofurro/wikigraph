@@ -7,7 +7,6 @@ $subfield = 18;
 if(isset($_GET['sf'])) {$subfield = $_GET['sf'];}
 $thresh1 = 0.3; // if in my category, it has to be somewhat relevant
 $thresh2 = 80; // if not in my category, it should be highly relevant
-echo 'blablacar';
 $subf = mysql_query("SELECT * FROM wg_subfield WHERE id=$subfield"); $subfi = mysql_fetch_array($subf);
 $field = $subfi['field'];
 $f = mysql_query("SELECT * FROM wg_field WHERE id=$field"); $fi = mysql_fetch_array($f);
@@ -67,4 +66,4 @@ while($su = mysql_fetch_array($s)) {
 <script type="text/javascript">var webroot = '<?php echo $realRoot; ?>';</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="<?php echo $realRoot; ?>JS/lib/d3.js"></script>
-<!--<script src="<?php echo $realRoot; ?>JS/graphCat.js"></script>-->
+<script src="<?php echo $realRoot; ?>JS/graphCat.js"></script>
