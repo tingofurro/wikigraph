@@ -1,4 +1,5 @@
 <?php
+
 include_once('dbco.php');
 include_once('display/func.php');
 $root = getRoot();
