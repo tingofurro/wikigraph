@@ -1,7 +1,7 @@
 <?php
-
 include_once('dbco.php');
 include_once('display/func.php');
+include_once('mainFunc.php');
 $root = getRoot();
 $realRoot = getRealRoot();
 $myUrl = str_replace('/Wikigraph/', '', $_SERVER['REQUEST_URI']);
