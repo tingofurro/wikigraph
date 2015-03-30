@@ -1,41 +1,70 @@
 <?php
-if(isset($_GET['sf'])) $sf = mysql_real_escape_string($_GET['sf']);
-else $sf = 1;
-if($sf == 1) { // group theory
-	$nodes = array(7510,30879,7521,566,25275,13867,584,12848,2064,5869,13175,2075,25287,25475,12874,561,9900,25379,25285,14496,7550,2113,2015,13198,25467,11084,15305,12330,25294,12362,25278,64,12373,12364,1585,12367,24548,12336,2747,12314,12299,7535,12307,13204,12312,12544,12306,25301,19931,28151,2354,13130,573,12863,55,7031,13131,1721,1172,28134,28156,28138,12922,28141,28147,28139,28140,28137,28148,28133,28152,28153,28154,28155,28149,28135,28136,10940,13396,583,28142,5083,317,12841,19699,5072,12896,10736,12859,4647,5125,13053,19688,806,8384,19142,12862,121,12876,19689,10647,25240,10412,10643,19687,5076,1633,85,1006,1014,10676,8240,2086,12844,22419,11816,18265,2140);
-}
-elseif($sf == 2) {// PDE
-	$nodes = array(5330,30879,5201,5869,561,1150,5229,584,121,25901,317,14496,27840,27851,154,3184,16179,3672,27803,16837,3369,3761,27826,4627,13855,3741,27815,25904,16227,16788,16697,16780,3127,16719,4629,3282,13569,16191,27791,16704,16797,16845,16686,12283,3283,16212,16723,22123,160,14178,3334,31060,3199,3279,26779,16691,16820,309,1721,16215,2354,205,19699,15226,7510,1172,1006,566,4647,11063,2976,1414,806,573);
-}
-else {// Nash Equilibrium
-	$nodes = array(766,608,30879,30881,794,6481,6405,6426,6471,631,6480,6470,784,647,6404,693,659,660,6445,6438,686,6454,6452,6469,6479,6451,777,619,6505,1504,662,770,624,6449,643,757,6483,6414,6504,10583,6446,796,6466,6417,6501,561,751,805,6524,6497,6379,6368,747,6380,645,664,666,623,6502,694,671,6499,6418,6437,6450,626,6422,795,6420,726,661,639,6498,699,734,584,652,786,793,798,1006,714,20602,758,607,764,719,713,6439,745,802,800,665,753,679,641,680,632,744,740,6402,6409,27009,24396,609,1721,23261);
-}
+include_once('algo/func.php');
+include_once('display/graphFunctions.php');
+$root = getRoot();
+$realRoot = getRealRoot();
+$subfield = 18;
+if(isset($_GET['sf'])) {$subfield = $_GET['sf'];}
+$thresh1 = 0.3; // if in my category, it has to be somewhat relevant
+$thresh2 = 80; // if not in my category, it should be highly relevant
 
-$nbNodes = count($nodes);
-$mat = array();
-for ($r=0; $r < $nbNodes; $r++) { 
-	$mat[$r] = array();
-	for ($c=0; $c < $nbNodes; $c++) $mat[$r][$c] = 0;
-}
-$e = mysql_query("SELECT * FROM wg_link WHERE `to` IN (".implode(",", $nodes).") AND `from` IN (".implode(",", $nodes).")");
-while($ed = mysql_fetch_array($e)) {
-	$r = array_search($ed['from'], $nodes);
-	$c = array_search($ed['to'], $nodes);
-	$mat[$r][$c] = 1;
-}
+$subf = mysql_query("SELECT * FROM wg_subfield WHERE id=$subfield"); $subfi = mysql_fetch_array($subf);
+$field = $subfi['field'];
+$f = mysql_query("SELECT * FROM wg_field WHERE id=$field"); $fi = mysql_fetch_array($f);
+
+$n = mysql_query("SELECT * FROM wg_page WHERE (field=".$subfi['field']." AND ".$fi['sname'].">$thresh1) OR ".$fi['sname'].">$thresh2");
+$nodes = array();
+while ($node = mysql_fetch_array($n)) array_push($nodes, $node['id']);
+
+// we're going to remove the other potential subfields
+$otherSubf = mysql_query("SELECT * FROM wg_subfield WHERE field=$field AND id!=$subfield");
+$toRemove = array();
+while($otherSubfi = mysql_fetch_array($otherSubf)) array_push($toRemove, $otherSubfi['id']);
+$nodes = array_diff($nodes, $toRemove);
+$n = mysql_query("SELECT * FROM wg_page WHERE id IN(".implode(",", $nodes).")");
+
+while($node = mysql_fetch_array($n)) {$adja[$node['id']] = array();}
+
+
+
+$edg = mysql_query("SELECT * FROM wg_link WHERE `to` IN (".implode(",", array_keys($adja)).") AND `from` IN (".implode(",", array_keys($adja)).") ORDER BY id");
+while($edge = mysql_fetch_array($edg)) array_push($adja[$edge['to']], $edge['from']);
+
+$diffusion = computeDiffusion($adja, $subfi['page'], 0.7); // diffusion centered around our new math field
+
+$nodes = array();
+foreach ($diffusion as $nb => $p) if($p>1) array_push($nodes, $nb);
+
+
+$src = getDocumentRoot()."/display/json/subfield.json";
+nodes2Graph($nodes, $src);
 ?>
-<select onchange="window.location='<?php echo $root;?>subfield/'+this.value;" onkeyup="this.onchange();">
-	<option value="1" <?php echo ($sf==1)?"selected":""; ?>>Group Theory</option>
-	<option value="2" <?php echo ($sf==2)?"selected":""; ?>>Partial Diff Eq</option>
-	<option value="3" <?php echo ($sf==3)?"selected":""; ?>>Nash Equilibrium</option>
-</select>
-<br /><br />
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="<?php echo $realRoot; ?>css/graphCat.css">
+<body>
+<select onchange="window.location='<?php echo $root;?>/subfield/'+this.value;" style="font-size: 16px;">
 <?php
-
-echo '<span style="font-size: 10px;">adja = [<br />';
-for ($r=0; $r < $nbNodes; $r++) { 
-	$mat[$r] = implode(", ", $mat[$r]);
+$s = mysql_query("SELECT * FROM wg_subfield ORDER BY name");
+while($su = mysql_fetch_array($s)) {
+	echo "<option value=".$su['id']." ".(($su['id']==$subfield)?"selected":"").">".$su['name']."</option>";
 }
-echo implode(";<br />", $mat);
-echo '];</span>';
-?>
+?>	
+</select>
+</body>
+<script type="text/javascript">
+	var color = [];
+	var fieldId = '<?php echo $field; ?>';
+	<?php
+	$colArray = array('#FF0000', '#FF0074', '#FF00E8', '#A200FF', '#2D00FF', '#0046FF', '#00BAFF', '#00FFD0', '#00FF5B', '#18FF00', '#8CFF00', '#FFFD00', '#FF8900');
+	$f = mysql_query("SELECT * FROM wg_field ORDER BY id");
+	while($fi = mysql_fetch_array($f)) {
+		echo "color[".$fi['id']."] = '".array_shift($colArray)."';\n";
+	}
+	?>
+	var fileFrom = '<?php echo $realRoot."json/subfield.json"; ?>';
+	var alphaI = 0.1; var saveGraph = false;
+</script>
+<script type="text/javascript">var webroot = '<?php echo $realRoot; ?>';</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="<?php echo $realRoot; ?>JS/lib/d3.js"></script>
+<script src="<?php echo $realRoot; ?>JS/graphCat.js"></script>
