@@ -12,8 +12,7 @@ $totFields = 23;
 	<?php
 	$f = mysql_query("SELECT * FROM wg_field ORDER BY id");
 	while($fi = mysql_fetch_array($f)) {
-		$pag = mysql_query("SELECT COUNT(*) AS count FROM wg_page WHERE field=".($fi['id']));
-		$page = mysql_fetch_array($pag);
+		$pag = mysql_query("SELECT COUNT(*) AS count FROM wg_page WHERE field=".($fi['id'])); $page = mysql_fetch_array($pag);
 
 		echo "<a class='fieldClick' target='graphIframe' href='".$realRoot."graphCat/".$fi['id']."'>";
 		echo "<div class='oneField'>".$fi['name'];

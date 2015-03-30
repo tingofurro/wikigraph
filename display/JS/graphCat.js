@@ -75,8 +75,7 @@ d3.json(fileFrom, function(error, graph) {
       $.ajax({type: "POST",
         url: webroot+'ajax/savePositions.php',
         data: postData,
-        success: function(dat) { // alert(dat);
-        }
+        success: function(dat) { /* alert(dat);*/ }
       });
     }
 });

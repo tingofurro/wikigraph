@@ -17,4 +17,4 @@ SELECT visited, COUNT(*) AS count FROM `wg_page` GROUP BY visited
 SELECT *, (0.5*(`to`+`from`)*(`to`+`from`+1)+`to`) AS cantor, COUNT(*) AS count FROM `wg_link` GROUP BY (0.5*(`to`+`from`)*(`to`+`from`+1)+`to`) ORDER BY COUNT(*) DESC
 
 -- Links grouped by `from`
-SELECT link.*, COUNT(*) AS count, page.name FROM wg_link AS link INNER JOIN wg_page AS page ON page.id=link.`from` GROUP BY `from` ORDER BY COUNT(*)
+SELECT link.*, COUNT(*) AS count, page.name FROM wg_link AS link INNER JOIN wg_page AS page ON page.id=link.`from` GROUP BY `from` ORDER BY COUNT(*) DESC

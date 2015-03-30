@@ -34,11 +34,12 @@ function buildCategories($root, $killList) {
 function extractCategories($parentName, $parentDistance, $parentId, $killList, $myField) {
 	$fieldCount = 1;
 	$catPush = array(); $catLinkPush = array();
-	
+	$r = mysql_query("SELECT * FROM wg_category ORDER BY id DESC LIMIT 1"); $re = mysql_fetch_array($r);
+	$lastId = $re['id'];
 	$subCategories = extractSubcat($parentName);
 	$toRemove = array();
-		for ($i=0; $i < count($subCategories); $i++) { 
-		$f = mysql_query("SELECT * FROM wg_category WHERE `name`='".mysql_real_escape_string($subCategories[$i])."'");
+	for ($i=0; $i < count($subCategories); $i++) { 
+		$f = mysql_query("SELECT * FROM wg_category WHERE `name`=\"".$subCategories[$i]."\"");
 		if($fi = mysql_fetch_array($f)) {
 		// By design, do not update distance or parent of that node, as this is not truly a tree
 			array_push($catLinkPush, "('', '$parentId', '".$fi['id']."')");
@@ -53,8 +54,8 @@ function extractCategories($parentName, $parentDistance, $parentId, $killList, $
 	foreach ($subCategories as $subCat) {
 		if($parentDistance == 0) {$myField = $fieldCount; $fieldCount ++;} // you are a direct child of the root, you become a field
 		array_push($catPush, "(NULL, '$subCat', '$myField', '".$parentId."', '".($parentDistance+1)."', '".(in_array($subCat, $killList)?1:0)."', '0')");
-		$r = mysql_query("SELECT * FROM wg_category ORDER BY id DESC LIMIT 1"); $re = mysql_fetch_array($r);
-		array_push($catLinkPush, "('', '$parentId', '".$re['id']."')");
+		$lastId ++;
+		array_push($catLinkPush, "('', '$parentId', '".$lastId."')");
 	}
 
 	if(count($catPush) > 0) mysql_query("INSERT INTO `wg_category` (`id`, `name`, `fields`, `parent`, `distance`, `killBranch`, `travelled`) VALUES ".implode(", ", $catPush).";");
