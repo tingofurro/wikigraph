@@ -10,6 +10,7 @@ function topMenu($root, $realRoot) {
 		<a href="<?php echo $root."category";?>"><div class="menuItem firstItem">Category Tree</div></a>
 		<a href="<?php echo $root."fields";?>"><div class="menuItem">Math fields</div></a>
 		<a href="<?php echo $root."explore";?>"><div class="menuItem">Explore the Set</div></a>
+		<a href="<?php echo $root."subfield/1";?>"><div class="menuItem">Subfields</div></a>
 		<a href="<?php echo $root."clustering";?>"><div class="menuItem">Clustering Work</div></a>
 	</div>
 <?php
