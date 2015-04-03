@@ -1,8 +1,7 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
 if(isset($_GET['lookUp'])) {
 	include_once('../dbco.php');
-	include_once('func.php');
+	include_once('../mainFunc.php');
 	$toks = explode(" ", mysql_real_escape_string($_GET['lookUp']));
 	$where = ""; $att = array();
 	if(count($toks) > 0) {

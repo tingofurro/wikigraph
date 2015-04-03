@@ -10,8 +10,10 @@ set_time_limit(4*3600);
 $r = mysql_query("SELECT * FROM wg_page");
 while($re = mysql_fetch_array($r)) {
 	if(!file_exists('../data/'.$re['id'].'.txt')) {
-		$cleanHtml = extractPage($re['name']);
-		$fh = fopen('../data/'.$re['id'].'.txt', 'w'); fwrite($fh, $cleanHtml);
+		$cleanHtml = extractSections($re['name']);
+		$cleanHtml = removeLists($cleanHtml);
+		$fh = fopen('../data/'.$re['id'].'.txt', 'w');
+		fwrite($fh, $cleanHtml);
 	}
 }
 ?>
