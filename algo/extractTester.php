@@ -2,48 +2,47 @@
 include_once('../dbco.php');
 include_once('func.php');
 include_once('extractor.php');
-
-$p = mysql_query("SELECT * FROM wg_page WHERE id=1 ORDER BY id");
-while($pa = mysql_fetch_array($p)) {
-	$pageNames = extractLinkArray($pa['id']);
-	$rediName = array(); $outIds = array();
-	$foundNames = array();
-
-	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $pageNames).'"'.")");
-	while ($found = mysql_fetch_array($find)) {
-		if(!in_array($found['id'], $outIds)) array_push($outIds, $found['id']);
-		array_push($foundNames, $found['name']);
+set_time_limit(3600);
+// $r = mysql_query("SELECT * FROM wg_page WHERE id<1000");
+$r = mysql_query("SELECT * FROM wg_page WHERE id=306");
+while($re = mysql_fetch_array($r)) {
+	$cleanHtml = extractSections($re['name']);
+	$return = removeLists($cleanHtml);
+	if($return[0] > 0) {
+		// echo $re['id'].") ".$re['name']." got something removed<br />";
+		ob_flush();
 	}
-
-	// in the leftovers, some actually might be legit, but not found because of redirect
-	$pageNames = array_diff($pageNames, $foundNames); $foundNames = array();
-	$r = mysql_query("SELECT * FROM wg_redirect WHERE fromName IN (".'"'.implode('", "', $pageNames).'"'.")"); // we cached a bunch of redirects
-	while($re = mysql_fetch_array($r)) {
-		$rediName[$re['fromName']] = $re['toName'];	
-		array_push($foundNames, $re['fromName']);
-	}
-	$pageNames = array_diff($pageNames, $foundNames); // remove all the ones we've already found
-	$rediCache = array();
-	foreach ($pageNames as $i => $pageName) { // the rest we haven't found in our DB
-		$r = redirectName($pageName); // this will run the http request, get the name of the page
-		$rediName[$pageName] = $r;
-		echo $pageName." -> ".$r."<br />";
-		array_push($rediCache, "(NULL, '".$pageName."', '".$r."')");
-	}
-
-	$toSearch2 = array();
-	foreach($rediName as $page => $rediVal) {
-		if($page != $rediVal) {array_push($toSearch2, $rediVal);}
-	}
-
-
-	$find = mysql_query("SELECT * FROM wg_page WHERE name IN (".'"'.implode('", "', $toSearch2).'"'.")");
-	while($found = mysql_fetch_array($find)) {
-		if(!in_array($found['id'], $outIds)) array_push($outIds, $found['id']);
-	} // done with redirects
-	// echo implode(', ', array_values($rediName));
-
-
+	echo $return[1];
 }
 
+function extractSections($pageName) { // Given a pagename, extract HTML
+	$html = file_get_contents('http://en.wikipedia.org/wiki/'.urlencode(strToWiki($pageName)));
+	$dom = new DOMDocument;
+	@$dom->loadHTML(cleanEncoding($html));
+	$dom = $dom->getElementById('mw-content-text');
+
+    $cleanHtml = ""; $lastHeadline = ''; $skip = false;
+    $children  = $dom->childNodes;
+    foreach ($children as $child) {
+    	$skip = divToSkip($child, $skip); // reload skipping
+		if(!$skip) $cleanHtml .= $dom->ownerDocument->saveHTML($child);
+    }
+    return $cleanHtml;
+}
+function removeLists($html) {
+	$dom = new DOMDocument;
+	@$dom->loadHTML($html);
+	$dom = $dom->getElementsByTagName('body')->item(0);
+	$children  = $dom->childNodes;
+    $toRemove = array();
+    foreach ($children as $child) {
+		if(get_class($child) == 'DOMElement') {
+	    	$thisClass = $child->getAttribute('class');
+			if(!empty($thisClass) AND strpos($thisClass, 'plainlist') !== false) array_push($toRemove, $child);
+		}
+    }
+	foreach ($toRemove as $list) $dom->removeChild($list);
+
+	return array(count($toRemove), DOMinnerHTML($dom));
+}
 ?>

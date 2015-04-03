@@ -40,8 +40,7 @@ function extractPagesFromCat($category) {
 	}
 	return $articleNames;
 }
-function extractPage($pageName) {
-	// Given a pagename, extract HTML
+function extractPage($pageName) { // Given a pagename, extract HTML
 	$html = file_get_contents('http://en.wikipedia.org/wiki/'.urlencode(strToWiki($pageName)));
 	$dom = new DOMDocument; $dom->loadHTML(cleanEncoding($html));
 	$dom = $dom->getElementById('mw-content-text');
@@ -56,6 +55,7 @@ function extractPage($pageName) {
 }
 function divToSkip(DOMNode $child, $skip) {
 	// GOAL: See if we have hit a new Section in the Article (<h2>). If so, verify it's name and see if want to skip that
+	$removeHeadline = array('Notes', 'References', 'Historical_references', 'External_links', 'Further_reading', 'Notes_and_references', 'Other_resources');
 	if(get_class($child) == 'DOMElement') {
 		$thisEntity = $child->nodeName;
 		if($thisEntity == 'h2') {
@@ -63,7 +63,7 @@ function divToSkip(DOMNode $child, $skip) {
 		    foreach ($H2children as $couldHeadline) {
 				$thisClass = $couldHeadline->getAttribute('class');
 				if(!empty($thisClass) AND strpos($thisClass, 'mw-headline') !== false) {
-					return in_array($couldHeadline->getAttribute('id'), array('Notes', 'References', 'External_links', 'Further_reading')); // keep this: 'See_also'
+					return in_array($couldHeadline->getAttribute('id'), $removeHeadline); // keep this: 'See_also'
 				}
 		    }
 		}
