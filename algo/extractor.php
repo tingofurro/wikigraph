@@ -40,11 +40,11 @@ function extractPagesFromCat($category) {
 	}
 	return $articleNames;
 }
-function extractPage($pageName) { // Given a pagename, extract HTML
+function extractSections($pageName) { // Given a pagename, extract HTML
 	$html = file_get_contents('http://en.wikipedia.org/wiki/'.urlencode(strToWiki($pageName)));
-	$dom = new DOMDocument; $dom->loadHTML(cleanEncoding($html));
+	$dom = new DOMDocument;
+	@$dom->loadHTML(cleanEncoding($html));
 	$dom = $dom->getElementById('mw-content-text');
-
     $cleanHtml = ""; $lastHeadline = ''; $skip = false;
     $children  = $dom->childNodes;
     foreach ($children as $child) {
@@ -52,6 +52,21 @@ function extractPage($pageName) { // Given a pagename, extract HTML
 		if(!$skip) $cleanHtml .= $dom->ownerDocument->saveHTML($child);
     }
     return $cleanHtml;
+}
+function removeLists($html) { // Remove lists that tend to create complete subgraphs
+	$dom = new DOMDocument;
+	@$dom->loadHTML($html);
+	$dom = $dom->getElementsByTagName('body')->item(0);
+	$children  = $dom->childNodes;
+    $toRemove = array();
+    foreach ($children as $child) {
+		if(get_class($child) == 'DOMElement') {
+	    	$thisClass = $child->getAttribute('class');
+			if(!empty($thisClass) AND strpos($thisClass, 'plainlist') !== false) array_push($toRemove, $child);
+		}
+    }
+	foreach ($toRemove as $list) $dom->removeChild($list);
+	return DOMinnerHTML($dom);
 }
 function divToSkip(DOMNode $child, $skip) {
 	// GOAL: See if we have hit a new Section in the Article (<h2>). If so, verify it's name and see if want to skip that
