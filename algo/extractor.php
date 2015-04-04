@@ -70,7 +70,7 @@ function removeLists($html) { // Remove lists that tend to create complete subgr
 }
 function divToSkip(DOMNode $child, $skip) {
 	// GOAL: See if we have hit a new Section in the Article (<h2>). If so, verify it's name and see if want to skip that
-	$removeHeadline = array('Notes', 'References', 'Historical_references', 'External_links', 'Further_reading', 'Notes_and_references', 'Other_resources');
+	$removeHeadline = array('Notes', 'References', 'Historical_references', 'Additional_references', 'External_links', 'Further_reading', 'Notes_and_references', 'Other_resources', 'Bibliography', 'Books', 'Notes_2', 'Sources', 'References_and_further_reading', 'Recommended_reading', 'Additional_reading', 'Literature', 'Footnotes', 'Citations', 'Publications', 'References_and_external_links', 'References_and_notes', 'Textbooks', 'Sources_and_external_links', 'General_references', 'In-line_notes_and_references', 'Selected_bibliography', 'Selected_works', 'Some_publications', 'Biographical_references'); // keep this: 'See_also'
 	if(get_class($child) == 'DOMElement') {
 		$thisEntity = $child->nodeName;
 		if($thisEntity == 'h2') {
@@ -78,7 +78,7 @@ function divToSkip(DOMNode $child, $skip) {
 		    foreach ($H2children as $couldHeadline) {
 				$thisClass = $couldHeadline->getAttribute('class');
 				if(!empty($thisClass) AND strpos($thisClass, 'mw-headline') !== false) {
-					return in_array($couldHeadline->getAttribute('id'), $removeHeadline); // keep this: 'See_also'
+					return in_array($couldHeadline->getAttribute('id'), $removeHeadline); 
 				}
 		    }
 		}
