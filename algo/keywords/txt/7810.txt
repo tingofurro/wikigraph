@@ -1,9 +1,0 @@
-In mathematics, the Heawood number of a surface is a certain upper bound for the maximal number of colors needed to color any graph embedded in the surface.
-In 1890 Heawood proved for all surfaces except the sphere that no more than
-
-
-
-colors are needed to color any graph embedded in a surface of Euler characteristic . The case of the sphere is the four-color conjecture which was settled by Kenneth Appel and Wolfgang Haken in 1976. The number  became known as Heawood number in 1976.
-Franklin proved that the chromatic number of a graph embedded in the Klein bottle can be as large as , but never exceeds . Later it was proved in the works of Gerhard Ringel and J. W. T. Youngs that the complete graph of  vertices can be embedded in the surface  unless  is the Klein bottle. This established that Heawood's bound could not be improved.
-For example, the complete graph on  vertices can be embedded in the torus as follows:
-

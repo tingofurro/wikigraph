@@ -1,1 +1,0 @@
-In the mathematical field of descriptive set theory, a pointclass can be called adequate if it contains all recursive pointsets and is closed under recursive substitution, bounded universal and existential quantification and preimages by recursive functions.[1][2]
