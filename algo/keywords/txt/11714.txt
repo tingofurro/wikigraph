@@ -1,0 +1,452 @@
+
+
+
+Algebraic structure → Group theoryGroup theory
+
+
+
+
+
+Basic notions
+
+
+
+
+
+Subgroup
+Normal subgroup
+
+
+Quotient group
+
+(Semi-)direct product
+
+
+
+
+
+Group homomorphisms
+
+
+
+
+kernel
+image
+direct sum
+
+
+wreath product
+simple
+finite
+
+
+infinite
+continuous
+multiplicative
+
+
+additive
+cyclic
+abelian
+dihedral
+
+
+nilpotent
+solvable
+
+
+
+
+
+
+List of group theory topics
+
+
+Glossary of group theory
+
+
+
+
+
+
+
+
+
+
+
+Finite groups
+
+Classification of finite
+simple groups
+
+
+Cyclic group Cp
+
+
+Symmetric group Sn
+
+
+
+
+Dihedral group Dn
+
+
+Alternating group An
+
+
+
+Mathieu groups
+
+
+M11
+M12
+M22
+M23
+M24
+
+
+
+
+Conway groups
+
+
+Co1
+Co2
+Co3
+
+
+
+
+Janko groups
+
+
+J1
+J2
+J3
+J4
+
+
+
+
+Fischer groups
+
+
+F22
+F23
+F24
+
+
+
+
+
+Baby Monster group (B)
+
+
+
+Monster group (M)
+
+
+
+
+
+
+
+
+
+
+
+Discrete groups
+Lattices
+
+
+
+
+
+
+Integers (Z)
+Lattice
+
+
+Modular groups
+
+
+PSL(2,Z)
+SL(2,Z)
+
+
+
+
+
+
+
+
+
+
+
+Topological / Lie groups
+
+
+
+Solenoid
+Circle
+
+
+
+General linear GL(n)
+
+
+
+Special linear SL(n)
+
+
+
+Orthogonal O(n)
+
+
+
+Euclidean E(n)
+
+
+
+Special orthogonal SO(n)
+
+
+
+Unitary U(n)
+
+
+
+Special unitary SU(n)
+
+
+
+Symplectic Sp(n)
+
+
+G2
+F4
+E6
+E7
+E8
+
+
+Lorentz
+Poincaré
+Conformal
+
+
+Diffeomorphism
+Loop
+
+
+Infinite dimensional Lie group
+
+
+O(∞)
+SU(∞)
+Sp(∞)
+
+
+
+
+
+
+
+
+
+
+Algebraic groups
+
+
+Elliptic curve
+
+
+Linear algebraic group
+
+
+Abelian variety
+
+
+
+
+
+
+
+
+
+v
+t
+e
+
+
+
+
+
+In mathematics the spin group Spin(n) [1][2] is the double cover of the special orthogonal group SO(n) = SO(n, R), such that there exists a short exact sequence of Lie groups
+
+
+
+As a Lie group Spin(n) therefore shares its dimension, n (n − 1)/2, and its Lie algebra with the special orthogonal group. For n &gt; 2, Spin(n) is simply connected and so coincides with the universal cover of SO(n).
+The non-trivial element of the kernel is denoted −1 , which should not be confused with the orthogonal transform of reflection through the origin, generally denoted −I .
+Spin(n) can be constructed as a subgroup of the invertible elements in the Clifford algebra Cℓ(n).
+
+
+
+Contents
+
+
+1 Accidental isomorphisms
+2 Indefinite signature
+3 Topological considerations
+4 Center
+5 Quotient groups
+6 Discrete subgroups
+7 Complex case
+
+8 See also
+
+8.1 Related groups
+
+
+9 References
+10 Further reading
+
+
+
+
+Accidental isomorphisms[edit]
+
+In low dimensions, there are isomorphisms among the classical Lie groups called accidental isomorphisms. For instance, there are isomorphisms between low-dimensional spin groups and certain classical Lie groups, owing to low-dimensional isomorphisms between the root systems (and corresponding isomorphisms of Dynkin diagrams) of the different families of simple Lie algebras. Specifically, we have
+
+Spin(1) = O(1)
+
+Spin(2) = U(1) = SO(2) which acts on z in R2 by double phase rotation z ↦ u2z
+
+Spin(3) = Sp(1) = SU(2), corresponding to 
+
+Spin(4) = SU(2) × SU(2), corresponding to 
+
+Spin(5) = Sp(2), corresponding to 
+
+Spin(6) = SU(4), corresponding to 
+
+
+There are certain vestiges of these isomorphisms left over for n = 7, 8 (see Spin(8) for more details). For higher n, these isomorphisms disappear entirely.
+
+Indefinite signature[edit]
+
+In indefinite signature, the spin group Spin(p, q) is constructed through Clifford algebras in a similar way to standard spin groups. It is a connected double cover of SO0(p, q), the connected component of the identity of the indefinite orthogonal group SO(p, q) (there are a variety of conventions on the connectedness[clarification needed] of Spin(p, q); in this article, it is taken to be connected for p + q  &gt; 2 ). As in definite signature, there are some accidental isomorphisms in low dimensions:
+
+Spin(1, 1) = GL(1, R)
+
+Spin(2, 1) = SL(2, R)
+
+Spin(3, 1) = SL(2,C)
+
+Spin(2, 2) = SL(2, R) × SL(2, R)
+
+Spin(4, 1) = Sp(1, 1)
+
+Spin(3, 2) = Sp(4, R)
+
+Spin(5, 1) = SL(2, H)
+
+Spin(4, 2) = SU(2, 2)
+
+Spin(3, 3) = SL(4, R)
+
+
+Note that Spin(p, q) = Spin(q, p).
+
+Topological considerations[edit]
+
+Connected and simply connected Lie groups are classified by their Lie algebra. So if G is a connected Lie group with a simple Lie algebra, with G′ the universal cover of G, there is an inclusion
+
+
+
+with Z(G′) the center of G′. This inclusion and the Lie algebra  of G determine G entirely (note that it is not the fact that  and π1(G) determine G entirely; for instance SL(2, R) and PSL(2, R) have the same Lie algebra and same fundamental group Z, but are not isomorphic).
+The definite signature Spin(n) are all simply connected for n &gt; 2 , so they are the universal coverings for SO(n).
+In indefinite signature, Spin(p, q) is not connected, and in general the identity component, Spin0(p,  q), is not simply connected, thus it is not a universal cover. The fundamental group is most easily understood by considering the maximal compact subgroup of SO(p,  q) , which is SO(p) × SO(q), and noting that rather than being the product of the 2-fold covers (hence a 4-fold cover), Spin(p,  q) is the "diagonal" 2-fold cover – it is a 2-fold quotient of the 4-fold cover. Explicitly, the maximal compact connected subgroup of Spin(p,  q) is
+
+Spin(p) × Spin(q)/{(1, 1), (−1, −1)}.
+
+This allows us to calculate the fundamental groups of Spin(p, q), taking p ≥ q:
+
+
+
+Thus once p, q &gt; 2 the fundamental group is Z2, as it is a 2-fold quotient of a product of two universal covers.
+The maps on fundamental groups are given as follows. For p, q &gt; 2, this implies that the map π1(Spin(p, q)) → π1(SO(p, q)) is given by 1 ∈ Z2 going to (1,1) ∈ Z2 × Z2. For p = 2, q &gt; 2 , this map is given by 1 ∈ Z → (1,1) ∈ Z × Z2. And finally, for p = q = 2 , (1,0) ∈ Z × Z is sent to (1,1) ∈ Z × Z and (0, 1) is sent to (1, −1).
+
+Center[edit]
+
+The center of the spin groups (complex and real) are given as follows:[3]
+
+
+
+
+Quotient groups[edit]
+
+Quotient groups can be obtained from a spin group by quotienting out by a subgroup of the center, with the spin group then being a covering group of the resulting quotient, and both groups having the same Lie algebra.
+Quotienting out by the entire center yields the minimal such group, the projective special orthogonal group, which is centerless, while quotienting out by {±1} yields the special orthogonal group – if the center equals {±1} (namely in odd dimension), these two quotient groups agree. If the spin group is simply connected (as Spin(n) is for n &gt; 2), then Spin is the maximal group in the sequence, and one has a sequence of three groups,
+
+Spin(n) → SO(n) → PSO(n),
+
+splitting by parity yields:
+
+Spin(2n) → SO(2n) → PSO(2n),
+Spin(2n+1) → SO(2n+1) = PSO(2n+1),
+
+which are the three compact real forms (or two, if SO = PSO ) of the compact Lie algebra 
+The homotopy groups of the cover and the quotient are related by the long exact sequence of a fibration, with discrete fiber (the fiber being the kernel) – thus all homotopy groups for k &gt; 1 are equal, but π0 and π1 may differ.
+For n &gt; 2, Spin(n) is simply connected (π0 = π1 = {1} is trivial), so SO(n) is connected and has fundamental group Z2 while PSO(n) is connected and has fundamental group equal to the center of Spin(n).
+In indefinite signature the covers and homotopy groups are more complicated – Spin(p, q) is not simply connected, and quotienting also affects connected components. The analysis is simpler if one considers the maximal (connected) compact SO(p) × SO(q) ⊂ SO(p, q) and the component group of Spin(p, q).
+
+Discrete subgroups[edit]
+
+Discrete subgroups of the spin group can be understood by relating them to discrete subgroups of the special orthogonal group (rotational point groups).
+Given the double cover Spin(n) → SO(n), by the lattice theorem, there is a Galois connection between subgroups of Spin(n) and subgroups of SO(n) (rotational point groups): the image of a subgroup of Spin(n) is a rotational point group, and the preimage of a point group is a subgroup of Spin(n), and the closure operator on subgroups of Spin(n) is multiplication by {±1}. These may be called "binary point groups"; most familiar is the 3-dimensional case, known as binary polyhedral groups.
+Concretely, every binary point group is either the preimage of a point group (hence denoted 2G, for the point group G), or is an index 2 subgroup of the preimage of a point group which maps (isomorphically) onto the point group; in the latter case the full binary group is abstractly  (since {±1} is central). As an example of these latter, given a cyclic group of odd order  in SO(n), its preimage is a cyclic group of twice the order,  and the subgroup  maps isomorphically to 
+Of particular note are two series:
+
+higher binary tetrahedral groups, corresponding to the 2-fold cover of symmetries of the n-simplex.
+
+This group can also be considered as the double cover of the symmetric group,  with the alternating group being the (rotational) symmetry group of the n-simplex.
+
+
+higher binary octahedral groups, corresponding to the 2-fold covers of the hyperoctahedral group (symmetries of the hypercube, or equivalently of its dual, the cross-polytope).
+
+For point groups that reverse orientation, the situation is more complicated, as there are two pin groups, so there are two possible binary groups corresponding to a given point group.
+
+Complex case[edit]
+
+Main article: Spin_structure § Spinc_structures
+
+The spinc group is defined by the exact sequence
+
+
+
+This has important applications in 4-manifold theory and Seiberg–Witten theory.
+
+See also[edit]
+
+
+
+Clifford algebra
+Clifford analysis
+Spinor
+Spinor bundle
+Spin structure
+Anyon
+Orientation entanglement
+Complex Spin Group
+
+
+
+Related groups[edit]
+
+
+
+Pin group Pin(n) – two-fold cover of orthogonal group, O(n)
+
+Metaplectic group Mp(2n) – two-fold cover of symplectic group, Sp(2n)
+

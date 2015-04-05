@@ -1,0 +1,68 @@
+
+
+
+
+This article does not cite any references or sources. Please help improve this article by adding citations to reliable sources. Unsourced material may be challenged and removed. (December 2009)
+
+
+
+
+
+
+The Meridian Lossless Packing logo
+
+
+
+
+
+
+
+The Advanced Resolution logo
+
+
+Meridian Lossless Packing, also known as Packed PCM (PPCM),[citation needed] is a proprietary lossless compression technique for compressing PCM audio data developed by Meridian Audio, Ltd. MLP is the standard lossless compression method for DVD-Audio content (often advertised with the Advanced Resolution logo) and typically provides about 1.5:1 compression on most music material. All DVD-Audio players are equipped with MLP decoding, while its use on the discs themselves is at their producers' discretion.
+Dolby TrueHD, used in Blu-ray and HD DVD, employs MLP, but compared with DVD-Audio, adds higher bit rates, 8 full-range channels, extensive metadata, and custom speaker placements (as specified by SMPTE).
+
+MLP in packaged media formats[edit]
+
+
+
+Media format
+Status
+Channels
+Max. bit rate
+
+
+HD DVD
+Mandatory
+2 to 8
+18 Mbit/s
+
+
+Blu-ray
+Optional
+2 to 8
+18 Mbit/s
+
+
+DVD-Audio
+Mandatory
+1 to 6
+9.6 Mbit/s
+
+
+DVD-Video
+Not available
+
+
+
+See also[edit]
+
+
+Direct Stream Transfer
+FLAC
+Monkey's Audio
+TTA
+WavPack
+Master Quality Authenticated
+

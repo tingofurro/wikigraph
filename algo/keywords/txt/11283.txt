@@ -1,0 +1,8 @@
+
+
+
+
+This article needs attention from an expert in Mathematics. Please add a reason or a talk parameter to this template to explain the issue with the article. WikiProject Mathematics (or its Portal) may be able to help recruit an expert. (February 2011)
+
+In mathematics, Erdős space is a topological space named after Paul Erdős.
+Erdős space is defined as the set E of points in the Hilbert space l2 of square summable sequences having all coordinates rational. Erdős space is a totally disconnected, one-dimensional topological space. The space E is homeomorphic to the direct product E×E. Endowed with the compact-open topology, the set of all homeomorphisms of the Euclidean space Rn leaving the set Qn of vectors with rational coordinates invariant is homeomorphic to the Erdős space for n ≥ 2.[1]

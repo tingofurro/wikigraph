@@ -1,0 +1,16 @@
+
+
+
+
+This article needs more links to other articles to help integrate it into the encyclopedia. Please help improve this article by adding links that are relevant to the context within the existing text. (December 2012)
+
+A BK-tree is a metric tree suggested by Walter Austin Burkhard and Robert M. Keller[1] specifically adapted to discrete metric spaces. For simplicity, let us consider integer discrete metric . Then, BK-tree is defined in the following way. An arbitrary element a is selected as root node. The root node may have zero or more subtrees. The k-th subtree is recursively built of all elements b such that . BK-trees can be used for approximate string matching in a dictionary [2].
+
+See also[edit]
+
+
+
+Levenshtein distance – the distance metric commonly used when building a BK-tree
+
+Damerau–Levenshtein distance – a modified form of Levenshtein distance that allows transpositions
+

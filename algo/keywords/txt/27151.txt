@@ -1,0 +1,129 @@
+In the theory of ordinary differential equations (ODEs), Lyapunov functions are scalar functions that may be used to prove the stability of an equilibrium of an ODE. Named after the Russian mathematician Aleksandr Mikhailovich Lyapunov, Lyapunov functions are important to stability theory and control theory. A similar concept appears in the theory of general state space Markov Chains, usually under the name Foster-Lyapunov functions.
+For many classes of ODEs, the existence of Lyapunov functions is a necessary and sufficient condition for stability. Whereas there is no general technique for constructing Lyapunov functions for ODEs, in many specific cases, the construction of Lyapunov functions is known. For instance, quadratic functions suffice for systems with one state; the solution of a particular linear matrix inequality provides Lyapunov functions for linear systems; and conservation laws can often be used to construct Lyapunov functions for physical systems.
+Informally, a Lyapunov function is a function that takes positive values everywhere except at the equilibrium in question, and decreases (or is non-increasing) along every trajectory of the ODE. The principal merit of Lyapunov function-based stability analysis of ODEs is that the actual solution (whether analytical or numerical) of the ODE is not required.
+
+
+
+Contents
+
+
+1 Definition of a Lyapunov candidate function
+2 Definition of the equilibrium point of a system
+
+3 Basic Lyapunov theorems for autonomous systems
+
+3.1 Stable equilibrium
+3.2 Locally asymptotically stable equilibrium
+3.3 Globally asymptotically stable equilibrium
+
+
+4 Example
+5 See also
+6 References
+7 External links
+
+
+
+
+Definition of a Lyapunov candidate function[edit]
+
+Let
+
+
+
+be a continuous scalar function. is a Lyapunov-candidate-function if it is a locally positive-definite function, i.e.
+
+
+
+
+with  being a neighborhood region around 
+
+Definition of the equilibrium point of a system[edit]
+
+Let
+
+
+
+
+be an arbitrary autonomous dynamical system with equilibrium point :
+
+
+
+There always exists a coordinate transformation , such that:
+
+
+
+
+So the new system  has an equilibrium point at the origin.
+
+Basic Lyapunov theorems for autonomous systems[edit]
+
+
+
+Main article: Lyapunov stability
+
+
+
+Let
+
+
+
+be an equilibrium of the autonomous system
+
+
+
+And let
+
+
+
+be the time derivative of the Lyapunov-candidate-function .
+
+Stable equilibrium[edit]
+
+If the Lyapunov-candidate-function  is locally positive definite and the time derivative of the Lyapunov-candidate-function is locally negative semidefinite:
+
+
+
+for some neighborhood  of , then the equilibrium is proven to be stable.
+
+Locally asymptotically stable equilibrium[edit]
+
+If the Lyapunov-candidate-function  is locally positive definite and the time derivative of the Lyapunov-candidate-function is locally negative definite:
+
+
+
+for some neighborhood  of , then the equilibrium is proven to be locally asymptotically stable. The converse is also true, and was proved by J. L. Massera
+
+Globally asymptotically stable equilibrium[edit]
+
+If the Lyapunov-candidate-function  is globally positive definite, radially unbounded and the time derivative of the Lyapunov-candidate-function is globally negative definite:
+
+
+
+then the equilibrium is proven to be globally asymptotically stable.
+The Lyapunov-candidate function  is radially unbounded if
+
+
+
+(This is also referred to as norm-coercivity.)
+
+Example[edit]
+
+Consider the following differential equation with solution x on :
+
+
+
+Considering that |x| is always positive around the origin it is a natural candidate to be a Lyapunov function to help us study x. So let  on . Then,
+
+
+
+This correctly shows that the above differential equation, x, is asymptotically stable about the origin. Note that if using the same Lyapunov candidate one can show that the equilibrium is also globally asymptotically stable.
+
+See also[edit]
+
+
+Ordinary differential equations
+Control-Lyapunov function
+Foster's theorem
+Lyapunov optimization
+

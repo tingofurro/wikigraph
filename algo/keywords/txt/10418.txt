@@ -1,0 +1,35 @@
+
+
+
+But the catalecticant of the biquadratic function of x, y was first brought into notice as an invariant by Mr Boole; and the discriminant of the quadratic function of x, y is identical with its catalecticant, as also with its Hessian. Meicatalecticizant would more completely express the meaning of that which, for the sake of brevity, I denominate the catalecticant.
+
+
+
+Sylvester (1852), quoted by (Miller 2010)
+
+In mathematical invariant theory, the catalecticant of a form of even degree is a polynomial in its coefficients that vanishes when the form is a sum of an unusually small number of powers of linear forms. It was introduced by Sylvester (1852); see (Miller 2010). The word catalectic refers to an incomplete line of verse, lacking a syllable at the end or ending with an incomplete foot.
+
+
+
+Contents
+
+
+1 Binary forms
+2 Catalecticants of quartic forms
+3 References
+4 External links
+
+
+
+
+Binary forms[edit]
+
+The catalecticant of a binary form of degree 2n is a polynomial in its coefficients that vanishes when the binary form is a sum of at most n powers of linear forms Sturmfels (1993).
+The catalecticant of a binary form can be given as the determinant of a catalecticant matrix (Eisenbud 1988), also called a Hankel matrix, that is a square matrix with constant (positive sloping) skew-diagonals, such as
+
+
+
+
+Catalecticants of quartic forms[edit]
+
+The catalecticant of a quartic form is the resultant of its second partial derivatives. For binary quartics the catalecticant vanishes when the form is a sum of 2 4th powers. For a ternary quartic the catalecticant vanishes when the form is a sum of 5 4th powers. For quaternary quartics the catalecticant vanishes when the form is a sum of 9 4th powers. For quinary quartics the catalecticant vanishes when the form is a sum of 14 4th powers. (Elliot 1915, p.295)

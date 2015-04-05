@@ -1,0 +1,43 @@
+In computer science and quantum physics, the Church–Turing–Deutsch principle (CTD principle[1]) is a stronger, physical form of the Church–Turing thesis formulated by David Deutsch in 1985.
+
+
+
+Contents
+
+
+1 Statement
+2 History
+3 See also
+4 Notes
+5 General References
+6 Further reading
+7 External links
+
+
+
+
+Statement[edit]
+
+The principle states that a universal computing device can simulate every physical process.
+
+History[edit]
+
+The principle was originally stated by Deutsch with respect to finitary machines and processes. He immediately observed that classical physics, which makes use of the concept of real numbers, cannot be simulated by a Turing machine, which can only represent computable reals.
+Deutsch proposed that quantum computers may actually obey the CTD principle, assuming that the laws of quantum physics can completely describe every physical process.
+
+See also[edit]
+
+
+Quantum complexity theory
+Digital physics
+
+Holographic principle and Bekenstein bound, which prohibit unlimited precision real numbers in the physical universe
+
+
+General References[edit]
+
+
+
+Deutsch, D. (1985). "Quantum theory, the Church–Turing principle and the universal quantum computer". Proceedings of the Royal Society (London) (400): 97–117. 
+
+

@@ -1,0 +1,119 @@
+
+
+
+
+
+
+
+This article has multiple issues. Please help improve it or discuss these issues on the talk page.
+
+
+
+
+
+
+
+
+This article is in a list format that may be better presented using prose. You can help by converting this article to prose, if appropriate. Editing help is available. (January 2012)
+
+
+
+
+
+This article includes a list of references, related reading or external links, but its sources remain unclear because it lacks inline citations. Please improve this article by introducing more precise citations. (June 2012)
+
+
+
+
+
+
+A stochastic investment model tries to forecast how returns and prices on different assets or asset classes, (e. g. equities or bonds) vary over time. Stochastic models are not applied for making point estimation rather interval estimation and they use different stochastic processes.[clarification needed] Investment models can be classified into single-asset and multi-asset models. They are often used for actuarial work and financial planning to allow optimization in asset allocation or asset-liability-management (ALM).
+
+
+
+Contents
+
+
+
+1 Single-asset models
+
+
+1.1 Interest rate models
+
+1.1.1 One-factor models
+1.1.2 Multi-factor models
+
+
+1.2 Term structure models
+1.3 Stock price models
+1.4 Inflation models
+
+
+2 Multi-asset models
+3 Further reading
+
+
+
+
+Single-asset models[edit]
+
+
+Interest rate models[edit]
+
+Interest rate models can be used to price fixed income products. They are usually divided into one-factor models and multi-factor assets.
+
+One-factor models[edit]
+
+
+Black–Derman–Toy model
+Black–Karasinski model
+Cox–Ingersoll–Ross model
+Ho–Lee model
+Hull–White model
+Kalotay–Williams–Fabozzi model
+Merton model
+Rendleman–Bartter model
+Vasicek model
+
+
+Multi-factor models[edit]
+
+
+Chen model
+Longstaff–Schwartz model
+
+
+Term structure models[edit]
+
+
+LIBOR market model (Brace Gatarek Musiela model)
+
+
+Stock price models[edit]
+
+
+Binomial model
+
+Black–Scholes model (geometric Brownian motion)
+
+
+Inflation models[edit]
+
+
+Multi-asset models[edit]
+
+
+ALM.IT (GenRe) model
+Cairns model
+FIM-Group model
+Global CAP:Link model
+Ibbotson and Sinquefield model
+Morgan Stanley model
+Russel–Yasuda Kasai model
+Smith's jump diffusion model
+TSM (B &amp; W Deloitte) model
+Watson Wyatt model
+Whitten &amp; Thomas model
+Wilkie investment model
+Yakoubov, Teeger &amp; Duval model
+

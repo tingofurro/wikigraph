@@ -1,0 +1,6 @@
+In combinatorics, Sun's curious identity is the following identity involving binomial coefficients, first established by Zhi-Wei Sun in 2002:
+
+
+
+After Sun's publication of this identity, five other proofs were obtained by various mathematicians: they are Panholzer and Prodinger's proof via generating functions, Merlini and Sprugnoli's proof using Riordan arrays, Ekhad and Mohammed's proof by the WZ method, Chu and Claudio's proof with the help of Jensen's formula, and Callan's combinatorial proof involving dominos and colorings.
+An application of the identity was given by Sun in a recent paper.

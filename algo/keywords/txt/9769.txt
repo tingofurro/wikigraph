@@ -1,0 +1,14 @@
+Yasutaka Ihara (伊原 康隆, Ihara Yasutaka; born 1938, Tokyo Prefecture) is a Japanese mathematician, professor emeritus at the Research Institute for Mathematical Sciences, working on number theory who introduced Ihara's lemma and the Ihara zeta function.
+Ihara received his PhD at the University of Tokyo in 1967 with thesis Hecke polynomials as congruence zeta functions in elliptic modular case.[1] In 1965/66 he was at the Institute for Advanced Study. He was a professor at the University of Tokyo and then at the Research Institute for Mathematical Science (RIMS) of the University of Kyōto. In 2002 he retired from RIMS as professor emeritus and then became a professor at Chūō University.
+Ihara has done important research on geometric and number theoretic applications of Galois theory. In the 1960s he introduced the eponymous Ihara zeta function.[2] In graph theory the Ihara zeta function has an interpretation, which was conjectured by Jean-Pierre Serre and proved by Toshikazu Sunada in 1985. Sunada also proved that a regular graph is a Ramanujan graph if and only if its Ihara zeta function satisfies an analogue of the Riemann hypothesis.[3]
+In 1990 Ihara gave a plenary lecture Braids, Galois groups and some arithmetic functions at the ICM in Kyōto. In 1970 he was an invited speaker (with lecture Non abelian class fields over function fields in special cases) at the ICM in Nice.
+His doctoral students include Kazuya Katō.
+
+Selected works[edit]
+
+
+On Congruence Monodromy Problems, Mathematical Society of Japan Memoirs, World Scientific 2009 (based on lectures in 1968/1969)
+with Michael Fried (ed.): Arithmetic fundamental groups and noncommutative Algebra, American Mathematical Society, Proc. Symposium Pure Math. vol.70, 2002
+as editor: Galois representations and arithmetic algebraic geometry, North Holland 1987
+with Kenneth Ribet, Jean-Pierre Serre (eds.): Galois Groups over Q, Springer 1989 (Proceedings of a Workshop 1987)
+

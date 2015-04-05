@@ -1,0 +1,105 @@
+
+
+
+
+
+Richard Laver
+
+
+Richard Laver (1942–2012) was an American mathematician, working in set theory. He received his PhD at the University of California, Berkeley in 1969, under the supervision of Ralph McKenzie, with a thesis on Order Types and Well-Quasi-Orderings. The largest part of his career he spent as Professor and later Emeritus Professor at the University of Colorado at Boulder.
+Richard Laver died in Boulder, CO, on September 19, 2012 after a long illness.[1]
+
+§His main results[edit]
+
+Among Laver's notable achievements some are the following.
+
+Using the theory of better-quasi-orders, introduced by Nash-Williams, (an extension of the notion of well-quasi-ordering), he proved[2]Fraïssé's conjecture: if (A0,≤),(A1,≤),...,(Ai,≤),,, are countable ordered sets, then for some i&lt;j (Ai,≤) isomorphically embeds into (Aj,≤). This also holds if the ordered sets are countable unions of scattered ordered sets.[3]
+
+He proved[4] the consistency of the Borel conjecture, i.e., the statement that every strong measure zero set is countable. This important independence result was the first when a forcing (see Laver forcing), adding a real, was iterated with countable support iteration. This method was later used by Shelah to introduce proper and semiproper forcing.
+He proved[5] the existence of a Laver function for supercompact cardinals. With the help of this, he proved the following result. If κ is supercompact, there is a κ-c.c. forcing notion (P, ≤) such that after forcing with (P, ≤) the following holds: κ is supercompact and remains supercompact in any forcing extension via a κ-directed closed forcing. This statement is used, for example in the proof of the consistency of the proper forcing axiom and variants.
+Laver and Shelah proved[6] that it is consistent that the continuum hypothesis holds and there are no ℵ2-Suslin trees.
+Laver proved[7] that the perfect subtree version of the Halpern–Läuchli theorem holds for the product of infinitely many trees. This solved a longstanding open question.
+Laver started[8][9][10] investigating the algebra that j generates where j:Vλ→Vλ is some elementary embedding. This algebra is the free left-distributive algebra on one generator. For this he introduced Laver tables.
+He also showed[11] that if V[G] is a (set-)forcing extension of V, then V is a class in V[G].
+
+
+§References[edit]
+
+
+
+
+^ Obituary, European Set Theory Society
+
+
+^ R. Laver: On Fraïssé's order type conjecture, Ann. of Math. (2), 93(1971), 89–111.
+
+
+^ R. Laver: An order type decomposition theorem, Ann. of Math., 98(1973), 96–119.
+
+
+^ R. Laver: On the consistency of Borel's conjecture, Acta Math., 137(1976), 151–169.
+
+
+^ R. Laver: Making the supercompactness of κ indestructible under κ-directed closed forcing, Israel J. Math., 29(1978), 385–388.
+
+
+^ R. Laver, S. Shelah: The ℵ2 Souslin hypothesis, Trans. Amer. Math. Soc., 264(1981), 411–417.
+
+
+^ R. Laver: Products of infinitely many perfect trees, Journal of the London Math. Soc., 29(1984), 385–396.
+
+
+^ R. Laver: The left-distributive law and the freeness of an algebra of elementary embeddings, Advances in Mathematics, 91(1992), 209–231.
+
+
+^ R. Laver: The algebra of elementary embeddings of a rank into itself, Advances in Mathematics, 110(1995), 334–346.
+
+
+^ R. Laver: Braid group actions on left distributive structures, and well orderings in the braid groups, Jour. Pure and Applied Algebra, 108(1996), 81–98.
+
+
+^ R. Laver: Certain very large cardinals are not created in small forcing extensions, Annals of Pure and Applied Logic, 149(2007) 1–6.
+
+
+
+
+§External links[edit]
+
+
+
+Richard Laver at the Mathematics Genealogy Project
+
+
+
+
+Persondata
+
+
+Name
+Laver, Richard
+
+
+Alternative names
+
+
+
+Short description
+American mathematician
+
+
+Date of birth
+1942
+
+
+Place of birth
+
+
+
+Date of death
+
+
+
+Place of death
+
+
+

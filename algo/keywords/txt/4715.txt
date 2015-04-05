@@ -1,0 +1,32 @@
+In mathematics, a sequence a0, a1, ..., an of nonnegative real numbers is called a logarithmically concave sequence, or a log-concave sequence for short, if ai2 &gt; ai−1ai+1 holds for 1 &lt; i &lt; n − 1.
+Examples of log-concave sequences are given by the binomial coefficients along any row of Pascal's triangle.
+
+See also[edit]
+
+
+Unimodality
+Logarithmically concave function
+Logarithmically concave measure
+
+
+
+
+
+This combinatorics-related article is a stub. You can help Wikipedia by expanding it.
+
+
+v
+t
+e
+
+
+
+
+
+
+
+
+
+
+
+

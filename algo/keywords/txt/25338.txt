@@ -1,0 +1,189 @@
+
+
+Geodesy
+
+
+Fundamentals
+
+
+
+
+
+Geodesy
+Geodynamics
+Geomatics
+Cartography
+History
+
+
+
+
+
+Concepts
+
+
+
+
+
+Datum
+Geographical distance
+Geoid
+Figure of the Earth
+Geodetic system
+Geodesic
+Geographic coordinate system
+Horizontal position representation
+Latitude / Longitude
+Map projection
+Reference ellipsoid
+Satellite geodesy
+Spatial reference system
+
+
+
+
+
+Technologies
+
+
+
+
+Global Navigation Satellite System (GNSS)
+Global Positioning System (GPS)
+GLONASS (Russian)
+Galileo (European)
+
+Indian Regional Navigation
+Satellite System (IRNSS)
+
+BeiDou-2 (Chinese)
+
+
+
+
+Standards
+
+
+
+
+
+ED50
+European Datum 1950
+
+
+SAD69
+South American Datum 1969
+
+
+GRS 80
+Geodetic Reference System 1980
+
+
+NAD83
+North American Datum 1983
+
+
+WGS84
+World Geodetic System 1984
+
+
+NAVD88
+N. American Vertical Datum 1988
+
+
+ETRS89
+
+European Terrestrial Reference
+System 1989
+
+
+
+
+Spatial Reference System Identifier (SRID)
+Universal Transverse Mercator (UTM)
+
+
+
+
+History
+
+
+
+
+NGVD29 (Sea Level Datum 1929)
+
+
+
+
+
+
+
+v
+t
+e
+
+
+
+
+
+The United States National Grid (USNG) is a point reference system of grid references commonly used in United States. It provides a nationally consistent language of location in a user friendly format. It is similar in design to the national grid reference systems used throughout other nations. The USNG was developed by the Federal Geographic Data Committee.
+
+
+
+Contents
+
+
+1 Overview
+2 See also
+3 References
+4 External links
+
+
+
+
+§Overview[edit]
+
+The purpose of the USNG according to the FGDC, is to "create a more interoperable environment for developing location-based services within the United States and to increase the interoperability of location services appliances with printed map products by establishing a nationally consistent grid reference system as the preferred grid for NSDI applications. The U.S. National Grid is based on universally-defined coordinate and grid systems and can, therefore, be easily extended for use worldwide as a universal grid reference system." [1]
+It resembles the Military Grid Reference System (MGRS). When the WGS84 datum or NAD83 datum is used, USNG and MGRS coordinates are "equivalent"[2]
+In addition, it has the advantage of being easily plotted on USGS topographic and other properly gridded maps by using a simple "read right and then up" convention where the user measures to the East and then North in linear increments. The coordinates are easily translated to distance as they are actually in meters rather than the more complex degree based increments of latitude and longitude. Thus the distance between two coordinates can quickly be determined in the field.
+USNG 1 km2 grid state-wide polygons for select states can be downloaded from http://usngcenter.org. The website also provides more detailed information about the US National Grid.
+USNG allows a common system based on the US Military Grid system using landmarks like hills or streams, anything permanent. It allows these maps to be printed anywhere by responders totally unfamiliar with the local area. The degree of precision is determined by the number of digits in the coordinates, 23 67 = 1000 meters, 23451 67345 = 1 meter.
+
+§See also[edit]
+
+
+Ordnance Survey National Grid
+Irish national grid reference system
+International Map of the World#Map Indexing System
+
+
+§References[edit]
+
+
+
+
+^ [1]
+
+
+^ Cavell, J. Anthony. "A Guide to using the USNG", The American Surveyor, 2005. Retrieved on 14 September 2012.
+
+
+
+
+FGDC, United States National Grid (USNG), December 2001, Reston, Virginia, 1 megabyte PDF
+
+Cavell, J. Anthony. “A Guide to using the USNG”, The American Surveyor, 2005. PDF
+
+
+
+§External links[edit]
+
+
+[2]
+USNG homepage
+How to Read a United States National Grid (USNG) Spatial Address
+Utility to convert latitude and longitude to USNG
+Demonstration of USNG on a Google Map
+
+Gmap4, an enhanced Google map viewer with a USNG grid and more.
+

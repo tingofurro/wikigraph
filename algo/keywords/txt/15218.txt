@@ -1,0 +1,1 @@
+The conditional change model in statistics is the analytic procedure in which change scores are regressed on baseline values, together with the explanatory variables of interest (often including indicators of treatment groups). The method has some substantial advantages over the usual two-sample t-test recommended in textbooks.
