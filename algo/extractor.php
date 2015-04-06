@@ -55,17 +55,18 @@ function extractSections($pageName) { // Given a pagename, extract HTML
 }
 function removeLists($html) { // Remove lists that tend to create complete subgraphs
 	$dom = new DOMDocument;
-	@$dom->loadHTML($html);
+	@$dom->loadHTML(cleanEncoding($html));
 	$dom = $dom->getElementsByTagName('body')->item(0);
 	$children  = $dom->childNodes;
     $toRemove = array();
     foreach ($children as $child) {
 		if(get_class($child) == 'DOMElement') {
-	    	$thisClass = $child->getAttribute('class');
-			if(!empty($thisClass) AND strpos($thisClass, 'plainlist') !== false) array_push($toRemove, $child);
+	    	$thisClass = $child->getAttribute('class'); // ambox
+			if(!empty($thisClass) AND (strpos($thisClass, 'plainlist') !== false OR strpos($thisClass, 'navbox') !== false OR strpos($thisClass, 'ambox') !== false)) array_push($toRemove, $child);
 		}
     }
 	foreach ($toRemove as $list) $dom->removeChild($list);
+	if(count($toRemove) > 0) echo "<b>Removed something</b>";
 	return DOMinnerHTML($dom);
 }
 function divToSkip(DOMNode $child, $skip) {
