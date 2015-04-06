@@ -22,7 +22,7 @@ $txt .= "\"links\": [\n";
 			$kw1 = $keywords[$keywordKeys[$i]];
 			$kw2 = $keywords[$keywordKeys[$j]];
 			$intersect = array_intersect($kw1, $kw2);
-			if(count($intersect) > 1) {
+			if(count($intersect) > 2) {
 				array_push($edges, $sp.$sp."{\"source\": ".$i.", \"target\": ".$j.", \"value\": 2 }");
 			}
 		}		
