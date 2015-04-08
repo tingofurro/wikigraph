@@ -7,8 +7,6 @@ from nltk.stem.porter import PorterStemmer
 
 def getKeywords(texts):
 	# Given a list of texts, will extract the keywords for each and return that!
-	# NOTICE: Don't send more than 100 articles at a time, as we can't insure heterogeneity
-
 	count_vectUni = CountVectorizer(stop_words='english', ngram_range=(1,1)) # for unigrams
 	count_vectBi = CountVectorizer(stop_words='english', ngram_range=(2,2)) # for bigrams
 
@@ -16,8 +14,6 @@ def getKeywords(texts):
 	tfidf_trans2 = TfidfTransformer()
 
 	trainingText = []
-	# trainingArticles = app.getTrainingSet(50, 20) # get a training set to mix up the TfIdf
-	# trainingText = [x.text for x in trainingArticles]
 	totalText = trainingText + texts # merge
 
 	# training unigram and bigram TFIDF
@@ -141,8 +137,6 @@ def getKeywords(texts):
 								splitBigramTfidf.pop(index - 1)
 								index = index - 1
 						index = index - 1
-
-
 		# Concatenate both lists
 		for index in range(len(splitBigrams)):
 			if (index % 2 == 0):
@@ -159,4 +153,3 @@ def getKeywords(texts):
 
 		articleIndex = articleIndex + 1
 	return keywordList
-
