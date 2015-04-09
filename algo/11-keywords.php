@@ -6,7 +6,7 @@ set_time_limit(3600);
 $hasKeywords = false;
 $col = mysql_query("SHOW COLUMNS FROM wg_page;");
 while($colu = mysql_fetch_array($col)) {
-	if($colu[0] == 'PR') $hasKeywords = true;
+	if($colu[0] == 'keywords') $hasKeywords = true;
 }
 if(!$hasKeywords) mysql_query("ALTER TABLE `wg_page` ADD `keywords` TEXT NOT NULL DEFAULT '' AFTER `field`");
 

@@ -3,7 +3,6 @@ import numpy as np
 from StringIO import StringIO
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
-from nltk.stem.porter import PorterStemmer
 
 def getKeywords(texts):
 	# Given a list of texts, will extract the keywords for each and return that!
