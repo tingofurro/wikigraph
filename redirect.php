@@ -22,6 +22,9 @@ switch ($myUrl) {
 	case 'fields':
 		include_once('display/field.php');
 	break;
+	case 'keywords':
+		include_once('display/keywords.php');
+	break;
 	case '':
 		include_once('display/index.php');
 	break;
