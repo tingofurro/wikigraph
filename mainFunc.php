@@ -8,7 +8,7 @@ function wikiToName($oldStr) {
 function wherePython() {
 	$link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 	if(strpos($link, "/Wikigraph")) {return 'C:\\Python27\\python.exe';} // kinda hack, this is on Windows Machine
-	else {return '/etc/python2.7';} // this is on server
+	else {return '/usr/bin/python2.7';} // this is on server
 }
 
 function getRoot() {

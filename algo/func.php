@@ -96,4 +96,7 @@ function computeDiffusion($adja, $source, $d) { // d is the damping comefficient
 	}
 	return $diff;
 }
+function emptyFolder($folderName) {
+	foreach(glob($folderName.'/*') as $file) if(is_file($file)) unlink($file);
+}
 ?>
