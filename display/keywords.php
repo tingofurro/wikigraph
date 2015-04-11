@@ -1,59 +1,26 @@
 <?php
-	topMenu($root, $realRoot);
-	include_once('createJsonGraph.php');
-	generateKeywordGraph();
+	// include_once('createJsonGraph.php');
+
+	$fileUrl = "display/json/keywords.json";
+	$fileExists = file_exists(getDocumentRoot().'/'.$fileUrl);
+
+	// if(!$fileExists) {
+	// 	if($graphType == 'art') {generateArticleGraph($field);}
+	// }
 ?>
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-body {
-  margin: 0px;
-  padding: 0px;
-}
-.node {
-  stroke: #fff;
-  stroke-width: 1.5px;
-}
-
-.link {
-  stroke: #999;
-  stroke-opacity: .6;
-}
-
-</style>
-<body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
-
-var width = $(document).width(), height = $(document).height();
-var color = d3.scale.category20();
-var force = d3.layout.force().charge(-120).linkDistance(30).size([width, height]);
-
-var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
-
-d3.json("<?php echo $realRoot."json/keywordGraph.json"; ?>", function(error, graph) {
-  force.nodes(graph.nodes).links(graph.links).start();
-
-  var link = svg.selectAll(".link").data(graph.links).enter().append("line")
-      .attr("class", "link").style("stroke-width", function(d) { return Math.sqrt(d.value); });
-
-  var node = svg.selectAll(".node")
-      .data(graph.nodes).enter().append("circle")
-      .attr("class", "node").attr("r", 5)
-      .style("fill", function(d) { return color(d.group); });
-
-	  node.append("title").text(function(d) { return d.name; });
-
-  force.on("tick", function() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-
-    node.attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
-  });
-});
-
+<link rel="stylesheet" type="text/css" href="<?php echo $realRoot; ?>css/graphCat.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="<?php echo $realRoot; ?>JS/lib/d3.js"></script>
+<body></body>
+<script src="<?php echo $realRoot; ?>JS/graph.js"></script>
+<script type="text/javascript">
+	var webroot = '<?php echo $realRoot; ?>';
+	var color = d3.scale.category20();
+	<?php	 if($fileExists) { ?> plotGraph('<?php echo $root.$fileUrl; ?>', false, ''); <?php }
+	 else {
+	   ?> plotGraph('<?php echo $realRoot."json/keywordGraph.json"; ?>', true, '<?php echo getDocumentRoot()."/".$fileUrl; ?>'); <?php
+	 }
+	?>
 </script>

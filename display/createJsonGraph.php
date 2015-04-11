@@ -81,6 +81,8 @@ function generateKeywordGraph() {
 					array_push($edges, $sp.$sp."{\"source\": ".$i.", \"target\": ".$j.", \"value\": 2 }");
 				}
 			}		
+			echo $i."<br />";
+			ob_flush(); flush();
 		}
 		$txt .= implode(", \n", $edges);
 	$txt .= "\n]\n";
