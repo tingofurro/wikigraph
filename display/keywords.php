@@ -1,12 +1,10 @@
 <?php
-	// include_once('createJsonGraph.php');
+	include_once('createJsonGraph.php');
 
 	$fileUrl = "display/json/keywords.json";
 	$fileExists = file_exists(getDocumentRoot().'/'.$fileUrl);
 
-	// if(!$fileExists) {
-	// 	if($graphType == 'art') {generateArticleGraph($field);}
-	// }
+	if(!$fileExists) generateKeywordGraph();
 ?>
 <!DOCTYPE html>
 <meta charset="utf-8">

@@ -66,7 +66,7 @@ function plotGraph(graphFile, toRun, toFile, field) {
 		  if(field < 23) {
 		  	setTimeout(function() {
 			  	window.location=webroot+'graphArt/'+(field+1);
-		  	}, 3000);
+		  	}, 8000);
 			}
 		});
 	});

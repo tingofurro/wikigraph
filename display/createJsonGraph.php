@@ -57,6 +57,7 @@ function generateArticleGraph($field) {
 	$fh = fopen($src, 'w'); fwrite($fh, $txt);
 }
 function generateKeywordGraph() {
+	set_time_limit(3600);
 	$sp = str_repeat(' ', 3);
 	$txt = "{\n";
 	$txt .= $sp."\"nodes\": [\n";
@@ -81,8 +82,6 @@ function generateKeywordGraph() {
 					array_push($edges, $sp.$sp."{\"source\": ".$i.", \"target\": ".$j.", \"value\": 2 }");
 				}
 			}		
-			echo $i."<br />";
-			ob_flush(); flush();
 		}
 		$txt .= implode(", \n", $edges);
 	$txt .= "\n]\n";
