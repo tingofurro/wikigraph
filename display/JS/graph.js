@@ -3,6 +3,7 @@ var alphaF = 0.005, alphaI;
 var smallRadius = 4, largeRadius = 5;
 var svg, force;
 var rectangle, aboveRect, loading;
+var nodes, links=[],bilinks=[];
 
 function plotGraph(graphFile, toRun, toFile, field) {
 	// toRun: do the nodes already have positions or not?
@@ -16,8 +17,7 @@ function plotGraph(graphFile, toRun, toFile, field) {
 	force = d3.layout.force().linkStrength(2).friction(0.9).linkDistance(20).charge(-10).gravity(0.1).theta(0.8).alpha(alphaI).size([screenW, screenH]);
 
 	d3.json(graphFile, function(error, graph) {
-
-		var nodes = graph.nodes.slice(), links = [], bilinks = [];
+		nodes = graph.nodes.slice();
 
 		graph.links.forEach(function(link) {
 			var s = nodes[link.source],
@@ -63,12 +63,31 @@ function plotGraph(graphFile, toRun, toFile, field) {
 	      });
 	      loading.remove(); aboveRect.remove(); rectangle.remove();
 		  if(toFile!='') {uploadAjax(nodes, links, toFile);}
-		  if(field < 23) {
-		  	setTimeout(function() {
-			  	window.location=webroot+'graphArt/'+(field+1);
-		  	}, 8000);
-			}
 		});
+	});
+	d3.select('#comm_detect').on('click', function(){
+		var louvainNodes = [], louvainLinks = [];
+		for(i in nodes) {
+			if(nodes[i].name) {louvainNodes.push(nodes[i].index);}
+		}
+		for(i in links) {
+			oldLink = links[i];
+			if(oldLink.source.name) {
+				center = oldLink.target; // not the real node
+				louvainLinks.push({'source': center.t1.index, 'target': center.t2.index, 'value': 2});
+			}
+		}
+		var community = jLouvain().nodes(louvainNodes).edges(louvainLinks);
+
+		var community_assignment_result = community();
+		var node_ids = Object.keys(community_assignment_result);
+		var max_community_number = 0;
+		node_ids.forEach(function(d){
+			nodes[d].community = community_assignment_result[d];
+			max_community_number = Math.max(max_community_number, community_assignment_result[d]);
+		});
+		var color = d3.scale.category20().domain(d3.range([0, max_community_number]));
+		d3.selectAll('.node').data(nodes).style('fill', function(d){ return color(d.community);})
 	});
 }
 function uploadAjax(nodes, links, toFile) {

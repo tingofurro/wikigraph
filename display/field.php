@@ -1,6 +1,4 @@
-<?php
-topMenu($root, $realRoot);
-?>
+<?php topMenu($root, $realRoot); ?>
 <html>
 <head>
 	<title>Number of categories and pages per field</title>

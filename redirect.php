@@ -25,6 +25,9 @@ switch ($myUrl) {
 	case 'keywords':
 		include_once('display/keywords.php');
 	break;
+	case 'louvain':
+		include_once('display/louvain.php');
+	break;
 	case '':
 		include_once('display/index.php');
 	break;
