@@ -14,13 +14,12 @@ $listNode = array();
 while($no = mysql_fetch_array($n)) array_push($listNode, $no['id']);
 
 $listNodeTxt = implode(", ", $listNode);
-
+echo count($listNode);
 $e = mysql_query("SELECT * FROM wg_link WHERE (`to` IN(".$listNodeTxt.") AND `from` IN(".$listNodeTxt.")) ORDER BY id");
 $edges = array();
 while($ed = mysql_fetch_array($e)) {
-	array_push($edges, $ed['from']." , ".$ed['to']);
+	array_push($edges, $ed['from']." ".$ed['to']);
 }
-
 $src = getDocumentRoot()."/igraph/graph.json";
 $fh = fopen($src, 'w'); fwrite($fh, implode("\n", $edges));
 ?>
