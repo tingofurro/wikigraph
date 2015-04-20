@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":4500,"name":"Weierstrass_function","group":2,"x":686.6,"y":311.8},{"index":1,"id":13914,"name":"Rademacher's_theorem","group":2,"x":656.7,"y":325.4},{"index":2,"id":14010,"name":"Weierstrass_functions","group":2,"x":670,"y":341.9}]
+, 
+"links": 
+[{"source":1,"target":0,"value":2},{"source":2,"target":0,"value":2},{"source":0,"target":2,"value":2}]
+}

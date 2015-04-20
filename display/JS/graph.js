@@ -5,7 +5,7 @@ var svg, force;
 var rectangle, aboveRect, loading;
 var nodes, links=[],bilinks=[];
 
-function plotGraph(graphFile, toRun, toFile, field) {
+function plotGraph(graphFile, toRun, toFile) {
 	// toRun: do the nodes already have positions or not?
 	// toFile: where to save. If == '' then no saving
 	alphaI = (toRun==1)?0.2:0.0052;

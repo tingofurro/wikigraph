@@ -25,8 +25,8 @@ switch ($myUrl) {
 	case 'keywords':
 		include_once('display/keywords.php');
 	break;
-	case 'louvain':
-		include_once('display/louvain.php');
+	case 'main':
+		include_once('display/main.php');
 	break;
 	case '':
 		include_once('display/index.php');
@@ -74,5 +74,10 @@ if(count($exp) >= 2 && $exp[0] == 'wiki') {
 if(count($exp) >= 2 && $exp[0] == 'subfield') {
 	$_GET['sf'] = mysql_real_escape_string($exp[1]);
 	include_once('display/subfield.php');
+}
+if(count($exp) >= 3 && $exp[0] == 'topics') {
+	$_GET['field'] = mysql_real_escape_string($exp[1]);
+	$_GET['topic'] = mysql_real_escape_string($exp[2]);
+	include_once('display/topics.php');
 }
 ?>

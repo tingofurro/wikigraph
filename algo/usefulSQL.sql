@@ -18,3 +18,6 @@ SELECT *, (0.5*(`to`+`from`)*(`to`+`from`+1)+`to`) AS cantor, COUNT(*) AS count 
 
 -- Links grouped by `from`
 SELECT link.*, COUNT(*) AS count, page.name FROM wg_link AS link INNER JOIN wg_page AS page ON page.id=link.`from` GROUP BY `from` ORDER BY COUNT(*) DESC
+
+-- Make sense of topics
+SELECT top.*, pa.name FROM `wg_topic` AS top INNER JOIN wg_page AS pa ON top.page=pa.id WHERE top.PR>=2 ORDER BY top.`field` ASC, top.`topic` ASC, top.PR DESC
