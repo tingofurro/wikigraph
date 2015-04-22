@@ -50,11 +50,42 @@ function generateTopicGraph($field, $topic) {
 	nodes2Graph($nodes, getDocumentRoot()."/display/json/catGraph.json");
 }
 function generateMainGraph() {
-	$nodes = array();
-	$n = mysql_query("SELECT * FROM wg_page WHERE PR>=0.08");
-	while($no = mysql_fetch_array($n)) array_push($nodes, $no['id']);
-	include_once('graphFunctions.php');
-	nodes2Graph($nodes, getDocumentRoot()."/display/json/catGraph.json");
+	set_time_limit(90);
+	$sp = str_repeat(' ', 3);
+	$txt = "{\n";
+	$txt .= $sp."\"nodes\": [\n";
+		$listNode = array();
+		// $src = getDocumentRoot()."/igraph/eigenvector.txt";
+		// $groups = file_get_contents($src); $groups = preg_split('/\r\n|\n|\r/', trim($groups));
+		// $nodeGroups = array();
+		// foreach ($groups as $toks) {
+		// 	$tok = explode(" ", $toks);
+		// 	if(count($tok) == 2) {$nodeGroups[$tok[0]] = $tok[1];}
+		// }
+
+
+
+		$n = mysql_query("SELECT id, PR, name, field FROM wg_page ORDER BY PR DESC LIMIT 300"); // id IN (".$listNodeTxt.")
+		$nodes = array(); $listNode = array();
+		while($no = mysql_fetch_array($n)) {
+			array_push($nodes, $sp.$sp."{\"id\": ".$no['id'].", \"name\": \"".$no['name']."\", \"group\": 0 }"); // ".$nodeGroups[$no['id']]."
+			array_push($listNode, $no['id']);
+		}
+		$listNodeTxt = implode(", ", $listNode);
+
+		$txt .= implode(", \n", $nodes);
+	$txt .= "\n], \n";
+	$txt .= "\"links\": [\n";
+		$e = mysql_query("SELECT * FROM wg_link WHERE (`to` IN(".$listNodeTxt.") AND `from` IN(".$listNodeTxt.")) ORDER BY id");
+		$edges = array();
+		while($ed = mysql_fetch_array($e)) {
+			array_push($edges, $sp.$sp."{\"source\": ".array_search($ed['to'], $listNode).", \"target\": ".array_search($ed['from'], $listNode).", \"value\": 2 }");
+		}
+		$txt .= implode(", \n", $edges);
+	$txt .= "\n]\n";
+	$txt .= "}";
+	$src = getDocumentRoot()."/display/json/catGraph.json";
+	$fh = fopen($src, 'w'); fwrite($fh, $txt);
 }
 function generateKeywordGraph() {
 	set_time_limit(3600);

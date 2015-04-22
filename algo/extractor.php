@@ -45,26 +45,26 @@ function extractSections($pageName) { // Given a pagename, extract HTML
 	$dom = new DOMDocument;
 	@$dom->loadHTML(cleanEncoding($html));
 	$dom = $dom->getElementById('mw-content-text');
-    $cleanHtml = ""; $lastHeadline = ''; $skip = false;
-    $children  = $dom->childNodes;
-    foreach ($children as $child) {
-    	$skip = divToSkip($child, $skip); // reload skipping
+	$cleanHtml = ""; $lastHeadline = ''; $skip = false;
+	$children  = $dom->childNodes;
+	foreach ($children as $child) {
+		$skip = divToSkip($child, $skip); // reload skipping
 		if(!$skip) $cleanHtml .= $dom->ownerDocument->saveHTML($child);
-    }
-    return $cleanHtml;
+	}
+	return $cleanHtml;
 }
 function removeLists($html) { // Remove lists that tend to create complete subgraphs
 	$dom = new DOMDocument;
 	@$dom->loadHTML(cleanEncoding($html));
 	$dom = $dom->getElementsByTagName('body')->item(0);
 	$children  = $dom->childNodes;
-    $toRemove = array();
-    foreach ($children as $child) {
+	$toRemove = array();
+	foreach ($children as $child) {
 		if(get_class($child) == 'DOMElement') {
-	    	$thisClass = $child->getAttribute('class'); // ambox
+			$thisClass = $child->getAttribute('class'); // ambox
 			if(!empty($thisClass) AND (strpos($thisClass, 'plainlist') !== false OR strpos($thisClass, 'navbox') !== false OR strpos($thisClass, 'ambox') !== false)) array_push($toRemove, $child);
 		}
-    }
+	}
 	foreach ($toRemove as $list) $dom->removeChild($list);
 	if(count($toRemove) > 0) echo "<b>Removed something</b>";
 	return DOMinnerHTML($dom);
@@ -75,13 +75,13 @@ function divToSkip(DOMNode $child, $skip) {
 	if(get_class($child) == 'DOMElement') {
 		$thisEntity = $child->nodeName;
 		if($thisEntity == 'h2') {
-		    $H2children  = $child->childNodes;
-		    foreach ($H2children as $couldHeadline) {
+			$H2children  = $child->childNodes;
+			foreach ($H2children as $couldHeadline) {
 				$thisClass = $couldHeadline->getAttribute('class');
 				if(!empty($thisClass) AND strpos($thisClass, 'mw-headline') !== false) {
 					return in_array($couldHeadline->getAttribute('id'), $removeHeadline); 
 				}
-		    }
+			}
 		}
 	}
 	return $skip;
@@ -105,6 +105,19 @@ function extractLinkArray($pageId) {
 	}
 	return $pageNames;
 }
+function extractSummary($html) {
+	// Given an HTML Wikipedia page, extract the summary (in HTML format still) (~first paragraph)	
+	$dom = new DOMDocument;
+	@$dom->loadHTML(cleanEncoding($html));
+	$dom = $dom->getElementsByTagName('body')->item(0);
+	$cleanHtml = ""; $lastHeadline = ''; $skip = false;
+	$children  = $dom->childNodes;
+	foreach ($children as $child) {
+		if(get_class($child) == 'DOMElement' && $child->nodeName == 'h2') break;
+		$cleanHtml .= $dom->ownerDocument->saveHTML($child);
+	}
+	return $cleanHtml;
+}
 function redirectName($name) {
 	$dom = new DOMDocument; @$dom->loadHTML(cleanEncoding(file_get_contents('http://en.wikipedia.org/wiki/'.urlencode($name))));
 	$dom = $dom->getElementById('firstHeading');
@@ -112,9 +125,9 @@ function redirectName($name) {
 	return '';
 }
 function DOMinnerHTML(DOMNode $element) { 
-    $innerHTML = "";
-    foreach ($element->childNodes as $child) $innerHTML .= $element->ownerDocument->saveHTML($child);
-    return $innerHTML; 
+	$innerHTML = "";
+	foreach ($element->childNodes as $child) $innerHTML .= $element->ownerDocument->saveHTML($child);
+	return $innerHTML; 
 }
 function cleanEncoding($txt) {
 	return mb_convert_encoding($txt, 'HTML-ENTITIES', 'UTF-8');

@@ -109,6 +109,6 @@ function uploadAjax(nodes, links, toFile) {
 	$.ajax({type: "POST",
 		url: webroot+'ajax/saveGraph.php',
 		data: postData,
-		success: function(dat) { alert(dat); }
+		success: function(dat) { /* alert(dat); */ }
 	});
 }
