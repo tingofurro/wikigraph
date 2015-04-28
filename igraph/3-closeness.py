@@ -1,15 +1,12 @@
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from StringIO import StringIO
 from sklearn.svm import SVC
 
 import numpy as np
-import sys
-import os
+import sys, os
 
-def func(a,N):
+def bestIndeces(a,N):
 	return np.argsort(a)[::-1][:N]
 
 root = sys.argv[1]
@@ -22,15 +19,14 @@ for filename in filenames:
 	f = open(root+'/igraph/txt/'+ filename, "r")
 	texts.append(f.read())
 	f.close()
-f = open(root+'/igraph/data/spinglass.txt')
-txt = f.read()
-f.close()
-toks = txt.split('\n')
-classes = {} # dictionary
+f = open(root+'/igraph/data/community.txt')
+txt = f.read();
+f.close();
+toks = txt.split('\n');
+classes = {};
 classesArray = []
-classNb = {}
-friends = {}
-notFriends = {}
+classNb = {};
+friends = {}; notFriends = {};
 
 for tok in toks:
 	infos = tok.split(' ')
@@ -73,6 +69,6 @@ for c in range(0,len(classNb)):
 			tfidfBuild.append(trainingTfidf[art].toarray())
 	meanTfidf = np.mean(tfidfBuild, axis=0)
 	meanTfidf = 100*meanTfidf[0]
-	bestIndeces = func(meanTfidf, 10)
+	bestIndeces = bestIndeces(meanTfidf, 10)
 	for index in bestIndeces:
-		print "[", index, "] ", meanTfidf[index], ": ", vocabValue[vocabIndex.index(index)].encode('utf-8')
+		print "[",index,"] ", meanTfidf[index], ": ", vocabValue[vocabIndex.index(index)].encode('utf-8')
