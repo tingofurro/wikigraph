@@ -2,25 +2,31 @@ from itertools import izip
 from igraph import *
 import csv
 
-g = Graph.Load('data/graph.json', 'ncol')
-# algos = ['community_infomap', 'community_leading_eigenvector', 'community_label_propagation', 'community_spinglass', 'community_walktrap']
-# algoNames = ['infomap', 'leading_eigenvector_naive', 'label_propagation', 'spinglass', 'walktrap']
-algos = ['community_spinglass', 'community_leading_eigenvector']
-algoNames = ['spinglass', 'eigenvector']
+root = sys.argv[1]
+
+g = Graph.Load(root+'/igraph/data/graph.json', 'ncol')
 
 layout_f = g.layout_fruchterman_reingold()
-
 print "Finished preparing layout"
 
-for algoName, func in zip(algoNames, algos):
-	comm = eval('g.'+func+'()')
+pieces = g.clusters()
 
-	plot(comm, "data/"+algoName+".png", layout=layout_f, vertex_size=4, edge_arrow_size=0.1, edge_width=0.2)
+# subgraphs = pieces.subgraphs()
+# for subgraph in subgraphs:
+# 	print "This piece has ", subgraph.vcount() ," nodes"
 
-	# membership = comm.membership
-	f = open('data/'+algoName+'.txt','w')
-	for name, member in izip(g.vs["name"], membership):
-		f.write(name+' '+str(member)+'\n') # python will convert \n to os.linesep
-	f.close()
+print "Number of subgraphs: ", len(pieces.subgraphs())
+g = pieces.giant() # just keep the largest piece, there can be annoying islands
+print "Giant subgraph has", g.vcount(), " nodes"
 
-	print "Finished algo ", algoName, ""
+comm = g.community_spinglass()
+
+plot(comm, root+"/igraph/data/spinglass.png", layout=layout_f, vertex_size=4, edge_arrow_size=0.1, edge_width=0.2)
+
+membership = comm.membership
+f = open(root+'/igraph/data/spinglass.txt','w')
+for name, member in izip(g.vs["name"], membership):
+	f.write(name+' '+str(member)+'\n')
+f.close()
+
+print "Finished algo spinglass"

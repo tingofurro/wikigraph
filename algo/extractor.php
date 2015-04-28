@@ -113,8 +113,13 @@ function extractSummary($html) {
 	$cleanHtml = ""; $lastHeadline = ''; $skip = false;
 	$children  = $dom->childNodes;
 	foreach ($children as $child) {
-		if(get_class($child) == 'DOMElement' && $child->nodeName == 'h2') break;
-		$cleanHtml .= $dom->ownerDocument->saveHTML($child);
+		if(get_class($child) == 'DOMElement' && $child->nodeName == 'h2') {break;}
+		$skip = false;
+		if(get_class($child) == 'DOMElement') {
+			$class = $child->getAttribute('class');
+			if(!empty($class) && $class == 'hatnote') $skip = true;
+		}
+		if(!$skip) {$cleanHtml .= $dom->ownerDocument->saveHTML($child);}
 	}
 	return $cleanHtml;
 }
