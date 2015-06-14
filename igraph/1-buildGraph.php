@@ -1,8 +1,10 @@
 <?php
 
-function createGraph($limit) {
+function createGraph($limit, $level, $cluster) {
 	$nodes = array();
-	$n = mysql_query("SELECT * FROM wg_page ORDER BY PR DESC LIMIT ".$limit);
+	$where = '';
+	if($level > 0) $where = ' WHERE cluster'.$level.'='.$cluster;
+	$n = mysql_query("SELECT * FROM wg_page".$where." ORDER BY PR DESC LIMIT ".$limit);
 	while($no = mysql_fetch_array($n)) array_push($nodes, $no['id']);
 
 	$e = mysql_query("SELECT * FROM wg_link WHERE (`to` IN (".implode(", ", $nodes).") AND `from` IN (".implode(", ", $nodes).")) ORDER BY id");

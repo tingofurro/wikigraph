@@ -3,6 +3,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from StringIO import StringIO
 from sklearn.svm import SVC
 
+from itertools import izip
 import numpy as np
 import sys, os
 
@@ -12,19 +13,13 @@ def bestIndeces(a,N):
 root = sys.argv[1]
 
 filenames = os.listdir(root+'/igraph/txt')
-texts = []; txtIds = []
-for filename in filenames:
-	toks = filename.split('.')
-	txtIds.append(int(toks[0]))
-	f = open(root+'/igraph/txt/'+ filename, "r")
-	texts.append(f.read())
-	f.close()
 f = open(root+'/igraph/data/community.txt')
 txt = f.read();
 f.close();
 toks = txt.split('\n');
 classes = {};
 classesArray = []
+nodes = []
 classNb = {};
 friends = {}; notFriends = {};
 
@@ -37,6 +32,14 @@ for tok in toks:
 		classNb[myClass] = classNb.get(myClass, 0) + 1
 		friends[myClass] = []
 		notFriends[myClass] = []
+		nodes.append(int(infos[0]))
+
+texts = []; txtIds = []
+for node in nodes:
+	txtIds.append(node)
+	f = open(root+'/igraph/txt/'+str(node)+'.txt', "r")
+	texts.append(f.read())
+	f.close()
 
 count_vect = CountVectorizer(stop_words='english', ngram_range=(1,3))
 tfidf_trans = TfidfTransformer()
@@ -45,8 +48,8 @@ trainingTfidf = tfidf_trans.fit_transform(count_vect.fit_transform(texts))
 vocabValue = count_vect.vocabulary_.keys()
 vocabIndex = count_vect.vocabulary_.values()
 
-clf = SVC(kernel = 'linear').fit(trainingTfidf, classesArray) # train classifier
-predicted = clf.predict(trainingTfidf)
+# clf = SVC(kernel = 'linear').fit(trainingTfidf, classesArray) # train classifier
+# predicted = clf.predict(trainingTfidf) not used anymore
 
 distances = cosine_similarity(trainingTfidf, trainingTfidf)
 
@@ -61,14 +64,21 @@ for x1 in range(0,len(distances[0])-1):
 			notFriends[class1].append(thisDist)
 			notFriends[class2].append(thisDist)
 
-for c in range(0,len(classNb)):
-	print "\n-------------------------\nCluster ", c ," (size: ",classNb[c],"): ", (np.mean(friends[c]) / np.mean(notFriends[c])) ,"\n-------------------------"
+f = open(root+'/igraph/data/clusters.txt','w')
+for c in friends:
+	myScore = (np.mean(friends[c]) / np.mean(notFriends[c]))
+	print "\n-------------------------\nCluster ", c ," (size: ",classNb[c],"): ", myScore ,"\n-------------------------"
 	tfidfBuild = []
 	for art in range(0,len(classes)):
 		if classes[txtIds[art]] == c:
 			tfidfBuild.append(trainingTfidf[art].toarray())
 	meanTfidf = np.mean(tfidfBuild, axis=0)
 	meanTfidf = 100*meanTfidf[0]
-	bestIndeces = bestIndeces(meanTfidf, 10)
-	for index in bestIndeces:
+	bestIndex = bestIndeces(meanTfidf, 10)
+	listName = []
+	for index in bestIndex:
+		listName.append(vocabValue[vocabIndex.index(index)].encode('utf-8'))
 		print "[",index,"] ", meanTfidf[index], ": ", vocabValue[vocabIndex.index(index)].encode('utf-8')
+	f.write(str(c)+'[]'+str(myScore)+'[]'+",".join(listName)+'\n')
+
+f.close()
