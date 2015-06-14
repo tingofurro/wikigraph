@@ -1,14 +1,35 @@
-<?php topMenu($root, $realRoot); ?>
-<link rel="stylesheet" type="text/css" href="<?php echo $realRoot; ?>css/index.css" />
-<div id="welcomeWikigraph">
-	<span>Welcome to Wikigraph!</span><br />
-	With Wikigraph, the goal is to view Mathematics as a giant graph. Each node is an Article in Wikipedia about a Mathematics subject, and each edge is a web link from one page to the other.
-	<br /><br />
-	Here are some we are looking at:<br /><br />
-	<li /> Is there any apparent structure to the graph, if so, is it the conventional way we think of Mathematics fields (Algebra, Analysis, Discrete Math ...)
-	<li /> Using Graph algorithms and Natural Language Processing tools, is it possible to recover "subfields/areas" of Mathematics. If so, how do these interact.
-	<li /> Given a class Syllabus (text) or a Mathematics paper, is it possible to place it on the graph, and structure the information.
-	<li /> Given a piece of knowledge, is it possible to build a tree of knowledge needed to learn this information?<br /><br />
-	Curious? Here's where to find the code:<br />
-	<a href="https://github.com/tingofurro/wikigraph" target="_new">https://github.com/tingofurro/wikigraph</a>
-</div>
+<?php
+include_once('dbco.php');
+include_once('mainFunc.php');
+include_once('createJsonGraph.php');
+$realRoot = getRealRoot();
+
+$cluster1 = 5;
+$fileUrl = "display/cache/1-".$cluster1.".json";
+$fileExists = file_exists(getDocumentRoot().'/'.$fileUrl);
+if(!$fileExists) generateGraph($cluster1);
+
+?>
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>Wikigraph</title>
+	<link rel="stylesheet" type="text/css" href="<?php echo $realRoot; ?>css/index.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $realRoot; ?>css/graph.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="<?php echo $realRoot; ?>JS/lib/d3.js"></script>
+</head>
+<body>
+	<div id="logo">wikigraph</div>
+	
+
+	<script src="<?php echo $realRoot; ?>JS/graph.js"></script>
+	<script type="text/javascript">
+		var webroot = '<?php echo $realRoot; ?>';
+		var color = d3.scale.category20();
+			<?php if($fileExists) { ?> plotGraph('<?php echo $root.$fileUrl; ?>', false, ''); <?php }
+			      else { ?> plotGraph('<?php echo $realRoot."temp.json"; ?>', true, '<?php echo getDocumentRoot()."/".$fileUrl; ?>'); <?php } ?>
+	</script>
+</body>
+</html>

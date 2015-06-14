@@ -1,11 +1,14 @@
-#welcomeWikigraph {
-	width: 500px; margin: auto;
-	margin-top: 150px;
-	font-size: 15px;
-
+@import url(//fonts.googleapis.com/css?family=Lato:100,400,700,900,400italic);
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: Lato;
+	background: #f0f0f0;
 }
-#welcomeWikigraph span {
-	font-weight: bold;
-	font-size: 30px;
-	line-height: 50px;
+#logo {
+	position: fixed;
+	bottom: 20px; right: 50px;
+	font-size: 80px; font-weight: 900;
+	text-shadow: -1px -1px 0px steelblue, 1px 1px 0px steelblue, -1px 1px 0px steelblue, 1px -1px 0px steelblue, 0px 0px 5px black;
+	color: white;
 }

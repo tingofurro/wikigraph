@@ -1,8 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
 <?php
 include_once('../dbco.php');
 include_once('../mainFunc.php');
 include_once('../algo/func.php');
 
+set_time_limit(4*3600);
 $python = wherePython();
 $limit = 1500;
 if(isset($_GET['reset'])) {
@@ -22,33 +29,38 @@ else  {
 
 if(isset($level)) {
 	emptyFolder('data');
-	echo "Running level ".$level.", cluster: ".$cluster."<br />";
+	echo "Level: ".$level.". Cluster: ".$cluster.".<br />"; fl();
 	
 	include_once('1-buildGraph.php');
 	if($level == 0) {
 		emptyFolder('txt');
 		buildSummaries($limit);
-		echo "Done building summaries<br />";
+		echo "Built page summaries<br />"; fl();
 	}
 
 	createGraph($limit, $level, $cluster);
-	echo 'Done with building the graph.json<br />';
+	echo 'Built graph for community detection<br />'; fl();
 
 	$pyscript = '"'.getDocumentRoot().'/igraph/2-community.py"';
 	$param1 = '"'.getDocumentRoot().'"';
 	exec($python.' '.$pyscript." ".$param1, $output);
-	echo 'Done building clean graph communities<br />';
+	echo 'Ran community detection<br />'; fl();
 
 	$pyscript = '"'.getDocumentRoot().'/igraph/3-closeness.py"';
 	exec($python.' '.$pyscript." ".$param1, $output);
-	echo 'Done getting NLP scoring and terms<br />';
-	
-	include_once('4-saveResults.php');
+	echo 'Scored communities with NLP; Generated community names<br />'; fl();
+
+	$pyscript = '"'.getDocumentRoot().'/igraph/4-extrapolate.py"';
+	exec($python.' '.$pyscript." ".$param1, $output);
+	echo 'Extrapolated other nodes<br />'; fl();
+
+	include_once('5-saveResults.php');
 	saveResults($level, $cluster);
-	echo "Done saving results to database.";
-	echo '<script>window.location.reload();</script>';
+	echo "Saved results to database."; fl();
+	echo 'All done.<br />';
+// 	// echo '<script>window.location.reload();</script>';
 }
-
-
-
+function fl() {ob_flush(); flush();}
 ?>
+</body>
+</html>

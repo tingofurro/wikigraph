@@ -26,7 +26,7 @@ f.close()
 
 for i, member in zip(range(0,g.vcount()), membership):
 	membership[i] += 1
-	if members.get(member, 0) < (0.03*g.vcount()): # remove clusters that are too small, call them 0
+	if members.get(member, 0) < min(5, 0.03*g.vcount()): # remove clusters that are too small, call them 0
 		membership[i] = 0
 
 memberSet = set(membership)

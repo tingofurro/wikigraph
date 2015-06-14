@@ -26,10 +26,19 @@ function saveResults($level, $cluster) { // level and cluster we are going to ta
 		else {echo implode("[]", $toks);}
 	}
 
-	$pages = preg_split('/\r\n|\n|\r/', file_get_contents('data/community.txt'));
-
 	$sql = "UPDATE wg_page SET cluster".($level+1)." = CASE id ";
 	$pageIds = array();
+	
+	$pages = preg_split('/\r\n|\n|\r/', file_get_contents('data/community.txt'));
+	foreach ($pages as $page) {
+		$page = explode(" ", $page);
+		if(count($page) > 1) {
+			$sql .= "WHEN ".$page[0]." THEN ".$clusterMapping[$page[1]]." ";
+			array_push($pageIds, $page[0]);
+		}
+	}
+
+	$pages = preg_split('/\r\n|\n|\r/', file_get_contents('data/extrapolate.txt'));
 	foreach ($pages as $page) {
 		$page = explode(" ", $page);
 		if(count($page) > 1) {
@@ -39,7 +48,7 @@ function saveResults($level, $cluster) { // level and cluster we are going to ta
 	}
 	$sql .= "END WHERE id IN (".implode(",", $pageIds).")";
 	mysql_query($sql);
-	mysql_query("UPDATE wg_cluster SET complete=1 WHERE level=$level AND cluster=$cluster");
+	mysql_query("UPDATE wg_cluster SET complete=1 WHERE level=$level AND id=$cluster");
 
 }
 ?>

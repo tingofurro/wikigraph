@@ -4,9 +4,9 @@ function nodes2Graph($nodes, $file) {
 	$txt = "{\n";
 	$txt .= $sp."\"nodes\": [\n";
 	$nodesTxt = array();
-	$n = mysql_query("SELECT id, name, cluster2 FROM wg_page WHERE id IN (".implode(",", $nodes).")");
+	$n = mysql_query("SELECT id, name, field FROM wg_page WHERE id IN (".implode(",", $nodes).")");
 	while($no = mysql_fetch_array($n)) {
-		array_push($nodesTxt, $sp.$sp."{\"id\": ".$no['id'].", \"name\": \"".$no['name']."\", \"group\": ".$no['cluster2']." }");
+		array_push($nodesTxt, $sp.$sp."{\"id\": ".$no['id'].", \"name\": \"".$no['name']."\", \"group\": ".$no['field']." }");
 	}
 	$txt .= implode(", \n", $nodesTxt);
 	$txt .= "\n], \n";

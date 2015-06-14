@@ -15,6 +15,7 @@ function plotGraph(graphFile, toRun, toFile) {
 	loading = svg.append("text").attr({"x": (screenW/2), "y": (screenH/2), 'dy': '0.35em'}).style("text-anchor", "middle").text("Simulating. One moment please...");
 
 	force = d3.layout.force().linkStrength(2).friction(0.9).linkDistance(20).charge(-10).gravity(0.1).theta(0.8).alpha(alphaI).size([screenW, screenH]);
+
 	d3.json(graphFile, function(error, graph) {
 		nodes = graph.nodes.slice();
 
