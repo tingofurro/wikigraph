@@ -1,10 +1,11 @@
 <?php
+set_time_limit(180);
 include_once('dbco.php');
 include_once('mainFunc.php');
 include_once('createJsonGraph.php');
 $realRoot = getRealRoot();
 
-$cluster1 = 5;
+$cluster1 = 6;
 $fileUrl = "display/cache/1-".$cluster1.".json";
 $fileExists = file_exists(getDocumentRoot().'/'.$fileUrl);
 if(!$fileExists) generateGraph($cluster1);

@@ -2,6 +2,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from StringIO import StringIO
 from sklearn.svm import SVC
+from genName import *
 
 from itertools import izip
 import numpy as np
@@ -12,7 +13,6 @@ def bestIndeces(a,N):
 
 root = sys.argv[1]
 
-filenames = os.listdir(root+'/igraph/txt')
 f = open(root+'/igraph/data/community.txt')
 txt = f.read();
 f.close();
@@ -48,10 +48,18 @@ trainingTfidf = tfidf_trans.fit_transform(count_vect.fit_transform(texts))
 vocabValue = count_vect.vocabulary_.keys()
 vocabIndex = count_vect.vocabulary_.values()
 
-# clf = SVC(kernel = 'linear').fit(trainingTfidf, classesArray) # train classifier
-# predicted = clf.predict(trainingTfidf) not used anymore
+clf = SVC(kernel = 'linear').fit(trainingTfidf, classesArray) # train classifier
+predicted = clf.predict(trainingTfidf)
+i = 0
+for o, t in zip(classesArray, predicted):
+	if o != t:
+		i += 1
+print i, " / ", len(predicted), " labels changed"
+
 
 distances = cosine_similarity(trainingTfidf, trainingTfidf)
+
+
 
 for x1 in range(0,len(distances[0])-1):
 	for x2 in range(x1+1,len(distances[0])):
@@ -75,10 +83,7 @@ for c in friends:
 	meanTfidf = np.mean(tfidfBuild, axis=0)
 	meanTfidf = 100*meanTfidf[0]
 	bestIndex = bestIndeces(meanTfidf, 10)
-	listName = []
-	for index in bestIndex:
-		listName.append(vocabValue[vocabIndex.index(index)].encode('utf-8'))
-		print "[",index,"] ", meanTfidf[index], ": ", vocabValue[vocabIndex.index(index)].encode('utf-8')
-	f.write(str(c)+'[]'+str(myScore)+'[]'+",".join(listName)+'\n')
+
+	f.write(str(c)+'[]'+str(myScore)+'[]'+genName(c)+'\n')
 
 f.close()

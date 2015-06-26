@@ -4,19 +4,24 @@ function nodes2Graph($nodes, $file) {
 	$txt = "{\n";
 	$txt .= $sp."\"nodes\": [\n";
 	$nodesTxt = array();
-	$n = mysql_query("SELECT id, name, cluster2 FROM wg_page WHERE id IN (".implode(",", $nodes).")");
+	
+	$listNodeTxt = implode(", ", $nodes);
+	$e = mysql_query("SELECT * FROM wg_link WHERE (`to` IN(".$listNodeTxt.") AND `from` IN(".$listNodeTxt.")) ORDER BY id");
+	$edges = array(); $goodNodes = array();
+	while($ed = mysql_fetch_array($e)) {
+		array_push($edges, $sp.$sp."{\"source\": ".array_search($ed['to'], $nodes).", \"target\": ".array_search($ed['from'], $nodes).", \"value\": 2 }");
+		array_push($goodNodes, $ed['to']);
+		array_push($goodNodes, $ed['from']);
+	}
+	$goodNodes = array_unique($goodNodes);
+	$n = mysql_query("SELECT id, name, cluster2 FROM wg_page WHERE id IN (".implode(",", $goodNodes).")");
 	while($no = mysql_fetch_array($n)) {
 		array_push($nodesTxt, $sp.$sp."{\"id\": ".$no['id'].", \"name\": \"".$no['name']."\", \"group\": ".$no['cluster2']." }");
 	}
 	$txt .= implode(", \n", $nodesTxt);
 	$txt .= "\n], \n";
 	$txt .= "\"links\": [\n";
-		$listNodeTxt = implode(", ", $nodes);
-		$e = mysql_query("SELECT * FROM wg_link WHERE (`to` IN(".$listNodeTxt.") AND `from` IN(".$listNodeTxt.")) ORDER BY id");
-		$edges = array();
-		while($ed = mysql_fetch_array($e)) {
-			array_push($edges, $sp.$sp."{\"source\": ".array_search($ed['to'], $nodes).", \"target\": ".array_search($ed['from'], $nodes).", \"value\": 2 }");
-		}
+		
 		$txt .= implode(", \n", $edges);
 	$txt .= "\n]\n";
 	$txt .= "}";

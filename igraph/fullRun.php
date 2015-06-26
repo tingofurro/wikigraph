@@ -58,7 +58,7 @@ if(isset($level)) {
 	saveResults($level, $cluster);
 	echo "Saved results to database."; fl();
 	echo 'All done.<br />';
-// 	// echo '<script>window.location.reload();</script>';
+	// echo '<script>window.location.reload();</script>';
 }
 function fl() {ob_flush(); flush();}
 ?>

@@ -28,6 +28,9 @@ switch ($myUrl) {
 	case 'main':
 		include_once('display/main.php');
 	break;
+	case 'folders':
+		include_once('display/folders.php');
+	break;
 	case '':
 		include_once('display/index.php');
 	break;

@@ -12,7 +12,7 @@ function createGraph($limit, $level, $cluster) {
 	while($fullNo = mysql_fetch_array($fullN)) array_push($fullNodes, $fullNo['id']);
 	$src = getDocumentRoot()."/igraph/data/fullNodeList.json";
 	$fh = fopen($src, 'w');
-	fwrite($fh, implode("\n", $edges));
+	fwrite($fh, implode("\n", $fullNodes));
 	fclose($fh);
 
 	$e = mysql_query("SELECT * FROM wg_link WHERE (`to` IN (".implode(", ", $nodes).") AND `from` IN (".implode(", ", $nodes).")) ORDER BY id");
