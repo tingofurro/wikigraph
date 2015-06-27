@@ -6,38 +6,31 @@ from sklearn.svm import SVC
 from itertools import izip
 import numpy as np
 import sys, os
+import heapq
 
 def genName(inText, outText, vocabValue, vocabIndex):
-	nbIn = inText.shape[0] # rows, number
-	nbOut = outText.shape[0] # rows, number
-	nbWords = inText.shape[1] #columns
-	# print inText.shape
-	# print outText.shape
-	maxScore = 0
-	bestWord = ''
-	wordI = 0
-	while(wordI < nbWords):
-		yes = len(inText[:,wordI].nonzero()[0])
-		inFreq = (1.0*yes/(1.0*nbIn))
-		if inFreq > maxScore and inFreq > 0.25:
-			yes = len(outText[:,wordI].nonzero()[0])
-			outFreq = (1.0*yes/(1.0*nbOut))+0.000001
-			score = inFreq-outFreq
+	freqIn = inText.mean(axis=0).A[0]
+	freqOut = outText.mean(axis=0).A[0]
+	bestWords = {}
+	freqArray = []
+	for wordI in range(0,inText.shape[1]):
+		inFreq = freqIn[wordI]
+		outFreq = freqOut[wordI]
+		freqArray.append((inFreq-outFreq))
+		if inFreq > 0.25:
 			word = vocabValue[vocabIndex.index(wordI)]
-			if score > maxScore:
-				bestWord = word
-				maxScore = score
-		wordI += 1
-	return bestWord
+			bestWords[word] = (inFreq-outFreq)
+	fiveBest = heapq.nlargest(5, bestWords, key=bestWords.get)
 
-f = open('data/community.txt')
+	return {'bestKeywords': fiveBest, 'freqArray': freqArray}
+
+f = open('data/recommunity3.txt')
 txt = f.read()
 f.close()
 toks = txt.split('\n')
 classes = {}
 classesArray = []
 nodes = []
-classNb = {}
 
 for tok in toks:
 	infos = tok.split(' ')
@@ -46,7 +39,6 @@ for tok in toks:
 		myId = int(infos[0])
 		classes[myId] = myClass
 		classesArray.append(myClass)
-		classNb[myClass] = classNb.get(myClass, 0) + 1
 		nodes.append(int(infos[0]))
 
 texts = [];
@@ -55,9 +47,9 @@ for node in nodes:
 	texts.append(f.read())
 	f.close()
 print "Loaded the articles"
-count_vect = CountVectorizer(stop_words='english')
+count_vect = CountVectorizer(stop_words='english', binary=True)
 totalCount = count_vect.fit_transform(texts)
-print totalCount.shape
+totalCount = totalCount.asfptype()
 print "Prepared word count"
 print "Wordcount to array"
 
@@ -73,5 +65,28 @@ for clas in classSet:
 	outTexts[clas] = totalCount[badRows, :]
 
 print "Built the ins and outs"
+freqArray = {}
 for clas in classSet:
-	print "Cluster", clas, ": ", genName(inTexts[clas], outTexts[clas], vocabValue, vocabIndex)
+	results = genName(inTexts[clas], outTexts[clas], vocabValue, vocabIndex)
+	freqArray[clas] = np.matrix(results['freqArray']).transpose()
+	print "Cluster", clas, " (Size: ", inTexts[clas].shape[0],"): ", results['bestKeywords']
+err = 0
+
+f = open('data/recommunity4.txt','w')
+for articleI in range(0,totalCount.shape[0]):
+	bestScore = -1000
+	bestClas = -1
+	for clas in classSet:
+		arti = totalCount[articleI,:]
+		oneScore = arti.dot(freqArray[clas])
+		if oneScore > bestScore:
+			bestScore = oneScore
+			bestClas = clas
+	if bestClas == classesArray[articleI]:
+		print "Right answer: ", classesArray[articleI], " ", bestScore
+	else:
+		err += 1
+		print "Wrong answer: ", bestClas, "!= ", classesArray[articleI], " ", bestScore
+	f.write(str(nodes[articleI])+' '+str(bestClas)+'\n')
+f.close()
+print err
