@@ -19,11 +19,6 @@ members = {}
 for mem in membership:
 	members[mem] = members.get(mem, 0) + 1
 
-f = open(root+'/igraph/data/community_old.txt','w')
-for name, member in izip(g.vs["name"], membership):
-	f.write(name+' '+str(member)+'\n')
-f.close()
-
 for i, member in zip(range(0,g.vcount()), membership):
 	membership[i] += 1
 	if members.get(member, 0) < min(5, 0.03*g.vcount()): # remove clusters that are too small, call them 0

@@ -59,8 +59,6 @@ print i, " / ", len(predicted), " labels changed"
 
 distances = cosine_similarity(trainingTfidf, trainingTfidf)
 
-
-
 for x1 in range(0,len(distances[0])-1):
 	for x2 in range(x1+1,len(distances[0])):
 		thisDist = distances[x1][x2]

@@ -41,14 +41,14 @@ if(isset($level)) {
 	createGraph($limit, $level, $cluster);
 	echo 'Built graph for community detection<br />'; fl();
 
-	$pyscript = '"'.getDocumentRoot().'/igraph/2-community.py"';
+	$pyscript = '"'.getDocumentRoot().'/igraph/2community.py"';
 	$param1 = '"'.getDocumentRoot().'"';
 	exec($python.' '.$pyscript." ".$param1, $output);
 	echo 'Ran community detection<br />'; fl();
 
-	$pyscript = '"'.getDocumentRoot().'/igraph/3-closeness.py"';
+	$pyscript = '"'.getDocumentRoot().'/igraph/3nlp.py"';
 	exec($python.' '.$pyscript." ".$param1, $output);
-	echo 'Scored communities with NLP; Generated community names<br />'; fl();
+	echo 'Reassign nodes with NLP + name communities<br />'; fl();
 
 	$pyscript = '"'.getDocumentRoot().'/igraph/4-extrapolate.py"';
 	exec($python.' '.$pyscript." ".$param1, $output);

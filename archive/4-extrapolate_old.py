@@ -1,22 +1,13 @@
 # -*- coding: utf-8 -*-
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from sklearn.metrics.pairwise import cosine_similarity
-from StringIO import StringIO
-from sklearn.svm import SVC
-
-from itertools import izip
-import numpy as np
-import sys, os
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 count_vect = CountVectorizer(stop_words='english') #initialize the vectorizer
-tfidf_trans = TfidfTransformer() #initialize our tfidf transformer
 
 root = sys.argv[1]
 
-f = open(root+'/igraph/data/community.txt')
+f = open(root+'/igraph/data/recommunity.txt')
 txt = f.read()
 f.close()
 
@@ -38,9 +29,6 @@ for node in trainingNodes:
 	f.close()
 
 trainingCounts = count_vect.fit_transform(trainingTexts)
-trainingTfidfs = tfidf_trans.fit_transform(trainingCounts)
-
-clf = SVC(kernel = 'linear').fit(trainingTfidfs, trainingLabels) # train classifier
 
 testNodes = []
 testText = []
