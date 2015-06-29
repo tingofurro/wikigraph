@@ -7,26 +7,16 @@ body {
 	cursor: pointer;
 }
 .node {
-  stroke: #000;
+  stroke: black;
   stroke-width: 1.3px;
   position: relative;
 }
 
 .link {
   fill: none;
-  stroke: #808080;
+  stroke: black;
+  opacity: 0.1;
   stroke-width: 0.5px;
-}
-.textAbove {
-	font-size: 12px;
-	font-family: sans-serif; font-weight: bold;
-	width: 200px;
-	height: 20px;
-	text-anchor: middle;
-	opacity: 0;
-}
-.node:hover .textAbove{
-	opacity: 1;
 }
 #choiceMenu {
 	position: absolute;
@@ -35,14 +25,6 @@ body {
 	background: #e0e0e0;
 	line-height: 40px; font-size: 16px;
 	border-right: 0px;
-}
-.optionItem, #comm_detect {
-	padding: 0px 10px;
-	border-right: 1px solid #a0a0a0;
-	float: left;
-}
-.optionItem:hover {
-	background: #d7d7d7;
 }
 a {
 	color: black;

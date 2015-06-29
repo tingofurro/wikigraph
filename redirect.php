@@ -42,6 +42,10 @@ if(count($exp) >= 2 && $exp[0] == 'category') {
 	else {$_GET['sourceName'] = mysql_real_escape_string($exp[1]);}
 	include_once('display/tree.php');
 }
+if(count($exp) >= 2 && $exp[0] == 'graph') {
+	if(is_numeric($exp[1])) {$_GET['cluster'] = mysql_real_escape_string($exp[1]);}
+	include_once('display/index.php');
+}
 if(count($exp) >= 2 && $exp[0] == 'explore') {
 	if(is_numeric($exp[1])) {$_GET['id'] = mysql_real_escape_string($exp[1]);}
 	else {
@@ -50,37 +54,8 @@ if(count($exp) >= 2 && $exp[0] == 'explore') {
 	}
 	include_once('display/explore.php');
 }
-if(count($exp) >= 2 && $exp[0] == 'clustering') {
-	if($exp[1] == 'keywords') {
-		$_GET['keywords'] = 1;
-		if(count($exp) >= 3) {$_GET['keywords'] = $exp[2];}
-	}
-	elseif($exp[1] == 'pages') {
-		$_GET['pages'] = 1;
-		if(count($exp) >= 3) {$_GET['pages'] = $exp[2];}
-		if(count($exp) >= 4) {$_GET['page'] = $exp[3];}
-	}
-	include_once('display/clustering.php');
-}
-if(count($exp) >= 2 && $exp[0] == 'graphCat') {
-	$_GET['graphCat'] = mysql_real_escape_string($exp[1]);
-	include_once('display/graph.php');
-}
-if(count($exp) >= 2 && $exp[0] == 'graphArt') {
-	$_GET['graphArt'] = mysql_real_escape_string($exp[1]);
-	include_once('display/graph.php');
-}
 if(count($exp) >= 2 && $exp[0] == 'wiki') {
 	$_GET['name'] = mysql_real_escape_string($exp[1]);
 	include_once('display/explore.php');
-}
-if(count($exp) >= 2 && $exp[0] == 'subfield') {
-	$_GET['sf'] = mysql_real_escape_string($exp[1]);
-	include_once('display/subfield.php');
-}
-if(count($exp) >= 3 && $exp[0] == 'topics') {
-	$_GET['field'] = mysql_real_escape_string($exp[1]);
-	$_GET['topic'] = mysql_real_escape_string($exp[2]);
-	include_once('display/topics.php');
 }
 ?>
