@@ -2,7 +2,6 @@
 include('../dbco.php');
 $dash = '-';
 $space = ' '; //str_repeat(input, multiplier)
-echo 'hey';
 $currentLevel = 0; $parent = 0;
 echo "Mathematics<br />";
 echo "-----------<br />";

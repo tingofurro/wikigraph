@@ -10,23 +10,11 @@ $myUrl = str_replace('display/', '', $myUrl);
 if($myUrl != '' AND $myUrl[0] == '/') {$myUrl = substr($myUrl, 1);}
 if($myUrl != '' AND $myUrl[(strlen($myUrl)-1)] == '/') {$myUrl = substr($myUrl, 0, (strlen($myUrl)-1));}
 switch ($myUrl) {
-	case 'category':
+	case 'tree':
 		include_once('display/tree.php');
 	break;
 	case 'explore':
 		include_once('display/explore.php');
-	break;
-	case 'clustering':
-		include_once('display/clustering.php');
-	break;
-	case 'fields':
-		include_once('display/field.php');
-	break;
-	case 'keywords':
-		include_once('display/keywords.php');
-	break;
-	case 'main':
-		include_once('display/main.php');
 	break;
 	case 'folders':
 		include_once('display/folders.php');

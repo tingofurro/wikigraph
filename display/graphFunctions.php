@@ -16,11 +16,13 @@ function nodes2Graph($nodes, $file, $lvl=1) {
 	}
 	$minPR = min(array_values($PR));
 	$maxPR = max(array_values($PR));
-	$minDist = 50;
-	$maxDist = 500;
+	$minDist = 5;
+	$maxDist = 200;
 	while($ed = mysql_fetch_array($e)) {
 		$thisPR = min($PR[$ed['to']], $PR[$ed['from']]);
 		$dist = ceil(($maxDist-$minDist)*$thisPR/($maxPR-$minPR) + $minDist);
+		// $dist = $maxDist-$dist; // reverse
+		// $dist = 20; // constant
 		// if($clus[$ed['to']] == $clus[$ed['from']])
 			array_push($edges, $sp.$sp."{\"source\": ".array_search($ed['from'], $nodes).", \"target\": ".array_search($ed['to'], $nodes).", \"value\": ".$dist."}");
 	}

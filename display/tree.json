@@ -1,0 +1,100 @@
+{"name": "Mathematics", "class": "node", 
+"children": [
+   {"name": "data,format,file,standard,web", "class": "badNode"},
+   {"name": "born,died,mathematician,aged,work", "class": "node", 
+   "children": [
+         {"name": "combat,line,war,battle,army", "class": "badNode"},
+      {"name": "statistic,world,time", "class": "badNode"},
+      {"name": "external link,external,link", "class": "badNode"},
+      {"name": "born,alma,alma mater,mater,doctoral", "class": "badNode"},
+      {"name": "century,modern", "class": "badNode"},
+      {"name": "ratio,info,help info,help,scale", "class": "badNode"},
+      {"name": "history", "class": "badNode"},
+      {"name": "number,ph", "class": "badNode"},
+      {"name": "abbreviated,impact,named,group,english", "class": "badNode"},
+      {"name": "named,theorem,statement", "class": "badNode"},
+      {"name": "composer,composition,music,stockhausen,karlheinz", "class": "badNode"},
+      {"name": "quantum,physic,relativity,general,general relativity", "class": "badNode"},
+      {"name": "logic,philosophy,philosopher", "class": "badNode"},
+      {"name": "game", "class": "badNode"}
+   ]
+   },
+   {"name": "geometry,point,dimension,euclidean,dimensional", "class": "node", 
+   "children": [
+         {"name": "", "class": "badNode"},
+      {"name": "group,reflection,symmetry,dimensional,euclidean", "class": "badNode"},
+      {"name": "unit,si,length,measurement,imperial", "class": "badNode"},
+      {"name": "vertex,regular,polyhedron,edge,face", "class": "badNode"},
+      {"name": "physic,field,vector,relativity,space", "class": "badNode"},
+      {"name": "object,plane,projection", "class": "badNode"},
+      {"name": "line,point,circle,geometry,plane", "class": "badNode"}
+   ]
+   },
+   {"name": "logic,set,formal,language,set theory", "class": "node", 
+   "children": [
+         {"name": "statement,different,presented,used,true", "class": "badNode"},
+      {"name": "logic,logical,truth,true,proposition", "class": "badNode"},
+      {"name": "programming,computer,programming language,language,computer science", "class": "badNode"},
+      {"name": "logic,semantics", "class": "badNode"},
+      {"name": "set theory,set,theory,axiom,cardinal", "class": "badNode"},
+      {"name": "logic,mathematical logic,mathematical,formula,order logic", "class": "badNode"},
+      {"name": "element,set,mathematics,ordered,ordered set", "class": "badNode"},
+      {"name": "grammar,language,formal,formal language,string", "class": "badNode"}
+   ]
+   },
+   {"name": "space,topological,topology,algebra,topological space", "class": "node", 
+   "children": [
+         {"name": "include,ring,ring synthesis,molecular architecture,mechanical bond", "class": "badNode"},
+      {"name": "ring,commutative,algebra,ideal,module", "class": "badNode"},
+      {"name": "group,lie,subgroup,lie group,lie algebra", "class": "badNode"},
+      {"name": "manifold,topology,algebraic topology,algebraic,complex", "class": "badNode"},
+      {"name": "category,category theory,object,morphisms,theory", "class": "badNode"},
+      {"name": "vector,vector space,space,linear,functional", "class": "badNode"},
+      {"name": "element", "class": "badNode"},
+      {"name": "topological space,topological,space,topology,open", "class": "badNode"}
+   ]
+   },
+   {"name": "graph,graph theory,vertex,edge,theory", "class": "node", 
+   "children": [
+         {"name": "problem,optimization,solution,optimization problem,programming", "class": "badNode"},
+      {"name": "external link,external,link,reference external,group", "class": "badNode"},
+      {"name": "surface,representation,structure,computer graphic,graphic", "class": "badNode"},
+      {"name": "directed,directed graph,graph,network", "class": "badNode"},
+      {"name": "network,topology,node,network topology,computer network", "class": "badNode"},
+      {"name": "graph,graph theory,vertex,note reference,note", "class": "badNode"},
+      {"name": "knot,knot theory,mathematical,invariant,theory", "class": "badNode"},
+      {"name": "complexity,problem,computational,computational complexity,complexity theory", "class": "badNode"},
+      {"name": "vertex,graph theory,graph vertex,graph,edge", "class": "badNode"},
+      {"name": "combinatorial,mathematics,combinatorics", "class": "badNode"},
+      {"name": "data,structure,tree,data structure,computer", "class": "badNode"}
+   ]
+   },
+   {"name": "statistic,probability,distribution,data,random", "class": "node", 
+   "children": [
+         {"name": "used,octave,semitone,help,major", "class": "badNode"},
+      {"name": "method,algorithm", "class": "badNode"},
+      {"name": "game,game theory,player,strategy,economics", "class": "badNode"},
+      {"name": "unit,measurement,english,volume,measure", "class": "badNode"},
+      {"name": "circuit", "class": "badNode"},
+      {"name": "distribution,probability,probability distribution,statistic,random variable", "class": "badNode"},
+      {"name": "probability,theory,probability theory,event,random", "class": "badNode"},
+      {"name": "decimal,byte,unit,binary,iec", "class": "badNode"},
+      {"name": "statistic,statistical,data", "class": "badNode"},
+      {"name": "quantum,physic,energy,particle,mechanic", "class": "badNode"},
+      {"name": "bit,code,algorithm,channel,coding", "class": "badNode"}
+   ]
+   },
+   {"name": "number,function,real,complex,integer", "class": "node", 
+   "children": [
+         {"name": "", "class": "badNode"},
+      {"name": "interval,music,play,equal,semitone", "class": "badNode"},
+      {"name": "matrix,linear,algebra,linear algebra,vector", "class": "badNode"},
+      {"name": "algebraic,field,polynomial", "class": "badNode"},
+      {"name": "integer,number,binary,arithmetic,prime", "class": "badNode"},
+      {"name": "particle,physic,mixing,defined,related", "class": "badNode"},
+      {"name": "function,differential,analysis", "class": "badNode"},
+      {"name": "set", "class": "badNode"}
+   ]
+   }
+]
+}

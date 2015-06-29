@@ -14,7 +14,7 @@ function plotGraph(graphFile, toRun, toFile) {
 	aboveRect = svg.append("rect").attr({"x": (screenW/2 - 125), "y": (screenH/2 - 13), 'width': 1, 'height': 26, 'class': 'aboveRect'});
 	loading = svg.append("text").attr({"x": (screenW/2), "y": (screenH/2), 'dy': '0.35em'}).style("text-anchor", "middle").text("Simulating. One moment please...");
 
-	force = d3.layout.force().linkStrength(2).friction(0.9).linkDistance(20).charge(-10).gravity(0.1).theta(0.8).alpha(alphaI).size([screenW, screenH]);
+	force = d3.layout.force().linkStrength(2).friction(0.9).charge(-10).gravity(0.1).theta(0.8).alpha(alphaI).size([screenW, screenH]);
 	d3.json(graphFile, function(error, graph) {
 		nodes = graph.nodes.slice();
 
@@ -23,11 +23,11 @@ function plotGraph(graphFile, toRun, toFile) {
 			t = nodes[link.target],
 			i = {t1: s, t2: t}; // intermediate node
 			nodes.push(i);
-			links.push({source: s, target: i}, {source: i, target: t});
+			links.push({source: s, target: i, value: link.value}, {source: i, target: t, value: link.value});
 			bilinks.push([s, i, t]);
 		});
 
-		force.nodes(nodes).links(links).start();
+		force.linkDistance(function(d) {return d.value;}).nodes(nodes).links(links).start();
 
 		var link = svg.selectAll(".link").data(bilinks).enter().append("path").attr("class", "link");
 

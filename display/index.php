@@ -1,4 +1,3 @@
-
 <?php
 set_time_limit(180);
 include_once('dbco.php');
@@ -28,11 +27,11 @@ $c = mysql_query("SELECT * FROM wg_cluster WHERE parent=".$cluster);
 	<script src="<?php echo $realRoot; ?>JS/lib/d3.js"></script>
 </head>
 <body>
-	<div id="logo">wikigraph</div>
+	<a href="<?php echo $root; ?>"><div id="logo">wikigraph</div></a>
 	<div id="clusterNameContain">
 	<?php
 	while($cl = mysql_fetch_array($c)) {
-		?> <a href="<?php echo $root;?>/graph/<?php echo $cl['id']; ?>"><div class="clusterName" value="<?php echo $cl['id']; ?>"><?php echo $cl['name']; ?></div></a><?php
+		?> <a href="<?php echo $root;?>graph/<?php echo $cl['id']; ?>"><div class="clusterName" value="<?php echo $cl['id']; ?>"><?php echo $cl['name']; ?></div></a><?php
 	}
 	?>
 		

@@ -7,12 +7,13 @@ body {
 }
 #logo {
 	position: fixed;
-	bottom: 20px; right: 50px;
+	top: 0px; left: 10px;
 	font-size: 80px; font-weight: 900;
 	text-shadow: -2px -2px 0px steelblue, 2px 2px 0px steelblue, -2px 2px 0px steelblue, 2px -2px 0px steelblue, 0px 0px 5px black;
 	font-family: Roboto Slab;
 	font-weight: 700;
 	letter-spacing: 1px;
+	line-height: 80px;
 	color: white;
 }
 #clusterNameContain {
@@ -20,12 +21,12 @@ body {
 	font-size: 20px;
 	font-family: Roboto Slab;
 	font-weight: 700;
-	bottom: 120px;
-	right: 10px;
+	top: 100px;
+	left: 10px;
 	display: none;
 }
 #clusterNameContain .clusterName {
-	text-align: right;
+	text-align: left;
 	text-shadow: -1px -1px 0px black, 1px 1px 0px black, -1px 1px 0px black, 1px -1px 0px black, 0px 0px 5px black;
 	text-decoration: none;
 }
