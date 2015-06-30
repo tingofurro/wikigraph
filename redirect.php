@@ -19,6 +19,9 @@ switch ($myUrl) {
 	case 'folders':
 		include_once('display/folders.php');
 	break;
+	case 'whatisthis':
+		include_once('display/whatisthis.php');
+	break;
 	case '':
 		include_once('display/index.php');
 	break;

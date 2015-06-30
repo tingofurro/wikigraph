@@ -19,7 +19,7 @@ function generateTree($source, $depth) {
 }
 
 function getChildren($id, $maxDistance) {
-	$r =  mysql_query("SELECT clus.*, (SELECT COUNT(*) FROM wg_cluster AS temp WHERE temp.parent=clus.id AND level<=".$maxDistance.") AS children FROM wg_cluster AS clus WHERE parent='".$id."'");
+	$r =  mysql_query("SELECT clus.*, (SELECT COUNT(*) FROM wg_cluster AS temp WHERE temp.parent=clus.id AND level<=".$maxDistance.") AS children FROM wg_cluster AS clus WHERE parent=".$id." AND clus.good=1");
 	$chil = array();
 	while($re = mysql_fetch_array($r)) {
 		array_push($chil, str_repeat(' ', 3*$re['level']).writeNode($re, $maxDistance));
@@ -29,7 +29,8 @@ function getChildren($id, $maxDistance) {
 }
 function writeNode($re, $maxDistance) {
 	$sp = str_repeat(' ', 3*$re['level']);
-	$txt = '{"name": "'.str_replace("_", " ", $re['name']).'", "class": "'.(($re['children']==0)?'badNode':'node').'"';
+	$name = shorterName($re['name']);
+	$txt = '{"id": '.$re['id'].', "name": "'.$name.'", "class": "'.(($re['children']==0)?'badNode':'node').'"';
 	if($re['children'] > 0) {$txt .= ", \n".$sp."\"children\": [\n".$sp.getChildren($re['id'], $maxDistance)."\n".$sp."]\n".$sp;}
 	$txt .= "}";
 	return $txt;

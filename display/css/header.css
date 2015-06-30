@@ -1,0 +1,37 @@
+@import url(//fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700);
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: Roboto Slab;
+	background: #f0f0f0;
+}
+#logo {
+	position: fixed;
+	top: 0px; left: 10px;
+	font-size: 80px; font-weight: 900;
+	text-shadow: -2px -2px 0px steelblue, 2px 2px 0px steelblue, -2px 2px 0px steelblue, 2px -2px 0px steelblue, 0px 0px 5px black;
+	font-family: Roboto Slab;
+	font-weight: 700;
+	letter-spacing: 1px;
+	line-height: 80px;
+	color: white;
+}
+#logo a {
+	color: white;
+}
+.smallLink {
+	text-shadow: -1px -1px 0px #346185, 1px 1px 0px #346185, -1px 1px 0px #346185, 1px -1px 0px #346185, 0px 0px 5px #346185;	
+	position: fixed;
+	font-family: Roboto Slab;
+	letter-spacing: 1px;
+	font-weight: 700;
+	color: #f0f0f0;
+}
+.folders {
+	text-shadow: -1px -1px 0px steelblue, 1px 1px 0px steelblue, -1px 1px 0px steelblue, 1px -1px 0px steelblue, 0px 0px 5px black;
+	font-weight: 400;	
+	letter-spacing: 0px;
+}
+#exploreLink {top: 74px; left: 45px;}
+#treeView {top: 74px; left: 223px;}
+#whatIsThis {top: 3px; left: 180px;}

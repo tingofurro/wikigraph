@@ -3,7 +3,7 @@ var alphaF = 0.005, alphaI;
 var smallRadius = 4, largeRadius = 5;
 var svg, force;
 var rectangle, aboveRect, loading;
-var nodes, links=[],bilinks=[];
+var gnodes, nodes, links=[],bilinks=[];
 
 function plotGraph(graphFile, toRun, toFile) {
 	// toRun: do the nodes already have positions or not?
@@ -31,14 +31,14 @@ function plotGraph(graphFile, toRun, toFile) {
 
 		var link = svg.selectAll(".link").data(bilinks).enter().append("path").attr("class", "link");
 
-	    var gnodes = svg.selectAll('g.gnode').data(graph.nodes).enter().append('g').classed('gnode', true).on('mouseover', function(d){
-	         d3.select(this).select('circle').attr('r', largeRadius);
-	         document.title=d.name;
+	    gnodes = svg.selectAll('g.gnode').data(graph.nodes).enter().append('g').classed('gnode', true).on('mouseover', function(d){
+			d3.select(this).select('circle').attr('r', largeRadius);
+			document.title=d.name;
 	    }).on('mouseout', function(d){
-	         d3.select(this).select('circle').attr('r', smallRadius);
+			d3.select(this).select('circle').attr('r', smallRadius);
 	    });
 	      
-	    var node = gnodes.append("circle").attr("class", "node").attr("r", smallRadius).style("fill", function(d) { return color(d.group); });
+	    node = gnodes.append("circle").attr("class", "node").attr("r", smallRadius).style("fill", function(d) { return color(d.group); });
 	    node.append("title").text(function(d) { return d.name; });
 
 		force.on("tick", function() {
@@ -48,8 +48,8 @@ function plotGraph(graphFile, toRun, toFile) {
 			var minX = 0, maxX = 0;
 			var minY = 0, maxY = 0;
 			gnodes.attr('transform', function(d) {
-			minX = Math.min(minX, d.x); maxX = Math.max(maxX, d.x);
-			minY = Math.min(minY, d.y); maxY = Math.max(maxY, d.y);
+				minX = Math.min(minX, d.x); maxX = Math.max(maxX, d.x);
+				minY = Math.min(minY, d.y); maxY = Math.max(maxY, d.y);
 			});
 			transX = Math.abs(minX);
 			transY = Math.abs(minY);

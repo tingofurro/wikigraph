@@ -26,9 +26,6 @@ body {
 	line-height: 40px; font-size: 16px;
 	border-right: 0px;
 }
-a {
-	color: black;
-}
 .waitRectangle {
 	fill: #f0f0f0;
 	stroke: black;

@@ -16,7 +16,7 @@ svg {
   stroke-width: 1.5px;
 }
 .node, .badNode {
-  font: 10px sans-serif;
+  font: 12px sans-serif;
   cursor: pointer;
 }
 .node:hover, .badNode:hover {

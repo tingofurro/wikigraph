@@ -31,7 +31,7 @@ d3.json(webroot+"/tree.json", function(error, root) {
       .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
       .text(function(d) { return d.name; });
   node.on("dblclick", function(d) {
-      window.location=linkroot+'category/'+encodeURIComponent(d.name);
+      window.location=linkroot+'graph/'+encodeURIComponent(d.id);
       d3.event.stopPropagation();
   });
 });

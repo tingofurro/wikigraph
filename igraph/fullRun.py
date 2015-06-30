@@ -5,8 +5,9 @@ from dbco import *
 from s1Build import createGraph
 from s2Community import buildCommunity
 from s3Nlp import useNLP
-from s4Extrapolate import extrapolate
-from s5Save import saveResults
+from s4QA import QA
+from s5Extrapolate import extrapolate
+from s6Save import saveResults
 
 limit = 1500
 
@@ -38,6 +39,9 @@ for i in range(0,20):
 
 		useNLP(root)
 		print "Reassign nodes with NLP + name communities"
+
+		QA(root)
+		print "Ran Q&A check on comunities"
 
 		extrapolate(root)
 		print "Extrapolated other nodes"

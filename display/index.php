@@ -14,7 +14,18 @@ if(isset($_GET['cluster'])) {
 $fileUrl = "display/cache/".$cluster.".json";
 $fileExists = file_exists(getDocumentRoot().'/'.$fileUrl);
 if(!$fileExists) generateGraph($level, $cluster);
-$c = mysql_query("SELECT * FROM wg_cluster WHERE parent=".$cluster);
+$cid = $cluster;
+$names = array();
+while($level > 0) {
+	$c = mysql_query("SELECT * FROM wg_cluster WHERE id=".$cid); $cl = mysql_fetch_array($c);
+	$v = array("name" => shorterName($cl['name']), "id"=> $cl['id']);
+	array_unshift($names, $v);
+	$level --; $cid = $cl['parent'];
+}
+$extraTop = "";
+foreach ($names as $i => $n) {
+	$extraTop .= "<a href='".$root."graph/".$n['id']."'><span style='font-size:".(40-8*$i)."px;' class='folders'>/".$n['name']."</span></a>";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,12 +37,20 @@ $c = mysql_query("SELECT * FROM wg_cluster WHERE parent=".$cluster);
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="<?php echo $realRoot; ?>JS/lib/d3.js"></script>
 </head>
+	<?php include_once('header.php'); ?>
 <body>
-	<a href="<?php echo $root; ?>"><div id="logo">wikigraph</div></a>
 	<div id="clusterNameContain">
 	<?php
+	$any = false;
+	$c = mysql_query("SELECT * FROM wg_cluster WHERE good=1 AND parent=".$cluster);
 	while($cl = mysql_fetch_array($c)) {
-		?> <a href="<?php echo $root;?>graph/<?php echo $cl['id']; ?>"><div class="clusterName" value="<?php echo $cl['id']; ?>"><?php echo $cl['name']; ?></div></a><?php
+		$any = true;
+		?> <a href="<?php echo $root;?>graph/<?php echo $cl['id']; ?>"><div class="clusterName" value="<?php echo $cl['id']; ?>"><?php echo shorterName($cl['name']); ?></div></a><?php
+	}
+	if($any) {
+		?>
+			<div id="expliSub">Click above links to zoom-in</div>
+		<?php
 	}
 	?>
 		

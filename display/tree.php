@@ -32,6 +32,7 @@
 	<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="<?php echo $realRoot; ?>css/tree.css" />
 	<body>
+		<?php include_once('header.php'); ?>
 		<script type="text/javascript">
 		var webroot = '<?php echo $realRoot; ?>';
 		var linkroot = '<?php echo $root; ?>';
