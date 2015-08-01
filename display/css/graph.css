@@ -42,3 +42,9 @@ body {
 	height: 40px; cursor: pointer;
 	border: 1px solid #a0a0a0;
 }
+.keyword {
+	text-anchor: middle;
+	stroke: black;
+	stroke-width: 0.3px;
+	font-weight: 300;
+}

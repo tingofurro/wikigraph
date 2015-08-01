@@ -3,17 +3,25 @@ set_time_limit(180);
 include_once('dbco.php');
 include_once('mainFunc.php');
 include_once('createJsonGraph.php');
+include_once('graphFunctions.php');
 $realRoot = getRealRoot();
 $cluster = 0; $level = 0;
+$limit = 400;
 if(isset($_GET['cluster'])) {
 	$c = mysql_query("SELECT * FROM wg_cluster WHERE id=".mysql_real_escape_string($_GET['cluster']));
 	if($cl = mysql_fetch_array($c)) {
 		$cluster = $cl['id']; $level = $cl['level'];
 	}
 }
+
+$where = ''; $nodeList = array(); $nodeNameList = array();
+if($level > 0) $where = 'WHERE cluster'.$level."=".$cluster;
+$n = mysql_query("SELECT * FROM wg_page".$where." ORDER BY PR DESC LIMIT ". $limit);
+while($no = mysql_fetch_array($n)) {array_push($nodeList, $no['id']); array_push($nodeNameList, $no['name']);}
+
 $fileUrl = "display/cache/".$cluster.".json";
 $fileExists = file_exists(getDocumentRoot().'/'.$fileUrl);
-if(!$fileExists) generateGraph($level, $cluster);
+if(!$fileExists) generateGraph($level, $cluster, $limit);
 $cid = $cluster;
 $names = array();
 while($level > 0) {
@@ -23,9 +31,7 @@ while($level > 0) {
 	$level --; $cid = $cl['parent'];
 }
 $extraTop = "";
-foreach ($names as $i => $n) {
-	$extraTop .= "<a href='".$root."graph/".$n['id']."'><span style='font-size:".(40-8*$i)."px;' class='folders'>/".$n['name']."</span></a>";
-}
+foreach ($names as $i => $n) $extraTop .= "<a href='".$root."graph/".$n['id']."'><span style='font-size:".(40-8*$i)."px;' class='folders'>/".$n['name']."</span></a>";
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,9 +59,19 @@ foreach ($names as $i => $n) {
 		<?php
 	}
 	?>
-		
+	</div>
+	<div id="adjMatrix" onclick="$('#adjContainer').show();">Adjacency Matrix</div>
+	<div id="artNames" onclick="$('#artNameContainer').show();">Article Names</div>
+	<div id="adjContainer">
+		<textarea><?php echo generateMatrix($nodeList); ?></textarea>
+		<div class="closeAdj" onclick="$('#adjContainer').hide();">X</div>
+	</div>
+	<div id="artNameContainer">
+		<textarea><?php echo implode("\n", $nodeNameList); ?></textarea>
+		<div class="closeAdj" onclick="$('#artNameContainer').hide();">X</div>
 	</div>
 	<script src="<?php echo $realRoot; ?>JS/graph.js"></script>
+	<script src="<?php echo $realRoot; ?>JS/keywords.js"></script>
 	<script type="text/javascript">
 		var webroot = '<?php echo $realRoot; ?>';
 		var color = d3.scale.category20();

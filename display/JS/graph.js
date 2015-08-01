@@ -4,7 +4,9 @@ var smallRadius = 4, largeRadius = 5;
 var svg, force;
 var rectangle, aboveRect, loading;
 var gnodes, nodes, links=[],bilinks=[];
-
+var plotKeywords = true;
+var graphData;
+var transX, transY;
 function plotGraph(graphFile, toRun, toFile) {
 	// toRun: do the nodes already have positions or not?
 	// toFile: where to save. If == '' then no saving
@@ -17,6 +19,7 @@ function plotGraph(graphFile, toRun, toFile) {
 	force = d3.layout.force().linkStrength(2).friction(0.9).charge(-10).gravity(0.1).theta(0.8).alpha(alphaI).size([screenW, screenH]);
 	d3.json(graphFile, function(error, graph) {
 		nodes = graph.nodes.slice();
+		graph.nodes.forEach(function(node) {node.keywords = node.keywords.split(',');});
 
 		graph.links.forEach(function(link) {
 			var s = nodes[link.source],
@@ -26,6 +29,7 @@ function plotGraph(graphFile, toRun, toFile) {
 			links.push({source: s, target: i, value: link.value}, {source: i, target: t, value: link.value});
 			bilinks.push([s, i, t]);
 		});
+		graphData = graph;
 
 		force.linkDistance(function(d) {return d.value;}).nodes(nodes).links(links).start();
 
@@ -33,7 +37,7 @@ function plotGraph(graphFile, toRun, toFile) {
 
 	    gnodes = svg.selectAll('g.gnode').data(graph.nodes).enter().append('g').classed('gnode', true).on('mouseover', function(d){
 			d3.select(this).select('circle').attr('r', largeRadius);
-			document.title=d.name;
+			document.title=d.keywords;
 	    }).on('mouseout', function(d){
 			d3.select(this).select('circle').attr('r', smallRadius);
 	    });
@@ -62,7 +66,8 @@ function plotGraph(graphFile, toRun, toFile) {
 			});
 			loading.remove(); aboveRect.remove(); rectangle.remove();
 			if(toFile!='') {uploadAjax(nodes, links, toFile);}
-			clusterColors();
+			// clusterColors();
+			placeKeywords();
 		});
 	});
 }
@@ -78,7 +83,7 @@ function uploadAjax(nodes, links, toFile) {
 	for(node in nodes) {
 		oldNode = nodes[node];
 		if(oldNode.name) {
-			keepNodes.push({'index': oldNode.index, 'id': oldNode.id, 'name': oldNode.name, 'group': oldNode.group, 'x': (Math.floor(10*oldNode.x)/10), 'y': (Math.floor(10*oldNode.y)/10)});
+			keepNodes.push({'index': oldNode.index, 'id': oldNode.id, 'name': oldNode.name, 'group': oldNode.group, 'x': (Math.floor(10*oldNode.x)/10), 'y': (Math.floor(10*oldNode.y)/10), 'keywords': oldNode.keywords.join(",")});
 		}
 	}
 	for(link in links) {

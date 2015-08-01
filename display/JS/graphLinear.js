@@ -35,22 +35,6 @@ function plotGraph(graphFile, toRun, toFile) {
 
 		force.on("tick", function() {
 			aboveRect.attr('width', Math.floor(250*(1-((force.getAlpha()-alphaF)/alphaI))));
-	 //      var minX = 0, maxX = 0;
-	 //      var minY = 0, maxY = 0;
-	 //      gnodes.attr('transform', function(d) {
-	 //        minX = Math.min(minX, d.x); maxX = Math.max(maxX, d.x);
-	 //        minY = Math.min(minY, d.y); maxY = Math.max(maxY, d.y);
-	 //      });
-	 //      transX = Math.abs(minX);
-	 //      transY = Math.abs(minY);
-	 //      svg.attr("width", Math.max(screenW, (maxX+transX))).attr("height", Math.max(screenH, (maxY+transY)));
-	 //      gnodes.attr("transform", function(d) { 
-	 //         return 'translate(' + [d.x+transX, d.y+transY] + ')';
-	 //      });
-		// link.attr("x1", function(d) { return d.source.x; })
-		// .attr("y1", function(d) { return d.source.y; })
-		// .attr("x2", function(d) { return d.target.x; })
-		// .attr("y2", function(d) { return d.target.y; });
 		});
 		 force.on("end", function() {
 	      var minX = 0, maxX = 0;

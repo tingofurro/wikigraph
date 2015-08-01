@@ -1,7 +1,7 @@
 <?php
-function shorterName($name) {
+function shorterName($name, $total = 3) {
 	$name = explode(",", $name);
-	$name = array_slice($name, 0, min(3, count($name)));
+	$name = array_slice($name, 0, min($total, count($name)));
 	return implode(",", $name);
 }
 ?>

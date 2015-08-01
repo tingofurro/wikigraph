@@ -3,11 +3,12 @@ function nodes2Graph($nodes, $file, $lvl=1) {
 	$sp = str_repeat(' ', 3);
 	$nodesTxt = array();
 	$listNodeTxt = implode(", ", $nodes);
-	$PR = array(); $clust = array(); $names = array();
-	$n = mysql_query("SELECT id, PR, name, cluster".$lvl." FROM wg_page WHERE id IN (".implode(",", $nodes).") ORDER BY id");
+	$PR = array(); $clust = array(); $names = array(); $keywords = array();
+	$n = mysql_query("SELECT id, PR, name, cluster".$lvl.", keywords FROM wg_page WHERE id IN (".implode(",", $nodes).") ORDER BY id");
 	while($no = mysql_fetch_array($n)) {
 		$PR[$no['id']] = $no['PR']; $clus[$no['id']] = $no['cluster'.$lvl];
 		$names[$no['id']] = $no['name'];
+		$keywords[$no['id']] = shorterName($no['keywords'],5);
 	}
 	$minPR = min(array_values($PR));
 	$maxPR = max(array_values($PR));
@@ -27,7 +28,7 @@ function nodes2Graph($nodes, $file, $lvl=1) {
 	foreach ($goodNodes as $g) array_push($gn, $g);
 	sort($gn);
 	$edges = array();
-	foreach ($gn as $n) array_push($nodesTxt, $sp.$sp."{\"id\": ".$n.", \"name\": \"".$names[$n]."\", \"group\": ".$clus[$n]." }");
+	foreach ($gn as $n) array_push($nodesTxt, $sp.$sp."{\"id\": ".$n.", \"name\": \"".$names[$n]."\", \"group\": ".$clus[$n].", \"keywords\": \"".$keywords[$n]."\"}");
 	foreach ($edg as $e) array_push($edges, $sp.$sp."{\"source\": ".array_search($e['from'], $gn).", \"target\": ".array_search($e['to'], $gn).", \"value\": ".$e['dist']."}");
 
 	$txt = "{\n";
