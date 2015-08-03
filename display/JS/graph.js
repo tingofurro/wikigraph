@@ -37,9 +37,10 @@ function plotGraph(graphFile, toRun, toFile) {
 
 	    gnodes = svg.selectAll('g.gnode').data(graph.nodes).enter().append('g').classed('gnode', true).on('mouseover', function(d){
 			d3.select(this).select('circle').attr('r', largeRadius);
-			document.title=d.keywords;
+			openNotif(d);
 	    }).on('mouseout', function(d){
 			d3.select(this).select('circle').attr('r', smallRadius);
+			deleteNotif();
 	    });
 	      
 	    node = gnodes.append("circle").attr("class", "node").attr("r", smallRadius).style("fill", function(d) { return color(d.group); });
@@ -77,6 +78,13 @@ function clusterColors() {
 		$(this).css({'color': col});
 	});
 	$('#clusterNameContain').fadeIn(300);
+}
+function openNotif(data) {
+	deleteNotif();
+	noty({text: '<b>'+data.name+'</b><div class="dblClickInfo">Double click to open article</div>', layout: 'topRight', speed: 300});
+}
+function deleteNotif() {
+	$('.noty_bar').parent().remove();
 }
 function uploadAjax(nodes, links, toFile) {
 	keepNodes = []; keepEdges = [];

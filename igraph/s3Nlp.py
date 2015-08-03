@@ -31,7 +31,7 @@ def useNLP(root):
 
 	texts = [];
 	for node in nodes:
-		f = open(root+'/igraph/txt/'+str(node)+'.txt', "r")
+		f = open(root+'/eigen/summary/'+str(node)+'.txt', "r")
 		texts.append(f.read())
 		f.close()
 	count_vect = CountVectorizer(tokenizer=LemmaTokenizer(), stop_words='english', ngram_range = (1,2), binary=True)

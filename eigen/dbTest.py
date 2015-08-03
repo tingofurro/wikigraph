@@ -32,7 +32,7 @@ for row in cur.fetchall():
 
 
 adja = g.laplacian()
-#adja = np.array(adja.data) # stuff you have to do
+adja = np.array(adja.data) # stuff you have to do
 
 e_vals, e_vect = LA.eig(adja)
 e_vect = 100*e_vect

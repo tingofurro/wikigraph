@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,700italic); /* Open Sans */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700); /* Open Sans Condensed */
+body {
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+.arc {
+	cursor: pointer;
+}
+.arc path {
+	stroke: #000;
+	opacity: 0.8;
+}
+.arc:hover path, .activeArc {
+	stroke-width: 3px;
+	opacity: 1;
+	z-index: 2;
+}
+.arc text {
+	font-family: 'Open Sans Condensed';
+	opacity: 0.9;
+	fill: white;
+	font-weight: 700;
+	text-anchor: middle;
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.2),  -1px 1px 0px rgba(0,0,0,0.2), 1px -1px 0px rgba(0,0,0,0.2),  -1px -1px 0px rgba(0,0,0,0.2);
+}

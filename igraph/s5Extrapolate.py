@@ -19,7 +19,7 @@ def extrapolate(root):
 
 	trainingTexts = []
 	for node in trainingNodes:
-		f = open(root+'/igraph/txt/'+str(node)+'.txt', "r")
+		f = open(root+'/eigen/summary/'+str(node)+'.txt', "r")
 		trainingTexts.append(f.read())
 		f.close()
 
@@ -52,7 +52,7 @@ def extrapolate(root):
 			testNodes.append(int(node))
 
 	for node in testNodes:
-		f = open(root+'/igraph/txt/'+str(node)+'.txt', "r")
+		f = open(root+'/eigen/summary/'+str(node)+'.txt', "r")
 		testText.append(f.read())
 		f.close()
 

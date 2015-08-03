@@ -1,12 +1,11 @@
 <?php
-set_time_limit(180);
 include_once('dbco.php');
 include_once('mainFunc.php');
 include_once('createJsonGraph.php');
 include_once('graphFunctions.php');
 $realRoot = getRealRoot();
 $cluster = 0; $level = 0;
-$limit = 400;
+$limit = 700;
 if(isset($_GET['cluster'])) {
 	$c = mysql_query("SELECT * FROM wg_cluster WHERE id=".mysql_real_escape_string($_GET['cluster']));
 	if($cl = mysql_fetch_array($c)) {
@@ -15,7 +14,7 @@ if(isset($_GET['cluster'])) {
 }
 
 $where = ''; $nodeList = array(); $nodeNameList = array();
-if($level > 0) $where = 'WHERE cluster'.$level."=".$cluster;
+if($level > 0) $where = ' WHERE cluster'.$level."=".$cluster;
 $n = mysql_query("SELECT * FROM wg_page".$where." ORDER BY PR DESC LIMIT ". $limit);
 while($no = mysql_fetch_array($n)) {array_push($nodeList, $no['id']); array_push($nodeNameList, $no['name']);}
 
@@ -42,6 +41,7 @@ foreach ($names as $i => $n) $extraTop .= "<a href='".$root."graph/".$n['id']."'
 	<link rel="stylesheet" type="text/css" href="<?php echo $realRoot; ?>css/graph.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="<?php echo $realRoot; ?>JS/lib/d3.js"></script>
+	<script src="<?php echo $realRoot; ?>JS/lib/noty.js"></script>
 </head>
 	<?php include_once('header.php'); ?>
 <body>

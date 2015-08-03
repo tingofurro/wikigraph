@@ -19,11 +19,11 @@ while continueRunning:
 	cur.execute("SELECT id, name FROM wg_page WHERE keywords='' ORDER BY RAND() LIMIT 1000")
 
 	for row in cur.fetchall():
-		idList.append(row[0])
+		idList.append(str(row[0]))
 		nameList.append(row[1])
 
 	for i in idList:
-		f = open('../igraph/txt/'+str(i)+'.txt', "r")
+		f = open('summary/'+str(i)+'.txt', "r")
 		content = f.read()
 		f.close()
 		textList.append(content)
@@ -56,9 +56,15 @@ while continueRunning:
 		if ind%200 == 0:
 			print ind
 
+	query = "UPDATE wg_page SET keywords = CASE id "
+
 	for i, nam, keyL in zip(idList, nameList, keywordList):
 		keyString = ",".join(keyL)
-		cur.execute("UPDATE wg_page SET keywords='"+keyString+"' WHERE id="+str(i))
+		query += 'WHEN '+str(i)+' THEN "'+keyString+'" '
+
+	query += 'END WHERE id IN ('+','.join(idList)+')'
+	cur.execute(query)
+
 
 	cur.execute("SELECT COUNT(*) FROM wg_page WHERE keywords=''")
 	rows = cur.fetchall()

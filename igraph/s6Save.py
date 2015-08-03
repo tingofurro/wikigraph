@@ -19,7 +19,7 @@ def saveResults(root, level, cluster):
 			cur.execute("SELECT id FROM wg_cluster ORDER BY id DESC LIMIT 1")
 			clusterMapping[clus] = cur.fetchall()[0][0]
 	# Finished creating clusters, time to update pages
-	query = "UPDATE"+" wg_page SET cluster"+str(level+1)+" = CASE id "
+	query = "UPDATE wg_page SET cluster"+str(level+1)+" = CASE id "
 	pageIds = []
 	for fName in ['recommunity', 'extrapolate']:
 		f = open(root+'/igraph/data/'+fName+'.txt','r')

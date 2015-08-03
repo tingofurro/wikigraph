@@ -11,7 +11,7 @@ function placeKeywords() {
 		}
 	}
 	sortedKeyword = Object.keys(keywordGroups).sort(function(a,b){return mode(keywordGroups[b]).count-mode(keywordGroups[a]).count})
-	nbKeywords = Math.floor(graphData.nodes.length/4);
+	nbKeywords = Math.floor(graphData.nodes.length/6);
 	alreadyIn = [];
 	for(u = 0; u < nbKeywords; u ++) {
 		key = sortedKeyword[u];
