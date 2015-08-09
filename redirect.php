@@ -22,11 +22,14 @@ switch ($myUrl) {
 	case 'pie':
 		include_once('display/pie.php');
 	break;
+	case 'graph':
+		include_once('display/graph.php');
+	break;
 	case 'whatisthis':
 		include_once('display/whatisthis.php');
 	break;
 	case '':
-		include_once('display/index.php');
+		include_once('display/pie.php');
 	break;
 }
 
@@ -38,7 +41,7 @@ if(count($exp) >= 2 && $exp[0] == 'category') {
 }
 if(count($exp) >= 2 && $exp[0] == 'graph') {
 	if(is_numeric($exp[1])) {$_GET['cluster'] = mysql_real_escape_string($exp[1]);}
-	include_once('display/index.php');
+	include_once('display/graph.php');
 }
 if(count($exp) >= 2 && $exp[0] == 'explore') {
 	if(is_numeric($exp[1])) {$_GET['id'] = mysql_real_escape_string($exp[1]);}

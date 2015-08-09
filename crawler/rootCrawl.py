@@ -9,7 +9,7 @@ def loadBlackList(root):
 	return st.splitlines()
 def isGood(catName):
 	catLower = catName.lower()
-	if 'stub' not in catLower and 'books' not in catLower and 'history' not in catLower and 'software' not in catLower and 'commons' not in catLower:
+	if 'stub' not in catLower and 'books' not in catLower and 'history' not in catLower and 'software' not in catLower and 'commons' not in catLower and 'program' not in catLower and 'lists' not in catLower and 'algorithm' not in catLower:
 		return True
 	return False
 
@@ -43,14 +43,16 @@ while len(toSearch) > 0:
 		f.close()
 	toFind = '/wiki/Category:'
 	soup = BeautifulSoup(html_doc, 'html.parser')
+	soup = soup.find(id='mw-subcategories')
 	newDiscover = []
-	for link in soup.find_all('a'):
-		linkStr = link.get('href')
-		if linkStr is not None and linkStr[:len(toFind)] == toFind:
-			catName = linkStr[len(toFind):]
-			if isGood(catName) and catName not in categoryList and catName not in blackList and level < 6:
-				newDiscover.append([catName, level+1, parentId])
-				categoryList.append(catName)
+	if soup != None:
+		for link in soup.find_all('a'):
+			linkStr = link.get('href')
+			if linkStr is not None and linkStr[:len(toFind)] == toFind:
+				catName = linkStr[len(toFind):]
+				if isGood(catName) and catName not in categoryList and catName not in blackList and level < 15:
+					newDiscover.append([catName, level+1, parentId])
+					categoryList.append(catName)
 	if parentId%50 == 0:
 		cur.execute("INSERT INTO `category` (`id`, `name`, `parent`, `level`) VALUES "+", ".join(dbPush)+';')
 		dbPush = []
