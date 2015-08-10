@@ -6,8 +6,19 @@ def buildCommunity():
 	pieces = gOrig.clusters()
 	g = pieces.giant() # just keep the largest piece, there can be annoying islands
 
-	comm = g.community_spinglass()
-	membership = comm.membership
+	# comm = g.community_spinglass() #promising but slow
+	# comm = g.community_infomap() # should be promising... doesn't work :'(
+	g.to_undirected(); comm = g.community_leading_eigenvector() #(fairly promising)
+	# g.to_undirected(); comm = g.community_fastgreedy().as_clustering(); #(not good at all)
+	# g.to_undirected(); comm = g.community_label_propagation() #(not very good)
+	# g.to_undirected(); comm = g.community_multilevel() #decent
+	# comm = g.community_optimal_modularity() "shell killed the process, was taking forever"
+	# comm = g.community_edge_betweenness() # I feel asleep waiting
+	# comm = g.community_walktrap().as_clustering() # Not bad
+
+	membership = comm.membership;
+
+	# print "Spinglass modularity: ", g.modularity(membership)
 
 	members = {}
 	for mem in membership:

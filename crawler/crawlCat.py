@@ -30,17 +30,12 @@ while len(toSearch) > 0:
 	parentId += 1
 	print level
 	html_doc = ''
-	if os.path.isfile('cache/'+me[0]+'.txt'):
-		f = open('cache/'+me[0]+'.txt')
-		html_doc = f.read()
-		f.close()
+	whereToSave = 'category/'+me[0]+'.txt'
+	if os.path.isfile(whereToSave):
+		f = open(whereToSave); html_doc = f.read(); f.close();
 	else:
-		f = urllib.urlopen("https://en.wikipedia.org/wiki/Category:"+me[0])
-		html_doc = f.read()
-		f2 = open('cache/'+me[0]+'.txt', 'w')
-		f2.write(html_doc)
-		f2.close()
-		f.close()
+		f = urllib.urlopen("https://en.wikipedia.org/wiki/Category:"+me[0]); html_doc = f.read(); f.close();
+		f2 = open(whereToSave, 'w'); f2.write(html_doc); f2.close();
 	toFind = '/wiki/Category:'
 	soup = BeautifulSoup(html_doc, 'html.parser')
 	soup = soup.find(id='mw-subcategories')

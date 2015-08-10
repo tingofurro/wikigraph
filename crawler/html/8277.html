@@ -1,0 +1,1734 @@
+<p>
+ In
+ <a href="/wiki/Mathematics" title="Mathematics">
+  mathematics
+ </a>
+ , a
+ <b>
+  local field
+ </b>
+ is a special type of
+ <a href="/wiki/Field_(mathematics)" title="Field (mathematics)">
+  field
+ </a>
+ that is a
+ <a class="mw-redirect" href="/wiki/Locally_compact" title="Locally compact">
+  locally compact
+ </a>
+ <a class="mw-redirect" href="/wiki/Topological_field" title="Topological field">
+  topological field
+ </a>
+ with respect to a
+ <a href="/wiki/Discrete_space" title="Discrete space">
+  non-discrete topology
+ </a>
+ .
+ <sup class="reference" id="cite_ref-1">
+  <a href="#cite_note-1">
+   <span>
+    [
+   </span>
+   1
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ Given such a field, an
+ <a href="/wiki/Absolute_value_(algebra)" title="Absolute value (algebra)">
+  absolute value
+ </a>
+ can be defined on it. There are two basic types of local field: those in which the absolute value is
+ <a href="/wiki/Archimedean_property" title="Archimedean property">
+  archimedean
+ </a>
+ and those in which it is not. In the first case, one calls the local field an
+ <b>
+  archimedean local field
+ </b>
+ , in the second case, one calls it a
+ <b>
+  non-archimedean local field
+ </b>
+ . Local fields arise naturally in
+ <a href="/wiki/Number_theory" title="Number theory">
+  number theory
+ </a>
+ as
+ <a class="mw-redirect" href="/wiki/Completion_(metric_space)" title="Completion (metric space)">
+  completions
+ </a>
+ of
+ <a href="/wiki/Global_field" title="Global field">
+  global fields
+ </a>
+ .
+</p>
+<p>
+ Every local field is
+ <a class="mw-redirect" href="/wiki/Isomorphic" title="Isomorphic">
+  isomorphic
+ </a>
+ (as a topological field) to one of the following:
+</p>
+<ul>
+ <li>
+  Archimedean local fields (
+  <a href="/wiki/Characteristic_(algebra)" title="Characteristic (algebra)">
+   characteristic
+  </a>
+  zero): the
+  <a class="mw-redirect" href="/wiki/Real_numbers" title="Real numbers">
+   real numbers
+  </a>
+  <b>
+   R
+  </b>
+  , and the
+  <a class="mw-redirect" href="/wiki/Complex_numbers" title="Complex numbers">
+   complex numbers
+  </a>
+  <b>
+   C
+  </b>
+  .
+ </li>
+ <li>
+  Non-archimedean local fields of characteristic zero:
+  <a class="mw-redirect" href="/wiki/Finite_extension" title="Finite extension">
+   finite extensions
+  </a>
+  of the
+  <a href="/wiki/P-adic_number" title="P-adic number">
+   <i>
+    p
+   </i>
+   -adic numbers
+  </a>
+  <b>
+   Q
+  </b>
+  <sub>
+   <i>
+    p
+   </i>
+  </sub>
+  (where
+  <i>
+   p
+  </i>
+  is any
+  <a href="/wiki/Prime_number" title="Prime number">
+   prime number
+  </a>
+  ).
+ </li>
+ <li>
+  Non-archimedean local fields of characteristic
+  <i>
+   p
+  </i>
+  (for
+  <i>
+   p
+  </i>
+  any given prime number): the field of
+  <a class="mw-redirect" href="/wiki/Formal_Laurent_series" title="Formal Laurent series">
+   formal Laurent series
+  </a>
+  <b>
+   F
+  </b>
+  <sub>
+   <i>
+    q
+   </i>
+  </sub>
+  ((
+  <i>
+   T
+  </i>
+  )) over a
+  <a href="/wiki/Finite_field" title="Finite field">
+   finite field
+  </a>
+  <b>
+   F
+  </b>
+  <sub>
+   <i>
+    q
+   </i>
+  </sub>
+  (where
+  <i>
+   q
+  </i>
+  is a
+  <a href="/wiki/Exponentiation" title="Exponentiation">
+   power
+  </a>
+  of
+  <i>
+   p
+  </i>
+  ).
+ </li>
+</ul>
+<p>
+ There is an equivalent definition of non-archimedean local field: it is a field that is
+ <a class="mw-redirect" href="/wiki/Complete_valued_field" title="Complete valued field">
+  complete with respect to a discrete valuation
+ </a>
+ and whose
+ <a href="/wiki/Residue_field" title="Residue field">
+  residue field
+ </a>
+ is finite. However, some authors consider a more general notion, requiring only that the residue field be
+ <a href="/wiki/Perfect_field" title="Perfect field">
+  perfect
+ </a>
+ , not necessarily finite.
+ <sup class="reference" id="cite_ref-2">
+  <a href="#cite_note-2">
+   <span>
+    [
+   </span>
+   2
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ This article uses the former definition.
+</p>
+<p>
+</p>
+<div class="toc" id="toc">
+ <div id="toctitle">
+  <h2>
+   Contents
+  </h2>
+ </div>
+ <ul>
+  <li class="toclevel-1 tocsection-1">
+   <a href="#Induced_absolute_value">
+    <span class="tocnumber">
+     1
+    </span>
+    <span class="toctext">
+     Induced absolute value
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-2">
+   <a href="#Non-archimedean_local_field_theory">
+    <span class="tocnumber">
+     2
+    </span>
+    <span class="toctext">
+     Non-archimedean local field theory
+    </span>
+   </a>
+   <ul>
+    <li class="toclevel-2 tocsection-3">
+     <a href="#Examples">
+      <span class="tocnumber">
+       2.1
+      </span>
+      <span class="toctext">
+       Examples
+      </span>
+     </a>
+    </li>
+    <li class="toclevel-2 tocsection-4">
+     <a href="#Higher_unit_groups">
+      <span class="tocnumber">
+       2.2
+      </span>
+      <span class="toctext">
+       Higher unit groups
+      </span>
+     </a>
+    </li>
+    <li class="toclevel-2 tocsection-5">
+     <a href="#Structure_of_the_unit_group">
+      <span class="tocnumber">
+       2.3
+      </span>
+      <span class="toctext">
+       Structure of the unit group
+      </span>
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toclevel-1 tocsection-6">
+   <a href="#Higher-dimensional_local_fields">
+    <span class="tocnumber">
+     3
+    </span>
+    <span class="toctext">
+     Higher-dimensional local fields
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-7">
+   <a href="#See_also">
+    <span class="tocnumber">
+     4
+    </span>
+    <span class="toctext">
+     See also
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-8">
+   <a href="#Notes">
+    <span class="tocnumber">
+     5
+    </span>
+    <span class="toctext">
+     Notes
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-9">
+   <a href="#References">
+    <span class="tocnumber">
+     6
+    </span>
+    <span class="toctext">
+     References
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-10">
+   <a href="#Further_reading">
+    <span class="tocnumber">
+     7
+    </span>
+    <span class="toctext">
+     Further reading
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-11">
+   <a href="#External_links">
+    <span class="tocnumber">
+     8
+    </span>
+    <span class="toctext">
+     External links
+    </span>
+   </a>
+  </li>
+ </ul>
+</div>
+<p>
+</p>
+<h2>
+ <span class="mw-headline" id="Induced_absolute_value">
+  Induced absolute value
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=1" title="Edit section: Induced absolute value">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<p>
+ Given a locally compact topological field
+ <i>
+  K
+ </i>
+ , an absolute value can be defined as follows. First, consider the
+ <a href="/wiki/Field_(mathematics)#Related_algebraic_structures" title="Field (mathematics)">
+  additive group
+ </a>
+ of the field. As a locally compact
+ <a href="/wiki/Topological_group" title="Topological group">
+  topological group
+ </a>
+ , it has a unique (up to positive scalar multiple)
+ <a href="/wiki/Haar_measure" title="Haar measure">
+  Haar measure
+ </a>
+ μ. The absolute value is defined so as to measure the change in size of a set after multiplying it by an element of
+ <i>
+  K
+ </i>
+ . Specifically, define |·| :
+ <i>
+  K
+ </i>
+ →
+ <b>
+  R
+ </b>
+ by
+ <sup class="reference" id="cite_ref-3">
+  <a href="#cite_note-3">
+   <span>
+    [
+   </span>
+   3
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+</p>
+<dl>
+ <dd>
+  <img alt="|a|:=\frac{\mu(aX)}{\mu(X)}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/7/c/7/7c7fbfbe47c7721b2b9e1f00e8e900e0.png"/>
+ </dd>
+</dl>
+<p>
+ for any
+ <a class="mw-redirect" href="/wiki/Measurable" title="Measurable">
+  measurable
+ </a>
+ subset
+ <i>
+  X
+ </i>
+ of
+ <i>
+  K
+ </i>
+ (with 0 &lt; μ(X) &lt; ∞). This absolute value does not depend on
+ <i>
+  X
+ </i>
+ nor on the choice of Haar measure (since the same scalar multiple ambiguity will occur in both the
+ <a class="mw-redirect" href="/wiki/Numerator" title="Numerator">
+  numerator
+ </a>
+ and the
+ <a class="mw-redirect" href="/wiki/Denominator" title="Denominator">
+  denominator
+ </a>
+ ). This definition is very similar to that of
+ <a href="/wiki/Haar_measure#The_modular_function" title="Haar measure">
+  the modular function
+ </a>
+ .
+</p>
+<p>
+ Given such an absolute value on
+ <i>
+  K
+ </i>
+ , a new
+ <a class="mw-redirect" href="/wiki/Normed_space#Topological_structure" title="Normed space">
+  induced topology
+ </a>
+ can be defined on
+ <i>
+  K
+ </i>
+ . This topology is the same as the original topology.
+ <sup class="reference" id="cite_ref-4">
+  <a href="#cite_note-4">
+   <span>
+    [
+   </span>
+   4
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ Explicitly, for a positive real number
+ <i>
+  m
+ </i>
+ , define the subset
+ <i>
+  B
+ </i>
+ <sub>
+  m
+ </sub>
+ of
+ <i>
+  K
+ </i>
+ by
+</p>
+<dl>
+ <dd>
+  <img alt="B_m:=\{ a\in K:|a|\leq m\}." class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/b/b/9/bb9674ac612266d6b82fced39db5f29d.png"/>
+ </dd>
+</dl>
+<p>
+ Then, the
+ <i>
+  B
+ </i>
+ <sub>
+  m
+ </sub>
+ make up a
+ <a class="mw-redirect" href="/wiki/Neighbourhood_basis" title="Neighbourhood basis">
+  neighbourhood basis
+ </a>
+ of 0 in
+ <i>
+  K
+ </i>
+ .
+</p>
+<h2>
+ <span class="mw-headline" id="Non-archimedean_local_field_theory">
+  <span id="normalizedvaluation">
+  </span>
+  Non-archimedean local field theory
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=2" title="Edit section: Non-archimedean local field theory">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<p>
+ For a non-archimedean local field
+ <i>
+  F
+ </i>
+ (with absolute value denoted by |·|), the following objects are important:
+</p>
+<ul>
+ <li>
+  its
+  <b>
+   <a href="/wiki/Ring_of_integers" title="Ring of integers">
+    ring of integers
+   </a>
+  </b>
+  <img alt="\mathcal{O} = \{a\in F: |a|\leq 1\}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/6/c/e/6cebd45095bd92432b1484bd84577dd2.png"/>
+  which is a
+  <a href="/wiki/Discrete_valuation_ring" title="Discrete valuation ring">
+   discrete valuation ring
+  </a>
+  , is the closed
+  <a class="mw-redirect" href="/wiki/Unit_ball" title="Unit ball">
+   unit ball
+  </a>
+  of
+  <i>
+   F
+  </i>
+  , and is
+  <a href="/wiki/Compact_space" title="Compact space">
+   compact
+  </a>
+  ;
+ </li>
+ <li>
+  the
+  <b>
+   units
+  </b>
+  in its ring of integers
+  <img alt="\mathcal{O}^\times = \{a\in F: |a|= 1\}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/7/2/9/729d602c4cfc5604cfb8d2949a12a07b.png"/>
+  which forms a
+  <a href="/wiki/Group_(mathematics)" title="Group (mathematics)">
+   group
+  </a>
+  and is the
+  <a href="/wiki/Unit_sphere" title="Unit sphere">
+   unit sphere
+  </a>
+  of
+  <i>
+   F
+  </i>
+  ;
+ </li>
+ <li>
+  the unique non-zero
+  <a href="/wiki/Prime_ideal" title="Prime ideal">
+   prime ideal
+  </a>
+  <img alt="\mathfrak{m}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/d/5/d/d5dc8f8ba2f5e1d9d135307fc54fca29.png"/>
+  in its ring of integers which is its open unit ball
+  <img alt="\{a\in F: |a|&lt; 1\}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/9/2/0/9204fab591e1d6797b8ca369dc9e5d94.png"/>
+  ;
+ </li>
+ <li>
+  a
+  <a href="/wiki/Principal_ideal" title="Principal ideal">
+   generator
+  </a>
+  ϖ of
+  <img alt="\mathfrak{m}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/d/5/d/d5dc8f8ba2f5e1d9d135307fc54fca29.png"/>
+  called a
+  <b>
+   <a class="mw-redirect" href="/wiki/Uniformizer" title="Uniformizer">
+    uniformizer
+   </a>
+  </b>
+  of
+  <i>
+   F
+  </i>
+  ;
+ </li>
+ <li>
+  its residue field
+  <img alt="k=\mathcal{O}/\mathfrak{m}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/5/4/8/548d73a03dd132ef07ce5ba9f40da7e4.png"/>
+  which is finite (since it is compact and
+  <a href="/wiki/Discrete_space" title="Discrete space">
+   discrete
+  </a>
+  ).
+ </li>
+</ul>
+<p>
+ Every non-zero element
+ <i>
+  a
+ </i>
+ of
+ <i>
+  F
+ </i>
+ can be written as
+ <i>
+  a
+ </i>
+ = ϖ
+ <sup>
+  <i>
+   n
+  </i>
+ </sup>
+ <i>
+  u
+ </i>
+ with
+ <i>
+  u
+ </i>
+ a unit, and
+ <i>
+  n
+ </i>
+ a unique integer. The
+ <b>
+  normalized valuation
+ </b>
+ of
+ <i>
+  F
+ </i>
+ is the
+ <a href="/wiki/Surjective_function" title="Surjective function">
+  surjective function
+ </a>
+ <i>
+  v
+ </i>
+ :
+ <i>
+  F
+ </i>
+ →
+ <b>
+  Z
+ </b>
+ ∪ {∞} defined by sending a non-zero
+ <i>
+  a
+ </i>
+ to the unique integer
+ <i>
+  n
+ </i>
+ such that
+ <i>
+  a
+ </i>
+ = ϖ
+ <sup>
+  <i>
+   n
+  </i>
+ </sup>
+ <i>
+  u
+ </i>
+ with
+ <i>
+  u
+ </i>
+ a unit, and by sending 0 to ∞. If
+ <i>
+  q
+ </i>
+ is the
+ <a href="/wiki/Cardinality" title="Cardinality">
+  cardinality
+ </a>
+ of the residue field, the absolute value on
+ <i>
+  F
+ </i>
+ induced by its structure as a local field is given by
+ <sup class="reference" id="cite_ref-5">
+  <a href="#cite_note-5">
+   <span>
+    [
+   </span>
+   5
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+</p>
+<dl>
+ <dd>
+  <img alt="|a|=q^{-v(a)}." class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/9/e/5/9e5fdb06baa36dfdd66ac9ffa5cf8002.png"/>
+ </dd>
+</dl>
+<p>
+ An equivalent definition of a non-archimedean local field is that it is a field that is
+ <a class="mw-redirect" href="/wiki/Complete_valued_field" title="Complete valued field">
+  complete with respect to a discrete valuation
+ </a>
+ and whose residue field is finite.
+</p>
+<h3>
+ <span class="mw-headline" id="Examples">
+  Examples
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=3" title="Edit section: Examples">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h3>
+<ol>
+ <li>
+  <b>
+   The
+   <i>
+    p
+   </i>
+   -adic numbers
+  </b>
+  : the ring of integers of
+  <b>
+   Q
+  </b>
+  <sub>
+   <i>
+    p
+   </i>
+  </sub>
+  is the ring of
+  <i>
+   p
+  </i>
+  -adic integers
+  <b>
+   Z
+  </b>
+  <sub>
+   <i>
+    p
+   </i>
+  </sub>
+  . Its prime ideal is
+  <i>
+   p
+  </i>
+  <b>
+   Z
+  </b>
+  <sub>
+   <i>
+    p
+   </i>
+  </sub>
+  and its residue field is
+  <b>
+   Z
+  </b>
+  /
+  <i>
+   p
+  </i>
+  <b>
+   Z
+  </b>
+  . Every non-zero element of
+  <b>
+   Q
+  </b>
+  <sub>
+   p
+  </sub>
+  can be written as
+  <i>
+   u
+  </i>
+  <i>
+   p
+  </i>
+  <sup>
+   <i>
+    n
+   </i>
+  </sup>
+  where
+  <i>
+   u
+  </i>
+  is a unit in
+  <b>
+   Z
+  </b>
+  <sub>
+   <i>
+    p
+   </i>
+  </sub>
+  and
+  <i>
+   n
+  </i>
+  is an integer, then
+  <i>
+   v
+  </i>
+  (
+  <i>
+   u
+  </i>
+  <i>
+   p
+  </i>
+  <sup>
+   n
+  </sup>
+  ) =
+  <i>
+   n
+  </i>
+  for the normalized valuation.
+ </li>
+ <li>
+  <b>
+   The formal Laurent series over a finite field
+  </b>
+  : the ring of integers of
+  <b>
+   F
+  </b>
+  <sub>
+   <i>
+    q
+   </i>
+  </sub>
+  ((
+  <i>
+   T
+  </i>
+  )) is the ring of
+  <a href="/wiki/Formal_power_series" title="Formal power series">
+   formal power series
+  </a>
+  <b>
+   F
+  </b>
+  <sub>
+   <i>
+    q
+   </i>
+  </sub>
+  [[
+  <i>
+   T
+  </i>
+  ]]. Its prime ideal is (
+  <i>
+   T
+  </i>
+  ) (i.e. the power series whose
+  <a href="/wiki/Constant_term" title="Constant term">
+   constant term
+  </a>
+  is zero) and its residue field is
+  <b>
+   F
+  </b>
+  <sub>
+   <i>
+    q
+   </i>
+  </sub>
+  . Its normalized valuation is related to the (lower) degree of a formal Laurent series as follows:
+  <dl>
+   <dd>
+    <dl>
+     <dd>
+      <img alt="v\left(\sum_{i=-m}^\infty a_iT^i\right) = -m" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/0/3/0/030177b8184ed54558dd0304e6802926.png"/>
+      (where
+      <i>
+       a
+      </i>
+      <sub>
+       −
+       <i>
+        m
+       </i>
+      </sub>
+      is non-zero).
+     </dd>
+    </dl>
+   </dd>
+  </dl>
+ </li>
+ <li>
+  The formal Laurent series over the complex numbers is
+  <i>
+   not
+  </i>
+  a local field. For example, its residue field is
+  <b>
+   C
+  </b>
+  [[
+  <i>
+   T
+  </i>
+  ]]/(
+  <i>
+   T
+  </i>
+  ) =
+  <b>
+   C
+  </b>
+  , which is not finite.
+ </li>
+</ol>
+<h3>
+ <span class="mw-headline" id="Higher_unit_groups">
+  <span id="higherunit">
+  </span>
+  <span id="principalunit">
+  </span>
+  Higher unit groups
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=4" title="Edit section: Higher unit groups">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h3>
+<p>
+ The
+ <b>
+  <i>
+   n
+  </i>
+  <sup>
+   th
+  </sup>
+  higher unit group
+ </b>
+ of a non-archimedean local field
+ <i>
+  F
+ </i>
+ is
+</p>
+<dl>
+ <dd>
+  <img alt="U^{(n)}=1+\mathfrak{m}^n=\left\{u\in\mathcal{O}^\times:u\equiv1\, (\mathrm{mod}\,\mathfrak{m}^n)\right\}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/3/e/b/3eb8cd08d15c4a40d80fcc4f3eb41371.png"/>
+ </dd>
+</dl>
+<p>
+ for
+ <i>
+  n
+ </i>
+ ≥ 1. The group
+ <i>
+  U
+ </i>
+ <sup>
+  (1)
+ </sup>
+ is called the
+ <b>
+  group of principal units
+ </b>
+ , and any element of it is called a
+ <b>
+  principal unit
+ </b>
+ . The full unit group
+ <img alt="\mathcal{O}^\times" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/0/2/1/021c5b6cfd994bc7d53f0c679a77302c.png"/>
+ is denoted
+ <i>
+  U
+ </i>
+ <sup>
+  (0)
+ </sup>
+ .
+</p>
+<p>
+ The higher unit groups provide a decreasing
+ <a href="/wiki/Filtration_(mathematics)" title="Filtration (mathematics)">
+  filtration
+ </a>
+ of the unit group
+</p>
+<dl>
+ <dd>
+  <img alt="\mathcal{O}^\times\supseteq U^{(1)}\supseteq U^{(2)}\supseteq\cdots" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/6/3/4/634d4fa2d77561ef78566813b10d5d8a.png"/>
+ </dd>
+</dl>
+<p>
+ whose
+ <a href="/wiki/Quotient_group" title="Quotient group">
+  quotients
+ </a>
+ are given by
+</p>
+<dl>
+ <dd>
+  <img alt="\mathcal{O}^\times/U^{(n)}\cong\left(\mathcal{O}/\mathfrak{m}^n\right)^\times\text{ and }\,U^{(n)}/U^{(n+1)}\approx\mathcal{O}/\mathfrak{m}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/8/1/c/81cde143fcb1da2c76375f53a1be920e.png"/>
+ </dd>
+</dl>
+<p>
+ for
+ <i>
+  n
+ </i>
+ ≥ 1.
+ <sup class="reference" id="cite_ref-6">
+  <a href="#cite_note-6">
+   <span>
+    [
+   </span>
+   6
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ (Here "
+ <img alt="\approx" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/3/0/a/30a83899d43b156384be84db854210fd.png"/>
+ " means a non-canonical isomorphism.)
+</p>
+<h3>
+ <span class="mw-headline" id="Structure_of_the_unit_group">
+  Structure of the unit group
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=5" title="Edit section: Structure of the unit group">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h3>
+<p>
+ The multiplicative group of non-zero elements of a non-archimedean local field
+ <i>
+  F
+ </i>
+ is isomorphic to
+</p>
+<dl>
+ <dd>
+  <img alt="F^\times\cong(\varpi)\times\mu_{q-1}\times U^{(1)}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/6/2/9/6291c40367d2cda457175bafbbe66b46.png"/>
+ </dd>
+</dl>
+<p>
+ where
+ <i>
+  q
+ </i>
+ is the order of the residue field, and μ
+ <sub>
+  <i>
+   q
+  </i>
+  −1
+ </sub>
+ is the group of (
+ <i>
+  q
+ </i>
+ −1)st roots of unity (in
+ <i>
+  F
+ </i>
+ ). Its structure as an abelian group depends on its
+ <a href="/wiki/Characteristic_(algebra)" title="Characteristic (algebra)">
+  characteristic
+ </a>
+ :
+</p>
+<ul>
+ <li>
+  If
+  <i>
+   F
+  </i>
+  has positive characteristic
+  <i>
+   p
+  </i>
+  , then
+ </li>
+</ul>
+<dl>
+ <dd>
+  <dl>
+   <dd>
+    <img alt="F^\times\cong\mathbf{Z}\oplus\mathbf{Z}/{(q-1)}\oplus\mathbf{Z}_p^\mathbf{N}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/8/e/a/8eab06d4cc009e463796707e9cceeca1.png"/>
+   </dd>
+  </dl>
+ </dd>
+ <dd>
+  where
+  <b>
+   N
+  </b>
+  denotes the
+  <a href="/wiki/Natural_number" title="Natural number">
+   natural numbers
+  </a>
+  ;
+ </dd>
+</dl>
+<ul>
+ <li>
+  If
+  <i>
+   F
+  </i>
+  has characteristic zero (i.e. it is a finite extension of
+  <b>
+   Q
+  </b>
+  <sub>
+   <i>
+    p
+   </i>
+  </sub>
+  of degree
+  <i>
+   d
+  </i>
+  ), then
+ </li>
+</ul>
+<dl>
+ <dd>
+  <dl>
+   <dd>
+    <img alt="F^\times\cong\mathbf{Z}\oplus\mathbf{Z}/(q-1)\oplus\mathbf{Z}/p^a\oplus\mathbf{Z}_p^d" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/8/9/d/89d7f3d459aff5436e8208edc042f267.png"/>
+   </dd>
+  </dl>
+ </dd>
+ <dd>
+  where
+  <i>
+   a
+  </i>
+  ≥ 0 is defined so that the group of
+  <i>
+   p
+  </i>
+  -power roots of unity in
+  <i>
+   F
+  </i>
+  is
+  <img alt="\mu_{p^a}" class="mwe-math-fallback-image-inline tex" src="//upload.wikimedia.org/math/6/5/3/653d85c0bcf0ee25fdae34ca0c17cc70.png"/>
+  .
+  <sup class="reference" id="cite_ref-7">
+   <a href="#cite_note-7">
+    <span>
+     [
+    </span>
+    7
+    <span>
+     ]
+    </span>
+   </a>
+  </sup>
+ </dd>
+</dl>
+<h2>
+ <span class="mw-headline" id="Higher-dimensional_local_fields">
+  Higher-dimensional local fields
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=6" title="Edit section: Higher-dimensional local fields">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<div class="hatnote relarticle mainarticle">
+ Main article:
+ <a href="/wiki/Higher_local_field" title="Higher local field">
+  Higher local field
+ </a>
+</div>
+<p>
+ It is natural to introduce non-archimedean local fields in a uniform geometric way as the field of fractions of the completion of the local ring of a one-dimensional arithmetic scheme of rank 1 at its non-singular point. For generalizations, a local field is sometimes called a
+ <i>
+  one-dimensional local field
+ </i>
+ .
+</p>
+<p>
+ For a
+ <a class="mw-redirect" href="/wiki/Non-negative_integer" title="Non-negative integer">
+  non-negative integer
+ </a>
+ <i>
+  n
+ </i>
+ , an
+ <i>
+  n
+ </i>
+ -dimensional local field is a complete discrete valuation field whose residue field is an (
+ <i>
+  n
+ </i>
+ − 1)-dimensional local field.
+ <sup class="reference" id="cite_ref-8">
+  <a href="#cite_note-8">
+   <span>
+    [
+   </span>
+   8
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ Depending on the definition of local field, a
+ <i>
+  zero-dimensional local field
+ </i>
+ is then either a finite field (with the definition used in this article), or a
+ <a href="/wiki/Quasi-finite_field" title="Quasi-finite field">
+  quasi-finite field
+ </a>
+ ,
+ <sup class="reference" id="cite_ref-9">
+  <a href="#cite_note-9">
+   <span>
+    [
+   </span>
+   9
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ or a perfect field.
+</p>
+<p>
+ From the geometric point of view,
+ <i>
+  n
+ </i>
+ -dimensional local fields with last finite residue field are naturally associated to a complete flag of subschemes of an
+ <i>
+  n
+ </i>
+ -dimensional arithmetic scheme.
+</p>
+<h2>
+ <span class="mw-headline" id="See_also">
+  See also
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=7" title="Edit section: See also">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<ul>
+ <li>
+  <a href="/wiki/Hasse_principle" title="Hasse principle">
+   Hasse principle
+  </a>
+ </li>
+ <li>
+  <a href="/wiki/Local_class_field_theory" title="Local class field theory">
+   Local class field theory
+  </a>
+ </li>
+</ul>
+<h2>
+ <span class="mw-headline" id="Notes">
+  Notes
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=8" title="Edit section: Notes">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<div class="reflist" style="list-style-type: decimal;">
+ <ol class="references">
+  <li id="cite_note-1">
+   <span class="mw-cite-backlink">
+    <b>
+     <a href="#cite_ref-1">
+      ^
+     </a>
+    </b>
+   </span>
+   <span class="reference-text">
+    Page 20 of
+    <a href="#CITEREFWeil1995">
+     Weil 1995
+    </a>
+   </span>
+  </li>
+  <li id="cite_note-2">
+   <span class="mw-cite-backlink">
+    <b>
+     <a href="#cite_ref-2">
+      ^
+     </a>
+    </b>
+   </span>
+   <span class="reference-text">
+    See, for example, definition 1.4.6 of
+    <a href="#CITEREFFesenkoVostokov2002">
+     Fesenko &amp; Vostokov 2002
+    </a>
+   </span>
+  </li>
+  <li id="cite_note-3">
+   <span class="mw-cite-backlink">
+    <b>
+     <a href="#cite_ref-3">
+      ^
+     </a>
+    </b>
+   </span>
+   <span class="reference-text">
+    Page 4 of
+    <a href="#CITEREFWeil1995">
+     Weil 1995
+    </a>
+   </span>
+  </li>
+  <li id="cite_note-4">
+   <span class="mw-cite-backlink">
+    <b>
+     <a href="#cite_ref-4">
+      ^
+     </a>
+    </b>
+   </span>
+   <span class="reference-text">
+    Corollary 1, page 5 of
+    <a href="#CITEREFWeil1995">
+     Weil 1995
+    </a>
+   </span>
+  </li>
+  <li id="cite_note-5">
+   <span class="mw-cite-backlink">
+    <b>
+     <a href="#cite_ref-5">
+      ^
+     </a>
+    </b>
+   </span>
+   <span class="reference-text">
+    <a href="#CITEREFWeil1995">
+     Weil 1995
+    </a>
+    , chapter I, theorem 6
+   </span>
+  </li>
+  <li id="cite_note-6">
+   <span class="mw-cite-backlink">
+    <b>
+     <a href="#cite_ref-6">
+      ^
+     </a>
+    </b>
+   </span>
+   <span class="reference-text">
+    <a href="#CITEREFNeukirch1999">
+     Neukirch 1999
+    </a>
+    , p. 122
+   </span>
+  </li>
+  <li id="cite_note-7">
+   <span class="mw-cite-backlink">
+    <b>
+     <a href="#cite_ref-7">
+      ^
+     </a>
+    </b>
+   </span>
+   <span class="reference-text">
+    <a href="#CITEREFNeukirch1999">
+     Neukirch 1999
+    </a>
+    , theorem II.5.7
+   </span>
+  </li>
+  <li id="cite_note-8">
+   <span class="mw-cite-backlink">
+    <b>
+     <a href="#cite_ref-8">
+      ^
+     </a>
+    </b>
+   </span>
+   <span class="reference-text">
+    Definition 1.4.6 of
+    <a href="#CITEREFFesenkoVostokov2002">
+     Fesenko &amp; Vostokov 2002
+    </a>
+   </span>
+  </li>
+  <li id="cite_note-9">
+   <span class="mw-cite-backlink">
+    <b>
+     <a href="#cite_ref-9">
+      ^
+     </a>
+    </b>
+   </span>
+   <span class="reference-text">
+    <a href="#CITEREFSerre1995">
+     Serre 1995
+    </a>
+   </span>
+  </li>
+ </ol>
+</div>
+<h2>
+ <span class="mw-headline" id="References">
+  References
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=9" title="Edit section: References">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<ul>
+ <li>
+  <span class="citation" id="CITEREFSerre1995">
+   <a href="/wiki/Jean-Pierre_Serre" title="Jean-Pierre Serre">
+    Serre, Jean-Pierre
+   </a>
+   (1995),
+   <i>
+    <a class="mw-redirect" href="/wiki/Local_Fields_(book)" title="Local Fields (book)">
+     Local Fields
+    </a>
+   </i>
+   ,
+   <a class="mw-redirect" href="/wiki/Graduate_texts_in_mathematics" title="Graduate texts in mathematics">
+    Graduate texts in mathematics
+   </a>
+   <b>
+    67
+   </b>
+   , Berlin, Heidelberg:
+   <a class="mw-redirect" href="/wiki/Springer-Verlag" title="Springer-Verlag">
+    Springer-Verlag
+   </a>
+   ,
+   <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">
+    ISBN
+   </a>
+   <a href="/wiki/Special:BookSources/0-387-90424-7" title="Special:BookSources/0-387-90424-7">
+    0-387-90424-7
+   </a>
+  </span>
+  <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALocal+field&amp;rft.aufirst=Jean-Pierre&amp;rft.aulast=Serre&amp;rft.au=Serre%2C+Jean-Pierre&amp;rft.btitle=Local+Fields&amp;rft.date=1995&amp;rft.genre=book&amp;rft.isbn=0-387-90424-7&amp;rft.place=Berlin%2C+Heidelberg&amp;rft.pub=Springer-Verlag&amp;rft.series=Graduate+texts+in+mathematics&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.volume=67">
+   <span style="display:none;">
+   </span>
+  </span>
+ </li>
+ <li>
+  <span class="citation" id="CITEREFWeil1995">
+   <a href="/wiki/Andr%C3%A9_Weil" title="André Weil">
+    Weil, André
+   </a>
+   (1995),
+   <i>
+    Basic number theory
+   </i>
+   , Classics in Mathematics, Berlin, Heidelberg:
+   <a class="mw-redirect" href="/wiki/Springer-Verlag" title="Springer-Verlag">
+    Springer-Verlag
+   </a>
+   ,
+   <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">
+    ISBN
+   </a>
+   <a href="/wiki/Special:BookSources/3-540-58655-5" title="Special:BookSources/3-540-58655-5">
+    3-540-58655-5
+   </a>
+  </span>
+  <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALocal+field&amp;rft.aufirst=Andr%C3%A9&amp;rft.aulast=Weil&amp;rft.au=Weil%2C+Andr%C3%A9&amp;rft.btitle=Basic+number+theory&amp;rft.date=1995&amp;rft.genre=book&amp;rft.isbn=3-540-58655-5&amp;rft.place=Berlin%2C+Heidelberg&amp;rft.pub=Springer-Verlag&amp;rft.series=Classics+in+Mathematics&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook">
+   <span style="display:none;">
+   </span>
+  </span>
+ </li>
+ <li>
+  <span class="citation" id="CITEREFFesenkoVostokov2002">
+   <a href="/wiki/Ivan_Fesenko" title="Ivan Fesenko">
+    Fesenko, Ivan B.
+   </a>
+   ; Vostokov, Sergei V. (2002),
+   <i>
+    Local fields and their extensions
+   </i>
+   , Translations of Mathematical Monographs
+   <b>
+    121
+   </b>
+   (Second ed.), Providence, RI:
+   <a href="/wiki/American_Mathematical_Society" title="American Mathematical Society">
+    American Mathematical Society
+   </a>
+   ,
+   <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">
+    ISBN
+   </a>
+   <a href="/wiki/Special:BookSources/978-0-8218-3259-2" title="Special:BookSources/978-0-8218-3259-2">
+    978-0-8218-3259-2
+   </a>
+   ,
+   <a href="/wiki/Mathematical_Reviews" title="Mathematical Reviews">
+    MR
+   </a>
+   <a class="external text" href="//www.ams.org/mathscinet-getitem?mr=1915966" rel="nofollow">
+    1915966
+   </a>
+  </span>
+  <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALocal+field&amp;rft.au=Fesenko%2C+Ivan+B.&amp;rft.aufirst=Ivan+B.&amp;rft.aulast=Fesenko&amp;rft.au=Vostokov%2C+Sergei+V.&amp;rft.btitle=Local+fields+and+their+extensions&amp;rft.date=2002&amp;rft.edition=Second&amp;rft.genre=book&amp;rft.isbn=978-0-8218-3259-2&amp;rft.mr=1915966&amp;rft.place=Providence%2C+RI&amp;rft.pub=American+Mathematical+Society&amp;rft.series=Translations+of+Mathematical+Monographs&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.volume=121">
+   <span style="display:none;">
+   </span>
+  </span>
+ </li>
+ <li>
+  <span class="citation" id="CITEREFNeukirch1999">
+   <a href="/wiki/J%C3%BCrgen_Neukirch" title="Jürgen Neukirch">
+    Neukirch, Jürgen
+   </a>
+   (1999),
+   <i>
+    Algebraic Number Theory
+   </i>
+   , Grundlehren der mathematischen Wissenschaften
+   <b>
+    322
+   </b>
+   , Berlin:
+   <a class="mw-redirect" href="/wiki/Springer-Verlag" title="Springer-Verlag">
+    Springer-Verlag
+   </a>
+   ,
+   <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">
+    ISBN
+   </a>
+   <a href="/wiki/Special:BookSources/978-3-540-65399-8" title="Special:BookSources/978-3-540-65399-8">
+    978-3-540-65399-8
+   </a>
+   ,
+   <a href="/wiki/Zentralblatt_MATH" title="Zentralblatt MATH">
+    Zbl
+   </a>
+   <a class="external text" href="//zbmath.org/?format=complete&amp;q=an:0956.11021" rel="nofollow">
+    0956.11021
+   </a>
+   ,
+   <a href="/wiki/Mathematical_Reviews" title="Mathematical Reviews">
+    MR
+   </a>
+   <a class="external text" href="http://www.ams.org/mathscinet-getitem?mr=1697859" rel="nofollow">
+    1697859
+   </a>
+  </span>
+  <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALocal+field&amp;rft.aufirst=J%C3%BCrgen&amp;rft.aulast=Neukirch&amp;rft.au=Neukirch%2C+J%C3%BCrgen&amp;rft.btitle=Algebraic+Number+Theory&amp;rft.date=1999&amp;rft.genre=book&amp;rft_id=info%3Azbl%2F0956.11021&amp;rft.isbn=978-3-540-65399-8&amp;rft.place=Berlin&amp;rft.pub=Springer-Verlag&amp;rft.series=Grundlehren+der+mathematischen+Wissenschaften&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.volume=322">
+   <span style="display:none;">
+   </span>
+  </span>
+ </li>
+</ul>
+<h2>
+ <span class="mw-headline" id="Further_reading">
+  Further reading
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=10" title="Edit section: Further reading">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<ul>
+ <li>
+  <a class="mw-redirect" href="/wiki/A._Frohlich" title="A. Frohlich">
+   A. Frohlich
+  </a>
+  , "Local fields", in
+  <a class="mw-redirect" href="/wiki/J.W.S._Cassels" title="J.W.S. Cassels">
+   J.W.S. Cassels
+  </a>
+  and A. Frohlich (edd),
+  <i>
+   Algebraic number theory
+  </i>
+  ,
+  <a href="/wiki/Academic_Press" title="Academic Press">
+   Academic Press
+  </a>
+  , 1973. Chap.I
+ </li>
+ <li>
+  Milne, James,
+  <a class="external text" href="http://www.jmilne.org/math/CourseNotes/ant.html" rel="nofollow">
+   <b>
+    Algebraic Number Theory
+   </b>
+  </a>
+  .
+ </li>
+ <li>
+  Schikhoff, W.H. (1984)
+  <i>
+   Ultrametric Calculus
+  </i>
+ </li>
+</ul>
+<h2>
+ <span class="mw-headline" id="External_links">
+  External links
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Local_field&amp;action=edit&amp;section=11" title="Edit section: External links">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<ul>
+ <li>
+  <span class="citation" id="CITEREFHazewinkel2001">
+   Hazewinkel, Michiel, ed. (2001),
+   <a class="external text" href="http://www.encyclopediaofmath.org/index.php?title=p/l060130" rel="nofollow">
+    "Local field"
+   </a>
+   ,
+   <i>
+    <a href="/wiki/Encyclopedia_of_Mathematics" title="Encyclopedia of Mathematics">
+     Encyclopedia of Mathematics
+    </a>
+   </i>
+   ,
+   <a href="/wiki/Springer_Science%2BBusiness_Media" title="Springer Science+Business Media">
+    Springer
+   </a>
+   ,
+   <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">
+    ISBN
+   </a>
+   <a href="/wiki/Special:BookSources/978-1-55608-010-4" title="Special:BookSources/978-1-55608-010-4">
+    978-1-55608-010-4
+   </a>
+  </span>
+  <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALocal+field&amp;rft.atitle=Local+field&amp;rft.btitle=Encyclopedia+of+Mathematics&amp;rft.date=2001&amp;rft.genre=bookitem&amp;rft_id=http%3A%2F%2Fwww.encyclopediaofmath.org%2Findex.php%3Ftitle%3Dp%2Fl060130&amp;rft.isbn=978-1-55608-010-4&amp;rft.pub=Springer&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook">
+   <span style="display:none;">
+   </span>
+  </span>
+ </li>
+</ul>
+<noscript>
+ <img alt="" height="1" src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" style="border: none; position: absolute;" title="" width="1"/>
+</noscript>

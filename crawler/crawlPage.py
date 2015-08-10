@@ -4,25 +4,21 @@ import urllib, os.path
 
 pageList = []
 dbPush = []
-cur.execute("TRUNCATE TABLE page");
+cur.execute("TRUNCATE TABLE `page`");
 cur.execute("SELECT id, name FROM category ORDER BY id")
 for row in cur.fetchall():
 	name = row[1]
 	idCat = row[0]
 	html_doc = ''
-	if os.path.isfile('cache/'+name+'.txt'):
-		f = open('cache/'+name+'.txt')
-		html_doc = f.read()
-		f.close()
+	whereToSave = 'category/'+name+'.txt'
+
+	if os.path.isfile(whereToSave):
+		f = open(whereToSave); html_doc = f.read(); f.close();
 	else:
-		f = urllib.urlopen("https://en.wikipedia.org/wiki/Category:"+name)
-		html_doc = f.read()
-		f2 = open('cache/'+name+'.txt', 'w')
-		f2.write(html_doc)
-		f2.close()
-		f.close()
+		f = urllib.urlopen("https://en.wikipedia.org/wiki/Category:"+name); html_doc = f.read(); f.close();
+		f2 = open(whereToSave, 'w'); f2.write(html_doc); f2.close();
 	toFind = '/wiki/'
-	soup = BeautifulSoup(html_doc, 'html.parser')
+	soup = BeautifulSoup(html_doc, 'lxml')
 	soup = soup.find(id='mw-pages')
 	newDiscover = []
 	if soup != None:

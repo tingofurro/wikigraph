@@ -18,14 +18,17 @@ print "Loaded all pages"
 dbPush = [];
 
 cur.execute("SELECT `from` FROM link ORDER BY `from` DESC LIMIT 1")
-firstId = cur.fetchall()[0][0]
-print firstId
+res = cur.fetchall()
+if len(res) > 0:
+	firstId = res[0][0]
+else:
+	firstId = 0
 
 cur.execute("SELECT id FROM page WHERE id>"+str(firstId)+" ORDER BY id")
 for row in cur.fetchall():
 	myTos = []
-	f = open('data/'+str(row[0])+'.html')
-	soup = BeautifulSoup(f.read(), 'html.parser')
+	f = open('html/'+str(row[0])+'.html')
+	soup = BeautifulSoup(f.read(), 'lxml')
 	f.close()
 	toFind = '/wiki/'
 	if soup != None:

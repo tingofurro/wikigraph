@@ -9,13 +9,13 @@ from s4QA import QA
 from s5Extrapolate import extrapolate
 from s6Save import saveResults
 
-limit = 100
+limit = 1500
 
 db_prefix = 'wg_'
 summaryFolder = '../eigen/summary'
 if sys.argv[1] == 'nds':
 	db_prefix = ''
-	summaryFolder = '../eigen/summary2'
+	summaryFolder = '../../crawler/summary'
 
 if len(sys.argv) > 2 and sys.argv[2] == 'reset':
 	shall = raw_input("Sure you want to reset DB? (y/N) ").lower() == 'y'

@@ -23,7 +23,7 @@ while continueRunning:
 		nameList.append(row[1])
 
 	for i in idList:
-		f = open('summary2/'+str(i)+'.txt', "r")
+		f = open('summary/'+str(i)+'.txt', "r")
 		content = f.read()
 		f.close()
 		textList.append(content)
