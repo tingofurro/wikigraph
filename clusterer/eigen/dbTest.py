@@ -28,7 +28,7 @@ cur.execute("SELECT `from`, `to` FROM wg_link WHERE `from` IN ("+pageListString+
 for row in cur.fetchall():
 	toNode = str(int(row[1]))
 	fromNode = str(int(row[0]))
-	g.add_edges([(pageList.index(toNode), pageList.index(fromNode))])
+	g.add_edges([(pageList.index(fromNode), pageList.index(toNode))])
 
 
 adja = g.laplacian()

@@ -40,17 +40,8 @@ while continueRunning:
 
 	while ind < len(idList):
 		thisTfidf = wordTfidf[ind]
-		keywords = []
-		keywordScores = []
-		i = 0
-		for col in thisTfidf:
-			if col > 0.15:
-				thisWord = vocabValue[vocabIndex.index(i)].encode('utf-8')
-				keywords.append(thisWord)
-				keywordScores.append(col)
-			i += 1
-		sortingTransit = sorted(zip(keywordScores, keywords), reverse=True)
-		keywordsSorted = [e[1] for e in sortingTransit]
+		sixBestI = thisTfidf.argsort()[-6:][::-1]
+		keywordsSorted = [vocabValue[vocabIndex.index(i)].encode('ascii', 'ignore') for i in sixBestI]
 		keywordList.append(keywordsSorted)
 		ind += 1
 		if ind%200 == 0:

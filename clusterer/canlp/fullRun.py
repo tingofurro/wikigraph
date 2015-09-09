@@ -11,19 +11,16 @@ from s6Save import saveResults
 
 limit = 1500
 
-db_prefix = 'wg_'
-summaryFolder = '../eigen/summary'
-if sys.argv[1] == 'nds':
-	db_prefix = ''
-	summaryFolder = '../../crawler/summary'
+db_prefix = ''
+summaryFolder = '../../crawler/summary'
 
-if len(sys.argv) > 2 and sys.argv[2] == 'reset':
+if len(sys.argv) > 1 and sys.argv[1] == 'reset':
 	shall = raw_input("Sure you want to reset DB? (y/N) ").lower() == 'y'
 	if shall:
 		cur.execute("TRUNCATE TABLE `"+db_prefix+"cluster`")
 		cur.execute("UPDATE "+db_prefix+"page SET cluster1=0, cluster2=0, cluster3=0, cluster4=0, cluster5=0")
 
-for i in range(0,20):
+while True:
 	count = cur.execute('SELECT id, level FROM '+db_prefix+'cluster WHERE complete=0 ORDER BY id LIMIT 1')
 	level = -1; cluster = -1;
 	if count > 0:
@@ -56,3 +53,6 @@ for i in range(0,20):
 		saveResults(level, cluster, db_prefix)
 		print "Saved results to database."
 		print "All done.\n----------------------------"
+		cur.execute('SELECT COUNT(*) FROM '+db_prefix+'cluster WHERE complete=0 AND level<=3')
+		if cur.fetchall()[0][0] == 0:
+			break;

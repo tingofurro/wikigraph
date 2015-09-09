@@ -3,6 +3,7 @@ body {
 	padding: 0px;
 	font-family: sans-serif;
 }
+.hide {display: none;}
 .gnode {
 	cursor: pointer;
 }

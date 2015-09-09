@@ -11,7 +11,7 @@ function placeKeywords() {
 		}
 	}
 	sortedKeyword = Object.keys(keywordGroups).sort(function(a,b){return mode(keywordGroups[b]).count-mode(keywordGroups[a]).count})
-	nbKeywords = Math.floor(graphData.nodes.length/6);
+	nbKeywords = Math.floor(graphData.nodes.length/10);
 	alreadyIn = [];
 	for(u = 0; u < nbKeywords; u ++) {
 		key = sortedKeyword[u];
@@ -49,17 +49,13 @@ function placeKeywords() {
 		if(draw) {
 			var keyword = svg.append('text');
 			keyword.attr("x", (textX+transX)).attr("y", (bestTextY+transY))
-			.text(key).attr("font-size", (15+2*size)+"px").attr("fill", color(modeGroup)).attr('class', 'keyword').attr('opacity', 0).attr('id', key);
+			.text(key).attr("font-size", (15+2*size)+"px").attr("fill", str2color(modeGroup)).attr('class', 'keyword').attr('opacity', 0).attr('id', key);
 			alreadyIn.push([textX, bestTextY]);
 		}
 	}
 	$('.keyword').animate({'opacity': 1}, 400);
 	keepNodesOnTop();
 }
-// function openNotif(data) {
-// 	deleteNotif();
-// 	noty({text: '<img src="images/sources/'+data.source+'.png" class="artImg" /><b>'+data.name+'</b><div class="dblClickInfo">Double click to open article</div>', layout: 'bottomLeft', speed: 300});
-// }
 function deleteNotif() {
 	$('.noty_bar').parent().remove();
 }

@@ -4,7 +4,7 @@ function nodes2Graph($nodes, $file, $lvl=1) {
 	$nodesTxt = array();
 	$listNodeTxt = implode(", ", $nodes);
 	$PR = array(); $clust = array(); $names = array(); $keywords = array();
-	$n = mysql_query("SELECT id, PR, name, cluster".$lvl.", keywords FROM wg_page WHERE id IN (".implode(",", $nodes).") ORDER BY id");
+	$n = mysql_query("SELECT id, PR, name, cluster".$lvl.", keywords FROM page WHERE id IN (".implode(",", $nodes).") ORDER BY id");
 	while($no = mysql_fetch_array($n)) {
 		$PR[$no['id']] = $no['PR']; $clus[$no['id']] = $no['cluster'.$lvl];
 		$names[$no['id']] = $no['name'];
@@ -15,7 +15,7 @@ function nodes2Graph($nodes, $file, $lvl=1) {
 	$minDist = 5;
 	$maxDist = 200;
 	$goodNodes = array(); $edg = array();
-	$e = mysql_query("SELECT * FROM wg_link WHERE (`to` IN(".$listNodeTxt.") AND `from` IN(".$listNodeTxt.")) ORDER BY id");
+	$e = mysql_query("SELECT * FROM link WHERE (`to` IN(".$listNodeTxt.") AND `from` IN(".$listNodeTxt.")) ORDER BY id");
 	while($ed = mysql_fetch_array($e)) {
 		$thisPR = min($PR[$ed['to']], $PR[$ed['from']]);
 		$dist = ceil(($maxDist-$minDist)*$thisPR/($maxPR-$minPR) + $minDist);
@@ -47,7 +47,7 @@ function generateMatrix($nodes) {
 		$mat[$r] = array();
 		for ($c=0; $c < $nbNodes; $c++) $mat[$r][$c] = 0;
 	}
-	$e = mysql_query("SELECT * FROM wg_link WHERE `to` IN (".implode(",", $nodes).") AND `from` IN (".implode(",", $nodes).")");
+	$e = mysql_query("SELECT * FROM link WHERE `to` IN (".implode(",", $nodes).") AND `from` IN (".implode(",", $nodes).")");
 	while($ed = mysql_fetch_array($e)) {
 		$r = array_search($ed['from'], $nodes);
 		$c = array_search($ed['to'], $nodes);

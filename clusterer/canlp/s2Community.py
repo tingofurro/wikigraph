@@ -1,4 +1,5 @@
 from igraph import *
+import louvain
 
 def buildCommunity():
 	gOrig = Graph.Load('data/graph.json', 'ncol')
@@ -8,13 +9,14 @@ def buildCommunity():
 
 	# comm = g.community_spinglass() #promising but slow
 	# comm = g.community_infomap() # should be promising... doesn't work :'(
-	g.to_undirected(); comm = g.community_leading_eigenvector() #(fairly promising)
+	arpack_options.maxiter=300000; g.to_undirected(); comm = g.community_leading_eigenvector() #(fairly promising)
 	# g.to_undirected(); comm = g.community_fastgreedy().as_clustering(); #(not good at all)
 	# g.to_undirected(); comm = g.community_label_propagation() #(not very good)
 	# g.to_undirected(); comm = g.community_multilevel() #decent
 	# comm = g.community_optimal_modularity() "shell killed the process, was taking forever"
 	# comm = g.community_edge_betweenness() # I feel asleep waiting
 	# comm = g.community_walktrap().as_clustering() # Not bad
+	g.to_undirected(); louvain.find_partition(g, method='Modularity').membership
 
 	membership = comm.membership;
 

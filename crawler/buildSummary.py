@@ -11,7 +11,8 @@ def isBreak(child): # should we stop there
 	return False
 def isValid(child):
 	badClasses = ['hatnote', 'stub', 'ambox', 'vertical-navbox', 'thumb', 'infobox', 'navbox', 'haudio', 'reference']
-
+	if child is None:
+		return False
 	if child.name is not None and child.name == 'div' and child.get('id') is not None and child.get('id') == 'toc':
 		return False
 	if child.name is not None and (child.name == 'h2'):
@@ -29,7 +30,13 @@ def buildSummary(soup, whereToSave):
 			if isBreak(child):
 				break;
 			if isValid(child):
-				content += (child.get_text()+'\n').encode('ascii', 'ignore')
+				cont = ''
+				try:
+					cont = child.get_text()
+				except:
+					pass
+
+				content += (cont+'\n').encode('ascii', 'ignore')
 	content = content.replace('\n', '')
 	f = open(whereToSave, 'w'); f.write(content); f.close();
 

@@ -3,3 +3,5 @@ dbco.php
 data/
 *.txt
 Infomap/
+_gsdata_/
+display/pies/

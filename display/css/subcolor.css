@@ -1,0 +1,28 @@
+@import url(//fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700);
+body {
+	background: white;
+	padding: 0px;
+	margin: 0px;
+	background: #e0e0e0;
+}
+#svg1 {
+	background: black;
+}
+.arc {
+	cursor: pointer;
+}
+.arc path {
+	stroke: #a0a0a0;
+	stroke-width: 1;
+	fill-opacity: 0.7;
+}
+.arc:hover path {
+	fill-opacity: 1;
+}
+.arc text {
+	fill: rgba(255,255,255,1);
+	stroke-width: 3;
+	stroke: rgba(255,255,255,0.5);
+	font-family: Roboto Slab;
+	font-weight: 700;
+}

@@ -1,9 +1,6 @@
 <?php
 include_once('dbco.php');
 include_once('mainFunc.php');
-
-$file = getDocumentRoot()."/display/pies/0.csv";
-
 ?>
 <html>
 <!DOCTYPE html>

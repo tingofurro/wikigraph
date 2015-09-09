@@ -28,12 +28,22 @@ switch ($myUrl) {
 	case 'whatisthis':
 		include_once('display/whatisthis.php');
 	break;
+	case 'regenPies':
+		include_once('display/createCsvPies.php');
+	break;
+	case 'subcolor':
+		include_once('display/subcolor.php');
+	break;
 	case '':
-		include_once('display/pie.php');
+		include_once('display/graph.php');
 	break;
 }
 
 $exp = explode("/", $myUrl);
+if(count($exp) == 1 and is_numeric($exp[0])) {
+	$_GET['cluster'] = mysql_real_escape_string($exp[0]);
+	include_once('display/graph.php');
+}
 if(count($exp) >= 2 && $exp[0] == 'category') {
 	if(is_numeric($exp[1])) {$_GET['source'] = mysql_real_escape_string($exp[1]);}
 	else {$_GET['sourceName'] = mysql_real_escape_string($exp[1]);}
@@ -54,5 +64,9 @@ if(count($exp) >= 2 && $exp[0] == 'explore') {
 if(count($exp) >= 2 && $exp[0] == 'wiki') {
 	$_GET['name'] = mysql_real_escape_string($exp[1]);
 	include_once('display/explore.php');
+}
+if(count($exp) >= 2 && $exp[0] == 'loadGraph') {
+	$_GET['topic'] = mysql_real_escape_string($exp[1]);
+	include_once('display/loadGraph.php');
 }
 ?>

@@ -13,7 +13,7 @@ def saveResults(level, cluster, db_prefix):
 				score = float(toks[1])
 			clus = int(toks[0]); name = toks[2]; good = toks[3];
 			isComplete = '1';
-			if score > 1.5 and clus != 0 and level<4:
+			if score > 0.5 and clus != 0 and level<4:
 				isComplete = '0'
 			query = "INSERT INTO `"+db_prefix+"cluster` (`id`, `parent`, `name`, `level`, `score`, `complete`, `good`) VALUES (NULL, '"+str(cluster)+"', '"+name+"', '"+str(level+1)+"', '"+str(score)+"', '"+isComplete+"', '"+good+"');"
 			cur.execute(query)

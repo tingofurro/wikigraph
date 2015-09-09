@@ -6,10 +6,13 @@ def genFreqArray(inText, outText):
 	return np.subtract(inText.mean(axis=0).A[0], outText.mean(axis=0).A[0])
 
 def genName(freqArray, vocabValue, vocabIndex):
-	tenBestI = freqArray.argsort()[-6:][::-1]
+	tenBestI = freqArray.argsort()[-5:][::-1]
 	tenBest = [vocabValue[vocabIndex.index(i)].encode('ascii', 'ignore') for i in tenBestI]
-	biWords = [w.split(' ') for w in tenBest if ' ' in w]
-	return [w for w in tenBest if w not in biWords][:3]
+	biWords = [w for w in tenBest if ' ' in w]
+	bw = []
+	for b in biWords:
+		bw.extend(b.split(' '))
+	return [w for w in tenBest if w not in bw][:3]
 
 def useNLP(summaryFolder):
 	f = open('data/community.txt','r'); toks = f.readlines(); f.close();
@@ -26,7 +29,7 @@ def useNLP(summaryFolder):
 	texts = [];
 	for node in nodes:
 		f = open(summaryFolder+'/'+str(node)+'.txt', "r"); texts.append(f.read()); f.close();
-	count_vect = CountVectorizer(tokenizer=LemmaTokenizer(), stop_words='english', ngram_range = (2,2), binary=True) # 
+	count_vect = CountVectorizer(tokenizer=LemmaTokenizer(), stop_words='english', ngram_range = (1,2), binary=True) # 
 	totalCount = count_vect.fit_transform(texts)
 
 	tfidf_trans = TfidfTransformer() #initialize our tfidf transformer
