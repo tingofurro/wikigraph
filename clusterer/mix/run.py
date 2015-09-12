@@ -1,24 +1,26 @@
 from build_graph import *
-from build_similarities import *
 from nlp_graph import *
 from q_compute import *
-from igraph import *
-from dbco import *
+from igraph import *; from dbco import *;
 from methods import *
-from girvan_newman import *
 
-limit = 1000
+limit = 500
 cur.execute("SELECT id, name FROM page ORDER BY PR DESC LIMIT "+str(limit)); res = cur.fetchall();
-arts = [str(a[0]) for a in res]; artsName = [a[1] for a in res];
+arts = [str(a[0]) for a in res];
+arts.sort();
+artsName = {int(a[0]): a[1] for a in res};
 
-fileName = 'graph.json'; build_graph(arts, fileName)
+tfidf = buildTFIDF(arts)
+simi = tdfidfSimi(tfidf)
 
-G = Graph.Load(fileName, 'ncol')
-G2, simi, tfidf = nlp_graph(arts)
 
-methods = ['louvainMethod', 'leadingEigenvectors', 'fastGreedy', 'multilevel', 'spinglass', 'walktrap']
+G = build_graph(arts)
+
+G2 = nlp_graph_KNN(arts, artsName, tfidf, simi)
+
+methods = ['louvainMethod', 'leadingEigenvectors', 'fastGreedy', 'multilevel']
 for m in methods:
 	print "----------------------------------\n", m
-	membership = globals()[m](G, [])
-	[mod, mod2, accuracy, q] = q_compute(G, G2, membership, simi, tfidf)
-	print "100*",mod, "*", mod2,"*", accuracy, " => ", q
+	membership = globals()[m](G, G2)
+	[mod, mod2, q] = q_compute(G, G2, membership, simi, tfidf)
+	print "mod1: ",mod, ", mod2: ", mod2 ," => ", q

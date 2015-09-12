@@ -40,10 +40,16 @@ def buildSummary(soup, whereToSave):
 	content = content.replace('\n', '')
 	f = open(whereToSave, 'w'); f.write(content); f.close();
 
-# cur.execute("SELECT id FROM page ORDER BY PR DESC")
-# i = 0
-# for row in cur.fetchall():
-# 	artId = row[0]
-# 	getContent(artId)
-# 	i += 1
-# 	print artId, " / ", i
+def buildHTMLSummary(soup):
+	soup = soup.find('body')
+	content = ''
+	alreadyBroke = False
+	for child in soup.children:
+		if alreadyBroke:
+			child.extract()
+		elif child.name is not None:
+			if isBreak(child):
+				alreadyBroke = True
+			if not isValid(child):
+				child.extract()
+	return soup

@@ -1,4 +1,5 @@
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.metrics import silhouette_score
 from collections import Counter
 import numpy as np
 
@@ -11,8 +12,10 @@ def q_compute(G, G2, membership, simi, tfidf):
 	counter = Counter(membership)
 	mod = G.modularity(membership)
 	mod2 = G2.modularity(membership)
-	accuracy = freqArrays(membership, tfidf)
-	return [mod, mod2, accuracy, 100*mod*mod2*accuracy]
+	# silhouette = silhouette_score(tfidf, membership, metric='cosine')
+	print silhouette
+	return [mod, mod2, mod+mod2]
+
 def freqArrays(membership, tfidf):
 	freqMatrix = []
 	classSet = list(set(membership))

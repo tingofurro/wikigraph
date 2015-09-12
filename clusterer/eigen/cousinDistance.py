@@ -7,15 +7,15 @@ import sys
 
 level = 2
 
-cur.execute("SELECT id, cluster"+str(level)+" FROM wg_page WHERE cluster2!=0 ORDER BY cluster"+str(level))
+cur.execute("SELECT id, cluster"+str(level)+" FROM page WHERE cluster2!=0 ORDER BY cluster"+str(level))
 pageText = []; pageId = []; cluster = [];
 for row in cur.fetchall():
-	f = open('summary/'+str(row[0])+'.txt')
+	f = open('../../crawler/summary/'+str(row[0])+'.txt')
 	pageText.append(f.read()); f.close();
 	pageId.append(row[0]);
 	cluster.append(row[1]);
 
-cur.execute("SELECT id, name FROM wg_cluster WHERE level="+str(level)+" ORDER BY id")
+cur.execute("SELECT id, name FROM cluster WHERE level="+str(level)+" ORDER BY id")
 clusterNames = {};
 clusterList = [];
 for row in cur.fetchall():
@@ -61,8 +61,3 @@ for x in range(0,len(distances)):
 for c in clusterSet:
 	print c
 	print clusterNames[c], "=> ", clusterNames[clusterList[minDists[c]]]
-
-# for x1 in range(0,len(distances[0])-1):
-# 	print "-----------------------------------------"
-# 	print distances[x1]
-# 	# for x2 in range(x1+1,len(distances[0])):	

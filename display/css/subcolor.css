@@ -1,9 +1,9 @@
-@import url(//fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300);
 body {
+	font-family: 'Open Sans', sans-serif;
 	background: white;
 	padding: 0px;
 	margin: 0px;
-	background: #e0e0e0;
 }
 #svg1 {
 	background: black;
@@ -12,17 +12,14 @@ body {
 	cursor: pointer;
 }
 .arc path {
+	fill-opacity: 0.8;
 	stroke: #a0a0a0;
 	stroke-width: 1;
-	fill-opacity: 0.7;
-}
-.arc:hover path {
-	fill-opacity: 1;
 }
 .arc text {
 	fill: rgba(255,255,255,1);
 	stroke-width: 3;
 	stroke: rgba(255,255,255,0.5);
-	font-family: Roboto Slab;
 	font-weight: 700;
+	font-size: 17px;
 }

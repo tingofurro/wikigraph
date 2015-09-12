@@ -5,7 +5,7 @@ $(document).ready(function() {
 	windowHeight = screen.height-50;
 	windowWidth = screen.width-17;
 	svg = d3.select("body").append("svg").attr('id', 'svg1').attr("width", windowWidth).attr("height", windowHeight);
-	svg2 = d3.select("body").append("svg").attr("width", windowWidth).attr("height", windowHeight);
+	loadFirstGraph();
 	restart();
 });
 function restart() {
@@ -23,9 +23,7 @@ function loadPie(lvl, maxLvl) {
 	pie = d3.layout.pie().sort(null).value(function(d) { return d.weight; });
 	innerSvg = svg.append("g").attr('id', 'pie'+lvl).attr("transform", "translate(" + windowWidth/2 + "," + windowHeight/2 + ")");
 	var g = innerSvg.selectAll(".arc").data(pie(myArray)).enter().append("g");
-	g.on('click', function(d) {
-		openGraph(d.data.id);
-	});
+	g.on('click', function(d) {openGraph(d.data.id);});
 	g.attr("class", 'arc').append("path").attr("d", arc).style("fill", function(d) {return d.data.col;});
 
 	g.append("text").attr("transform", function(d) {
@@ -33,7 +31,7 @@ function loadPie(lvl, maxLvl) {
 		if(myAngle < 180) myAngle -= 90;
 		else myAngle += 90;
 		return "translate(" + textArc.centroid(d) + ") rotate("+myAngle+")"; 
-	}).attr("dy", ".35em").style("text-anchor", "middle").text(function(d) { return d.data.name.substr(0,20); });
+	}).attr("dy", ".35em").style("text-anchor", "middle").text(function(d) { return d.data.name.substr(0,24).replace('_', ' '); });
 }
 function fetchLevel(myArray, treeObj, level, targetLevel, currentWeight) {
 	if(level == targetLevel) {
@@ -54,7 +52,7 @@ function fetchLevel(myArray, treeObj, level, targetLevel, currentWeight) {
 	}
 }
 function radius(lvl) {
-	return (0.32-0.03*lvl)*Math.min($(window).width(), (screen.height-50))*lvl;
+	return 0.3*Math.min($(window).width(), (screen.height-50))*lvl;
 }
 function loadTopics() {
 	$.getJSON(webroot+ "tree.json", function( json ) {
@@ -72,7 +70,7 @@ function setColor(children, colors) {
 }
 function openGraph(graphId) {
 	$.getJSON(webroot+'loadGraph/'+graphId, function(json) {
-		
+		plotGraph(json.graph, (json.preloaded==1)?false:true, json.toFile)
 	});
 	$('html, body').animate({scrollTop:screen.height}, 500);
 }

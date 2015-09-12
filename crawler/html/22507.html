@@ -1,0 +1,560 @@
+<p>
+ In
+ <a href="/wiki/Automata_theory" title="Automata theory">
+  automata theory
+ </a>
+ ,
+ <b>
+  generalized Büchi automaton (GBA)
+ </b>
+ is a variant of
+ <a href="/wiki/B%C3%BCchi_automaton" title="Büchi automaton">
+  Büchi automaton
+ </a>
+ . The difference with the Büchi automaton is its accepting condition, i.e., a set of sets of states. A run is accepted by the automaton if it visits at least one state of every set of the accepting condition infinitely often. Generalized büchi automata (GBA) is equivalent in expressive power with Büchi automata; a transformation is given
+ <a class="mw-redirect" href="/wiki/B%C3%BCchi_automata#Transforming_from_other_models_of_description_to_non-deterministic_B.C3.BCchi_automata" title="Büchi automata">
+  here
+ </a>
+ .
+</p>
+<p>
+ In
+ <a href="/wiki/Formal_verification" title="Formal verification">
+  formal verification
+ </a>
+ , the
+ <a href="/wiki/Model_checking" title="Model checking">
+  model checking
+ </a>
+ method needs to obtain an automaton from a
+ <a href="/wiki/Linear_temporal_logic" title="Linear temporal logic">
+  LTL
+ </a>
+ formula that specifies the program property. There are
+ <a href="/wiki/Linear_temporal_logic_to_B%C3%BCchi_automaton" title="Linear temporal logic to Büchi automaton">
+  algorithms
+ </a>
+ that translate a
+ <a href="/wiki/Linear_temporal_logic" title="Linear temporal logic">
+  LTL
+ </a>
+ formula into a GBA
+ <sup class="reference" id="cite_ref-VW94_1-0">
+  <a href="#cite_note-VW94-1">
+   <span>
+    [
+   </span>
+   1
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ <sup class="reference" id="cite_ref-KMMP93_2-0">
+  <a href="#cite_note-KMMP93-2">
+   <span>
+    [
+   </span>
+   2
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ <sup class="reference" id="cite_ref-GPVW93_3-0">
+  <a href="#cite_note-GPVW93-3">
+   <span>
+    [
+   </span>
+   3
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ <sup class="reference" id="cite_ref-GOCAV01_4-0">
+  <a href="#cite_note-GOCAV01-4">
+   <span>
+    [
+   </span>
+   4
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ for this purpose. The notion of GBA was introduced specifically for this translation.
+</p>
+<h2>
+ <span class="mw-headline" id="Formal_definition">
+  Formal definition
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Generalized_B%C3%BCchi_automaton&amp;action=edit&amp;section=1" title="Edit section: Formal definition">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<p>
+ Formally, a
+ <b>
+  generalized Büchi automaton
+ </b>
+ is a tuple
+ <i>
+  A
+ </i>
+ = (
+ <i>
+  Q
+ </i>
+ ,Σ,Δ,
+ <i>
+  Q
+ </i>
+ <sub>
+  0
+ </sub>
+ ,
+ <b>
+  {F
+  <sub>
+   1
+  </sub>
+  ,...,F
+  <sub>
+   n
+  </sub>
+  }
+ </b>
+ ) that consists of the following components:
+</p>
+<ul>
+ <li>
+  <i>
+   Q
+  </i>
+  is a
+  <a href="/wiki/Finite_set" title="Finite set">
+   finite set
+  </a>
+  . The elements of
+  <i>
+   Q
+  </i>
+  are called the
+  <i>
+   states
+  </i>
+  of
+  <i>
+   A
+  </i>
+  .
+ </li>
+ <li>
+  Σ is a finite set called the
+  <i>
+   alphabet
+  </i>
+  of
+  <i>
+   A
+  </i>
+  .
+ </li>
+ <li>
+  Δ:
+  <i>
+   Q
+  </i>
+  × Σ →
+  <i>
+   2
+   <sup>
+    Q
+   </sup>
+  </i>
+  is a function, called the
+  <i>
+   transition relation
+  </i>
+  of
+  <i>
+   A
+  </i>
+  .
+ </li>
+ <li>
+  <i>
+   Q
+  </i>
+  <sub>
+   0
+  </sub>
+  is a subset of
+  <i>
+   Q
+  </i>
+  , called the initial states.
+ </li>
+ <li>
+  <b>
+   {F
+   <sub>
+    1
+   </sub>
+   ,...,F
+   <sub>
+    n
+   </sub>
+   }
+  </b>
+  is the
+  <i>
+   acceptance condition
+  </i>
+  , where for each 1≤i≤n,
+  <b>
+   F
+   <sub>
+    i
+   </sub>
+  </b>
+  ⊆
+  <i>
+   Q
+  </i>
+  .
+ </li>
+</ul>
+<p>
+ <i>
+  A
+ </i>
+ accepts exactly those runs in which the set of infinitely often occurring states contains at least a state from each
+ <b>
+  F
+  <sub>
+   1
+  </sub>
+  ,...,F
+  <sub>
+   n
+  </sub>
+ </b>
+ .
+</p>
+<p>
+ For more comprehensive formalism see also
+ <a href="/wiki/%CE%A9-automaton" title="Ω-automaton">
+  ω-automaton
+ </a>
+ .
+</p>
+<h2>
+ <span class="mw-headline" id="Labeled_generalized_B.C3.BCchi_automaton">
+  Labeled generalized Büchi automaton
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Generalized_B%C3%BCchi_automaton&amp;action=edit&amp;section=2" title="Edit section: Labeled generalized Büchi automaton">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<p>
+ Labeled generalized Büchi automaton(LGBA) is another variation in which input is associated as labels with the states rather than with the transitions. LGBA was introduced by Gerth et al.
+ <sup class="reference" id="cite_ref-GPVW93_3-1">
+  <a href="#cite_note-GPVW93-3">
+   <span>
+    [
+   </span>
+   3
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+</p>
+<p>
+ Formally, a
+ <b>
+  labeled generalized Büchi automaton
+ </b>
+ is a tuple
+ <i>
+  A
+ </i>
+ = (
+ <i>
+  Q
+ </i>
+ , Σ,
+ <i>
+  L
+ </i>
+ , Δ,
+ <i>
+  Q
+ </i>
+ <sub>
+  0
+ </sub>
+ ,
+ <b>
+  {F
+  <sub>
+   1
+  </sub>
+  ,...,F
+  <sub>
+   n
+  </sub>
+  }
+ </b>
+ ) that consists of the following components:
+</p>
+<ul>
+ <li>
+  <i>
+   Q
+  </i>
+  is a
+  <a href="/wiki/Finite_set" title="Finite set">
+   finite set
+  </a>
+  . The elements of
+  <i>
+   Q
+  </i>
+  are called the
+  <i>
+   states
+  </i>
+  of
+  <i>
+   A
+  </i>
+  .
+ </li>
+ <li>
+  <i>
+   Σ
+  </i>
+  is a finite set called the
+  <i>
+   alphabet
+  </i>
+  of
+  <i>
+   A
+  </i>
+  .
+ </li>
+ <li>
+  <i>
+   L
+  </i>
+  :
+  <i>
+   Q
+  </i>
+  → 2
+  <sup>
+   Σ
+  </sup>
+  is a function, called the
+  <i>
+   labeling function
+  </i>
+  of
+  <i>
+   A
+  </i>
+  .
+ </li>
+ <li>
+  Δ:
+  <i>
+   Q
+  </i>
+  → 2
+  <sup>
+   <i>
+    Q
+   </i>
+  </sup>
+  is a function, called the
+  <i>
+   transition relation
+  </i>
+  of
+  <i>
+   A
+  </i>
+  .
+ </li>
+ <li>
+  <i>
+   Q
+  </i>
+  <sub>
+   0
+  </sub>
+  is a subset of
+  <i>
+   Q
+  </i>
+  , called the initial states.
+ </li>
+ <li>
+  <b>
+   {F
+   <sub>
+    1
+   </sub>
+   ,...,F
+   <sub>
+    n
+   </sub>
+   }
+  </b>
+  is the
+  <i>
+   acceptance condition
+  </i>
+  , where for each 1≤i≤n,
+  <b>
+   F
+   <sub>
+    i
+   </sub>
+  </b>
+  ⊆
+  <i>
+   Q
+  </i>
+  .
+ </li>
+</ul>
+<p>
+ Let
+ <i>
+  w = a
+  <sub>
+   1
+  </sub>
+  a
+  <sub>
+   2
+  </sub>
+  ...
+ </i>
+ be an
+ <a class="mw-redirect" href="/wiki/%CE%A9-language" title="Ω-language">
+  ω-word
+ </a>
+ over the alphabet Σ.
+ <i>
+  r
+  <sub>
+   1
+  </sub>
+  ,r
+  <sub>
+   2
+  </sub>
+  , ...
+ </i>
+ is a run of
+ <i>
+  A
+ </i>
+ on the word
+ <i>
+  w
+ </i>
+ if
+ <i>
+  r
+  <sub>
+   1
+  </sub>
+ </i>
+ ∈
+ <i>
+  Q
+ </i>
+ <sub>
+  <i>
+   0
+  </i>
+ </sub>
+ and for each
+ <i>
+  i ≥ 0
+ </i>
+ ,
+ <i>
+  r
+  <sub>
+   i+1
+  </sub>
+ </i>
+ ∈ Δ(
+ <i>
+  r
+  <sub>
+   i
+  </sub>
+ </i>
+ ) and
+ <i>
+  a
+  <sub>
+   i
+  </sub>
+ </i>
+ ∈
+ <i>
+  L
+ </i>
+ (
+ <i>
+  r
+  <sub>
+   i
+  </sub>
+ </i>
+ ).
+ <i>
+  A
+ </i>
+ accepts exactly those runs in which the set of infinitely often occurring states contains at least a state from each
+ <b>
+  F
+  <sub>
+   1
+  </sub>
+  ,...,F
+  <sub>
+   n
+  </sub>
+ </b>
+ .
+</p>
+<p>
+ To obtain the non-labeled version, the labels are moved from the nodes to the incoming transitions.
+</p>

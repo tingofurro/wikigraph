@@ -26,7 +26,7 @@ for row in cur.fetchall():
 			linkStr = link.get('href')
 			if linkStr is not None and linkStr[:len(toFind)] == toFind:
 				pageName = linkStr[len(toFind):]
-				if ':' not in pageName and '/' not in pageName and pageName not in pageList:
+				if ':' not in pageName and '/' not in pageName and pageName[:len(listPageStr)] != listPageStr and pageName not in pageList:
 					dbPush.append('(NULL, "'+pageName+'", '+str(idCat)+', "")')
 					pageList.append(pageName)
 	if len(dbPush)>100:

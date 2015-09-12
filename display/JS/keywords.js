@@ -1,4 +1,4 @@
-function placeKeywords() {
+function placeKeywords(mySVG) {
 	var keywordGroups = [];
 	for(i in graphData.nodes) {
 		thisK = graphData.nodes[i].keywords;
@@ -11,7 +11,7 @@ function placeKeywords() {
 		}
 	}
 	sortedKeyword = Object.keys(keywordGroups).sort(function(a,b){return mode(keywordGroups[b]).count-mode(keywordGroups[a]).count})
-	nbKeywords = Math.floor(graphData.nodes.length/10);
+	nbKeywords = Math.floor(graphData.nodes.length/20);
 	alreadyIn = [];
 	for(u = 0; u < nbKeywords; u ++) {
 		key = sortedKeyword[u];
@@ -47,7 +47,7 @@ function placeKeywords() {
 			}
 		}
 		if(draw) {
-			var keyword = svg.append('text');
+			var keyword = mySVG.append('text');
 			keyword.attr("x", (textX+transX)).attr("y", (bestTextY+transY))
 			.text(key).attr("font-size", (15+2*size)+"px").attr("fill", str2color(modeGroup)).attr('class', 'keyword').attr('opacity', 0).attr('id', key);
 			alreadyIn.push([textX, bestTextY]);

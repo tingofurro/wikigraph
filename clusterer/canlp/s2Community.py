@@ -16,7 +16,7 @@ def buildCommunity():
 	# comm = g.community_optimal_modularity() "shell killed the process, was taking forever"
 	# comm = g.community_edge_betweenness() # I feel asleep waiting
 	# comm = g.community_walktrap().as_clustering() # Not bad
-	g.to_undirected(); louvain.find_partition(g, method='Modularity').membership
+	# g.to_undirected(); louvain.find_partition(g, method='Modularity').membership
 
 	membership = comm.membership;
 

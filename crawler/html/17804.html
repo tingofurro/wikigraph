@@ -1,0 +1,421 @@
+<p>
+ <b>
+  Multilinear principal component analysis (MPCA)
+ </b>
+ <sup class="reference" id="cite_ref-MPCA2002b_1-0">
+  <a href="#cite_note-MPCA2002b-1">
+   <span>
+    [
+   </span>
+   1
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ <sup class="reference" id="cite_ref-MPCA2003_2-0">
+  <a href="#cite_note-MPCA2003-2">
+   <span>
+    [
+   </span>
+   2
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ <sup class="reference" id="cite_ref-MPCA2002a_3-0">
+  <a href="#cite_note-MPCA2002a-3">
+   <span>
+    [
+   </span>
+   3
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ <sup class="reference" id="cite_ref-MPCA2008_4-0">
+  <a href="#cite_note-MPCA2008-4">
+   <span>
+    [
+   </span>
+   4
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ is a mathematical procedure that uses multiple orthogonal transformations to convert a set of multidimensional objects into another set of multidimensional objects of lower dimensions. There is one orthogonal (linear) transformation for each dimension (mode); hence
+ <i>
+  multilinear
+ </i>
+ . This transformation aims to capture as high a variance as possible, accounting for as much of the variability in the data as possible, subject to the constraint of mode-wise orthogonality.
+</p>
+<p>
+ MPCA is a multilinear extension of
+ <a href="/wiki/Principal_component_analysis" title="Principal component analysis">
+  principal component analysis
+ </a>
+ (PCA). The major difference is that PCA needs to reshape a multidimensional object into a
+ <a href="/wiki/Feature_vector" title="Feature vector">
+  vector
+ </a>
+ , while MPCA operates directly on multidimensional objects through mode-wise processing. For example, for 100x100 images, PCA operates on vectors of 10000x1 while MPCA operates on vectors of 100x1 in two modes. For the same amount of
+ <a class="mw-redirect" href="/wiki/Dimension_reduction" title="Dimension reduction">
+  dimension reduction
+ </a>
+ , PCA needs to estimate 49*(10000/(100*2)-1) times more parameters than MPCA. Thus, MPCA is more efficient and better conditioned in practice.
+</p>
+<p>
+ MPCA is a basic algorithm for dimension reduction via
+ <a href="/wiki/Multilinear_subspace_learning" title="Multilinear subspace learning">
+  multilinear subspace learning
+ </a>
+ . In wider scope, it belongs to
+ <a href="/wiki/Tensor" title="Tensor">
+  tensor
+ </a>
+ -based computation. Its origin can be traced back to the
+ <a href="/wiki/Tucker_decomposition" title="Tucker decomposition">
+  Tucker decomposition
+ </a>
+ <sup class="reference" id="cite_ref-5">
+  <a href="#cite_note-5">
+   <span>
+    [
+   </span>
+   5
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ in 1960s and it is closely related to
+ <a href="/wiki/Higher-order_singular_value_decomposition" title="Higher-order singular value decomposition">
+  higher-order singular value decomposition
+ </a>
+ ,
+ <sup class="reference" id="cite_ref-HOSVD_6-0">
+  <a href="#cite_note-HOSVD-6">
+   <span>
+    [
+   </span>
+   6
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ (HOSVD) and to the best rank-(R1, R2, ..., RN ) approximation of higher-order tensors.
+ <sup class="reference" id="cite_ref-7">
+  <a href="#cite_note-7">
+   <span>
+    [
+   </span>
+   7
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+</p>
+<p>
+</p>
+<div class="toc" id="toc">
+ <div id="toctitle">
+  <h2>
+   Contents
+  </h2>
+ </div>
+ <ul>
+  <li class="toclevel-1 tocsection-1">
+   <a href="#The_algorithm">
+    <span class="tocnumber">
+     1
+    </span>
+    <span class="toctext">
+     The algorithm
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-2">
+   <a href="#Feature_selection">
+    <span class="tocnumber">
+     2
+    </span>
+    <span class="toctext">
+     Feature selection
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-3">
+   <a href="#Extensions">
+    <span class="tocnumber">
+     3
+    </span>
+    <span class="toctext">
+     Extensions
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-4">
+   <a href="#Resources">
+    <span class="tocnumber">
+     4
+    </span>
+    <span class="toctext">
+     Resources
+    </span>
+   </a>
+  </li>
+  <li class="toclevel-1 tocsection-5">
+   <a href="#References">
+    <span class="tocnumber">
+     5
+    </span>
+    <span class="toctext">
+     References
+    </span>
+   </a>
+  </li>
+ </ul>
+</div>
+<p>
+</p>
+<h2>
+ <span class="mw-headline" id="The_algorithm">
+  The algorithm
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Multilinear_principal_component_analysis&amp;action=edit&amp;section=1" title="Edit section: The algorithm">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<p>
+ MPCA performs
+ <a href="/wiki/Feature_extraction" title="Feature extraction">
+  feature extraction
+ </a>
+ by determining a
+ <a href="/wiki/Multilinear_subspace_learning#Multilinear_projection" title="Multilinear subspace learning">
+  multilinear projection
+ </a>
+ that captures most of the original tensorial input variations. As in PCA, MPCA works on centered data. The MPCA solution follows the alternating least square (ALS) approach.
+ <sup class="reference" id="cite_ref-8">
+  <a href="#cite_note-8">
+   <span>
+    [
+   </span>
+   8
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ Thus, is iterative in nature and it proceeds by decomposing the original problem to a series of multiple projection subproblems. Each subproblem is a classical PCA problem, which can be easily solved.
+</p>
+<p>
+ It should be noted that while PCA with orthogonal transformations produces uncorrelated features/variables, this is not the case for MPCA. Due to the nature of tensor-to-tensor transformation, MPCA features are not uncorrelated in general although the transformation in each mode is orthogonal.
+ <sup class="reference" id="cite_ref-UMPCA_9-0">
+  <a href="#cite_note-UMPCA-9">
+   <span>
+    [
+   </span>
+   9
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ In contrast, the uncorrelated MPCA (UMPCA) generates uncorrelated multilinear features.
+ <sup class="reference" id="cite_ref-UMPCA_9-1">
+  <a href="#cite_note-UMPCA-9">
+   <span>
+    [
+   </span>
+   9
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+</p>
+<h2>
+ <span class="mw-headline" id="Feature_selection">
+  Feature selection
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Multilinear_principal_component_analysis&amp;action=edit&amp;section=2" title="Edit section: Feature selection">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<p>
+ MPCA produces tensorial features. For conventional usage, vectorial features are often preferred. For example most classifiers in the literature takes vectors as input. On the other hand, as there are correlations among MPCA features, a further selection process often improves the performance. Supervised (discriminative) MPCA feature selection is used in object recognition
+ <sup class="reference" id="cite_ref-MPCA_10-0">
+  <a href="#cite_note-MPCA-10">
+   <span>
+    [
+   </span>
+   10
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+ while unsupervised MPCA feature selection is employed in visualization task.
+ <sup class="reference" id="cite_ref-11">
+  <a href="#cite_note-11">
+   <span>
+    [
+   </span>
+   11
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+</p>
+<h2>
+ <span class="mw-headline" id="Extensions">
+  Extensions
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Multilinear_principal_component_analysis&amp;action=edit&amp;section=3" title="Edit section: Extensions">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<p>
+ Various extensions of MPCA have been developed:
+ <sup class="reference" id="cite_ref-12">
+  <a href="#cite_note-12">
+   <span>
+    [
+   </span>
+   12
+   <span>
+    ]
+   </span>
+  </a>
+ </sup>
+</p>
+<ul>
+ <li>
+  Uncorrelated MPCA (UMPCA)
+  <sup class="reference" id="cite_ref-UMPCA_9-2">
+   <a href="#cite_note-UMPCA-9">
+    <span>
+     [
+    </span>
+    9
+    <span>
+     ]
+    </span>
+   </a>
+  </sup>
+ </li>
+ <li>
+  <a class="mw-redirect" href="/wiki/Boosting_(meta-algorithm)" title="Boosting (meta-algorithm)">
+   Boosting
+  </a>
+  +MPCA
+  <sup class="reference" id="cite_ref-13">
+   <a href="#cite_note-13">
+    <span>
+     [
+    </span>
+    13
+    <span>
+     ]
+    </span>
+   </a>
+  </sup>
+ </li>
+ <li>
+  Non-negative MPCA (NMPCA)
+  <sup class="reference" id="cite_ref-14">
+   <a href="#cite_note-14">
+    <span>
+     [
+    </span>
+    14
+    <span>
+     ]
+    </span>
+   </a>
+  </sup>
+ </li>
+ <li>
+  Robust MPCA (RMPCA)
+  <sup class="reference" id="cite_ref-15">
+   <a href="#cite_note-15">
+    <span>
+     [
+    </span>
+    15
+    <span>
+     ]
+    </span>
+   </a>
+  </sup>
+ </li>
+</ul>
+<h2>
+ <span class="mw-headline" id="Resources">
+  Resources
+ </span>
+ <span class="mw-editsection">
+  <span class="mw-editsection-bracket">
+   [
+  </span>
+  <a href="/w/index.php?title=Multilinear_principal_component_analysis&amp;action=edit&amp;section=4" title="Edit section: Resources">
+   edit
+  </a>
+  <span class="mw-editsection-bracket">
+   ]
+  </span>
+ </span>
+</h2>
+<ul>
+ <li>
+  <b>
+   Matlab code
+  </b>
+  :
+  <a class="external text" href="http://www.mathworks.com/matlabcentral/fileexchange/26168" rel="nofollow">
+   MPCA
+  </a>
+  .
+ </li>
+ <li>
+  <b>
+   Matlab code
+  </b>
+  :
+  <a class="external text" href="http://www.mathworks.com/matlabcentral/fileexchange/35432" rel="nofollow">
+   UMPCA (including data)
+  </a>
+  .
+ </li>
+</ul>

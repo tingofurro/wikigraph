@@ -10,13 +10,16 @@ if(isset($_GET['topic'])) {
 	
 	$fileUrl = "display/cache/".$topic.".json";
 	$fileExists = file_exists(getDocumentRoot().'/'.$fileUrl);
+	$toFile = '';
 	if(!$fileExists) {
+		$toFile = getDocumentRoot()."/display/cache/".$topic.".json";
 		generateGraph($level, $cluster, $limit);
 		$fileUrl = "display/temp.json";
 	}
 	$jsonGraph =  json_decode(fread(fopen(getDocumentRoot().'/'.$fileUrl, "r"), filesize(getDocumentRoot().'/'.$fileUrl)));
 	$finalObject = array();
 	$finalObject['preloaded'] = ($fileExists)?1:0;
+	$finalObject['toFile'] = $toFile;
 	$finalObject['graph'] = $jsonGraph;
 	echo json_encode($finalObject);
 }

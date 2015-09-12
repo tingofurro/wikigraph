@@ -11,7 +11,7 @@ def createGraph(limit, level, cluster, db_prefix):
 	f = open('data/fullNodeList.txt','w')
 	cur.execute("SELECT id FROM "+db_prefix+"page"+where)
 	for row in cur.fetchall():
-		f.write(str(row[0])+'\n')		
+		f.write(str(row[0])+'\n')
 	f.close()
 
 	f = open('data/graph.json','w')

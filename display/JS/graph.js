@@ -80,7 +80,7 @@ function plotGraph(graphFile, toRun, toFile) {
 			});
 			loading.remove(); aboveRect.remove(); rectangle.remove();
 			if(toFile!='') {uploadAjax(nodes, links, toFile);}
-			placeKeywords();
+			placeKeywords(svg);
 		});
 	});
 }
