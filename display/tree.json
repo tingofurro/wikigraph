@@ -1,170 +1,92 @@
 {"id": 0, "name": "Mathematics", "class": "node", 
 "children": [
-   {"id": 2, "name": "Group_(mathematics)", "class": "node", 
+   {"id": 1, "name": "Differential_geometry", "class": "node", 
    "children": [
-         {"id": 7, "name": "Integer", "class": "node", 
+         {"id": 6, "name": "J-structure", "class": "node", 
       "children": [
-               {"id": 28, "name": "sequence,mathematic,given", "class": "badNode"},
-         {"id": 30, "name": "ideal,algebraic number,ring", "class": "badNode"},
-         {"id": 31, "name": "coefficient,polynomial,root", "class": "badNode"},
-         {"id": 32, "name": "number theory,prime number,positive integer", "class": "badNode"},
-         {"id": 33, "name": "algebraic geometry,variety,varietie", "class": "badNode"}
+               {"id": 34, "name": "K._S._Chandrasekharan", "class": "badNode"},
+         {"id": 35, "name": "J-structure", "class": "badNode"},
+         {"id": 36, "name": "Essential_dimension", "class": "badNode"},
+         {"id": 37, "name": "Hurwitz%27s_theorem_(normed_division_algebras)", "class": "badNode"}
       ]
       },
-      {"id": 8, "name": "Group_(mathematics)", "class": "node", 
+      {"id": 7, "name": "Differential_geometry", "class": "node", 
       "children": [
-               {"id": 34, "name": "introduced,elliptic curve,cohomology", "class": "badNode"},
-         {"id": 35, "name": "set,normal,element", "class": "badNode"},
-         {"id": 36, "name": "lie algebra,lie group,representation theory", "class": "badNode"},
-         {"id": 37, "name": "simple group,algebra known,area", "class": "badNode"}
+               {"id": 38, "name": "Dendroid_(topology)", "class": "badNode"},
+         {"id": 39, "name": "Manifold", "class": "badNode"},
+         {"id": 40, "name": "Algebraic_geometry", "class": "badNode"},
+         {"id": 41, "name": "Stationary_point", "class": "badNode"},
+         {"id": 42, "name": "Uniform_space", "class": "badNode"},
+         {"id": 43, "name": "Presentation_complex", "class": "badNode"}
       ]
       },
-      {"id": 9, "name": "Vector_space", "class": "node", 
+      {"id": 8, "name": "Commutative_ring", "class": "node", 
       "children": [
-               {"id": 38, "name": "state,semigroup,hopf", "class": "badNode"},
-         {"id": 39, "name": "vector space,functional analysi", "class": "badNode"},
-         {"id": 40, "name": "abstract algebra,algebra field,associative algebra", "class": "badNode"},
-         {"id": 41, "name": "matrix,linear algebra,matrice", "class": "badNode"},
-         {"id": 42, "name": "module,ring,ideal", "class": "badNode"}
+               {"id": 44, "name": "Topology_table", "class": "badNode"},
+         {"id": 45, "name": "Parametric_polymorphism", "class": "badNode"},
+         {"id": 46, "name": "Commutative_ring", "class": "badNode"},
+         {"id": 47, "name": "Anisotropy_energy", "class": "badNode"},
+         {"id": 48, "name": "R-SMLT", "class": "badNode"},
+         {"id": 49, "name": "Accident_(philosophy)", "class": "badNode"}
       ]
       },
-      {"id": 10, "name": "Category_theory", "class": "node", 
+      {"id": 9, "name": "Lloyd_Shapley", "class": "node", 
       "children": [
-               {"id": 43, "name": "graph,operator,glossary term", "class": "badNode"},
-         {"id": 44, "name": "algebraic structure,element,operation", "class": "badNode"},
-         {"id": 45, "name": "algebraic geometry,cohomology,homological algebra", "class": "badNode"},
-         {"id": 46, "name": "category theory,functor,monoidal category", "class": "badNode"},
-         {"id": 48, "name": "homotopy,algebraic topology,topological space", "class": "badNode"}
+               {"id": 50, "name": "Sylvain_Cappell", "class": "badNode"},
+         {"id": 51, "name": "Lev_Schnirelmann", "class": "badNode"},
+         {"id": 52, "name": "James_Munkres", "class": "badNode"},
+         {"id": 53, "name": "Hsiang%E2%80%93Lawson%27s_conjecture", "class": "badNode"},
+         {"id": 54, "name": "Switched_mesh", "class": "badNode"}
       ]
-      }
+      },
+      {"id": 10, "name": "Weighing_matrix", "class": "node", 
+      "children": [
+               {"id": 56, "name": "", "class": "badNode"},
+         {"id": 57, "name": "", "class": "badNode"},
+         {"id": 58, "name": "", "class": "badNode"},
+         {"id": 59, "name": "", "class": "badNode"},
+         {"id": 60, "name": "", "class": "badNode"}
+      ]
+      },
+      {"id": 11, "name": "%C3%81kos_Cs%C3%A1sz%C3%A1r", "class": "badNode"}
    ]
    },
-   {"id": 3, "name": "Geometry", "class": "node", 
+   {"id": 2, "name": "Graph_theory", "class": "node", 
    "children": [
-         {"id": 12, "name": "Topology", "class": "node", 
-      "children": [
-               {"id": 49, "name": "euclidean space,problem,space rn", "class": "badNode"},
-         {"id": 50, "name": "topological space,open,set", "class": "badNode"},
-         {"id": 51, "name": "surface,manifold,geometric topology", "class": "badNode"},
-         {"id": 52, "name": "manifold,knot theory,embedding", "class": "badNode"}
-      ]
-      },
-      {"id": 13, "name": "Graph_theory", "class": "node", 
-      "children": [
-               {"id": 53, "name": "color,symbol,dimensional", "class": "badNode"},
-         {"id": 54, "name": "quadrilateral,euclidean geometry,polygon", "class": "badNode"},
-         {"id": 55, "name": "graph theory,graph vertice,edge", "class": "badNode"},
-         {"id": 56, "name": "geometry,center,angle", "class": "badNode"}
-      ]
-      },
-      {"id": 14, "name": "Euclidean_space", "class": "node", 
-      "children": [
-               {"id": 57, "name": "triangle center,clark kimberling", "class": "badNode"},
-         {"id": 58, "name": "ellipse,circle,conic section", "class": "badNode"},
-         {"id": 59, "name": "euclidean space,euclidean geometry,vector", "class": "badNode"},
-         {"id": 60, "name": "plane curve,point curve,equation", "class": "badNode"},
-         {"id": 61, "name": "projective space,projective plane,projective geometry", "class": "badNode"}
-      ]
-      },
-      {"id": 15, "name": "Differential_geometry", "class": "node", 
-      "children": [
-               {"id": 62, "name": "star,ray,internal", "class": "badNode"},
-         {"id": 63, "name": "general relativity,spacetime,einstein", "class": "badNode"},
-         {"id": 64, "name": "vector,tangent bundle,mathematic", "class": "badNode"},
-         {"id": 65, "name": "riemannian manifold,differential geometry,curvature", "class": "badNode"},
-         {"id": 66, "name": "algebraic geometry,complex manifold,khler", "class": "badNode"}
-      ]
-      },
-      {"id": 16, "name": "Dual_polyhedron", "class": "node", 
-      "children": [
-               {"id": 68, "name": "coxeter planein,projection coxeter,dimensional geometry", "class": "badNode"},
-         {"id": 69, "name": "solid archimedean,johnson solid,platonic", "class": "badNode"},
-         {"id": 70, "name": "image typeuniform,dimensional euclidean,honeycomb image", "class": "badNode"},
-         {"id": 71, "name": "uniform polyhedron,nonconvex,star", "class": "badNode"},
-         {"id": 72, "name": "hyperbolic space,honeycombschlfli symbol,geometry hyperbolic", "class": "badNode"},
-         {"id": 73, "name": "tilingvertex,disk model,hyperbolic plane", "class": "badNode"}
-      ]
-      }
+         {"id": 12, "name": "Axiom", "class": "badNode"},
+      {"id": 13, "name": "Graph_theory", "class": "badNode"},
+      {"id": 14, "name": "Mathematical_logic", "class": "badNode"},
+      {"id": 15, "name": "Game_theory", "class": "badNode"},
+      {"id": 16, "name": "Impartial_game", "class": "badNode"}
    ]
    },
-   {"id": 4, "name": "Mathematical_logic", "class": "node", 
+   {"id": 3, "name": "Topology", "class": "node", 
    "children": [
-         {"id": 18, "name": "Mathematical_logic", "class": "node", 
-      "children": [
-               {"id": 75, "name": "link,science,university", "class": "badNode"},
-         {"id": 76, "name": "model theory,mathematical logic,order", "class": "badNode"},
-         {"id": 77, "name": "type theory,typed,programming language", "class": "badNode"},
-         {"id": 78, "name": "arithmetic,axiom,proof", "class": "badNode"},
-         {"id": 79, "name": "turing machine,computability theory", "class": "badNode"}
-      ]
-      },
-      {"id": 19, "name": "Set_theory", "class": "node", 
-      "children": [
-               {"id": 81, "name": "natural number,measure theory,number theory", "class": "badNode"},
-         {"id": 82, "name": "axiomatic set,zermelofraenkel set,foundation", "class": "badNode"},
-         {"id": 83, "name": "large cardinal,introduced,cardinal number", "class": "badNode"},
-         {"id": 84, "name": "infinite set,georg cantor,real number", "class": "badNode"},
-         {"id": 85, "name": "descriptive set,polish space", "class": "badNode"}
-      ]
-      },
-      {"id": 21, "name": "Modal_logic", "class": "node", 
-      "children": [
-               {"id": 91, "name": "statement form,toad green,number immediate", "class": "badNode"},
-         {"id": 92, "name": "modal logic,classical logic,sequent", "class": "badNode"},
-         {"id": 93, "name": "digital,logic gate,implement", "class": "badNode"},
-         {"id": 94, "name": "rule inference,valid,propositional logic", "class": "badNode"},
-         {"id": 96, "name": "predicate,quantifier,variable", "class": "badNode"}
-      ]
-      },
-      {"id": 22, "name": "Graph_(mathematics)", "class": "node", 
-      "children": [
-               {"id": 97, "name": "special case,matching,discipline graph", "class": "badNode"},
-         {"id": 98, "name": "computer science,data,string", "class": "badNode"},
-         {"id": 99, "name": "coloring,color,chromatic number", "class": "badNode"},
-         {"id": 100, "name": "combinatoric,combinatorial mathematic,arithmetic progression", "class": "badNode"}
-      ]
-      },
-      {"id": 23, "name": "Subset", "class": "node", 
-      "children": [
-               {"id": 105, "name": "intersection open,set open,subset open", "class": "badNode"},
-         {"id": 106, "name": "binary relation,relation set,transitive", "class": "badNode"},
-         {"id": 107, "name": "topology related,point,topological space", "class": "badNode"},
-         {"id": 108, "name": "partially ordered,ordered set,order", "class": "badNode"}
-      ]
-      }
+         {"id": 17, "name": "Classical_logic", "class": "badNode"},
+      {"id": 18, "name": "Field_(mathematics)", "class": "badNode"},
+      {"id": 19, "name": "Topology", "class": "badNode"},
+      {"id": 20, "name": "Group_(mathematics)", "class": "badNode"},
+      {"id": 21, "name": "Equivalence_relation", "class": "badNode"}
    ]
    },
-   {"id": 5, "name": "Statistics", "class": "node", 
+   {"id": 4, "name": "Number_theory", "class": "node", 
    "children": [
-         {"id": 25, "name": "Partial_differential_equation", "class": "node", 
-      "children": [
-               {"id": 109, "name": "edge,graph theory,game theory", "class": "badNode"},
-         {"id": 110, "name": "optimal,optimization problem,programming", "class": "badNode"},
-         {"id": 111, "name": "functional analysi,operator,space", "class": "badNode"},
-         {"id": 112, "name": "numerical analysi,numerical method,numerical solution", "class": "badNode"},
-         {"id": 113, "name": "differential equation,partial differential", "class": "badNode"},
-         {"id": 114, "name": "fourier transform,signal,frequency", "class": "badNode"},
-         {"id": 115, "name": "general relativity,einstein,gravitational", "class": "badNode"}
-      ]
-      },
-      {"id": 26, "name": "Statistics", "class": "node", 
-      "children": [
-               {"id": 117, "name": "game,data structure,computer", "class": "badNode"},
-         {"id": 118, "name": "estimator,statistic,sample", "class": "badNode"},
-         {"id": 119, "name": "probability distribution,random variable,probability theory", "class": "badNode"},
-         {"id": 120, "name": "hypothesi,inference,problem", "class": "badNode"},
-         {"id": 121, "name": "study,regression,research", "class": "badNode"},
-         {"id": 122, "name": "stochastic,event,probability", "class": "badNode"}
-      ]
-      },
-      {"id": 27, "name": "Mathematical_analysis", "class": "node", 
-      "children": [
-               {"id": 124, "name": "sequence oei,prime,integer", "class": "badNode"},
-         {"id": 125, "name": "calculu,integral,integration", "class": "badNode"},
-         {"id": 126, "name": "complex analysi,holomorphic function,function complex", "class": "badNode"},
-         {"id": 128, "name": "space,real,continuou", "class": "badNode"}
-      ]
-      }
+         {"id": 22, "name": "Statistics", "class": "badNode"},
+      {"id": 23, "name": "Number_theory", "class": "badNode"},
+      {"id": 24, "name": "Euclidean_space", "class": "badNode"},
+      {"id": 25, "name": "Polynomial", "class": "badNode"},
+      {"id": 26, "name": "Diophantine_equation", "class": "badNode"},
+      {"id": 27, "name": "Heegaard_splitting", "class": "badNode"},
+      {"id": 28, "name": "Eutactic_lattice", "class": "badNode"}
+   ]
+   },
+   {"id": 5, "name": "Geometry", "class": "node", 
+   "children": [
+         {"id": 29, "name": "Semigroup_with_involution", "class": "badNode"},
+      {"id": 30, "name": "Geometry", "class": "badNode"},
+      {"id": 31, "name": "Askey_scheme", "class": "badNode"},
+      {"id": 32, "name": "Decimal", "class": "badNode"},
+      {"id": 33, "name": "Gottfried_K%C3%B6the", "class": "badNode"}
    ]
    }
 ]

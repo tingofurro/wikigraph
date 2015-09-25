@@ -3,18 +3,18 @@ from sklearn.metrics import silhouette_score
 from collections import Counter
 import numpy as np
 
-def q_compute(G, G2, membership, simi, tfidf):
+def q_compute(G1, G2, G3, membership, simi, tfidf):
 	membership = np.array(membership)
 	classSet = list(set(membership))
 	if len(classSet) == 1:
 		return [0,0,0]
 	avgScore = [];
 	counter = Counter(membership)
-	mod = G.modularity(membership)
-	mod2 = G2.modularity(membership)
+	mod1 = int(100*G1.modularity(membership))/100.0
+	mod2 = int(100*G2.modularity(membership))/100.0
+	mod3 = int(100*G3.modularity(membership))/100.0
 	# silhouette = silhouette_score(tfidf, membership, metric='cosine')
-	print silhouette
-	return [mod, mod2, mod+mod2]
+	return [mod1, mod2, mod3, (2*mod1+mod2+mod3)/4.0]
 
 def freqArrays(membership, tfidf):
 	freqMatrix = []

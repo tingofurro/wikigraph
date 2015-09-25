@@ -3,12 +3,8 @@ from LemmaTokenizer import *
 import numpy as np
 
 def extrapolate(summaryFolder):
-	f = open('data/recommunity.txt')
-	txt = f.read()
-	f.close()
-	toks = txt.split('\n')
-	trainingNodes = []
-	trainingLabels = []
+	f = open('data/community.txt'); toks = f.readlines(); f.close();
+	trainingNodes = []; trainingLabels = [];
 
 	for tok in toks:
 		infos = tok.split(' ')
@@ -40,21 +36,16 @@ def extrapolate(summaryFolder):
 		freqMatrix.append(np.subtract(freqIn, freqOut))
 		labelArray.append(clas)
 
-	testNodes = []
-	testText = []
+	testNodes = []; testText = [];
 
 	f = open('data/fullNodeList.txt')
-	txt = f.read()
-	f.close()
-	nodeList = txt.split('\n')
+	txt = f.read(); f.close(); nodeList = txt.split('\n');
 	for node in nodeList:
 		if len(node) > 0 and int(node) not in trainingNodes:
 			testNodes.append(int(node))
 
 	for node in testNodes:
-		f = open(summaryFolder+'/'+str(node)+'.txt', "r")
-		testText.append(f.read())
-		f.close()
+		f = open(summaryFolder+'/'+str(node)+'.txt', "r"); testText.append(f.read()); f.close();
 
 	testCounts = count_vect.transform(testText)
 	scores = freqMatrix * testCounts.transpose() # this is a big time matrix mult

@@ -29,7 +29,7 @@ def useNLP(summaryFolder):
 	texts = [];
 	for node in nodes:
 		f = open(summaryFolder+'/'+str(node)+'.txt', "r"); texts.append(f.read()); f.close();
-	count_vect = CountVectorizer(tokenizer=LemmaTokenizer(), stop_words='english', ngram_range = (1,2), binary=True) # 
+	count_vect = CountVectorizer(tokenizer=LemmaTokenizer(), stop_words='english', ngram_range = (1,2), binary=True)
 	totalCount = count_vect.fit_transform(texts)
 
 	tfidf_trans = TfidfTransformer() #initialize our tfidf transformer
@@ -68,7 +68,7 @@ def useNLP(summaryFolder):
 		f.write(str(clas)+'[]'+str(score)+'[]'+name+'[]'+str(len(goodRows))+'\n')
 	f.close()
 
-	f = open('data/recommunity.txt','w')
+	f = open('data/community.txt','w')
 	for node, member in zip(nodes, classesArray):
 		f.write(str(node)+' '+str(member)+'\n')
 	f.close()

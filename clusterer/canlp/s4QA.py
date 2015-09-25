@@ -3,7 +3,7 @@ def QA():
 	txt = f.read(); f.close();
 	clus = txt.split('\n')
 
-	f = open('data/reclusters.txt','w')
+	f = open('data/clusters.txt','w')
 	for c in clus:
 		tok = c.split('[]');
 		if len(tok) > 1:

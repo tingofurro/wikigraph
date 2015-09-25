@@ -2,15 +2,11 @@
 import shutil
 
 from dbco import *
-from s1Build import createGraph
+from s1Build import *
 from s2Community import buildCommunity
-from s3Nlp import useNLP
-from s4QA import QA
-from s5Extrapolate import extrapolate
-from s6Save import saveResults
-from s7Label import labelCluster
-
-limit = 40000
+# from s3Nlp import useNLP
+from s4Save import saveResults
+from s5Label import labelCluster
 
 db_prefix = ''
 summaryFolder = '../../crawler/summary'
@@ -36,27 +32,15 @@ while True:
 
 		print "Level: ", level, ". Cluster:", cluster
 		
-		needForExtrapolate = createGraph(limit, level, cluster, db_prefix)
-		print "Built graph for community detection"
+		G, nodes = createGraph(level, cluster, db_prefix)
 
-		buildCommunity()
-		print "Ran community detection"
+		membership = buildCommunity(G)
 
-		# useNLP(summaryFolder)
-		# print "Reassign nodes with NLP + name communities"
-
-		QA()
-		print "Ran Q&A check on comunities"
-
-		# extrapolate(summaryFolder)
-		# print "Extrapolated other nodes"
-
-		saveResults(level, cluster, db_prefix)
-		print "Saved results to database."
+		saveResults(level, cluster, nodes, membership, db_prefix)
 
 		labelCluster()
 
-		print "All done.\n----------------------------"
+		print "\n----------------------------"
 		cur.execute('SELECT COUNT(*) FROM '+db_prefix+'cluster WHERE complete=0 AND level<=2')
 		if cur.fetchall()[0][0] == 0:
 			break;

@@ -65,7 +65,7 @@ function setColor(children, colors) {
 	for(c in children) {
 		if(colors[c]) children[c].col = colors[c].c;
 		else children[c].col = 'black';
-		if(children[c].children) setColor(children[c].children, colors[c].sub);
+		if(children[c].children && colors[c]) setColor(children[c].children, colors[c].sub);
 	}
 }
 function openGraph(graphId) {
