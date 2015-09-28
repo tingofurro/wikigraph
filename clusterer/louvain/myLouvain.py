@@ -1,11 +1,10 @@
 from igraph import *
-from modularity import *
 import louvain
 from collections import Counter
-comm = {}; deg = {}; self = {}; Sin = {}; Stot = {}; nei = {};
+comm = {}; deg = {}; self = {}; Sin = {}; Stot = {}; nei = {}; m = 0;
 
 def Louvain(G):
-	global comm, deg, self, Sin, Stot, nei
+	global comm, deg, self, Sin, Stot, nei, m
 	p = buildGraphVars(G)
 	improve = True; changes = 0;
 	while improve:
@@ -38,7 +37,8 @@ def bestComm(p, i, force):
 	return best_c
 
 def buildGraphVars(G):
-	global comm, deg, self, Sin, Stot, nei
+	global comm, deg, self, Sin, Stot, nei, m
+	m = G.ecount()
 	p = range(0,G.vcount())	
 	comm = {}; deg = {}; self = {}; Sin = {}; Stot = {}; nei = {};
 
@@ -69,12 +69,14 @@ def insertMove(p, i, myP):
 
 def deltaMod1Side(node, new_m):
 	S_tot = Stot[new_m]; S_in = Sin.get(new_m,0);
-	s = (2.0*G.ecount()); k_i = deg[node];
+	s = (2.0*m); k_i = deg[node];
 	k_i_in = 2*intersect_length(nei[node], comm[new_m])
 	return ((S_in+k_i_in)/s - ((S_tot+k_i)/s)**2)-(S_in/s - (S_tot/s)**2 - (k_i/s)**2)
 
 def relabel(p, pSet, newP):
 	relabeling = {o: n for o, n in zip(pSet, newP)}
+	print pSet
+	print newP
 	return [relabeling[pOld] for pOld in p]
 
 def intersect_length(neighbors, friends):
@@ -82,28 +84,29 @@ def intersect_length(neighbors, friends):
 	return sum([neighbors[n] for n in goodNodes])
 
 def constrainedLouvain(G, minSize):
-	# Cannot have a cluster of size less than minSize
+	# Cannot have a cluster of size less than 1/(k+1)
 	p = Louvain(G)
+	print "STARTED FORCING"
 	count = Counter(p)
 	c = min(count, key=count.get); cSize = count[c]
 	while cSize < minSize:
 		G2 = collapseGraph(G, p)
 		buildGraphVars(G2)
 		pOld = range(0,max(p)+1); pNew = range(0,max(p)+1);
-		pNew[c] = bestComm(pOld, c, True); pOld[c] = c;
-		if pNew[c] == -1:
-			pNew[c] = max(count, key=count.get);
+		pNew[c] = bestComm(pOld, c, True)
+		pOld[c] = c;
 		p = relabel(p, pOld, pNew)
 		count = Counter(p)
 		c = min(count, key=count.get); cSize = count[c]
+		print count
 	return p
 
-G = build_graph(24500).clusters().giant()
+G = build_graph(5000)
 # # G = Graph.Load('netscience.GraphML')
 # p1 = louvain.find_partition(G, method='Modularity').membership
-K= 6; minSize = int(G.vcount()/(K+1))
-# p2 = Louvain(G)
+# K= 6; minSize = int(G.vcount()/(K+1))
+p2 = Louvain(G)
 p3 = constrainedLouvain(G, minSize)
 # print "Best Louvain modularity: ", G.modularity(p1), " C: ", len(list(set(p1)))
-# print "My Louvain modularity:   ", G.modularity(p2), " C: ", len(list(set(p2)))
+print "My Louvain modularity:   ", G.modularity(p2), " C: ", len(list(set(p2)))
 print "Constained Louvain Mod:  ", G.modularity(p3), " C: ", len(list(set(p3)))
