@@ -16,15 +16,10 @@ $(document).ready(function() {
 });
 function startGraph() {
 	$("svg").empty();
-	graphFile = $('#fileUrl').html();
 	toRun = ($('#toRun').html()==1)?true:false;
-	toFile = $('#whereToSave').html();
-	plotGraph(graphFile, toRun, toFile);
-	loadAllPies();
+	plotGraph($('#fileUrl').html(), toRun, $('#whereToSave').html());
 }
 function plotGraph(graphFile, toRun, toFile) {
-	// toRun: do the nodes already have positions or not?
-	// toFile: where to save. If == '' then no saving
 	alphaI = (toRun==1)?0.2:0.0052;
 	rectangle = svg.append("rect").attr({"x": (screenW/2 - 125), "y": (screenH/2 - 13), 'width': 250, 'height': 26, 'class': 'waitRectangle'});
 	aboveRect = svg.append("rect").attr({"x": (screenW/2 - 125), "y": (screenH/2 - 13), 'width': 1, 'height': 26, 'class': 'aboveRect'});

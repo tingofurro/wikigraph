@@ -1,92 +1,46 @@
 {"id": 0, "name": "Mathematics", "class": "node", 
 "children": [
-   {"id": 1, "name": "Differential_geometry", "class": "node", 
+   {"id": 2, "name": "Vector space", "class": "node", 
    "children": [
-         {"id": 6, "name": "J-structure", "class": "node", 
-      "children": [
-               {"id": 34, "name": "K._S._Chandrasekharan", "class": "badNode"},
-         {"id": 35, "name": "J-structure", "class": "badNode"},
-         {"id": 36, "name": "Essential_dimension", "class": "badNode"},
-         {"id": 37, "name": "Hurwitz%27s_theorem_(normed_division_algebras)", "class": "badNode"}
-      ]
-      },
-      {"id": 7, "name": "Differential_geometry", "class": "node", 
-      "children": [
-               {"id": 38, "name": "Dendroid_(topology)", "class": "badNode"},
-         {"id": 39, "name": "Manifold", "class": "badNode"},
-         {"id": 40, "name": "Algebraic_geometry", "class": "badNode"},
-         {"id": 41, "name": "Stationary_point", "class": "badNode"},
-         {"id": 42, "name": "Uniform_space", "class": "badNode"},
-         {"id": 43, "name": "Presentation_complex", "class": "badNode"}
-      ]
-      },
-      {"id": 8, "name": "Commutative_ring", "class": "node", 
-      "children": [
-               {"id": 44, "name": "Topology_table", "class": "badNode"},
-         {"id": 45, "name": "Parametric_polymorphism", "class": "badNode"},
-         {"id": 46, "name": "Commutative_ring", "class": "badNode"},
-         {"id": 47, "name": "Anisotropy_energy", "class": "badNode"},
-         {"id": 48, "name": "R-SMLT", "class": "badNode"},
-         {"id": 49, "name": "Accident_(philosophy)", "class": "badNode"}
-      ]
-      },
-      {"id": 9, "name": "Lloyd_Shapley", "class": "node", 
-      "children": [
-               {"id": 50, "name": "Sylvain_Cappell", "class": "badNode"},
-         {"id": 51, "name": "Lev_Schnirelmann", "class": "badNode"},
-         {"id": 52, "name": "James_Munkres", "class": "badNode"},
-         {"id": 53, "name": "Hsiang%E2%80%93Lawson%27s_conjecture", "class": "badNode"},
-         {"id": 54, "name": "Switched_mesh", "class": "badNode"}
-      ]
-      },
-      {"id": 10, "name": "Weighing_matrix", "class": "node", 
-      "children": [
-               {"id": 56, "name": "", "class": "badNode"},
-         {"id": 57, "name": "", "class": "badNode"},
-         {"id": 58, "name": "", "class": "badNode"},
-         {"id": 59, "name": "", "class": "badNode"},
-         {"id": 60, "name": "", "class": "badNode"}
-      ]
-      },
-      {"id": 11, "name": "%C3%81kos_Cs%C3%A1sz%C3%A1r", "class": "badNode"}
+         {"id": 8, "name": "Algebraic geometry", "class": "badNode"},
+      {"id": 9, "name": "Linear algebra", "class": "badNode"},
+      {"id": 10, "name": "Category theory", "class": "badNode"},
+      {"id": 11, "name": "Functional analysis", "class": "badNode"},
+      {"id": 12, "name": "Topological space", "class": "badNode"}
    ]
    },
-   {"id": 2, "name": "Graph_theory", "class": "node", 
+   {"id": 3, "name": "Triangle", "class": "node", 
    "children": [
-         {"id": 12, "name": "Axiom", "class": "badNode"},
-      {"id": 13, "name": "Graph_theory", "class": "badNode"},
-      {"id": 14, "name": "Mathematical_logic", "class": "badNode"},
-      {"id": 15, "name": "Game_theory", "class": "badNode"},
-      {"id": 16, "name": "Impartial_game", "class": "badNode"}
+         {"id": 14, "name": "Polyhedron", "class": "badNode"},
+      {"id": 15, "name": "Uniform polyhedron compound", "class": "badNode"},
+      {"id": 16, "name": "Schl%C3%A4fli symbol", "class": "badNode"},
+      {"id": 17, "name": "Plane (geometry)", "class": "badNode"}
    ]
    },
-   {"id": 3, "name": "Topology", "class": "node", 
+   {"id": 4, "name": "Statistics", "class": "node", 
    "children": [
-         {"id": 17, "name": "Classical_logic", "class": "badNode"},
-      {"id": 18, "name": "Field_(mathematics)", "class": "badNode"},
-      {"id": 19, "name": "Topology", "class": "badNode"},
-      {"id": 20, "name": "Group_(mathematics)", "class": "badNode"},
-      {"id": 21, "name": "Equivalence_relation", "class": "badNode"}
+         {"id": 19, "name": "Probability theory", "class": "badNode"},
+      {"id": 20, "name": "Statistics", "class": "badNode"},
+      {"id": 21, "name": "Numerical analysis", "class": "badNode"},
+      {"id": 22, "name": "Nash equilibrium", "class": "badNode"}
    ]
    },
-   {"id": 4, "name": "Number_theory", "class": "node", 
+   {"id": 5, "name": "Graph theory", "class": "node", 
    "children": [
-         {"id": 22, "name": "Statistics", "class": "badNode"},
-      {"id": 23, "name": "Number_theory", "class": "badNode"},
-      {"id": 24, "name": "Euclidean_space", "class": "badNode"},
-      {"id": 25, "name": "Polynomial", "class": "badNode"},
-      {"id": 26, "name": "Diophantine_equation", "class": "badNode"},
-      {"id": 27, "name": "Heegaard_splitting", "class": "badNode"},
-      {"id": 28, "name": "Eutactic_lattice", "class": "badNode"}
+         {"id": 24, "name": "Graph (mathematics)", "class": "badNode"},
+      {"id": 25, "name": "Game theory", "class": "badNode"},
+      {"id": 26, "name": "Graph theory", "class": "badNode"},
+      {"id": 27, "name": "Directed graph", "class": "badNode"},
+      {"id": 28, "name": "List of mathematical probabilists", "class": "badNode"}
    ]
    },
-   {"id": 5, "name": "Geometry", "class": "node", 
+   {"id": 6, "name": "Number theory", "class": "node", 
    "children": [
-         {"id": 29, "name": "Semigroup_with_involution", "class": "badNode"},
-      {"id": 30, "name": "Geometry", "class": "badNode"},
-      {"id": 31, "name": "Askey_scheme", "class": "badNode"},
-      {"id": 32, "name": "Decimal", "class": "badNode"},
-      {"id": 33, "name": "Gottfried_K%C3%B6the", "class": "badNode"}
+         {"id": 30, "name": "Mathematical logic", "class": "badNode"},
+      {"id": 31, "name": "Real number", "class": "badNode"},
+      {"id": 32, "name": "Calculus", "class": "badNode"},
+      {"id": 33, "name": "Number theory", "class": "badNode"},
+      {"id": 34, "name": "Computable function", "class": "badNode"}
    ]
    }
 ]

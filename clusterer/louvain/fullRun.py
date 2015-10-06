@@ -4,7 +4,7 @@ import shutil
 from dbco import *
 from s1Build import *
 from s2Community import buildCommunity
-# from s3Nlp import useNLP
+from s3Nlp import useNLP
 from s4Save import saveResults
 from s5Label import labelCluster
 
@@ -33,8 +33,11 @@ while True:
 		print "Level: ", level, ". Cluster:", cluster
 		
 		G, nodes = createGraph(level, cluster, db_prefix)
+		G2 = createGraphNLP(nodes, G.ecount())
 
-		membership = buildCommunity(G)
+		membership = buildCommunity(G, G2)
+
+		membership = useNLP(nodes, membership, summaryFolder)
 
 		saveResults(level, cluster, nodes, membership, db_prefix)
 

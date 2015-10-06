@@ -1,37 +1,53 @@
-var tree = d3.layout.tree()
-    .size([360, 360])
-    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+var width = 380; height = $(window).height(), duration = 750, root = null;
+var tree = d3.layout.tree().size([height, width]);
+var diagonal = d3.svg.diagonal().projection(function(d) { return [d.y, d.x]; });
 
-var diagonal = d3.svg.diagonal.radial()
-    .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
-
-var svg = d3.select("body").append("svg").attr("width", $(document).width()).attr("height", 1000).append("g").attr("transform", "translate(" + (($(document).width())/2) + ","+(1000/2)+")");
-d3.json(webroot+"/tree.json", function(error, root) {
-  var nodes = tree.nodes(root),
-      links = tree.links(nodes);
-
-  var link = svg.selectAll(".link")
-      .data(links)
-    .enter().append("path")
-      .attr("class", "link")
-      .attr("d", diagonal);
-
-  var node = svg.selectAll(".node")
-      .data(nodes)
-    .enter().append("g")
-      .attr("class", function(d) {return d.class;})
-      .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
-
-  node.append("circle")
-      .attr("r", 4.5);
-
-  node.append("text")
-      .attr("dy", ".31em")
-      .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-      .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
-      .text(function(d) { return d.name; });
-  node.on("dblclick", function(d) {
-      window.location=linkroot+'graph/'+encodeURIComponent(d.id);
-      d3.event.stopPropagation();
-  });
+var svg = d3.select("body").append("svg").attr('id', 'tree').attr("width", width).attr("height", height);
+d3.json($('#treeLocation').html(), function(error, data) {
+    $('#graph').width($(document).width()-width-1);
+    root = data; root.x0 = height / 2; root.y0 = 0;
+    function collapse(d) {
+        if (d.children) {
+            d._children = d.children; d._children.forEach(collapse); d.children = null;
+        }
+    }
+    root.children.forEach(collapse);
+    update(root);
 });
+
+function update(source) {
+    var nodes = tree.nodes(root).reverse(), links = tree.links(nodes);
+    nodes.forEach(function(d) { d.y = (d.depth+1) * 120-20; });
+
+    var node = svg.selectAll("g.node").data(nodes, function(d) { return d.id; });
+
+    var nodeEnter = node.enter().append("g").attr("class", "node").attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+            .on("click", click);
+
+    nodeEnter.append("circle").attr("r", 1e-6).style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+    nodeEnter.append("text").attr("x", -10).attr("dy", ".35em").attr("text-anchor", "end").text(function(d) { return d.name; });
+
+    var nodeUpdate = node.transition().duration(duration).attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+    nodeUpdate.select("circle").attr("r", 4.5).style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+    nodeUpdate.select("text").style("fill-opacity", 1);
+
+    var nodeExit = node.exit().transition().duration(duration).attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; }).remove();
+    nodeExit.select("circle").attr("r", 1e-6);
+    nodeExit.select("text").style("fill-opacity", 0);
+
+    var link = svg.selectAll("path.link").data(links, function(d) { return d.target.id; });
+
+    link.enter().insert("path", "g").attr("class", "link").attr("d", function(d) {var o = {x: source.x0, y: source.y0};return diagonal({source: o, target: o});});
+    link.transition().duration(duration).attr("d", diagonal);
+    link.exit().transition().duration(duration).attr("d", function(d) {var o = {x: source.x, y: source.y};return diagonal({source: o, target: o});}).remove();
+
+    nodes.forEach(function(d) {d.x0 = d.x; d.y0 = d.y;});
+}
+
+function click(d) {
+    if (d.children) {d._children = d.children; d.children = null;}
+    else {d.children = d._children; d._children = null;}
+    $('#graph').attr('src', $('#webroot').html()+d.id);
+    update(d);
+}

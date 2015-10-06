@@ -18,7 +18,6 @@ for row in cur.fetchall():
 	clusters.append(row[1]);
 clusters = np.array(clusters)
 
-
 cur.execute("SELECT id, name FROM cluster WHERE parent="+str(cluster)+" ORDER BY id");
 clusterNames = {}; clusterList = [];
 for row in cur.fetchall():

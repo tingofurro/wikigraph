@@ -5,7 +5,7 @@ $(document).ready(function() {
 	windowHeight = screen.height-50;
 	windowWidth = screen.width-17;
 	svg = d3.select("body").append("svg").attr('id', 'svg1').attr("width", windowWidth).attr("height", windowHeight);
-	loadFirstGraph();
+	// loadFirstGraph();
 	restart();
 });
 function restart() {
@@ -55,8 +55,10 @@ function radius(lvl) {
 	return 0.3*Math.min($(window).width(), (screen.height-50))*lvl;
 }
 function loadTopics() {
+	alert(webroot+ "tree.json");
 	$.getJSON(webroot+ "tree.json", function( json ) {
 		tree = json;
+		console.log(json)
 		setColor(tree.children, colors);
 		for(var i = 1; i <= 3; i ++) loadPie(i, maxLvl);
 	});

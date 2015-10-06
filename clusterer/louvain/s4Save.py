@@ -9,7 +9,10 @@ def saveResults(level, parent, nodes, membership, db_prefix):
 	# Create clusters in cluster table
 	clusterMapping = {}
 	for c in clusters:
-		cur.execute("INSERT INTO `"+db_prefix+"cluster` (`id`, `parent`, `name`, `level`, `score`, `size`, `complete`) VALUES (NULL, '"+str(parent)+"', '', '"+str(level+1)+"', '0', '"+str(counts[c])+"', '0');")
+		comp = 0; score = 2
+		if c == 0:
+			comp = 1; score = 0
+		cur.execute("INSERT INTO `"+db_prefix+"cluster` (`id`, `parent`, `name`, `level`, `score`, `size`, `complete`) VALUES (NULL, '"+str(parent)+"', '', '"+str(level+1)+"', '"+str(score)+"', '"+str(counts[c])+"', '"+str(comp)+"');")
 		cur.execute("SELECT id FROM "+db_prefix+"cluster ORDER BY id DESC LIMIT 1")
 		clusterMapping[c] = cur.fetchall()[0][0]
 

@@ -4,13 +4,14 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from LemmaTokenizer import *
 import numpy as np
+from loadKNN import *
 
 def createGraph(level, cluster, db_prefix):
 	nodes = []; where = '';
 	if(level > 0):
-		where = ' WHERE cluster'+str(level)+'='+str(cluster)
+		where = ' AND cluster'+str(level)+'='+str(cluster)
 
-	cur.execute("SELECT id FROM "+db_prefix+"page"+where+" ORDER BY id");
+	cur.execute("SELECT id FROM "+db_prefix+"page WHERE badPage=0 "+where+" ORDER BY id");
 	dbFetch = cur.fetchall()
 	nodes = [str(row[0]) for row in dbFetch];
 	nodesDict = {}
@@ -33,20 +34,23 @@ def buildTFIDF(arts):
 	return TfidfTransformer().fit_transform(count)
 
 def tdfidfSimi(tfidf):
-	return cosine_similarity(tfidf)
+	return (tfidf * tfidf.T).A
 
-def createGraphNLP(arts, db_prefix):
-	tfidf = buildTFIDF(arts)
-	simi = tdfidfSimi(tfidf)
-	k = 27
-	G = Graph()
-	G.to_directed()
-	G.add_vertices(len(arts))
+def createGraphNLP(arts, totalEdges):
+	G = Graph(); G.to_directed(); G.add_vertices(len(arts))
+	k = (totalEdges/len(arts));
 	edges = []
-	for i in range(0,len(simi)):
-		r = simi[i];
-		neighbors = r.argsort()[-(k+1):-1]
-		edges.extend([(i, n) for n in neighbors])
+	if len(arts) < 5000:
+		tfidf = buildTFIDF(arts)
+		simi = tdfidfSimi(tfidf)
+		for i in range(0,len(simi)):
+			r = simi[i];
+			neighbors = r.argsort()[-(k+1):-1]
+			edges.extend([(i, n) for n in neighbors])
+	else: # the graph is too big, we just use the cache, it might be imperfect though
+		edg = loadKNN(arts)
+		for i in edg:
+			edges.extend([(i, j) for j in edg[i]])
 	G.add_edges(edges)
 	print "Built NLP Graph"
 	return G

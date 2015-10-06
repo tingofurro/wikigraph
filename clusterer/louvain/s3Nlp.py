@@ -14,16 +14,7 @@ def genName(freqArray, vocabValue, vocabIndex):
 		bw.extend(b.split(' '))
 	return [w for w in tenBest if w not in bw][:3]
 
-def useNLP(summaryFolder):
-	f = open('data/community.txt','r'); toks = f.readlines(); f.close();
-
-	classesArray = []; nodes = [];
-	for tok in toks:
-		infos = tok.split(' ')
-		if len(infos) == 2:
-			classesArray.append(int(infos[1]))
-			nodes.append(int(infos[0]))
-
+def useNLP(nodes, classesArray, summaryFolder):
 	classesArray = np.array(classesArray)
 
 	texts = [];
@@ -58,17 +49,4 @@ def useNLP(summaryFolder):
 		changed = np.count_nonzero(nClassesArray-classesArray)
 		classesArray = np.array(nClassesArray)
 
-	f = open('data/clusters.txt','w')
-	for clas in classSet:
-		goodRows = np.where(classesArray==clas)[0]
-		badRows = np.where(classesArray!=clas)[0]
-		freqArray = genFreqArray(totalCount[goodRows, :], totalCount[badRows, :])
-		name = ','.join(genName(freqArray, vocabValue, vocabIndex))
-		score = 10*float(len(goodRows))/len(classesArray)
-		f.write(str(clas)+'[]'+str(score)+'[]'+name+'[]'+str(len(goodRows))+'\n')
-	f.close()
-
-	f = open('data/community.txt','w')
-	for node, member in zip(nodes, classesArray):
-		f.write(str(node)+' '+str(member)+'\n')
-	f.close()
+	return classesArray

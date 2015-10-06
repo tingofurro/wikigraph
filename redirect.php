@@ -34,6 +34,9 @@ switch ($myUrl) {
 	case 'subcolor':
 		include_once('display/subcolor.php');
 	break;
+	case 'new':
+		include_once('display/new.php');
+	break;
 	case '':
 		include_once('display/graph.php');
 	break;
