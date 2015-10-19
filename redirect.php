@@ -38,7 +38,7 @@ switch ($myUrl) {
 		include_once('display/new.php');
 	break;
 	case '':
-		include_once('display/graph.php');
+		include_once('display/new.php');
 	break;
 }
 

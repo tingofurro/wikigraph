@@ -26,7 +26,7 @@ for i in range(0,len(pageId)):
 	simi = cosine_similarity(count[i], count)
 	neighInd = simi[0].argsort()[-(k+1):-1]
 	neighId = [str(pageId[j]) for j in neighInd]
-	f.write(str(pageId[i])+'|'+','.join(neighId))
+	f.write(str(pageId[i])+'|'+','.join(neighId)+'\n')
 	if i%100 == 0:
 		print i
 

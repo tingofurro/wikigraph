@@ -21,7 +21,7 @@ def isValid(child):
 	if child.get('class') is not None and any((True for x in badClasses if x in child.get('class'))):
 		return False
 	return True
-	
+
 def crawlPage(idPage, name):
 	fileName = 'html/'+str(idPage)+'.html'
 	if not os.path.isfile(fileName):
@@ -41,7 +41,8 @@ def crawlPage(idPage, name):
 		f = open(fileName, 'w'); f.write(text); f.close();
 		buildSummary(innerSoup, 'summary/'+str(idPage)+'.txt')
 
-cur.execute("SELECT id, name FROM page ORDER BY id")
-for row in cur.fetchall():
-	crawlPage(row[0], row[1])
-	print row[0]
+if __name__ == '__main__':
+	cur.execute("SELECT id, name FROM page ORDER BY id")
+	for row in cur.fetchall():
+		crawlPage(row[0], row[1])
+		print row[0]

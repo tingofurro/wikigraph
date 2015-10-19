@@ -48,7 +48,7 @@ def createGraphNLP(arts, totalEdges):
 			neighbors = r.argsort()[-(k+1):-1]
 			edges.extend([(i, n) for n in neighbors])
 	else: # the graph is too big, we just use the cache, it might be imperfect though
-		edg = loadKNN(arts)
+		edg = loadKNN(arts, k)
 		for i in edg:
 			edges.extend([(i, j) for j in edg[i]])
 	G.add_edges(edges)

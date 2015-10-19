@@ -4,7 +4,7 @@ include_once('mainFunc.php');
 include_once('createJsonGraph.php');
 include_once('graphFunctions.php');
 $realRoot = getRealRoot();
-$cluster = 0; $level = 0; $limit = 400;
+$cluster = 0; $level = 0; $limit = 900;
 if(isset($_GET['cluster'])) {
 	$c = mysql_query("SELECT * FROM cluster WHERE id=".mysql_real_escape_string($_GET['cluster']));
 	if($cl = mysql_fetch_array($c)) {$cluster = $cl['id']; $level = $cl['level'];}
@@ -45,6 +45,7 @@ $extraTop = "";
 	<div class="hide" id="whereToSave"><?php echo ($fileExists)?'':getDocumentRoot()."/".$fileUrl;?></div>
 	<div class="hide" id="cidList"><?php echo implode(",", $cidArray); ?></div>
 	<div class="hide" id="cnameList"><?php echo implode("|", $cnameArray); ?></div>
+	<div class="hide" id="nextGraph"><?php echo ($cluster+1); ?></div>
 	<script src="<?php echo $realRoot; ?>JS/graph.js"></script>
 	<script src="<?php echo $realRoot; ?>JS/keywords.js"></script>
 	<script type="text/javascript">var webroot = '<?php echo $realRoot; ?>';</script>

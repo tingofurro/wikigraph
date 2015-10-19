@@ -30,7 +30,7 @@ function getChildren($id, $maxDistance) {
 function writeNode($re, $maxDistance) {
 	$sp = str_repeat(' ', 3*$re['level']);
 	$name = str_replace("_", " ", $re['name']);
-	$txt = '{"id": '.$re['id'].', "name": "'.$name.'", "class": "'.(($re['children']==0)?'badNode':'node').'"';
+	$txt = '{"id": '.$re['id'].', "name": "'.urldecode($name).'", "class": "'.(($re['children']==0)?'badNode':'node').'"';
 	if($re['children'] > 0) {$txt .= ", \n".$sp."\"children\": [\n".$sp.getChildren($re['id'], $maxDistance)."\n".$sp."]\n".$sp;}
 	$txt .= "}";
 	return $txt;

@@ -9,11 +9,12 @@ body {
 }
 .node circle {
     fill: #fff;
-    stroke: steelblue;
-    stroke-width: 1.5px;
+    stroke: black;
+    stroke-width: 1px;
 }
 .node {
     font: 10px sans-serif;
+    font-weight: 700;
     cursor: pointer;
 }
 .link {
@@ -28,4 +29,7 @@ body {
     height: 100%;
     position: absolute;
     border: none;
+}
+.hide {
+    display: none;
 }

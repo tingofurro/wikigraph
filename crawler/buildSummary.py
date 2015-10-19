@@ -35,7 +35,6 @@ def buildSummary(soup, whereToSave):
 					cont = child.get_text()
 				except:
 					pass
-
 				content += (cont+'\n').encode('ascii', 'ignore')
 	content = content.replace('\n', '')
 	f = open(whereToSave, 'w'); f.write(content); f.close();

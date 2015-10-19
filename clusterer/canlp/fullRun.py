@@ -10,14 +10,16 @@ from s5Extrapolate import extrapolate
 from s6Save import saveResults
 from s7Label import labelCluster
 
-limit = 40000
+limit = 4000
 
-db_prefix = ''
+db_prefix = 'ma_'
 summaryFolder = '../../crawler/summary'
 
-if len(sys.argv) > 1 and sys.argv[1] == 'reset':
+if len(sys.argv) > 2 and sys.argv[2] == 'reset':
+	db_prefix = sys.argv[1]+'_'
 	shall = raw_input("Sure you want to reset DB? (y/N) ").lower() == 'y'
 	if shall:
+		cur.execute("CREATE TABLE IF NOT EXISTS `cluster` (`id` int(11) NOT NULL AUTO_INCREMENT,`parent` int(11) NOT NULL,`name` text NOT NULL,`level` int(11) NOT NULL,`score` float(10,4) NOT NULL,`size` int(11) NOT NULL,`complete` int(11) NOT NULL,PRIMARY KEY (`id`)) DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;");
 		cur.execute("TRUNCATE TABLE `"+db_prefix+"cluster`")
 		cur.execute("UPDATE "+db_prefix+"page SET cluster1=0, cluster2=0, cluster3=0, cluster4=0, cluster5=0")
 
@@ -42,14 +44,14 @@ while True:
 		buildCommunity()
 		print "Ran community detection"
 
-		# useNLP(summaryFolder)
-		# print "Reassign nodes with NLP + name communities"
+		useNLP(summaryFolder)
+		print "Reassign nodes with NLP + name communities"
 
 		QA()
 		print "Ran Q&A check on comunities"
 
-		# extrapolate(summaryFolder)
-		# print "Extrapolated other nodes"
+		extrapolate(summaryFolder)
+		print "Extrapolated other nodes"
 
 		saveResults(level, cluster, db_prefix)
 		print "Saved results to database."

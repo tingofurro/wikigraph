@@ -24,12 +24,14 @@ function update(source) {
     var nodeEnter = node.enter().append("g").attr("class", "node").attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
             .on("click", click);
 
-    nodeEnter.append("circle").attr("r", 1e-6).style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-    nodeEnter.append("text").attr("x", -10).attr("dy", ".35em").attr("text-anchor", "end").text(function(d) { return d.name; });
+    nodeEnter.append("circle").attr("r", 1e-6)
+    nodeEnter.append("text").attr("x", -10).attr("dy", ".35em")
+    .attr("text-anchor", "end").text(function(d) { return d.name; })
+    .attr('fill', function(d) {return str2color(d.id); });
 
     var nodeUpdate = node.transition().duration(duration).attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
-    nodeUpdate.select("circle").attr("r", 4.5).style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+    nodeUpdate.select("circle").attr("r", 4).style("fill", function(d) { return str2color(d.id); });
     nodeUpdate.select("text").style("fill-opacity", 1);
 
     var nodeExit = node.exit().transition().duration(duration).attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; }).remove();

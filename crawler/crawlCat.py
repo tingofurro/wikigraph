@@ -37,7 +37,7 @@ while len(toSearch) > 0:
 		f = urllib.urlopen("https://en.wikipedia.org/wiki/Category:"+me[0]); html_doc = f.read(); f.close();
 		f2 = open(whereToSave, 'w'); f2.write(html_doc); f2.close();
 	toFind = '/wiki/Category:'
-	soup = BeautifulSoup(html_doc, 'html.parser')
+	soup = BeautifulSoup(html_doc, 'lxml')
 	soup = soup.find(id='mw-subcategories')
 	newDiscover = []
 	if soup != None:

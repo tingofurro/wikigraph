@@ -32,7 +32,8 @@ def useNLP(nodes, classesArray, summaryFolder):
 	vocabIndex = count_vect.vocabulary_.values()
 
 	changed = totalCount.shape[0]
-	while 1.0*changed > 0.01*totalCount.shape[0]:
+	coun = 0
+	while coun < 2:
 		classSet = list(set(classesArray))
 		freqMatrix = []
 
@@ -48,5 +49,5 @@ def useNLP(nodes, classesArray, summaryFolder):
 		nClassesArray = [classSet[np.argmax(allResults[:,i])] for i in range(0,totalCount.shape[0])]
 		changed = np.count_nonzero(nClassesArray-classesArray)
 		classesArray = np.array(nClassesArray)
-
+		coun += 1
 	return classesArray
