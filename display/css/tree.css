@@ -33,3 +33,15 @@ body {
 .hide {
     display: none;
 }
+#selectTopic {
+    position: absolute;
+    top: 0px; left: 0px;
+    width: 380px;
+    text-align: center;
+    padding: 10px 0px;
+    z-index: 10;
+}
+#selectTopic select {
+    font-size: 20px;
+    text-align: center;
+}

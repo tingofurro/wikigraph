@@ -1,10 +1,10 @@
 <?php
-function nodes2Graph($nodes, $file, $lvl=1) {
+function nodes2Graph($nodes, $file, $dbPrefix, $lvl=1) {
 	$sp = str_repeat(' ', 3);
 	$nodesTxt = array();
 	$listNodeTxt = implode(", ", $nodes);
 	$PR = array(); $clust = array(); $names = array(); $keywords = array();
-	$n = mysql_query("SELECT id, PR, name, cluster".$lvl.", keywords FROM page WHERE id IN (".implode(",", $nodes).") ORDER BY id");
+	$n = mysql_query("SELECT id, PR, name, cluster".$lvl.", keywords FROM ".$dbPrefix."page WHERE id IN (".implode(",", $nodes).") ORDER BY id");
 	while($no = mysql_fetch_array($n)) {
 		$PR[$no['id']] = $no['PR']; $clus[$no['id']] = $no['cluster'.$lvl];
 		$names[$no['id']] = $no['name'];
@@ -12,14 +12,12 @@ function nodes2Graph($nodes, $file, $lvl=1) {
 	}
 	$minPR = min(array_values($PR));
 	$maxPR = max(array_values($PR));
-	$minDist = 5;
-	$maxDist = 200;
+	$minDist = 5; $maxDist = 200;
 	$goodNodes = array(); $edg = array();
-	$e = mysql_query("SELECT * FROM link WHERE (`to` IN(".$listNodeTxt.") AND `from` IN(".$listNodeTxt.")) ORDER BY id");
+	$e = mysql_query("SELECT * FROM ".$dbPrefix."link WHERE (`to` IN(".$listNodeTxt.") AND `from` IN(".$listNodeTxt.")) ORDER BY id");
 	while($ed = mysql_fetch_array($e)) {
 		$thisPR = min($PR[$ed['to']], $PR[$ed['from']]);
 		$dist = ceil(($maxDist-$minDist)*$thisPR/($maxPR-$minPR) + $minDist);
-		// $dist = 20; // constan $dist = $maxDist-$dist; // reverse
 		array_push($edg, array("from"=> $ed['from'], "to" => $ed['to'], "dist" => $dist));
 		array_push($goodNodes, $ed['from']); array_push($goodNodes, $ed['to']);
 	}
@@ -41,13 +39,13 @@ function nodes2Graph($nodes, $file, $lvl=1) {
 	$txt .= "}";
 	$fh = fopen($file, 'w'); fwrite($fh, $txt);
 }
-function generateMatrix($nodes) {
+function generateMatrix($nodes, $dbPrefix) {
 	$nbNodes = count($nodes); $mat = array();
 	for ($r=0; $r < $nbNodes; $r++) { 
 		$mat[$r] = array();
 		for ($c=0; $c < $nbNodes; $c++) $mat[$r][$c] = 0;
 	}
-	$e = mysql_query("SELECT * FROM link WHERE `to` IN (".implode(",", $nodes).") AND `from` IN (".implode(",", $nodes).")");
+	$e = mysql_query("SELECT * FROM ".$dbPrefix."link WHERE `to` IN (".implode(",", $nodes).") AND `from` IN (".implode(",", $nodes).")");
 	while($ed = mysql_fetch_array($e)) {
 		$r = array_search($ed['from'], $nodes);
 		$c = array_search($ed['to'], $nodes);

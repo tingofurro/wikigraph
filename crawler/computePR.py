@@ -3,7 +3,7 @@ from igraph import *
 import sys
 
 if len(sys.argv) > 1:
-	prefix = sys.argv[1]
+	prefix = sys.argv[1]+'_'
 	try:
 		cur.execute("ALTER TABLE `"+prefix+"page` ADD `PR` FLOAT( 20, 3 ) NOT NULL ")
 	except:
@@ -25,4 +25,4 @@ if len(sys.argv) > 1:
 	query += 'END WHERE id IN('+','.join(pages)+')'
 	cur.execute(query)
 else:
-	print "Enter the table prefix: 'ee_'"
+	print "Enter the table prefix: 'ee'"

@@ -2,7 +2,7 @@ var colors = [{"level":1,"c":"#c20a40","sub":[{"level":2,"c":"#f20d73","sub":[{"
 var cache = {};
 var maxCLevel = 3;
 function str2color(c) {
-	if(c=='0') return 'white';
+	if(c=='0') return 'black';
 	if(cache[c]) return cache[c];
 	else {
 		st = ($('#iList'+c).html()).split(',');

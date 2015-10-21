@@ -14,7 +14,7 @@ def saveResults(level, cluster, db_prefix):
 			isComplete = '1';
 			if score > 0.5 and clus != 0 and level<4:
 				isComplete = '0'
-			cur.execute("INSERT INTO `"+db_prefix+"cluster` (`id`, `parent`, `name`, `level`, `score`, `complete`, `good`) VALUES (NULL, '"+str(cluster)+"', '"+name+"', '"+str(level+1)+"', '"+str(score)+"', '"+isComplete+"', '"+good+"');")
+			cur.execute("INSERT INTO `"+db_prefix+"cluster` (`id`, `parent`, `name`, `level`, `score`, `complete`) VALUES (NULL, '"+str(cluster)+"', '"+name+"', '"+str(level+1)+"', '"+str(score)+"', '"+isComplete+"');")
 			cur.execute("SELECT id FROM "+db_prefix+"cluster ORDER BY id DESC LIMIT 1")
 			clusterMapping[clus] = cur.fetchall()[0][0]
 	# Finished creating clusters, time to update pages

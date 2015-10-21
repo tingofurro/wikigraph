@@ -65,3 +65,40 @@ def pageLinks(name):
 						links.add(pageName)
 		f2 = open(whereToSave, 'w'); f2.write('\n'.join(list(links))); f2.close();
 	return links
+
+def isBreakSummary(child): # should we stop there
+	if child.name is not None and child.name == 'div' and child.get('id') is not None and child.get('id') == 'toc':
+		return True
+	if child.name is not None and (child.name == 'h2'):
+		return True
+	return False
+def isValidSummary(child):
+	badClasses = ['hatnote', 'stub', 'ambox', 'vertical-navbox', 'thumb', 'infobox', 'navbox', 'haudio', 'reference']
+	if child is None:
+		return False
+	if child.name is not None and child.name == 'div' and child.get('id') is not None and child.get('id') == 'toc':
+		return False
+	if child.name is not None and (child.name == 'h2'):
+		return False
+	if child.get('class') is not None and any((True for x in badClasses if x in child.get('class'))):
+		return False
+	return True
+
+def buildSummary(pageName, whereToSave):
+	if not os.path.isfile(whereToSave):
+		soup = BeautifulSoup(loadPage(pageName), 'lxml');
+		[x.extract() for x in soup.findAll(class_='reference')]
+		content = ''
+		for child in soup.children:
+			if child.name is not None:
+				if isBreakSummary(child):
+					break;
+				if isValidSummary(child):
+					cont = ''
+					try:
+						cont = child.get_text()
+					except:
+						pass
+					content += (cont+'\n').encode('ascii', 'ignore')
+		content = content.replace('\n', '')
+		f = open(whereToSave, 'w'); f.write(content); f.close();

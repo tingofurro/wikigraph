@@ -1,47 +1,5 @@
 {"id": 0, "name": "Mathematics", "class": "node", 
 "children": [
-   {"id": 2, "name": "Vector space", "class": "node", 
-   "children": [
-         {"id": 8, "name": "Algebraic geometry", "class": "badNode"},
-      {"id": 9, "name": "Linear algebra", "class": "badNode"},
-      {"id": 10, "name": "Category theory", "class": "badNode"},
-      {"id": 11, "name": "Functional analysis", "class": "badNode"},
-      {"id": 12, "name": "Topological space", "class": "badNode"}
-   ]
-   },
-   {"id": 3, "name": "Triangle", "class": "node", 
-   "children": [
-         {"id": 14, "name": "Polyhedron", "class": "badNode"},
-      {"id": 15, "name": "Uniform polyhedron compound", "class": "badNode"},
-      {"id": 16, "name": "Schl%C3%A4fli symbol", "class": "badNode"},
-      {"id": 17, "name": "Plane (geometry)", "class": "badNode"}
-   ]
-   },
-   {"id": 4, "name": "Statistics", "class": "node", 
-   "children": [
-         {"id": 19, "name": "Probability theory", "class": "badNode"},
-      {"id": 20, "name": "Statistics", "class": "badNode"},
-      {"id": 21, "name": "Numerical analysis", "class": "badNode"},
-      {"id": 22, "name": "Nash equilibrium", "class": "badNode"}
-   ]
-   },
-   {"id": 5, "name": "Graph theory", "class": "node", 
-   "children": [
-         {"id": 24, "name": "Graph (mathematics)", "class": "badNode"},
-      {"id": 25, "name": "Game theory", "class": "badNode"},
-      {"id": 26, "name": "Graph theory", "class": "badNode"},
-      {"id": 27, "name": "Directed graph", "class": "badNode"},
-      {"id": 28, "name": "List of mathematical probabilists", "class": "badNode"}
-   ]
-   },
-   {"id": 6, "name": "Number theory", "class": "node", 
-   "children": [
-         {"id": 30, "name": "Mathematical logic", "class": "badNode"},
-      {"id": 31, "name": "Real number", "class": "badNode"},
-      {"id": 32, "name": "Calculus", "class": "badNode"},
-      {"id": 33, "name": "Number theory", "class": "badNode"},
-      {"id": 34, "name": "Computable function", "class": "badNode"}
-   ]
-   }
+
 ]
 }

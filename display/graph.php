@@ -4,19 +4,21 @@ include_once('mainFunc.php');
 include_once('createJsonGraph.php');
 include_once('graphFunctions.php');
 $realRoot = getRealRoot();
+$dbPrefix = 'ma_';
 $cluster = 0; $level = 0; $limit = 900;
+if(isset($_GET['dbPrefix'])) $dbPrefix = $_GET['dbPrefix'];
 if(isset($_GET['cluster'])) {
-	$c = mysql_query("SELECT * FROM cluster WHERE id=".mysql_real_escape_string($_GET['cluster']));
+	$c = mysql_query("SELECT * FROM ".$dbPrefix."cluster WHERE id=".mysql_real_escape_string($_GET['cluster']));
 	if($cl = mysql_fetch_array($c)) {$cluster = $cl['id']; $level = $cl['level'];}
 }
 
-$fileUrl = "display/cache/".$cluster.".json";
+$fileUrl = "display/cache/".$dbPrefix.$cluster.".json";
 $fileExists = file_exists(getDocumentRoot().'/'.$fileUrl);
-if(!$fileExists) generateGraph($level, $cluster, $limit);
+if(!$fileExists) generateGraph($level, $cluster, $dbPrefix, $limit);
 $cid = $cluster;
 $names = array(); $cidArray = array(); $cnameArray = array();
 while($level > 0) {
-	$c = mysql_query("SELECT * FROM cluster WHERE id=".$cid." AND score>1"); $cl = mysql_fetch_array($c);
+	$c = mysql_query("SELECT * FROM ".$dbPrefix."cluster WHERE id=".$cid." AND score>1"); $cl = mysql_fetch_array($c);
 	$v = array("name" => shorterName($cl['name']), "id"=> $cl['id']);
 	array_unshift($names, $v);
 	array_unshift($cidArray, $cl['id']);
@@ -40,6 +42,7 @@ $extraTop = "";
 	<script src="<?php echo $realRoot; ?>JS/colors.js"></script>
 </head>
 <body>
+	<div class="hide" id="dbPrefix"><?php echo substr($dbPrefix, 0, -1); ?></div>
 	<div class="hide" id="fileUrl"><?php echo ($fileExists)?$root.$fileUrl:$realRoot."temp.json"; ?></div>
 	<div class="hide" id="toRun"><?php echo ($fileExists)?0:1; ?></div>
 	<div class="hide" id="whereToSave"><?php echo ($fileExists)?'':getDocumentRoot()."/".$fileUrl;?></div>
@@ -51,7 +54,7 @@ $extraTop = "";
 	<script type="text/javascript">var webroot = '<?php echo $realRoot; ?>';</script>
 	<?php
 		$cNames = array(); $cNames[0] = ''; $lastParent = 0; $i = 0;
-		$c = mysql_query("SELECT * FROM cluster ORDER BY id");
+		$c = mysql_query("SELECT * FROM ".$dbPrefix."cluster ORDER BY id");
 		while($cl = mysql_fetch_array($c)) {
 			if($cl['parent'] != $lastParent) {$lastParent = $cl['parent']; $i = 0;}
 			if($cl['parent']==0) $cNames[$cl['id']] = $i."";

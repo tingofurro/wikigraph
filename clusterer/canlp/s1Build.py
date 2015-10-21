@@ -4,7 +4,7 @@ def createGraph(limit, level, cluster, db_prefix):
 	nodes = []; where = '';
 	if(level > 0):
 		where = ' WHERE cluster'+str(level)+'='+str(cluster)
-	cur.execute("SELECT id FROM "+db_prefix+"page"+where+" ORDER BY betweenness DESC LIMIT "+str(limit))
+	cur.execute("SELECT id FROM "+db_prefix+"page"+where+" ORDER BY PR DESC LIMIT "+str(limit))
 
 	nodes = [str(row[0]) for row in cur.fetchall()]
 

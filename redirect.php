@@ -43,9 +43,9 @@ switch ($myUrl) {
 }
 
 $exp = explode("/", $myUrl);
-if(count($exp) == 1 and is_numeric($exp[0])) {
-	$_GET['cluster'] = mysql_real_escape_string($exp[0]);
-	include_once('display/graph.php');
+if(count($exp) == 1 && strlen($exp[0]) <= 3) {
+	$_GET['dbPrefix'] = mysql_real_escape_string($exp[0]).'_';
+	include_once('display/new.php');
 }
 if(count($exp) >= 2 && $exp[0] == 'category') {
 	if(is_numeric($exp[1])) {$_GET['source'] = mysql_real_escape_string($exp[1]);}
@@ -71,5 +71,10 @@ if(count($exp) >= 2 && $exp[0] == 'wiki') {
 if(count($exp) >= 2 && $exp[0] == 'loadGraph') {
 	$_GET['topic'] = mysql_real_escape_string($exp[1]);
 	include_once('display/loadGraph.php');
+}
+if(count($exp) == 2 and is_numeric($exp[1])) {
+	$_GET['dbPrefix'] = mysql_real_escape_string($exp[0])."_";	
+	$_GET['cluster'] = mysql_real_escape_string($exp[1]);
+	include_once('display/graph.php');
 }
 ?>

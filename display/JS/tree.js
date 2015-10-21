@@ -50,6 +50,6 @@ function update(source) {
 function click(d) {
     if (d.children) {d._children = d.children; d.children = null;}
     else {d.children = d._children; d._children = null;}
-    $('#graph').attr('src', $('#webroot').html()+d.id);
+    $('#graph').attr('src', $('#webroot').html()+$('#dbPrefix').html()+'/'+d.id);
     update(d);
 }

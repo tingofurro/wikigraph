@@ -1,13 +1,13 @@
 <?php
-function generateGraph($level, $clus, $limit = 1000) {
+function generateGraph($level, $clus, $dbPrefix, $limit = 1000) {
 	$nodes = array();
 	$where = '';
-	if($level > 0) $where = 'AND cluster'.$level."=".$clus;
-	$r = mysql_query("SELECT * FROM page WHERE badPage=0 ".$where." ORDER BY PR DESC LIMIT ".$limit);
+	if($level > 0) $where = 'WHERE cluster'.$level."=".$clus;
+	$r = mysql_query("SELECT * FROM ".$dbPrefix."page ".$where." ORDER BY PR DESC LIMIT ".$limit);
 	while($re = mysql_fetch_array($r)) array_push($nodes, $re['id']);
 	sort($nodes);
 	include_once('graphFunctions.php');
-	nodes2Graph($nodes, getDocumentRoot()."/display/temp.json", ($level+1));
+	nodes2Graph($nodes, getDocumentRoot()."/display/temp.json", $dbPrefix, ($level+1));
 }
 function generateClusterGraph($file, $depth=2) {
 	$nodes = array(); $edges = array();

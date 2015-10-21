@@ -105,6 +105,6 @@ function uploadAjax(nodes, links, toFile) {
 	$.ajax({type: "POST",
 		url: webroot+'ajax/saveGraph.php',
 		data: postData,
-		success: function(dat) { window.location='http://128.61.104.151/wikigraph/display/'+$('#nextGraph').html(); }
+		success: function(dat) { window.location='http://128.61.104.151/wikigraph/'+$('#dbPrefix').html()+'/'+$('#nextGraph').html(); }
 	});
 }

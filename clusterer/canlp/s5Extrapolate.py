@@ -15,7 +15,7 @@ def extrapolate(summaryFolder):
 
 	trainingTexts = []
 	for node in trainingNodes:
-		f = open(summaryFolder+'/'+str(node)+'.txt', "r")
+		f = open(summaryFolder+str(node)+'.txt', "r")
 		trainingTexts.append(f.read())
 		f.close()
 
@@ -45,7 +45,7 @@ def extrapolate(summaryFolder):
 			testNodes.append(int(node))
 
 	for node in testNodes:
-		f = open(summaryFolder+'/'+str(node)+'.txt', "r"); testText.append(f.read()); f.close();
+		f = open(summaryFolder+str(node)+'.txt', "r"); testText.append(f.read()); f.close();
 
 	testCounts = count_vect.transform(testText)
 	scores = freqMatrix * testCounts.transpose() # this is a big time matrix mult
