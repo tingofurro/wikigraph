@@ -8,16 +8,15 @@ body {
 	cursor: pointer;
 }
 .node {
-  stroke: black;
-  stroke-width: 1.3px;
   position: relative;
 }
-
-.link {
-  fill: none;
+.node:hover {
   stroke: black;
-  opacity: 0.05;
+  stroke-width: 1.3px;
+}
+.link {
   stroke-width: 0.5px;
+  fill: none;
 }
 #choiceMenu {
 	position: absolute;

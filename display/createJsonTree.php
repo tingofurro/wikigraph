@@ -19,7 +19,7 @@ function generateTree($source, $depth, $dbPrefix) {
 }
 
 function getChildren($id, $maxDistance, $dbPrefix) {
-	$r =  mysql_query("SELECT clus.*, (SELECT COUNT(*) FROM ".$dbPrefix."cluster AS temp WHERE temp.parent=clus.id AND level<=".$maxDistance.") AS children FROM ".$dbPrefix."cluster AS clus WHERE parent=".$id." AND score>1 LIMIT 7");
+	$r =  mysql_query("SELECT clus.*, (SELECT COUNT(*) FROM ".$dbPrefix."cluster AS temp WHERE temp.parent=clus.id AND level<=".$maxDistance.") AS children FROM ".$dbPrefix."cluster AS clus WHERE parent=".$id." AND score>1 ORDER BY score DESC LIMIT 7");
 	$chil = array();
 	while($re = mysql_fetch_array($r)) {
 		array_push($chil, str_repeat(' ', 3*$re['level']).writeNode($re, $maxDistance, $dbPrefix));

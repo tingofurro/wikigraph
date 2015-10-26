@@ -24,13 +24,16 @@ generateTree(0,2, $dbPrefix);
                 <option value="ee" <?php echo ("ee"==$topic)?"selected":""; ?>>Electrical Engineering</option>
             </select>
         </div>
-        <iframe src="<?php echo $realRoot."/".substr($dbPrefix, 0, -1); ?>/0" id="graph"></iframe>
+        <iframe src="<?php echo getRoot().$topic; ?>/0" id="graph"></iframe>
     </body>
     <?php
-    $cNames = array(); $cNames[0] = ''; $lastParent = 0; $i = 0;
-    $c = mysql_query("SELECT * FROM ".$dbPrefix."cluster ORDER BY id");
+    $cNames = array(); $cNames[0] = ''; $parents = array();
+    $c = mysql_query("SELECT * FROM ".$dbPrefix."cluster ORDER BY level, score DESC");
     while($cl = mysql_fetch_array($c)) {
-        if($cl['parent'] != $lastParent) {$lastParent = $cl['parent']; $i = 0;}
+        if(!isset($parents[$cl['parent']])) {$i = 0; $parents[$cl['parent']] = array();}
+        else $i = count($parents[$cl['parent']]);
+        array_push($parents[$cl['parent']], $cl['id']);
+
         if($cl['parent']==0) $cNames[$cl['id']] = $i."";
         else $cNames[$cl['id']] = $cNames[$cl['parent']].",".$i;
         ?>

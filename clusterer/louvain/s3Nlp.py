@@ -5,15 +5,6 @@ import numpy as np
 def genFreqArray(inText, outText):
 	return np.subtract(inText.mean(axis=0).A[0], outText.mean(axis=0).A[0])
 
-def genName(freqArray, vocabValue, vocabIndex):
-	tenBestI = freqArray.argsort()[-5:][::-1]
-	tenBest = [vocabValue[vocabIndex.index(i)].encode('ascii', 'ignore') for i in tenBestI]
-	biWords = [w for w in tenBest if ' ' in w]
-	bw = []
-	for b in biWords:
-		bw.extend(b.split(' '))
-	return [w for w in tenBest if w not in bw][:3]
-
 def useNLP(nodes, classesArray, summaryFolder):
 	classesArray = np.array(classesArray)
 
@@ -28,12 +19,9 @@ def useNLP(nodes, classesArray, summaryFolder):
 
 	totalCount = totalCount.asfptype()
 
-	vocabValue = count_vect.vocabulary_.keys()
-	vocabIndex = count_vect.vocabulary_.values()
-
 	changed = totalCount.shape[0]
-	coun = 0
-	while coun < 2:
+	round = 0
+	while round < 2:
 		classSet = list(set(classesArray))
 		freqMatrix = []
 
@@ -49,5 +37,5 @@ def useNLP(nodes, classesArray, summaryFolder):
 		nClassesArray = [classSet[np.argmax(allResults[:,i])] for i in range(0,totalCount.shape[0])]
 		changed = np.count_nonzero(nClassesArray-classesArray)
 		classesArray = np.array(nClassesArray)
-		coun += 1
+		round += 1
 	return classesArray

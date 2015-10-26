@@ -20,8 +20,6 @@ def buildCommunity():
 
 	membership = comm.membership;
 
-	# print "Spinglass modularity: ", g.modularity(membership)
-
 	members = {}
 	for mem in membership:
 		members[mem] = members.get(mem, 0) + 1

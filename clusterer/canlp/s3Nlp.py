@@ -41,6 +41,7 @@ def useNLP(summaryFolder):
 	vocabIndex = count_vect.vocabulary_.values()
 
 	changed = totalCount.shape[0]
+	roun = 1
 	while 1.0*changed > 0.01*totalCount.shape[0]:
 		classSet = list(set(classesArray))
 		freqMatrix = []
@@ -57,15 +58,15 @@ def useNLP(summaryFolder):
 		nClassesArray = [classSet[np.argmax(allResults[:,i])] for i in range(0,totalCount.shape[0])]
 		changed = np.count_nonzero(nClassesArray-classesArray)
 		classesArray = np.array(nClassesArray)
+		roun += 1
 
 	f = open('data/clusters.txt','w')
 	for clas in classSet:
 		goodRows = np.where(classesArray==clas)[0]
 		badRows = np.where(classesArray!=clas)[0]
 		freqArray = genFreqArray(totalCount[goodRows, :], totalCount[badRows, :])
-		name = ','.join(genName(freqArray, vocabValue, vocabIndex))
 		score = 10*float(len(goodRows))/len(classesArray)
-		f.write(str(clas)+'[]'+str(score)+'[]'+name+'[]'+str(len(goodRows))+'\n')
+		f.write(str(clas)+'[]'+str(score)+'[]noName[]'+str(len(goodRows))+'\n')
 	f.close()
 
 	f = open('data/community.txt','w')

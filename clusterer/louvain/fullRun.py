@@ -33,7 +33,7 @@ while True:
 		print "Level: ", level, ". Cluster:", cluster
 		
 		G, nodes = createGraph(level, cluster, db_prefix)
-		G2 = createGraphNLP(nodes, G.ecount())
+		# G2 = createGraphNLP(nodes, G.ecount())
 
 		membership = buildCommunity(G, G2)
 

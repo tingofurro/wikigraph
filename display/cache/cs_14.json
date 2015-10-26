@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":2904,"name":"Sequential_logic","group":0,"x":568.6,"y":353.2,"keywords":"circuit,input,logic,past,sequential"},{"index":1,"id":5528,"name":"Combinational_logic","group":0,"x":575.6,"y":326.5,"keywords":"combinational,logic,circuit,minimization,sequential"},{"index":2,"id":5719,"name":"Flip-flop_(electronics)","group":0,"x":571.5,"y":337.6,"keywords":"flop,flip,circuit,clocked,state"}]
+, 
+"links": 
+[{"source":0,"target":1,"value":2},{"source":0,"target":2,"value":2},{"source":1,"target":0,"value":2},{"source":2,"target":0,"value":2}]
+}

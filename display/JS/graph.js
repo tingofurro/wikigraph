@@ -51,15 +51,14 @@ function plotGraph(graphFile, toRun, toFile) {
 			deleteNotif();
 	    });
 	    node = gnodes.append("circle").attr("class", "node").attr("r", smallRadius).style("fill", function(d) { return str2color(d.group); });
-	    node.append("title").text(function(d) { return d.name; });
+	    // node.append("title").text(function(d) { return d.name; });
 
 		force.on("tick", function() {
 			isProblem = false;
 			aboveRect.attr('width', Math.floor(250*(1-((force.getAlpha()-alphaF)/alphaI))));
 		});
 		 force.on("end", function() {
-			var minX = 0, maxX = 0;
-			var minY = 0, maxY = 0;
+			var minX = 0, maxX = 0;	var minY = 0, maxY = 0;
 			gnodes.attr('transform', function(d) {
 				minX = Math.min(minX, d.x); maxX = Math.max(maxX, d.x);
 				minY = Math.min(minY, d.y); maxY = Math.max(maxY, d.y);
@@ -71,8 +70,11 @@ function plotGraph(graphFile, toRun, toFile) {
 				return 'translate(' + [d.x+transX, d.y+transY] + ')';
 			});
 			link.attr("d", function(d) {
-				return "M" + (d[0].x+transX) + "," + (d[0].y+transY)+ "S" + (d[1].x+transX) + "," + (d[1].y+transY)+ " " + (d[2].x+transX) + "," + (d[2].y+transY);
-			});
+				// return "M" + (d[0].x+transX) + "," + (d[0].y+transY)+ "S" + (d[1].x+transX) + "," + (d[1].y+transY)+ " " + (d[2].x+transX) + "," + (d[2].y+transY);
+				return "M" + (d[0].x+transX) + "," + (d[0].y+transY)+ " L" + (d[2].x+transX) + "," + (d[2].y+transY);
+			}).style('stroke', function(d) { return (d[0].group==d[2].group)?str2color(d[0].group):'black'; })
+			.style('opacity', function(d) { return (d[0].group==d[2].group)?0.1:0.03; });
+
 			loading.remove(); aboveRect.remove(); rectangle.remove();
 			if(toFile!='') {uploadAjax(nodes, links, toFile);}
 			placeKeywords(svg);

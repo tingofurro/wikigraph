@@ -1,5 +1,41 @@
 {"id": 0, "name": "Mathematics", "class": "node", 
 "children": [
-
+   {"id": 4, "name": "Group (mathematics)", "class": "node", 
+   "children": [
+         {"id": 20, "name": "Topological space", "class": "badNode"},
+      {"id": 24, "name": "Manifold", "class": "badNode"},
+      {"id": 23, "name": "Field (mathematics)", "class": "badNode"},
+      {"id": 19, "name": "Group (mathematics)", "class": "badNode"},
+      {"id": 22, "name": "Vector space", "class": "badNode"},
+      {"id": 21, "name": "Category theory", "class": "badNode"},
+      {"id": 25, "name": "Algebraic geometry", "class": "badNode"}
+   ]
+   },
+   {"id": 3, "name": "Geometry", "class": "node", 
+   "children": [
+         {"id": 14, "name": "General relativity", "class": "badNode"},
+      {"id": 15, "name": "Schläfli symbol", "class": "badNode"},
+      {"id": 17, "name": "Triangle", "class": "badNode"},
+      {"id": 16, "name": "List of polygons, polyhedra and polytopes", "class": "badNode"}
+   ]
+   },
+   {"id": 2, "name": "Real number", "class": "node", 
+   "children": [
+         {"id": 9, "name": "Probability theory", "class": "badNode"},
+      {"id": 8, "name": "Partial differential equation", "class": "badNode"},
+      {"id": 12, "name": "Riemann zeta function", "class": "badNode"},
+      {"id": 11, "name": "Gradient", "class": "badNode"},
+      {"id": 10, "name": "Real number", "class": "badNode"}
+   ]
+   },
+   {"id": 5, "name": "Mathematical logic", "class": "node", 
+   "children": [
+         {"id": 29, "name": "First-order logic", "class": "badNode"},
+      {"id": 28, "name": "Set theory", "class": "badNode"},
+      {"id": 27, "name": "Haskell (programming language)", "class": "badNode"},
+      {"id": 26, "name": "Alfred Tarski", "class": "badNode"},
+      {"id": 32, "name": "Context-free grammar", "class": "badNode"}
+   ]
+   }
 ]
 }

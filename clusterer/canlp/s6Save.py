@@ -21,7 +21,7 @@ def saveResults(level, cluster, db_prefix):
 	print clusterMapping
 	query = "UPDATE "+db_prefix+"page SET cluster"+str(level+1)+" = CASE id "
 	pageIds = []
-	for fName in ['community']: #extrapolate
+	for fName in ['community', 'extrapolate']:
 		f = open('data/'+fName+'.txt','r')
 		txt = f.read(); f.close();
 		for line in txt.split('\n'):

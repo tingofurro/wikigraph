@@ -53,17 +53,20 @@ $extraTop = "";
 	<script src="<?php echo $realRoot; ?>JS/keywords.js"></script>
 	<script type="text/javascript">var webroot = '<?php echo $realRoot; ?>';</script>
 	<?php
-		$cNames = array(); $cNames[0] = ''; $lastParent = 0; $i = 0;
-		$c = mysql_query("SELECT * FROM ".$dbPrefix."cluster ORDER BY id");
-		while($cl = mysql_fetch_array($c)) {
-			if($cl['parent'] != $lastParent) {$lastParent = $cl['parent']; $i = 0;}
-			if($cl['parent']==0) $cNames[$cl['id']] = $i."";
-			else $cNames[$cl['id']] = $cNames[$cl['parent']].",".$i;
-			?>
-			<div class="hide" id="iList<?php echo $cl['id']; ?>"><?php echo $cNames[$cl['id']]; ?></div>
-			<?php
-			$i ++;
-		}
+    $cNames = array(); $cNames[0] = ''; $parents = array();
+    $c = mysql_query("SELECT * FROM ".$dbPrefix."cluster ORDER BY level, score DESC");
+    while($cl = mysql_fetch_array($c)) {
+        if(!isset($parents[$cl['parent']])) {$i = 0; $parents[$cl['parent']] = array();}
+        else $i = count($parents[$cl['parent']]);
+        array_push($parents[$cl['parent']], $cl['id']);
+
+        if($cl['parent']==0) $cNames[$cl['id']] = $i."";
+        else $cNames[$cl['id']] = $cNames[$cl['parent']].",".$i;
+        ?>
+        <div class="hide" id="iList<?php echo $cl['id']; ?>"><?php echo $cNames[$cl['id']]; ?></div>
+        <?php
+        $i ++;
+    }
 	?>
 </body>
 </html>
