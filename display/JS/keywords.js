@@ -48,8 +48,8 @@ function placeKeywords(mySVG) {
 		}
 		if(draw) {
 			var keyword = mySVG.append('text');
-			keyword.attr("x", (textX+transX)).attr("y", (bestTextY+transY))
-			.text(key).attr("font-size", (15+2*size)+"px").attr("fill", str2color(modeGroup)).attr('class', 'keyword').attr('opacity', 0).attr('id', key);
+			keyword.attr("x", (textX+transX)*scaleX).attr("y", (bestTextY+transY)*scaleY)
+			.text(key).attr("font-size", (4+size)+"px").attr("fill", str2color(modeGroup)).attr('class', 'keyword').attr('opacity', 0).attr('id', key);
 			alreadyIn.push([textX, bestTextY]);
 		}
 	}

@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":2121,"name":"Heinz_Hopf","group":0,"x":580,"y":557.4,"keywords":"hopf,born,heinz,career,life"},{"index":1,"id":20108,"name":"Max_Dehn","group":0,"x":565.7,"y":545,"keywords":"dehn,mountain,college,black,lecture"}]
+, 
+"links": 
+[{"source":0,"target":1,"value":2}]
+}

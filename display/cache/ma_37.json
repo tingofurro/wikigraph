@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":4542,"name":"Borsuk%E2%80%93Ulam_theorem","group":0,"x":539.7,"y":571.3,"keywords":"odd,continuou,retraction,function,proof"},{"index":1,"id":19614,"name":"Brouwer_fixed-point_theorem","group":0,"x":527.6,"y":557.2,"keywords":"brouwer,point,fixed,theorem,sheet"}]
+, 
+"links": 
+[{"source":0,"target":1,"value":2},{"source":1,"target":0,"value":2}]
+}

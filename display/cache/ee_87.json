@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":998,"name":"Banyan_switch","group":0,"x":633.1,"y":496.6,"keywords":"banyan,switch,crossover,switche,sorter"},{"index":1,"id":1004,"name":"Power_network_design_(IC)","group":0,"x":600.2,"y":467.7,"keywords":"power,chip,grid,network,drop"},{"index":2,"id":1389,"name":"Full_custom","group":0,"x":613.8,"y":504,"keywords":"custom,design,asic,methodology,librarie"},{"index":3,"id":1452,"name":"Gate_array","group":0,"x":622.3,"y":424.1,"keywords":"gate,array,ula,chip,custom"},{"index":4,"id":1659,"name":"Crossover_switch","group":0,"x":674.5,"y":447.2,"keywords":"switch,banyan,switche,sorter,crossover"},{"index":5,"id":2085,"name":"Power_gating","group":0,"x":605,"y":481.6,"keywords":"gating,power,sleep,leakage,grain"},{"index":6,"id":3294,"name":"Semiconductor_memory","group":0,"x":609.4,"y":434.4,"keywords":"memory,data,chip,accessed,semiconductor"},{"index":7,"id":5169,"name":"Crossbar_switch","group":0,"x":638.4,"y":420.6,"keywords":"crossbar,switch,switche,bar,exchange"}]
+, 
+"links": 
+[{"source":0,"target":7,"value":2},{"source":0,"target":4,"value":2},{"source":1,"target":3,"value":2},{"source":1,"target":5,"value":2},{"source":3,"target":7,"value":2},{"source":3,"target":2,"value":2},{"source":4,"target":0,"value":2},{"source":4,"target":7,"value":2},{"source":5,"target":1,"value":2},{"source":7,"target":4,"value":2},{"source":7,"target":6,"value":2}]
+}

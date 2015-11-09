@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":388,"name":"Jean_Dieudonn%C3%A9","group":0,"x":682.2,"y":513.8,"keywords":"dieudonn,university,bourbaki,french,grothendieck"},{"index":1,"id":556,"name":"Riesz_space","group":0,"x":589.7,"y":459.1,"keywords":"riesz,band,space,projection,ideal"},{"index":2,"id":3057,"name":"Ordered_vector_space","group":0,"x":698.7,"y":480.3,"keywords":"cone,space,ordered,vector,order"},{"index":3,"id":14901,"name":"Alain_Connes","group":0,"x":600.2,"y":501.6,"keywords":"conne,academy,science,french,alain"},{"index":4,"id":20595,"name":"Andr%C3%A9_Weil","group":0,"x":615.2,"y":397.1,"keywords":"weil,french,simone,sister,vj"},{"index":5,"id":21657,"name":"Nicolas_Bourbaki","group":0,"x":596.8,"y":411,"keywords":"bourbaki,nicola,mathematic,collective,french"}]
+, 
+"links": 
+[{"source":0,"target":4,"value":2},{"source":0,"target":5,"value":2},{"source":1,"target":2,"value":2},{"source":2,"target":1,"value":2},{"source":3,"target":5,"value":2},{"source":5,"target":4,"value":2},{"source":5,"target":0,"value":2}]
+}

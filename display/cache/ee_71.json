@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":345,"name":"Design_Exchange_Format","group":0,"x":639.6,"y":513.7,"keywords":"def,tool,layout,format,exchange"},{"index":1,"id":2693,"name":"Network_simulation","group":0,"x":594.3,"y":513.1,"keywords":"network,simulator,simulation,event,packet"},{"index":2,"id":3471,"name":"Library_Exchange_Format","group":0,"x":647.5,"y":425.6,"keywords":"lef,format,abstract,layout,exchange"},{"index":3,"id":3919,"name":"Mechatronics","group":0,"x":699.6,"y":458.4,"keywords":"mechatronic,engineering,computer,control,mechanic"},{"index":4,"id":5045,"name":"Simulation_software","group":0,"x":690.3,"y":430.2,"keywords":"simulation,plc,simulator,casting,software"}]
+, 
+"links": 
+[{"source":0,"target":2,"value":2},{"source":1,"target":4,"value":2},{"source":2,"target":0,"value":2},{"source":4,"target":3,"value":2},{"source":4,"target":1,"value":2}]
+}

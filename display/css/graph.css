@@ -48,3 +48,7 @@ body {
 	stroke-width: 0.3px;
 	font-weight: 400;
 }
+#graphExpli {
+	position: absolute;
+	z-index: 2;
+}

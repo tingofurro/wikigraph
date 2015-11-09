@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":159,"name":"Magnetic_cartridge","group":0,"x":706.4,"y":509.8,"keywords":"cartridge,moving,magnet,stylu,coil"},{"index":1,"id":1540,"name":"RIAA_equalization","group":0,"x":603.1,"y":532.7,"keywords":"riaa,curve,recording,playback,record"},{"index":2,"id":2465,"name":"DIN_connector","group":0,"x":696.8,"y":538.7,"keywords":"connector,pin,din,plug,audio"},{"index":3,"id":3274,"name":"Line_level","group":0,"x":650,"y":559.8,"keywords":"line,impedance,level,signal,output"},{"index":4,"id":5165,"name":"RCA_connector","group":0,"x":678.2,"y":552,"keywords":"connector,rca,video,phono,audio"},{"index":5,"id":5176,"name":"SCART","group":0,"x":666.4,"y":553.5,"keywords":"scart,tv,rgb,video,widescreen"}]
+, 
+"links": 
+[{"source":1,"target":0,"value":2},{"source":2,"target":5,"value":2},{"source":3,"target":1,"value":2},{"source":3,"target":4,"value":2},{"source":4,"target":2,"value":2},{"source":4,"target":1,"value":2},{"source":4,"target":3,"value":2},{"source":4,"target":5,"value":2},{"source":4,"target":0,"value":2},{"source":5,"target":4,"value":2}]
+}

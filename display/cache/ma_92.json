@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":3391,"name":"Scott_continuity","group":0,"x":577.5,"y":453,"keywords":"scott,topology,dcpo,open,ordered"},{"index":1,"id":5607,"name":"Complete_partial_order","group":0,"x":575.3,"y":471.8,"keywords":"dcpo,directed,cpo,complete,fixpoint"}]
+, 
+"links": 
+[{"source":1,"target":0,"value":2}]
+}

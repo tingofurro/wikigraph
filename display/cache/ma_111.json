@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":1838,"name":"Multiplicity_(mathematics)","group":0,"x":655.3,"y":431,"keywords":"multiplicity,root,polynomial,intersection,prime"},{"index":1,"id":1921,"name":"Minimal_polynomial_(field_theory)","group":0,"x":614.7,"y":486.8,"keywords":"polynomial,minimal,sub,ker,field"},{"index":2,"id":3274,"name":"Simple_extension","group":0,"x":661.4,"y":466.8,"keywords":"element,primitive,extension,field,generated"},{"index":3,"id":7169,"name":"Algebraically_closed_field","group":0,"x":630.7,"y":430.4,"keywords":"algebraically,polynomial,closed,field,root"},{"index":4,"id":15106,"name":"Algebraic_element","group":0,"x":654.6,"y":452.4,"keywords":"algebraic,transcendental,coefficient,element,field"},{"index":5,"id":22344,"name":"Constructible_number","group":0,"x":662.4,"y":489.9,"keywords":"constructible,number,point,circle,line"}]
+, 
+"links": 
+[{"source":0,"target":3,"value":2},{"source":1,"target":4,"value":2},{"source":2,"target":1,"value":2},{"source":3,"target":1,"value":2},{"source":4,"target":1,"value":2},{"source":4,"target":3,"value":2},{"source":5,"target":1,"value":2}]
+}

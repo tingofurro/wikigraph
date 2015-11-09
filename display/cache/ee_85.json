@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":1745,"name":"Stretchable_electronics","group":0,"x":660.2,"y":418.3,"keywords":"stretchable,substrate,electronic,supercapacitor,skin"},{"index":1,"id":3140,"name":"Electronic_paper","group":0,"x":623,"y":443.1,"keywords":"display,electrophoretic,paper,particle,electronic"},{"index":2,"id":3978,"name":"Flexible_organic_light-emitting_diode","group":0,"x":669.9,"y":453.2,"keywords":"oled,organic,flexible,bendable,substrate"},{"index":3,"id":4933,"name":"Flexible_electronics","group":0,"x":633.3,"y":515.2,"keywords":"flex,flexible,circuit,foil,film"}]
+, 
+"links": 
+[{"source":0,"target":3,"value":2},{"source":1,"target":3,"value":2},{"source":2,"target":1,"value":2},{"source":2,"target":3,"value":2},{"source":3,"target":0,"value":2},{"source":3,"target":2,"value":2}]
+}

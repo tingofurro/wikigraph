@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":819,"name":"Koch_snowflake","group":0,"x":698.5,"y":443.8,"keywords":"koch,snowflake,iteration,curve,fractal"},{"index":1,"id":3946,"name":"Sierpinski_triangle","group":0,"x":588.4,"y":496.1,"keywords":"triangle,sierpinski,iteration,fractal,point"}]
+, 
+"links": 
+[{"source":0,"target":1,"value":2},{"source":1,"target":0,"value":2}]
+}

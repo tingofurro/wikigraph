@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":484,"name":"Carrier_recovery","group":0,"x":667.8,"y":471.7,"keywords":"carrier,recovery,phase,symbol,frequency"},{"index":1,"id":1680,"name":"Triaxial_cable","group":0,"x":690.4,"y":485.5,"keywords":"cable,triaxial,triax,coax,sheath"},{"index":2,"id":2326,"name":"Digital_down_converter","group":0,"x":656.2,"y":488.2,"keywords":"ddc,dd,filter,signal,frequency"},{"index":3,"id":2769,"name":"Costas_loop","group":0,"x":667.8,"y":460.8,"keywords":"vco,costa,phase,loop,detector"},{"index":4,"id":4899,"name":"Twinaxial_cabling","group":0,"x":596.1,"y":454,"keywords":"twinax,bit,n,driven,ibm"}]
+, 
+"links": 
+[{"source":0,"target":3,"value":2},{"source":1,"target":4,"value":2},{"source":2,"target":0,"value":2},{"source":2,"target":3,"value":2},{"source":3,"target":0,"value":2},{"source":4,"target":1,"value":2}]
+}

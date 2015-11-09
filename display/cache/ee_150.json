@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":1320,"name":"PID_controller","group":0,"x":654.7,"y":494.5,"keywords":"pid,controller,setpoint,error,derivative"},{"index":1,"id":2421,"name":"Ziegler%E2%80%93Nichols_method","group":0,"x":637.5,"y":455.7,"keywords":"zieglernichol,gain,pid,tuning,oscillation"},{"index":2,"id":3596,"name":"Differentiator","group":0,"x":641.5,"y":499.4,"keywords":"differentiator,capacitor,voltage,input,circuit"},{"index":3,"id":4580,"name":"Integral_windup","group":0,"x":642.9,"y":441,"keywords":"windup,integral,controller,error,output"}]
+, 
+"links": 
+[{"source":0,"target":3,"value":2},{"source":0,"target":1,"value":2},{"source":1,"target":0,"value":2},{"source":2,"target":0,"value":2},{"source":3,"target":0,"value":2}]
+}

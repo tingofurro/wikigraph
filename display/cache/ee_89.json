@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":107,"name":"2DEG","group":0,"x":949.9,"y":899.7,"keywords":"electron,mobilitie,confined,dimensional,heterostructure"},{"index":1,"id":3065,"name":"Gate_oxide","group":0,"x":920.2,"y":904.4,"keywords":"gate,oxide,layer,channel,width"},{"index":2,"id":3483,"name":"High-electron-mobility_transistor","group":0,"x":964.3,"y":873.4,"keywords":"hemt,electron,layer,algaa,gaa"}]
+, 
+"links": 
+[{"source":0,"target":1,"value":2},{"source":2,"target":0,"value":2}]
+}

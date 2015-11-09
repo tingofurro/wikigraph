@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":1685,"name":"Linear_prediction","group":0,"x":677.4,"y":421.7,"keywords":"prediction,equation,autocorrelation,predictor,parameter"},{"index":1,"id":2192,"name":"Linear_predictive_coding","group":0,"x":689.4,"y":435.1,"keywords":"lpc,speech,formant,predictive,buzz"},{"index":2,"id":2287,"name":"Autoregressive%E2%80%93moving-average_model","group":0,"x":637.4,"y":486.9,"keywords":"model,arma,autoregressive,arima,average"},{"index":3,"id":2985,"name":"Maximum_entropy_spectral_estimation","group":0,"x":679.4,"y":473,"keywords":"entropy,spectral,maximum,autocorrelation,markov"},{"index":4,"id":3670,"name":"Line_spectral_pairs","group":0,"x":610.2,"y":491.6,"keywords":"root,lsp,polynomial,lpc,spectral"},{"index":5,"id":4151,"name":"Partial_autocorrelation_function","group":0,"x":655.6,"y":496.9,"keywords":"autocorrelation,partial,lag,plot,pacf"},{"index":6,"id":5025,"name":"Autoregressive_model","group":0,"x":652.6,"y":416.4,"keywords":"ar,equation,autoregressive,proces,value"}]
+, 
+"links": 
+[{"source":0,"target":1,"value":2},{"source":0,"target":6,"value":2},{"source":1,"target":4,"value":2},{"source":1,"target":0,"value":2},{"source":2,"target":5,"value":2},{"source":2,"target":1,"value":2},{"source":4,"target":1,"value":2},{"source":5,"target":6,"value":2},{"source":6,"target":2,"value":2},{"source":6,"target":1,"value":2},{"source":6,"target":3,"value":2},{"source":6,"target":0,"value":2}]
+}

@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":113,"name":"Unified_Display_Interface","group":0,"x":656.6,"y":512.3,"keywords":"udi,interface,hdmi,intel,samsung"},{"index":1,"id":1580,"name":"Apple_Display_Connector","group":0,"x":610.2,"y":441.4,"keywords":"adc,dvi,apple,display,mac"},{"index":2,"id":2486,"name":"DMS-59","group":0,"x":653.3,"y":431.3,"keywords":"dm,dvi,card,connector,pin"},{"index":3,"id":2519,"name":"Digital_Interface_for_Video_and_Audio","group":0,"x":685.7,"y":469.4,"keywords":"diva,gbit,bi,directional,video"},{"index":4,"id":3386,"name":"Mini-DVI","group":0,"x":613.7,"y":499.3,"keywords":"dvi,mini,apple,vga,adapter"},{"index":5,"id":3754,"name":"Mini_DisplayPort","group":0,"x":650.5,"y":457,"keywords":"displayport,mini,dvi,display,apple"},{"index":6,"id":4177,"name":"Digital_Visual_Interface","group":0,"x":653.2,"y":451.7,"keywords":"dvi,hdmi,display,video,pixel"},{"index":7,"id":4868,"name":"Micro-DVI","group":0,"x":646,"y":469.9,"keywords":"dvi,macbook,port,connector,micro"}]
+, 
+"links": 
+[{"source":0,"target":6,"value":2},{"source":1,"target":5,"value":2},{"source":1,"target":6,"value":2},{"source":2,"target":6,"value":2},{"source":3,"target":6,"value":2},{"source":4,"target":7,"value":2},{"source":4,"target":5,"value":2},{"source":4,"target":6,"value":2},{"source":5,"target":6,"value":2},{"source":5,"target":4,"value":2},{"source":5,"target":7,"value":2},{"source":6,"target":0,"value":2},{"source":6,"target":5,"value":2},{"source":7,"target":4,"value":2},{"source":7,"target":5,"value":2},{"source":7,"target":6,"value":2}]
+}

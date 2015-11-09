@@ -1,8 +1,8 @@
 var webroot = '';
 var isProblem = true;
-var screenW = $(document).width()-20, screenH = $(document).height()-20;
+var screenW = window.innerWidth-12, screenH = window.innerHeight-5;
 var alphaF = 0.005, alphaI;
-var smallRadius = 4, largeRadius = 5;
+var smallRadius = 3, largeRadius = 4;
 var svg, force;
 var rectangle, aboveRect, loading;
 var gnodes, nodes, links=[],bilinks=[];
@@ -63,15 +63,14 @@ function plotGraph(graphFile, toRun, toFile) {
 				minX = Math.min(minX, d.x); maxX = Math.max(maxX, d.x);
 				minY = Math.min(minY, d.y); maxY = Math.max(maxY, d.y);
 			});
-			transX = Math.abs(minX);
-			transY = Math.abs(minY);
-			svg.attr("width", Math.max(screenW, (maxX+transX))).attr("height", Math.max(screenH, (maxY+transY)));
+			scaleX = window.innerWidth/(maxX-minX); scaleY = window.innerHeight/(maxY-minY);
+			transX = Math.abs(minX); transY = Math.abs(minY);
 			gnodes.attr("transform", function(d) { 
-				return 'translate(' + [d.x+transX, d.y+transY] + ')';
+				return 'translate(' + [(d.x+transX)*scaleX, (d.y+transY)*scaleY] + ')';
 			});
 			link.attr("d", function(d) {
-				// return "M" + (d[0].x+transX) + "," + (d[0].y+transY)+ "S" + (d[1].x+transX) + "," + (d[1].y+transY)+ " " + (d[2].x+transX) + "," + (d[2].y+transY);
-				return "M" + (d[0].x+transX) + "," + (d[0].y+transY)+ " L" + (d[2].x+transX) + "," + (d[2].y+transY);
+				return "M" + (d[0].x+transX)*scaleX + "," + (d[0].y+transY)*scaleY+ "S" + (d[1].x+transX)*scaleX + "," + (d[1].y+transY)*scaleY+ " " + (d[2].x+transX)*scaleX + "," + (d[2].y+transY)*scaleY;
+				// return "M" + (d[0].x+transX) + "," + (d[0].y+transY)+ " L" + (d[2].x+transX) + "," + (d[2].y+transY);
 			}).style('stroke', function(d) { return (d[0].group==d[2].group)?str2color(d[0].group):'black'; })
 			.style('opacity', function(d) { return (d[0].group==d[2].group)?0.1:0.03; });
 
@@ -83,7 +82,7 @@ function plotGraph(graphFile, toRun, toFile) {
 }
 function openNotif(data) {
 	deleteNotif();
-	noty({text: '<b>'+data.name+'</b><div class="dblClickInfo">Double click to open article</div>', layout: 'topRight', speed: 300});
+	noty({text: '<b>'+data.name+'</b>', layout: 'topRight', speed: 300});
 }
 function deleteNotif() {
 	$('.noty_bar').parent().remove();
@@ -107,6 +106,6 @@ function uploadAjax(nodes, links, toFile) {
 	$.ajax({type: "POST",
 		url: webroot+'ajax/saveGraph.php',
 		data: postData,
-		success: function(dat) { window.location='http://128.61.104.151/wikigraph/'+$('#dbPrefix').html()+'/'+$('#nextGraph').html(); }
+		success: function(dat) { window.location='http://wikigraph.gatech.edu/'+$('#dbPrefix').html()+'/'+$('#nextGraph').html(); }
 	});
 }

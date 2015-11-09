@@ -7,7 +7,7 @@ function generateGraph($level, $clus, $dbPrefix, $limit = 1000) {
 	while($re = mysql_fetch_array($r)) array_push($nodes, $re['id']);
 	sort($nodes);
 	include_once('graphFunctions.php');
-	nodes2Graph($nodes, getDocumentRoot()."/display/temp.json", $dbPrefix, ($level+1));
+	nodes2Graph($nodes, getDocumentRoot()."/display/temp.json", $dbPrefix, ($level+2));
 }
 function generateClusterGraph($file, $depth=2) {
 	$nodes = array(); $edges = array();

@@ -5,7 +5,7 @@ include_once('createJsonGraph.php');
 include_once('graphFunctions.php');
 $realRoot = getRealRoot();
 $dbPrefix = 'ma_';
-$cluster = 0; $level = 0; $limit = 900;
+$cluster = 0; $level = 0; $limit = 500;
 if(isset($_GET['dbPrefix'])) $dbPrefix = $_GET['dbPrefix'];
 if(isset($_GET['cluster'])) {
 	$c = mysql_query("SELECT * FROM ".$dbPrefix."cluster WHERE id=".mysql_real_escape_string($_GET['cluster']));
@@ -52,6 +52,9 @@ $extraTop = "";
 	<script src="<?php echo $realRoot; ?>JS/graph.js"></script>
 	<script src="<?php echo $realRoot; ?>JS/keywords.js"></script>
 	<script type="text/javascript">var webroot = '<?php echo $realRoot; ?>';</script>
+	<div id="graphExpli">
+		Each node is a Wikipedia page, hover over to see names.
+	</div>
 	<?php
     $cNames = array(); $cNames[0] = ''; $parents = array();
     $c = mysql_query("SELECT * FROM ".$dbPrefix."cluster ORDER BY level, score DESC");

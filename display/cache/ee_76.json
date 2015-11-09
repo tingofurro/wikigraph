@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":1463,"name":"David_E._Muller","group":0,"x":603.8,"y":493.2,"keywords":"muller,mother,hermann,mathematic,joseph"},{"index":1,"id":1495,"name":"Delay_Insensitive_Minterm_Synthesis","group":0,"x":669.4,"y":499.6,"keywords":"dim,asynchronou,gate,data,input"},{"index":2,"id":2323,"name":"Digital_timing_diagram","group":0,"x":610.5,"y":536.7,"keywords":"miso,mosi,timing,cpha,clock"},{"index":3,"id":2968,"name":"TrueNorth","group":0,"x":689.4,"y":484.9,"keywords":"synapse,neuron,neurosynaptic,truenorth,ibm"},{"index":4,"id":2999,"name":"C-element","group":0,"x":680.8,"y":454.7,"keywords":"muller,devised,hysteresi,flop,david"},{"index":5,"id":3358,"name":"Asymmetric_C-element","group":0,"x":669.6,"y":442.2,"keywords":"input,asymmetric,minu,element,transitioning"},{"index":6,"id":4158,"name":"Transistor_count","group":0,"x":601.3,"y":448.6,"keywords":"transistor,chip,count,billion,ibm"},{"index":7,"id":4577,"name":"Hazard_(logic)","group":0,"x":629.5,"y":543.1,"keywords":"hazard,static,logic,change,dynamic"}]
+, 
+"links": 
+[{"source":0,"target":4,"value":2},{"source":1,"target":4,"value":2},{"source":1,"target":0,"value":2},{"source":2,"target":7,"value":2},{"source":3,"target":6,"value":2},{"source":4,"target":0,"value":2},{"source":4,"target":5,"value":2},{"source":5,"target":4,"value":2},{"source":6,"target":3,"value":2}]
+}

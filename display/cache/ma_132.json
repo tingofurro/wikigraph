@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":5266,"name":"Hyperoperation","group":0,"x":637.8,"y":488.7,"keywords":"hyperoperation,sequence,arithmetic,operation,infinite"},{"index":1,"id":10893,"name":"Operation_(mathematics)","group":0,"x":622.4,"y":474.3,"keywords":"operation,arity,codomain,value,unary"},{"index":2,"id":14758,"name":"Finitary","group":0,"x":628.2,"y":455.5,"keywords":"finitary,infinitary,logic,symbol,finite"}]
+, 
+"links": 
+[{"source":1,"target":0,"value":2},{"source":2,"target":1,"value":2}]
+}

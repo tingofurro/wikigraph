@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":2625,"name":"Surface-barrier_transistor","group":0,"x":389.7,"y":447.8,"keywords":"transistor,philco,chrysler,junction,car"},{"index":1,"id":3618,"name":"Tetrode_transistor","group":0,"x":386.7,"y":505.9,"keywords":"transistor,tetrode,junction,emitter,early"},{"index":2,"id":3686,"name":"Diffusion_transistor","group":0,"x":384,"y":473.6,"keywords":"transistor,diffused,diffusion,junction,base"},{"index":3,"id":4238,"name":"Multigate_device","group":0,"x":410.9,"y":553,"keywords":"gate,multigate,transistor,hitachi,electrode"},{"index":4,"id":4965,"name":"Alloy-junction_transistor","group":0,"x":387.6,"y":434.2,"keywords":"alloy,transistor,diffused,base,micro"}]
+, 
+"links": 
+[{"source":0,"target":4,"value":2},{"source":0,"target":2,"value":2},{"source":1,"target":2,"value":2},{"source":2,"target":4,"value":2},{"source":3,"target":1,"value":2},{"source":4,"target":0,"value":2},{"source":4,"target":1,"value":2}]
+}

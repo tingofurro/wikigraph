@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":176,"name":"Receiver_(radio)","group":0,"x":682.6,"y":481.1,"keywords":"receiver,radio,dsp,signal,audio"},{"index":1,"id":867,"name":"Table_radio","group":0,"x":654.1,"y":485.4,"keywords":"radio,cd,player,loading,functionality"},{"index":2,"id":1000,"name":"Preamplifier","group":0,"x":675.5,"y":449.2,"keywords":"preamplifier,amplifier,snr,noise,instrument"},{"index":3,"id":2048,"name":"Electret_microphone","group":0,"x":678,"y":466.5,"keywords":"electret,diaphragm,microphone,material,polarizing"},{"index":4,"id":2725,"name":"Friis_formulas_for_noise","group":0,"x":626.5,"y":459.2,"keywords":"noise,frii,formula,factor,stage"},{"index":5,"id":2982,"name":"Low-noise_amplifier","group":0,"x":610.3,"y":467,"keywords":"lna,noise,satellite,gain,stability"},{"index":6,"id":3970,"name":"Earthworks_(company)","group":0,"x":649.4,"y":445.1,"keywords":"blackmer,hearing,studio,microphone,human"}]
+, 
+"links": 
+[{"source":0,"target":1,"value":2},{"source":0,"target":2,"value":2},{"source":1,"target":0,"value":2},{"source":2,"target":0,"value":2},{"source":2,"target":5,"value":2},{"source":2,"target":4,"value":2},{"source":3,"target":2,"value":2},{"source":4,"target":5,"value":2},{"source":5,"target":0,"value":2},{"source":5,"target":4,"value":2},{"source":6,"target":2,"value":2}]
+}

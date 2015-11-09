@@ -24,8 +24,9 @@ catToAdd = []; visitedCats = set([])
 
 # root = {'prefix': 'ee', 'rootCat': 'Electrical_engineering'};
 # root = {'prefix': 'ma', 'rootCat': 'Fields_of_mathematics'};
-root = {'prefix': 'cs', 'rootCat': 'Areas_of_computer_science'};
+# root = {'prefix': 'cs', 'rootCat': 'Areas_of_computer_science'};
 # root = {'prefix': 'bio', 'rootCat': 'Biology'};
+root = {'prefix': 'med', 'rootCat': 'Medicine'};
 
 level = 1
 layerCategories = {};
@@ -60,7 +61,7 @@ while level < 10:
 			innerCount += counter.get(p, 0.0)
 
 		totalCount = len(clusterLinks)
-		if (len(clusterPages) > 0 and totalCount > 0) or level==1:
+		if (len(clusterPages) > 0 and totalCount > 0):
 			score[cat] = (float(len(toCorePages))/len(clusterPages))*((0.00001+goodCount)/totalCount)*((0.00001+innerCount)/totalCount)
 			var[cat] = {'core_p': len(toCorePages), 'size': len(clusterPages), 'core_e': goodCount, 'in-in': innerCount, 'tot_e': totalCount}
 			# print var[cat]

@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":306,"name":"Device_under_test","group":0,"x":661.5,"y":465.9,"keywords":"test,dut,testing,packaged,equipment"},{"index":1,"id":1543,"name":"Test_bench","group":0,"x":654.2,"y":450.3,"keywords":"bench,test,program,software,testing"},{"index":2,"id":3884,"name":"Omniphy","group":0,"x":631.1,"y":485.5,"keywords":"company,gigabit,ethernet,consumer,omniphy"},{"index":3,"id":4470,"name":"SerDes","group":0,"x":637,"y":462,"keywords":"serde,clock,parallel,serial,data"}]
+, 
+"links": 
+[{"source":1,"target":0,"value":2},{"source":2,"target":3,"value":2}]
+}

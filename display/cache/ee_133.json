@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":3076,"name":"Headphone_amplifier","group":0,"x":637.5,"y":451.9,"keywords":"headphone,amplifier,impedance,output,audio"},{"index":1,"id":4608,"name":"Integrated_amplifier","group":0,"x":635.9,"y":487.9,"keywords":"turntable,amplifier,audio,reel,fidelity"},{"index":2,"id":4848,"name":"Fender_Vibrasonic","group":0,"x":652.6,"y":455.9,"keywords":"vibrasonic,fender,amp,cabinet,tremolo"},{"index":3,"id":4946,"name":"Fender_Twin","group":0,"x":651.1,"y":484.7,"keywords":"twin,reverb,fender,amp,vibrato"}]
+, 
+"links": 
+[{"source":0,"target":1,"value":2},{"source":2,"target":3,"value":2},{"source":3,"target":2,"value":2}]
+}

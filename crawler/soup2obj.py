@@ -1,8 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 import urllib, os.path
 from crawlContent import *
 
-badMathCats = ['Applied_mathematics', 'Computational_mathematics', 'Dynamical_systems', 'Experimental_mathematics', 'Foundations_of_mathematics', 'Elementary_mathematics', 'Recreational_mathematics']	
+badMathCats = ['Applied_mathematics', 'Computational_mathematics', 'Dynamical_systems', 'Experimental_mathematics', 'Foundations_of_mathematics', 'Elementary_mathematics', 'Recreational_mathematics']
+
+
+badMedCats = ['Medical_lists', 'Medical_activism‎', 'Medical_associations', 'Health_insurance', 'Religion_and_medicine', 'Medicine_stubs']
 
 def findSubCategories(soup):
 	# Given a /wiki/Category:cat page
@@ -13,7 +18,7 @@ def findSubCategories(soup):
 			linkStr = link.get('href')
 			if linkStr is not None and linkStr[:len(toFind)] == toFind:
 				c = linkStr[len(toFind):]
-				if c not in badMathCats:
+				if c not in badMathCats and c not in badMedCats:
 					children.append(c)
 	return children
 def findPages(soup):

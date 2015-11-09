@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":1286,"name":"Intermodulation","group":0,"x":663.4,"y":491.5,"keywords":"intermodulation,imd,frequencie,harmonic,linearitie"},{"index":1,"id":1858,"name":"Log_amplifier","group":0,"x":653.7,"y":484.8,"keywords":"log,voltage,op,amp,diode"},{"index":2,"id":1969,"name":"True_RMS_converter","group":0,"x":649.7,"y":476.4,"keywords":"rm,converter,value,thermal,square"},{"index":3,"id":2307,"name":"Slew-induced_distortion","group":0,"x":625.6,"y":476.2,"keywords":"distortion,intermodulation,slew,sid,amplifier"},{"index":4,"id":3152,"name":"Audio_power_amplifier","group":0,"x":642,"y":429,"keywords":"amplifier,audio,distortion,tim,valve"},{"index":5,"id":3909,"name":"Precision_rectifier","group":0,"x":656.6,"y":455.9,"keywords":"diode,input,operational,zero,amplifier"},{"index":6,"id":4014,"name":"Slew_rate","group":0,"x":625.5,"y":434.9,"keywords":"slew,rate,amplifier,stage,input"}]
+, 
+"links": 
+[{"source":0,"target":3,"value":2},{"source":2,"target":1,"value":2},{"source":2,"target":5,"value":2},{"source":2,"target":6,"value":2},{"source":3,"target":6,"value":2},{"source":4,"target":6,"value":2},{"source":4,"target":3,"value":2},{"source":5,"target":6,"value":2}]
+}

@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":265,"name":"Isolation_amplifier","group":0,"x":631.1,"y":439.4,"keywords":"isolation,amplifier,mode,voltage,common"},{"index":1,"id":1657,"name":"Instrumentation_amplifier","group":0,"x":643,"y":530,"keywords":"amplifier,instrumentation,amp,op,impedance"},{"index":2,"id":3023,"name":"Differential_amplifier","group":0,"x":661.4,"y":525.5,"keywords":"differential,input,emitter,voltage,amplifier"},{"index":3,"id":5293,"name":"Common-mode_signal","group":0,"x":669.5,"y":446.9,"keywords":"mode,common,signal,cable,noise"}]
+, 
+"links": 
+[{"source":0,"target":2,"value":2},{"source":0,"target":3,"value":2},{"source":1,"target":2,"value":2},{"source":1,"target":0,"value":2},{"source":2,"target":1,"value":2},{"source":2,"target":0,"value":2},{"source":3,"target":2,"value":2}]
+}

@@ -2,6 +2,8 @@ var width = 380; height = $(window).height(), duration = 750, root = null;
 var tree = d3.layout.tree().size([height, width]);
 var diagonal = d3.svg.diagonal().projection(function(d) { return [d.y, d.x]; });
 
+var latestOpen = null;
+
 var svg = d3.select("body").append("svg").attr('id', 'tree').attr("width", width).attr("height", height);
 d3.json($('#treeLocation').html(), function(error, data) {
     $('#graph').width($(document).width()-width-1);
@@ -48,8 +50,19 @@ function update(source) {
 }
 
 function click(d) {
+    if(latestOpen && d.id == latestOpen.id) {
+        if (d.children) {d._children = d.children; d.children = null;}
+        $('#graph').attr('src', $('#webroot').html()+$('#dbPrefix').html()+'/'+d.parent.id);
+        latestOpen = d.parent;
+        update(d);
+        return true;
+    }
+    else if(latestOpen && d.level == latestOpen.level) {
+        latestOpen._children = latestOpen.children; latestOpen.children = null;
+    }
     if (d.children) {d._children = d.children; d.children = null;}
     else {d.children = d._children; d._children = null;}
     $('#graph').attr('src', $('#webroot').html()+$('#dbPrefix').html()+'/'+d.id);
+    latestOpen = d;
     update(d);
 }

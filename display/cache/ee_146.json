@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":669,"name":"Point-contact_transistor","group":0,"x":585.7,"y":488.5,"keywords":"contact,transistor,germanium,point,gold"},{"index":1,"id":791,"name":"Semiconductor_device","group":0,"x":695.2,"y":424.5,"keywords":"semiconductor,crystal,transistor,diode,electron"},{"index":2,"id":1664,"name":"JFET","group":0,"x":716.4,"y":473.2,"keywords":"jfet,channel,gate,drain,source"},{"index":3,"id":2569,"name":"Darlington_transistor","group":0,"x":617.8,"y":456.3,"keywords":"darlington,transistor,emitter,base,pair"},{"index":4,"id":4095,"name":"ULN2003A","group":0,"x":655.2,"y":479.9,"keywords":"darlington,transistor,output,current,interfacing"}]
+, 
+"links": 
+[{"source":1,"target":0,"value":2},{"source":1,"target":2,"value":2},{"source":1,"target":3,"value":2},{"source":2,"target":0,"value":2},{"source":3,"target":4,"value":2},{"source":4,"target":3,"value":2}]
+}

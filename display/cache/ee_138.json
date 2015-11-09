@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":1531,"name":"Prescaler","group":0,"x":670.3,"y":453.2,"keywords":"prescaler,timer,frequency,modulu,integer"},{"index":1,"id":4198,"name":"Frequency_counter","group":0,"x":621.7,"y":482.1,"keywords":"counter,timebase,frequency,oscillator,resolution"},{"index":2,"id":4839,"name":"Frequency_meter","group":0,"x":634.9,"y":490.8,"keywords":"pointer,reed,meter,deflection,coil"}]
+, 
+"links": 
+[{"source":0,"target":1,"value":2},{"source":1,"target":0,"value":2},{"source":1,"target":2,"value":2},{"source":2,"target":1,"value":2}]
+}

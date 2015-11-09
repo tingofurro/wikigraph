@@ -1,0 +1,7 @@
+{
+   "nodes": 
+[{"index":0,"id":54,"name":"Lanczos_resampling","group":0,"x":641.9,"y":511.4,"keywords":"lanczo,kernel,interpolation,sinc,filter"},{"index":1,"id":1665,"name":"Demosaicing","group":0,"x":620.7,"y":508.3,"keywords":"color,image,demosaicing,interpolation,pixel"},{"index":2,"id":2097,"name":"RGBE_filter","group":0,"x":613.7,"y":437.9,"keywords":"color,filter,green,cyan,sony"},{"index":3,"id":4685,"name":"Foveon_X3_sensor","group":0,"x":668.3,"y":509.8,"keywords":"sensor,bayer,foveon,mp,color"}]
+, 
+"links": 
+[{"source":1,"target":0,"value":2},{"source":2,"target":3,"value":2},{"source":2,"target":1,"value":2},{"source":3,"target":2,"value":2},{"source":3,"target":1,"value":2}]
+}
