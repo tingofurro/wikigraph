@@ -21,6 +21,7 @@ generateTree(0,2, $dbPrefix);
             <select onchange="window.location='<?php echo getRoot(); ?>'+this.value;">
                 <option value="ma" <?php echo ("ma"==$topic)?"selected":""; ?>>Mathematics</option>
                 <option value="cs" <?php echo ("cs"==$topic)?"selected":""; ?>>Computer Science</option>
+                <option value="eng" <?php echo ("eng"==$topic)?"selected":""; ?>>Engineering</option>
                 <option value="ee" <?php echo ("ee"==$topic)?"selected":""; ?>>Electrical Engineering</option>
                 <!-- <option value="med" <?php echo ("med"==$topic)?"selected":""; ?>>Medicine</option> -->
             </select><br />

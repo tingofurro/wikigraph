@@ -1,5 +1,4 @@
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from LemmaTokenizer import *
 from numpy import *
 from dbco import *
 import numpy as np
@@ -12,7 +11,7 @@ def computeKeywords(prefix):
 		pass
 	continueRunning = True
 	while continueRunning:
-		count_vect = CountVectorizer(tokenizer=LemmaTokenizer(), stop_words='english') #initialize the vectorizer
+		count_vect = CountVectorizer(stop_words='english') #initialize the vectorizer
 		tfidf_trans = TfidfTransformer() #initialize our tfidf transformer
 
 		cur.execute("SELECT id, name FROM "+prefix+"page WHERE keywords='' ORDER BY RAND() LIMIT 1000"); res = cur.fetchall();

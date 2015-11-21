@@ -5,7 +5,7 @@ include_once('createJsonGraph.php');
 include_once('graphFunctions.php');
 $realRoot = getRealRoot();
 $dbPrefix = 'ma_';
-$cluster = 0; $level = 0; $limit = 500;
+$cluster = 0; $level = 0; $limit = 1000;
 if(isset($_GET['dbPrefix'])) $dbPrefix = $_GET['dbPrefix'];
 if(isset($_GET['cluster'])) {
 	$c = mysql_query("SELECT * FROM ".$dbPrefix."cluster WHERE id=".mysql_real_escape_string($_GET['cluster']));

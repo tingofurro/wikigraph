@@ -1,44 +1,40 @@
-{"id": 0, "name": "Comp. Sci.", "level": 0, "parent": 0, "class": "node", 
+{"id": 0, "name": "Mathematics", "level": 0, "parent": 0, "class": "node", 
 "children": [
-   {"id": 4, "name": "Object-oriented programming", "level": 1, "parent": 0, "class": "node", 
+   {"id": 4, "name": "Group (mathematics)", "level": 1, "parent": 0, "class": "node", 
    "children": [
-         {"id": 31, "name": "Object-oriented programming", "level": 2, "parent": 4, "class": "badNode"},
-      {"id": 37, "name": "Software testing", "level": 2, "parent": 4, "class": "badNode"},
-      {"id": 38, "name": "Unified Modeling Language", "level": 2, "parent": 4, "class": "badNode"}
+         {"id": 20, "name": "Topological space", "level": 2, "parent": 4, "class": "badNode"},
+      {"id": 24, "name": "Manifold", "level": 2, "parent": 4, "class": "badNode"},
+      {"id": 23, "name": "Field (mathematics)", "level": 2, "parent": 4, "class": "badNode"},
+      {"id": 19, "name": "Group (mathematics)", "level": 2, "parent": 4, "class": "badNode"},
+      {"id": 22, "name": "Vector space", "level": 2, "parent": 4, "class": "badNode"},
+      {"id": 21, "name": "Category theory", "level": 2, "parent": 4, "class": "badNode"},
+      {"id": 25, "name": "Algebraic geometry", "level": 2, "parent": 4, "class": "badNode"}
    ]
    },
-   {"id": 6, "name": "List of numerical analysis topics", "level": 1, "parent": 0, "class": "node", 
+   {"id": 3, "name": "Geometry", "level": 1, "parent": 0, "class": "node", 
    "children": [
-         {"id": 51, "name": "Computer graphics", "level": 2, "parent": 6, "class": "badNode"},
-      {"id": 53, "name": "List of numerical analysis topics", "level": 2, "parent": 6, "class": "badNode"},
-      {"id": 52, "name": "Linear algebra", "level": 2, "parent": 6, "class": "badNode"},
-      {"id": 50, "name": "Maxima and minima", "level": 2, "parent": 6, "class": "badNode"}
+         {"id": 14, "name": "General relativity", "level": 2, "parent": 3, "class": "badNode"},
+      {"id": 15, "name": "Schläfli symbol", "level": 2, "parent": 3, "class": "badNode"},
+      {"id": 17, "name": "Triangle", "level": 2, "parent": 3, "class": "badNode"},
+      {"id": 16, "name": "List of polygons, polyhedra and polytopes", "level": 2, "parent": 3, "class": "badNode"}
    ]
    },
-   {"id": 3, "name": "Computational complexity theory", "level": 1, "parent": 0, "class": "node", 
+   {"id": 2, "name": "Real number", "level": 1, "parent": 0, "class": "node", 
    "children": [
-         {"id": 28, "name": "Computational complexity theory", "level": 2, "parent": 3, "class": "badNode"},
-      {"id": 26, "name": "Formal language", "level": 2, "parent": 3, "class": "badNode"},
-      {"id": 18, "name": "Approximation algorithm", "level": 2, "parent": 3, "class": "badNode"},
-      {"id": 19, "name": "Computability theory", "level": 2, "parent": 3, "class": "badNode"}
+         {"id": 9, "name": "Probability theory", "level": 2, "parent": 2, "class": "badNode"},
+      {"id": 8, "name": "Partial differential equation", "level": 2, "parent": 2, "class": "badNode"},
+      {"id": 12, "name": "Riemann zeta function", "level": 2, "parent": 2, "class": "badNode"},
+      {"id": 11, "name": "Gradient", "level": 2, "parent": 2, "class": "badNode"},
+      {"id": 10, "name": "Real number", "level": 2, "parent": 2, "class": "badNode"}
    ]
    },
-   {"id": 2, "name": "First-order logic", "level": 1, "parent": 0, "class": "node", 
+   {"id": 5, "name": "Mathematical logic", "level": 1, "parent": 0, "class": "node", 
    "children": [
-         {"id": 11, "name": "Type theory", "level": 2, "parent": 2, "class": "badNode"},
-      {"id": 8, "name": "Propositional calculus", "level": 2, "parent": 2, "class": "badNode"},
-      {"id": 9, "name": "Prolog", "level": 2, "parent": 2, "class": "badNode"},
-      {"id": 7, "name": "Reduction strategy (lambda calculus)", "level": 2, "parent": 2, "class": "badNode"},
-      {"id": 10, "name": "First-order logic", "level": 2, "parent": 2, "class": "badNode"},
-      {"id": 12, "name": "Model checking", "level": 2, "parent": 2, "class": "badNode"}
-   ]
-   },
-   {"id": 5, "name": "Artificial intelligence", "level": 1, "parent": 0, "class": "node", 
-   "children": [
-         {"id": 46, "name": "Artificial intelligence", "level": 2, "parent": 5, "class": "badNode"},
-      {"id": 44, "name": "Fuzzy clustering", "level": 2, "parent": 5, "class": "badNode"},
-      {"id": 45, "name": "Genetic algorithm", "level": 2, "parent": 5, "class": "badNode"},
-      {"id": 48, "name": "Linear programming", "level": 2, "parent": 5, "class": "badNode"}
+         {"id": 29, "name": "First-order logic", "level": 2, "parent": 5, "class": "badNode"},
+      {"id": 28, "name": "Set theory", "level": 2, "parent": 5, "class": "badNode"},
+      {"id": 27, "name": "Haskell (programming language)", "level": 2, "parent": 5, "class": "badNode"},
+      {"id": 26, "name": "Alfred Tarski", "level": 2, "parent": 5, "class": "badNode"},
+      {"id": 32, "name": "Context-free grammar", "level": 2, "parent": 5, "class": "badNode"}
    ]
    }
 ]

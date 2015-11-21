@@ -2,6 +2,9 @@ from bs4 import BeautifulSoup
 import urllib, os.path
 from dbco import *
 from soup2obj import *
+from crawlPR import *
+from crawlSummary import *
+from crawlKeywords import *
 from collections import Counter
 import numpy as np
 
@@ -18,15 +21,14 @@ def getChildren(name):
 	soup = BeautifulSoup(loadCategory(name), 'lxml');
 	return {'subcat': findSubCategories(soup), 'pages': findPages(soup)}
 
-def getLinks(name):
-	return pageLinks(name)
 catToAdd = []; visitedCats = set([])
 
 # root = {'prefix': 'ee', 'rootCat': 'Electrical_engineering'};
 # root = {'prefix': 'ma', 'rootCat': 'Fields_of_mathematics'};
 # root = {'prefix': 'cs', 'rootCat': 'Areas_of_computer_science'};
 # root = {'prefix': 'bio', 'rootCat': 'Biology'};
-root = {'prefix': 'med', 'rootCat': 'Medicine'};
+# root = {'prefix': 'med', 'rootCat': 'Medicine'};
+root = {'prefix': 'eng', 'rootCat': 'Engineering_disciplines'};
 
 level = 1
 layerCategories = {};
@@ -48,7 +50,7 @@ while level < 10:
 		clusterPages = set(thisCat['pages'])
 		clusterLinks = []
 		for p in clusterPages:
-			pageEdges[p] = getLinks(p)
+			pageEdges[p] = pageLinks(p)
 			clusterLinks.extend(pageEdges[p])
 
 		counter = Counter(clusterLinks)
@@ -67,7 +69,7 @@ while level < 10:
 			# print var[cat]
 			if level==1:
 				score[cat] = 1
-			if score[cat] >= ((level-1)**1.5)*0.2/85.0:
+			if score[cat] >= ((level-1)**1.5)*0.1/85.0:
 				print o, " / ", len(layerCategories[level]), ": ", cat, " score:", score[cat]
 				layerCategories[level+1] |= (set(thisCat['subcat'])-visitedCats);
 				corePages[level] |= set(thisCat['pages'])
@@ -118,3 +120,11 @@ cur.execute("CREATE TABLE IF NOT EXISTS `"+root['prefix']+"_link` (`id` int(11) 
 cur.execute("TRUNCATE TABLE `"+root['prefix']+"_link`")
 
 cur.execute("INSERT INTO `"+root['prefix']+"_link` (`id`, `from`, `to`) VALUES "+','.join(edgeList)+";")
+
+computePR(prefix)
+print "Finished computing Pagerank"
+buildSummaries(prefix)
+print "Built all summaries"
+computeKeywords(prefix)
+print "Built the keywords"
+print "DONE"
